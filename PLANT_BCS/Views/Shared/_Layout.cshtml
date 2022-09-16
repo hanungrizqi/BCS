@@ -1,42 +1,232 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - BCS</title>
+
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="~/Content/assets/media/favicons/favicon.png">
+    <!-- END Icons -->
+    <!-- Stylesheets -->
+    <!-- Fonts and Codebase framework -->
+    <link rel="stylesheet" id="css-main" href="~/Content/assets/css/codebase.min.css">
+    <link id="css-theme" rel="stylesheet" href="~/Content/assets/css/themes/flat.min.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <script src="~/Content/assets/js/lib/jquery.min.js"></script>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+
+
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed sidebar-dark page-header-dark dark-mode side-trans-enabled">
+        <div id="page-overlay"></div>
+        <nav id="sidebar">
+            <!-- Sidebar Content -->
+            <div class="sidebar-content">
+                <!-- Side Header -->
+                <div class="content-header justify-content-lg-center">
+                    <!-- Logo -->
+                    <div>
+                        <span class="smini-visible fw-bold tracking-wide fs-lg">
+                            <span class="text-primary">BCS</span>
+                        </span>
+                        <a class="link-fx fw-bold tracking-wide mx-auto" href="/home/index">
+                            <span class="smini-hidden">
+                                <i class="fa fa-cogs text-primary"></i>
+                                <span class="fs-4 text-dual">KPP</span><span class="fs-4 text-primary">BCS</span>
+                            </span>
+                        </a>
+                    </div>
+                    <!-- END Logo -->
+                    <!-- Options -->
+                    <div>
+                        <!-- Close Sidebar, Visible only on mobile screens -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                        <button type="button" class="btn btn-sm btn-alt-danger d-lg-none" data-toggle="layout" data-action="sidebar_close">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                        <!-- END Close Sidebar -->
+                    </div>
+                    <!-- END Options -->
+                </div>
+                <!-- END Side Header -->
+                <!-- Sidebar Scrolling -->
+                <div class="js-sidebar-scroll" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: 0px;">
+                        <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 0px;">
+                                        <!-- Side User -->
+                                        <div class="content-side content-side-user px-0 py-0">
+                                            <!-- Visible only in mini mode -->
+                                            <div class="smini-visible-block animated fadeIn px-3">
+                                                <img class="img-avatar img-avatar32" src="~/Content/assets/media/avatars/avatar15.jpg" alt="">
+                                            </div>
+                                            <!-- END Visible only in mini mode -->
+                                            <!-- Visible only in normal mode -->
+                                            <div class="smini-hidden text-center mx-auto">
+                                                <a class="img-link" href="be_pages_generic_profile.html">
+                                                    <img class="img-avatar" src="~/Content/assets/media/avatars/avatar15.jpg" alt="">
+                                                </a>
+                                                <ul class="list-inline mt-3 mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="link-fx text-dual fs-sm fw-semibold text-uppercase" href="be_pages_generic_profile.html">J. Smith</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="link-fx text-dual" href="login/logout">
+                                                            <i class="fa fa-sign-out-alt"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- END Visible only in normal mode -->
+                                        </div>
+                                        <!-- END Side User -->
+                                        <!-- Side Navigation -->
+                                        <div class="content-side content-side-full">
+                                            <ul class="nav-main">
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link" href="/Home/index">
+                                                        <i class="nav-main-link-icon fa fa-house-user"></i>
+                                                        <span class="nav-main-link-name">Dashboard</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link" href="/Register_Backlog/Index">
+                                                        <i class="nav-main-link-icon fa fa-list-alt"></i>
+                                                        <span class="nav-main-link-name">Register Backlog</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                                        <i class="nav-main-link-icon fa fa-cog"></i>
+                                                        <span class="nav-main-link-name">Setting</span>
+                                                    </a>
+                                                    <ul class="nav-main-submenu">
+                                                        <li class="nav-main-item">
+                                                            <a class="nav-main-link" href="/Setting/Source">
+                                                                <span class="nav-main-link-name">Setting Source</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-main-item">
+                                                            <a class="nav-main-link" href="/Setting/User">
+                                                                <span class="nav-main-link-name">Setting User</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-main-item">
+                                                            <a class="nav-main-link" href="/Setting/Menu">
+                                                                <span class="nav-main-link-name">Setting Menu</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- END Side Navigation -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="simplebar-placeholder" style="width: auto; height: 1502px;"></div>
+                    </div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 346px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div>
+                </div>
+                <!-- END Sidebar Scrolling -->
+            </div>
+            <!-- Sidebar Content -->
+        </nav>
+        <!-- END Sidebar -->
+        <!-- Header -->
+        <header id="page-header">
+            <!-- Header Content -->
+            <div class="content-header">
+                <!-- Left Section -->
+                <div class="space-x-1">
+                    <!-- Toggle Sidebar -->
+                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                    <button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+                    <!-- END Toggle Sidebar -->
+                </div>
+                <!-- END Left Section -->
+                <!-- Right Section -->
+                <div class="space-x-1">
+                    <!-- User Dropdown -->
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user d-sm-none"></i>
+                            <span class="d-none d-sm-inline-block fw-semibold">UserName</span>
+                            <i class="fa fa-angle-down opacity-50 ms-1"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
+                            <div class="px-2 py-3 bg-body-light rounded-top">
+                                <h5 class="h6 text-center mb-0">
+                                    NRP
+                                </h5>
+                            </div>
+                            <div class="p-2">
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="op_auth_signin.html">
+                                    <span>Sign Out</span>
+                                    <i class="fa fa-fw fa-sign-out-alt opacity-25"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END User Dropdown -->
+                </div>
+                <!-- END Right Section -->
+            </div>
+        </header>
+        <!-- END Header -->
+        <!-- Main Container -->
+        <main id="main-container">
+            <!-- Page Content -->
+            <div class="content">
+                @RenderBody()
+            </div>
+            <!-- END Page Content -->
+        </main>
+        <!-- END Main Container -->
+        <!-- Footer -->
+        <footer id="page-footer">
+            <div class="content py-3">
+                <div class="row fs-sm">
+                    <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
+                        Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+                    </div>
+                    <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
+                        <a class="fw-semibold" href="home/index" target="_blank">BCS 2</a> © <span data-toggle="year-copy" class="js-year-copy-enabled">2022</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+    </div>
+    <!-- END Page Container -->
+
+
+    <script src="~/Content/assets/js/codebase.app.min.js"></script>
+    <script type="text/javascript">
+        Codebase.helpersOnLoad(['jq-select2']);
+
+        var url = window.location;
+
+        var element = $('ul.nav-main li a').filter(function () {
+            return this.href == url;
+        });
+        element.addClass('active');
+        element.parent().parent().parent().addClass("open");
+
+    </script>
+
 </body>
 </html>
