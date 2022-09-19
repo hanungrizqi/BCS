@@ -46,6 +46,24 @@
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_KARYAWAN_PLANT" Member="VW_KARYAWAN_PLANTs">
+    <Type Name="VW_KARYAWAN_PLANT">
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_KARYAWAN_PLANT_N_MCH" Member="VW_KARYAWAN_PLANT_N_MCHes">
+    <Type Name="VW_KARYAWAN_PLANT_N_MCH">
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_JOBSITE" Member="VW_JOBSITEs">
+    <Type Name="VW_JOBSITE">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.VW_KARYAWAN_ALL" Member="VW_KARYAWAN_ALLs">
     <Type Name="VW_KARYAWAN_ALL">
       <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
@@ -69,26 +87,8 @@
       <Column Name="GOLONGAN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="DEPT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="DEPT_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Address_LotusNotes" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="ACTIVE_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VW_KARYAWAN_PLANT" Member="VW_KARYAWAN_PLANTs">
-    <Type Name="VW_KARYAWAN_PLANT">
-      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VW_KARYAWAN_PLANT_N_MCH" Member="VW_KARYAWAN_PLANT_N_MCHes">
-    <Type Name="VW_KARYAWAN_PLANT_N_MCH">
-      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VW_JOBSITE" Member="VW_JOBSITEs">
-    <Type Name="VW_JOBSITE">
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
-      <Column Name="CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

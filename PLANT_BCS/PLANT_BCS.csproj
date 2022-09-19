@@ -124,6 +124,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4323,6 +4325,7 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\Page\login.js" />
+    <Content Include="Scripts\Page\SettingUser.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4354,6 +4357,10 @@
     </None>
     <None Include="packages.config" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Setting\Users.cshtml" />
+    <Content Include="Views\Setting\Source.cshtml" />
+    <Content Include="Views\Setting\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

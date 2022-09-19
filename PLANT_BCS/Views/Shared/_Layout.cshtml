@@ -9,16 +9,38 @@
     <link rel="shortcut icon" href="~/Content/assets/media/favicons/favicon.png">
     <!-- END Icons -->
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Content/assets/js/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/Content/assets/js/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/Content/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/Content/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css">
+
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" id="css-main" href="~/Content/assets/css/codebase.min.css">
-    <link id="css-theme" rel="stylesheet" href="~/Content/assets/css/themes/flat.min.css">
+    <link id="css-theme" rel="stylesheet" href="~/Content/assets/css/themes/pulse.min.css">
     <link href="~/Content/Site.css" rel="stylesheet" />
 
     <script src="~/Content/assets/js/lib/jquery.min.js"></script>
 
+    <!-- Page JS Plugins -->
+    <script src="~/Content/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons-jszip/jszip.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons/buttons.print.min.js"></script>
+    <script src="~/Content/assets/js/plugins/datatables-buttons/buttons.html5.min.js"></script>
+
 </head>
 <body>
-
+    <input type="text" id="hd_nrp" value="@Session["Nrp"].ToString()" hidden />
+    <input type="text" id="hd_site" value="@Session["Site"].ToString()" hidden />
+    <input type="text" id="web_link" value="@Session["Web_Link"].ToString()" hidden />
 
     <div id="overlay">
         <div class="cv-spinner">
@@ -79,10 +101,10 @@
                                                 </a>
                                                 <ul class="list-inline mt-3 mb-0">
                                                     <li class="list-inline-item">
-                                                        <a class="link-fx text-dual fs-sm fw-semibold text-uppercase" href="be_pages_generic_profile.html">J. Smith</a>
+                                                        <a class="link-fx text-dual fs-sm fw-semibold text-uppercase" href="be_pages_generic_profile.html">@Session["Name"].ToString()</a>
                                                     </li>
                                                     <li class="list-inline-item">
-                                                        <a class="link-fx text-dual" href="login/logout">
+                                                        <a class="link-fx text-dual" href="/login/logout">
                                                             <i class="fa fa-sign-out-alt"></i>
                                                         </a>
                                                     </li>
@@ -93,43 +115,7 @@
                                         <!-- END Side User -->
                                         <!-- Side Navigation -->
                                         <div class="content-side content-side-full">
-                                            <ul class="nav-main">
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link" href="/Home/index">
-                                                        <i class="nav-main-link-icon fa fa-house-user"></i>
-                                                        <span class="nav-main-link-name">Dashboard</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link" href="/Register_Backlog/Index">
-                                                        <i class="nav-main-link-icon fa fa-list-alt"></i>
-                                                        <span class="nav-main-link-name">Register Backlog</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                                                        <i class="nav-main-link-icon fa fa-cog"></i>
-                                                        <span class="nav-main-link-name">Setting</span>
-                                                    </a>
-                                                    <ul class="nav-main-submenu">
-                                                        <li class="nav-main-item">
-                                                            <a class="nav-main-link" href="/Setting/Source">
-                                                                <span class="nav-main-link-name">Setting Source</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-main-item">
-                                                            <a class="nav-main-link" href="/Setting/User">
-                                                                <span class="nav-main-link-name">Setting User</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-main-item">
-                                                            <a class="nav-main-link" href="/Setting/Menu">
-                                                                <span class="nav-main-link-name">Setting Menu</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                            @Html.Action("Menu", "Menu")
                                         </div>
                                         <!-- END Side Navigation -->
                                     </div>
@@ -163,18 +149,18 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user d-sm-none"></i>
-                            <span class="d-none d-sm-inline-block fw-semibold">UserName</span>
+                            <span class="d-none d-sm-inline-block fw-semibold">@Session["Name"].ToString()</span>
                             <i class="fa fa-angle-down opacity-50 ms-1"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
                             <div class="px-2 py-3 bg-body-light rounded-top">
                                 <h5 class="h6 text-center mb-0">
-                                    NRP
+                                    @Session["Nrp"].ToString()
                                 </h5>
                             </div>
                             <div class="p-2">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="op_auth_signin.html">
+                                <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="/Login/logout">
                                     <span>Sign Out</span>
                                     <i class="fa fa-fw fa-sign-out-alt opacity-25"></i>
                                 </a>
@@ -215,9 +201,14 @@
 
 
     <script src="~/Content/assets/js/codebase.app.min.js"></script>
-    <script type="text/javascript">
-        Codebase.helpersOnLoad(['jq-select2']);
 
+    <script src="~/Content/assets/js/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/Content/assets/js/plugins/select2/js/select2.full.min.js"></script>
+
+
+    <script src="@Html.Raw(ViewBag.JS)"></script>
+
+    <script type="text/javascript">
         var url = window.location;
 
         var element = $('ul.nav-main li a').filter(function () {
@@ -227,6 +218,7 @@
         element.parent().parent().parent().addClass("open");
 
     </script>
+
 
 </body>
 </html>

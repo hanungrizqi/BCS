@@ -6,6 +6,43 @@
       <Column Name="Username" Type="System.String" DbType="VarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_R_MENU" Member="VW_R_MENUs">
+    <Type Name="VW_R_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_Menu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sub_Menu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Icon_Menu" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Link_Menu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_SUB_MENU" Member="TBL_R_SUB_MENUs">
+    <Type Name="TBL_R_SUB_MENU">
+      <Column Name="ID_Sub_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sub_Menu_Description" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Link_Sub_Menu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Akses" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_M_ROLE" Member="TBL_M_ROLEs">
+    <Type Name="TBL_M_ROLE">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_User" Member="VW_Users">
+    <Type Name="VW_User">
+      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.VW_KARYAWAN_ALL" Member="VW_KARYAWAN_ALLs">
     <Type Name="VW_KARYAWAN_ALL">
       <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
@@ -29,7 +66,7 @@
       <Column Name="GOLONGAN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="DEPT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="DEPT_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Address_LotusNotes" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="ACTIVE_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>

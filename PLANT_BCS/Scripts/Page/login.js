@@ -59,7 +59,7 @@ function MakeSession(nrp, site) {
             else {
                 swal.fire({
                     title: "Error!",
-                    text: 'Maaf anda tidak memiliki akses ke BCS',
+                    text: data.Message,
                     icon: 'error',
                 });
                 $("#overlay").hide();

@@ -28,8 +28,7 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
-        
+
         [HttpGet]
         [Route("Get_Employee")]
         public IHttpActionResult Get_Employee()
@@ -45,5 +44,38 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
+        
+        [HttpGet]
+        [Route("Get_Employee/{id}")]
+        public IHttpActionResult Get_Employee(string id)
+        {
+            try
+            {
+                var data = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID ==id ).FirstOrDefault();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_Group")]
+        public IHttpActionResult Get_Group()
+        {
+            try
+            {
+                var data = db.TBL_M_ROLEs.ToList();
+
+                return Ok(new { Data = data, Total = data.Count() });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }

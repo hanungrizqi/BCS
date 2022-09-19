@@ -24,6 +24,10 @@ namespace PLANT_BCS.Controllers
 
             if (dataRole != null)
             {
+                if (Jobsite == null || Jobsite == "")
+                {
+                    return new JsonResult() { Data = new { Remarks = false, Message = "Jobsite tidak sesuai" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
 
                 Session["Web_Link"] = System.Configuration.ConfigurationManager.AppSettings["WebApp_Link"].ToString();
                 Session["Nrp"] = NRP;
@@ -34,7 +38,7 @@ namespace PLANT_BCS.Controllers
             }
             else
             {
-                return new JsonResult() { Data = new { Remarks = false }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult() { Data = new { Remarks = false, Message = "Maaf anda tidak memiliki akses ke BCS" }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
 
         }

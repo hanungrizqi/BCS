@@ -125,14 +125,6 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<VW_KARYAWAN_ALL> VW_KARYAWAN_ALLs
-		{
-			get
-			{
-				return this.GetTable<VW_KARYAWAN_ALL>();
-			}
-		}
-		
 		public System.Data.Linq.Table<VW_KARYAWAN_PLANT> VW_KARYAWAN_PLANTs
 		{
 			get
@@ -154,6 +146,14 @@ namespace API_PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<VW_JOBSITE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_KARYAWAN_ALL> VW_KARYAWAN_ALLs
+		{
+			get
+			{
+				return this.GetTable<VW_KARYAWAN_ALL>();
 			}
 		}
 	}
@@ -861,6 +861,141 @@ namespace API_PLANT_BCS.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT")]
+	public partial class VW_KARYAWAN_PLANT
+	{
+		
+		private string _EMPLOYEE_ID;
+		
+		private string _NAME;
+		
+		public VW_KARYAWAN_PLANT()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
+		public string EMPLOYEE_ID
+		{
+			get
+			{
+				return this._EMPLOYEE_ID;
+			}
+			set
+			{
+				if ((this._EMPLOYEE_ID != value))
+				{
+					this._EMPLOYEE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT_N_MCH")]
+	public partial class VW_KARYAWAN_PLANT_N_MCH
+	{
+		
+		private string _EMPLOYEE_ID;
+		
+		private string _NAME;
+		
+		public VW_KARYAWAN_PLANT_N_MCH()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
+		public string EMPLOYEE_ID
+		{
+			get
+			{
+				return this._EMPLOYEE_ID;
+			}
+			set
+			{
+				if ((this._EMPLOYEE_ID != value))
+				{
+					this._EMPLOYEE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_JOBSITE")]
+	public partial class VW_JOBSITE
+	{
+		
+		private string _DSTRCT_CODE;
+		
+		private string _CODE;
+		
+		public VW_JOBSITE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(50) NOT NULL", CanBeNull=false)]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE", DbType="Char(18) NOT NULL", CanBeNull=false)]
+		public string CODE
+		{
+			get
+			{
+				return this._CODE;
+			}
+			set
+			{
+				if ((this._CODE != value))
+				{
+					this._CODE = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_ALL")]
 	public partial class VW_KARYAWAN_ALL
 	{
@@ -907,7 +1042,7 @@ namespace API_PLANT_BCS.Models
 		
 		private string _DEPT_DESC;
 		
-		private string _Address_LotusNotes;
+		private string _EMAIL;
 		
 		private string _ACTIVE_STATUS;
 		
@@ -1251,18 +1386,18 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address_LotusNotes", DbType="VarChar(100)")]
-		public string Address_LotusNotes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMAIL", DbType="VarChar(100)")]
+		public string EMAIL
 		{
 			get
 			{
-				return this._Address_LotusNotes;
+				return this._EMAIL;
 			}
 			set
 			{
-				if ((this._Address_LotusNotes != value))
+				if ((this._EMAIL != value))
 				{
-					this._Address_LotusNotes = value;
+					this._EMAIL = value;
 				}
 			}
 		}
@@ -1279,141 +1414,6 @@ namespace API_PLANT_BCS.Models
 				if ((this._ACTIVE_STATUS != value))
 				{
 					this._ACTIVE_STATUS = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT")]
-	public partial class VW_KARYAWAN_PLANT
-	{
-		
-		private string _EMPLOYEE_ID;
-		
-		private string _NAME;
-		
-		public VW_KARYAWAN_PLANT()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
-		public string EMPLOYEE_ID
-		{
-			get
-			{
-				return this._EMPLOYEE_ID;
-			}
-			set
-			{
-				if ((this._EMPLOYEE_ID != value))
-				{
-					this._EMPLOYEE_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
-		public string NAME
-		{
-			get
-			{
-				return this._NAME;
-			}
-			set
-			{
-				if ((this._NAME != value))
-				{
-					this._NAME = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT_N_MCH")]
-	public partial class VW_KARYAWAN_PLANT_N_MCH
-	{
-		
-		private string _EMPLOYEE_ID;
-		
-		private string _NAME;
-		
-		public VW_KARYAWAN_PLANT_N_MCH()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
-		public string EMPLOYEE_ID
-		{
-			get
-			{
-				return this._EMPLOYEE_ID;
-			}
-			set
-			{
-				if ((this._EMPLOYEE_ID != value))
-				{
-					this._EMPLOYEE_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
-		public string NAME
-		{
-			get
-			{
-				return this._NAME;
-			}
-			set
-			{
-				if ((this._NAME != value))
-				{
-					this._NAME = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_JOBSITE")]
-	public partial class VW_JOBSITE
-	{
-		
-		private string _DSTRCT_CODE;
-		
-		private string _CODE;
-		
-		public VW_JOBSITE()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(50) NOT NULL", CanBeNull=false)]
-		public string DSTRCT_CODE
-		{
-			get
-			{
-				return this._DSTRCT_CODE;
-			}
-			set
-			{
-				if ((this._DSTRCT_CODE != value))
-				{
-					this._DSTRCT_CODE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODE", DbType="Char(18) NOT NULL", CanBeNull=false)]
-		public string CODE
-		{
-			get
-			{
-				return this._CODE;
-			}
-			set
-			{
-				if ((this._CODE != value))
-				{
-					this._CODE = value;
 				}
 			}
 		}

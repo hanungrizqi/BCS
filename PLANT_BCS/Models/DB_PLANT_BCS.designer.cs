@@ -33,6 +33,12 @@ namespace PLANT_BCS.Models
     partial void InsertTBL_M_USER(TBL_M_USER instance);
     partial void UpdateTBL_M_USER(TBL_M_USER instance);
     partial void DeleteTBL_M_USER(TBL_M_USER instance);
+    partial void InsertTBL_R_SUB_MENU(TBL_R_SUB_MENU instance);
+    partial void UpdateTBL_R_SUB_MENU(TBL_R_SUB_MENU instance);
+    partial void DeleteTBL_R_SUB_MENU(TBL_R_SUB_MENU instance);
+    partial void InsertTBL_M_ROLE(TBL_M_ROLE instance);
+    partial void UpdateTBL_M_ROLE(TBL_M_ROLE instance);
+    partial void DeleteTBL_M_ROLE(TBL_M_ROLE instance);
     #endregion
 		
 		public DB_PLANT_BCSDataContext() : 
@@ -70,6 +76,38 @@ namespace PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<TBL_M_USER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_R_MENU> VW_R_MENUs
+		{
+			get
+			{
+				return this.GetTable<VW_R_MENU>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_R_SUB_MENU> TBL_R_SUB_MENUs
+		{
+			get
+			{
+				return this.GetTable<TBL_R_SUB_MENU>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_M_ROLE> TBL_M_ROLEs
+		{
+			get
+			{
+				return this.GetTable<TBL_M_ROLE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_User> VW_Users
+		{
+			get
+			{
+				return this.GetTable<VW_User>();
 			}
 		}
 		
@@ -168,6 +206,520 @@ namespace PLANT_BCS.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_R_MENU")]
+	public partial class VW_R_MENU
+	{
+		
+		private int _ID;
+		
+		private string _RoleName;
+		
+		private int _ID_Menu;
+		
+		private string _Name_Menu;
+		
+		private System.Nullable<int> _Sub_Menu;
+		
+		private string _Icon_Menu;
+		
+		private string _Link_Menu;
+		
+		private System.Nullable<int> _Order;
+		
+		public VW_R_MENU()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(150)")]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this._RoleName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Menu", DbType="Int NOT NULL")]
+		public int ID_Menu
+		{
+			get
+			{
+				return this._ID_Menu;
+			}
+			set
+			{
+				if ((this._ID_Menu != value))
+				{
+					this._ID_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_Menu", DbType="NVarChar(50)")]
+		public string Name_Menu
+		{
+			get
+			{
+				return this._Name_Menu;
+			}
+			set
+			{
+				if ((this._Name_Menu != value))
+				{
+					this._Name_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sub_Menu", DbType="Int")]
+		public System.Nullable<int> Sub_Menu
+		{
+			get
+			{
+				return this._Sub_Menu;
+			}
+			set
+			{
+				if ((this._Sub_Menu != value))
+				{
+					this._Sub_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Icon_Menu", DbType="NVarChar(150)")]
+		public string Icon_Menu
+		{
+			get
+			{
+				return this._Icon_Menu;
+			}
+			set
+			{
+				if ((this._Icon_Menu != value))
+				{
+					this._Icon_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Link_Menu", DbType="NVarChar(250)")]
+		public string Link_Menu
+		{
+			get
+			{
+				return this._Link_Menu;
+			}
+			set
+			{
+				if ((this._Link_Menu != value))
+				{
+					this._Link_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Order]", Storage="_Order", DbType="Int")]
+		public System.Nullable<int> Order
+		{
+			get
+			{
+				return this._Order;
+			}
+			set
+			{
+				if ((this._Order != value))
+				{
+					this._Order = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_R_SUB_MENU")]
+	public partial class TBL_R_SUB_MENU : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Sub_Menu;
+		
+		private System.Nullable<int> _ID_Menu;
+		
+		private string _Sub_Menu_Description;
+		
+		private string _Link_Sub_Menu;
+		
+		private string _Akses;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_Sub_MenuChanging(int value);
+    partial void OnID_Sub_MenuChanged();
+    partial void OnID_MenuChanging(System.Nullable<int> value);
+    partial void OnID_MenuChanged();
+    partial void OnSub_Menu_DescriptionChanging(string value);
+    partial void OnSub_Menu_DescriptionChanged();
+    partial void OnLink_Sub_MenuChanging(string value);
+    partial void OnLink_Sub_MenuChanged();
+    partial void OnAksesChanging(string value);
+    partial void OnAksesChanged();
+    #endregion
+		
+		public TBL_R_SUB_MENU()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Sub_Menu", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_Sub_Menu
+		{
+			get
+			{
+				return this._ID_Sub_Menu;
+			}
+			set
+			{
+				if ((this._ID_Sub_Menu != value))
+				{
+					this.OnID_Sub_MenuChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Sub_Menu = value;
+					this.SendPropertyChanged("ID_Sub_Menu");
+					this.OnID_Sub_MenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Menu", DbType="Int")]
+		public System.Nullable<int> ID_Menu
+		{
+			get
+			{
+				return this._ID_Menu;
+			}
+			set
+			{
+				if ((this._ID_Menu != value))
+				{
+					this.OnID_MenuChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Menu = value;
+					this.SendPropertyChanged("ID_Menu");
+					this.OnID_MenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sub_Menu_Description", DbType="NVarChar(150)")]
+		public string Sub_Menu_Description
+		{
+			get
+			{
+				return this._Sub_Menu_Description;
+			}
+			set
+			{
+				if ((this._Sub_Menu_Description != value))
+				{
+					this.OnSub_Menu_DescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Sub_Menu_Description = value;
+					this.SendPropertyChanged("Sub_Menu_Description");
+					this.OnSub_Menu_DescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Link_Sub_Menu", DbType="NVarChar(250)")]
+		public string Link_Sub_Menu
+		{
+			get
+			{
+				return this._Link_Sub_Menu;
+			}
+			set
+			{
+				if ((this._Link_Sub_Menu != value))
+				{
+					this.OnLink_Sub_MenuChanging(value);
+					this.SendPropertyChanging();
+					this._Link_Sub_Menu = value;
+					this.SendPropertyChanged("Link_Sub_Menu");
+					this.OnLink_Sub_MenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Akses", DbType="VarChar(50)")]
+		public string Akses
+		{
+			get
+			{
+				return this._Akses;
+			}
+			set
+			{
+				if ((this._Akses != value))
+				{
+					this.OnAksesChanging(value);
+					this.SendPropertyChanging();
+					this._Akses = value;
+					this.SendPropertyChanged("Akses");
+					this.OnAksesChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_M_ROLE")]
+	public partial class TBL_M_ROLE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _RoleName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnRoleNameChanging(string value);
+    partial void OnRoleNameChanged();
+    #endregion
+		
+		public TBL_M_ROLE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(150)")]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this.OnRoleNameChanging(value);
+					this.SendPropertyChanging();
+					this._RoleName = value;
+					this.SendPropertyChanged("RoleName");
+					this.OnRoleNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_User")]
+	public partial class VW_User
+	{
+		
+		private int _ID_Role;
+		
+		private string _Username;
+		
+		private string _NAME;
+		
+		private string _Email;
+		
+		private string _DSTRCT_CODE;
+		
+		private string _RoleName;
+		
+		public VW_User()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="Int NOT NULL")]
+		public int ID_Role
+		{
+			get
+			{
+				return this._ID_Role;
+			}
+			set
+			{
+				if ((this._ID_Role != value))
+				{
+					this._ID_Role = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this._Username = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(100)")]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(100)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(150)")]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this._RoleName = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_ALL")]
 	public partial class VW_KARYAWAN_ALL
 	{
@@ -214,7 +766,7 @@ namespace PLANT_BCS.Models
 		
 		private string _DEPT_DESC;
 		
-		private string _Address_LotusNotes;
+		private string _EMAIL;
 		
 		private string _ACTIVE_STATUS;
 		
@@ -558,18 +1110,18 @@ namespace PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address_LotusNotes", DbType="VarChar(100)")]
-		public string Address_LotusNotes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMAIL", DbType="VarChar(100)")]
+		public string EMAIL
 		{
 			get
 			{
-				return this._Address_LotusNotes;
+				return this._EMAIL;
 			}
 			set
 			{
-				if ((this._Address_LotusNotes != value))
+				if ((this._EMAIL != value))
 				{
-					this._Address_LotusNotes = value;
+					this._EMAIL = value;
 				}
 			}
 		}
