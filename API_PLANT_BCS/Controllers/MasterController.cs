@@ -76,6 +76,102 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
+        
+        [HttpGet]
+        [Route("Get_EqNumber/{site}")]
+        public IHttpActionResult Get_EqNumber(string site)
+        {
+            try
+            {
+                var data = db.VW_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
 
+                return Ok(new { Data = data, Total = data.Count() });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("Get_EGI/{eqNumber}")]
+        public IHttpActionResult Get_EGI(string eqNumber)
+        {
+            try
+            {
+                var data = db.VW_EQ_NUMBERs.Where(a => a.EQUIP_NO == eqNumber).FirstOrDefault();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_CompCode")]
+        public IHttpActionResult Get_CompCode()
+        {
+            try
+            {
+                var data = db.VW_COMP_CODEs.ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_NRPGL")]
+        public IHttpActionResult Get_NRPGL()
+        {
+            try
+            {
+                var data = db.VW_KARYAWAN_PLANTs.ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_OriginatorID")]
+        public IHttpActionResult Get_OriginatorID()
+        {
+            try
+            {
+                var data = db.VW_KARYAWAN_PLANT_N_MCHes.ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_STDJob/{site}")]
+        public IHttpActionResult Get_STDJob(string site)
+        {
+            try
+            {
+                var data = db.VW_STD_JOBs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
     }
 }

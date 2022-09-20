@@ -19,8 +19,18 @@ namespace PLANT_BCS.Controllers
 
         public JsonResult MakeSession(string NRP, string Jobsite)
         {
-            var dataUser = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == NRP).FirstOrDefault();
-            var dataRole = db.TBL_M_USERs.Where(a => a.Username == NRP).FirstOrDefault();
+            string nrp = "";
+
+            if (NRP.Count() > 7)
+            {
+                nrp = NRP.Substring(NRP.Length - 7);
+            }
+            else
+            {
+                nrp = NRP;
+            }
+            var dataUser = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == nrp).FirstOrDefault();
+            var dataRole = db.TBL_M_USERs.Where(a => a.Username == nrp).FirstOrDefault();
 
             if (dataRole != null)
             {
@@ -30,7 +40,7 @@ namespace PLANT_BCS.Controllers
                 }
 
                 Session["Web_Link"] = System.Configuration.ConfigurationManager.AppSettings["WebApp_Link"].ToString();
-                Session["Nrp"] = NRP;
+                Session["Nrp"] = nrp;
                 Session["ID_Role"] = dataRole.ID_Role;
                 Session["Name"] = dataUser.NAME;
                 Session["Site"] = Jobsite;
