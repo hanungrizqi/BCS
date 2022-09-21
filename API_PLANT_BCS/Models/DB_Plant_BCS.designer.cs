@@ -2757,7 +2757,7 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CREATED_DATE
 		{
 			get
@@ -2797,7 +2797,7 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_DATE", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_DATE", DbType="DateTime")]
 		public System.Nullable<System.DateTime> UPDATED_DATE
 		{
 			get
@@ -2896,7 +2896,7 @@ namespace API_PLANT_BCS.Models
 		
 		private System.Nullable<int> _QTY;
 		
-		private string _STATUS;
+		private string _DSTRCT_CODE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2914,8 +2914,8 @@ namespace API_PLANT_BCS.Models
     partial void OnINDEX_NOChanged();
     partial void OnQTYChanging(System.Nullable<int> value);
     partial void OnQTYChanged();
-    partial void OnSTATUSChanging(string value);
-    partial void OnSTATUSChanged();
+    partial void OnDSTRCT_CODEChanging(string value);
+    partial void OnDSTRCT_CODEChanged();
     #endregion
 		
 		public TBL_T_RECOMMENDED_PART()
@@ -3043,22 +3043,22 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="VarChar(50)")]
-		public string STATUS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(50)")]
+		public string DSTRCT_CODE
 		{
 			get
 			{
-				return this._STATUS;
+				return this._DSTRCT_CODE;
 			}
 			set
 			{
-				if ((this._STATUS != value))
+				if ((this._DSTRCT_CODE != value))
 				{
-					this.OnSTATUSChanging(value);
+					this.OnDSTRCT_CODEChanging(value);
 					this.SendPropertyChanging();
-					this._STATUS = value;
-					this.SendPropertyChanged("STATUS");
-					this.OnSTATUSChanged();
+					this._DSTRCT_CODE = value;
+					this.SendPropertyChanged("DSTRCT_CODE");
+					this.OnDSTRCT_CODEChanged();
 				}
 			}
 		}

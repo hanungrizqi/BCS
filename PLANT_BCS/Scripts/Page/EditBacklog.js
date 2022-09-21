@@ -1,10 +1,6 @@
 ﻿Codebase.helpersOnLoad(['jq-select2']);
 
 $("document").ready(function () {
-    DetailTableBody = $("#table_part tBody");
-    let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty">No data available in table</td></tr>`;
-    DetailTableBody.append(listData);
-
     getEqNumber();
     getCompCode();
     getSource();
@@ -12,6 +8,49 @@ $("document").ready(function () {
     getOriID();
     getSTDJob();
 })
+
+var table = $("#table_part").DataTable({
+    ajax: {
+        url: $("#web_link").val() + "/api/Backlog/Get_BacklogPart/" + $("#txt_noBl").val(),
+        dataSrc: "Data",
+    },
+    "columnDefs": [
+        { "className": "dt-center", "targets": [0, 4, 5, 6, 7, 8, 9 ,10] }
+    ],
+    scrollX: true,
+    columns: [
+        {
+            "data": null,
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }
+        },
+        { data: 'PART_NO' },
+        { data: 'STOCK_CODE' },
+        { data: 'STK_DESC' },
+        { data: 'FIG_NO' },
+        { data: 'INDEX_NO' },
+        { data: 'QTY' },
+        { data: 'UOM' },
+        { data: 'PART_CLASS' },
+        { data: 'STATUS' },
+        {
+            data: 'PART_ID',
+            targets: 'no-sort', orderable: false,
+            render: function (data, type, row) {
+                action = `<div class="btn-group">`
+                action += `<button type="button" onclick="editPart(${data})" class="btn btn-sm btn-info" title="Edit">Edit
+                                </button>`
+                action += `</div>`
+                action += `<button type="button" onclick="deletePart(${data})" class="btn btn-sm btn-danger" title="Delete">Delete
+                                </button>`
+                action += `</div>`
+                return action;
+            }
+        }
+    ],
+
+});
 
 $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
@@ -32,7 +71,11 @@ function getEqNumber() {
             $('#txt_eqNumber').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.EQUIP_NO + '" data-egi="' + val.EQUIP_GRP_ID + '">' + val.EQUIP_NO + '</option>';
+                if (val.EQUIP_NO == $("#txt_eqNumberTemp").val()) {
+                    text += '<option selected="selected" value="' + val.EQUIP_NO + '" data-egi="' + val.EQUIP_GRP_ID + '" >' + val.EQUIP_NO + '</option>';
+                } else {
+                    text += '<option value="' + val.EQUIP_NO + '" data-egi="' + val.EQUIP_GRP_ID + '">' + val.EQUIP_NO + '</option>';
+                }
             });
             $("#txt_eqNumber").append(text);
         }
@@ -48,7 +91,11 @@ function getCompCode() {
             $('#txt_compCode').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                if (val.COMP_CODE == $("#txt_compCodeTemp").val()) {
+                    text += '<option selected value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                } else {
+                    text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                }
             });
             $("#txt_compCode").append(text);
         }
@@ -64,7 +111,11 @@ function getSource() {
             $('#txt_source').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.SOURCE + '">' + val.SOURCE + '</option>';
+                if (val.SOURCE == $("#txt_sourceTemp").val()) {
+                    text += '<option selected value="' + val.SOURCE + '">' + val.SOURCE + '</option>';
+                } else {
+                    text += '<option value="' + val.SOURCE + '">' + val.SOURCE + '</option>';
+                }
             });
             $("#txt_source").append(text);
         }
@@ -80,7 +131,11 @@ function getNRPGL() {
             $('#txt_nrpGl').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME +'</option>';
+                if (val.EMPLOYEE_ID == $("#txt_nrpGlTemp").val()) {
+                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                } else {
+                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                }
             });
             $("#txt_nrpGl").append(text);
         }
@@ -96,7 +151,11 @@ function getOriID() {
             $('#txt_oriID').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                if (val.EMPLOYEE_ID == $("#txt_oriIDTemp").val()) {
+                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                } else {
+                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                }
             });
             $("#txt_oriID").append(text);
         }
@@ -112,7 +171,11 @@ function getSTDJob() {
             $('#txt_standJob').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.STD_JOB_NO + '" data-wg="' + val.WORK_GROUP +'">' + val.STD_JOB_NO + ' - ' + val.STD_JOB_DESC +'</option>';
+                if (val.STD_JOB_NO == $("#txt_standJobTemp").val()) {
+                    text += '<option selected value="' + val.STD_JOB_NO + '" data-wg="' + val.WORK_GROUP + '">' + val.STD_JOB_NO + ' - ' + val.STD_JOB_DESC + '</option>';
+                } else {
+                    text += '<option value="' + val.STD_JOB_NO + '" data-wg="' + val.WORK_GROUP + '">' + val.STD_JOB_NO + ' - ' + val.STD_JOB_DESC + '</option>';
+                }
             });
             $("#txt_standJob").append(text);
         }
@@ -141,8 +204,6 @@ function addPartToTable() {
             let getin = index + 1;
             if (getin == tRow) {
                 DetailTableBody = $("#table_part tBody");
-                $('#table_part tr.odd').remove();
-
 
                 $.ajax({
                     url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&site=" + $("#hd_site").val(), //URI,
@@ -191,20 +252,6 @@ function addPartToTable() {
 }
 
 function removeList(element) {
-    var item = element.parentNode.parentNode.rowIndex;
-    document.getElementById("table_part").deleteRow(item);
-
-
-    let tRow = $("#table_part >tbody >tr").length;
-    if (tRow == 0) {
-
-        DetailTableBody = $("#table_part tBody");
-        let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty">No data available in table</td></tr>`;
-        DetailTableBody.append(listData);
-    }
-}
-
-function clearBacklog() {
     
 }
 

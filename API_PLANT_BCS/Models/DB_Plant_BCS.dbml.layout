@@ -104,16 +104,16 @@
         <elementListCompartment Id="e8ad0905-598c-41d8-a045-a5605e716993" absoluteBounds="4.7650000000000006, 5.71, 1.9700000000000002, 1.541748084127903" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="de0db5c9-6618-4964-b7cb-320309bb5e89" isExpanded="false" absoluteBounds="2.625, 0.75, 2, 0.45">
+    <classShape Id="60f4d9cc-b072-4792-a5c2-2d827c4f537c" isExpanded="false" absoluteBounds="2.625, 0.75, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_BACKLOG" />
       <nestedChildShapes>
-        <elementListCompartment Id="829b1ab4-1a78-4cc0-a305-bf4142f50be9" absoluteBounds="2.64, 1.21, 1.9700000000000002, 5.757242975135644" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ea36f1d3-3982-4c2d-b271-9b94e837a699" absoluteBounds="2.64, 1.21, 1.9700000000000002, 5.757242975135644" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="038c91df-4734-4100-8ac3-e878efd014d2" isExpanded="false" absoluteBounds="2.625, 1.25, 2, 0.45">
+    <classShape Id="b9c85924-763e-4e86-aa46-bf151f9f0ac4" isExpanded="false" absoluteBounds="2.625, 1.25, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_RECOMMENDED_PART" />
       <nestedChildShapes>
-        <elementListCompartment Id="45c6c4ec-58dc-4b9e-834a-014e169a5fdc" absoluteBounds="2.64, 1.71, 1.9700000000000002, 1.75252282867829" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7722af20-01ae-497b-9734-0435d2160d4b" absoluteBounds="2.64, 1.71, 1.9700000000000002, 1.75252282867829" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

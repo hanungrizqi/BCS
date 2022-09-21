@@ -122,10 +122,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BacklogApprovalController.cs" />
+    <Compile Include="Controllers\BacklogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\RegisterBacklogController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,6 +137,7 @@
       <DependentUpon>DB_PLANT_BCS.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Cls_Backlog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\codebase.css" />
@@ -4325,8 +4327,13 @@
     <Content Include="Content\assets\_scss\vendor\_simplebar.scss" />
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\ListApproval.js" />
     <Content Include="Scripts\Page\login.js" />
+    <Content Include="Scripts\Page\DetailApproval.js" />
+    <Content Include="Scripts\Page\EditBacklog.js" />
     <Content Include="Scripts\Page\RegisterBacklog.js" />
+    <Content Include="Scripts\Page\ListBacklog.js" />
     <Content Include="Scripts\Page\SettingSource.js" />
     <Content Include="Scripts\Page\SettingUser.js" />
     <Content Include="Web.config" />
@@ -4364,7 +4371,11 @@
     <Content Include="Views\Setting\Users.cshtml" />
     <Content Include="Views\Setting\Source.cshtml" />
     <Content Include="Views\Setting\Menu.cshtml" />
-    <Content Include="Views\RegisterBacklog\Index.cshtml" />
+    <Content Include="Views\Backlog\Register.cshtml" />
+    <Content Include="Views\Backlog\ListBacklog.cshtml" />
+    <Content Include="Views\Backlog\EditBacklog.cshtml" />
+    <Content Include="Views\BacklogApproval\ListApproval.cshtml" />
+    <Content Include="Views\BacklogApproval\DetailBacklog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

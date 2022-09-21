@@ -23,7 +23,39 @@ namespace API_PLANT_BCS.Controllers
             {
                 var data = db.TBL_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).OrderByDescending(a => a.CREATED_DATE).FirstOrDefault();
 
-                return Ok(data);
+                return Ok(new {Data = data});
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_ListBacklog/{dstrct}")]
+        public IHttpActionResult Get_ListBacklog(string dstrct)
+        {
+            try
+            {
+                var data = db.TBL_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_ListApprovalBacklog/{dstrct}")]
+        public IHttpActionResult Get_ListApprovalBacklog(string dstrct)
+        {
+            try
+            {
+                var data = db.TBL_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "SUBMITTED").ToList();
+
+                return Ok(new { Data = data });
             }
             catch (Exception)
             {
@@ -38,7 +70,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_PART_BACKLOGs.ToList();
+                var data = db.VW_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
@@ -65,6 +97,23 @@ namespace API_PLANT_BCS.Controllers
             }
         }
         
+        //Get Detail Backlog
+        [HttpGet]
+        [Route("Get_BacklogDetail/{noBacklog}")]
+        public IHttpActionResult Get_BacklogDetail(string noBacklog)
+        {
+            try
+            {
+                var data = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
         //Post Registrasi Backlog
         [HttpPost]
         [Route("Create_Backlog")]
@@ -72,31 +121,79 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
-                tbl.NO_BACKLOG = param.NO_BACKLOG;
-                tbl.DSTRCT_CODE = param.DSTRCT_CODE;
-                tbl.EQP_NUMBER = param.EQP_NUMBER;
-                tbl.COMP_CODE = param.COMP_CODE;
-                tbl.EGI = param.EGI;
-                tbl.HM = param.HM;
-                tbl.BACKLOG_DESC = param.BACKLOG_DESC;
-                tbl.INSPECTON_DATE = param.INSPECTON_DATE;
-                tbl.INSPECTOR = param.INSPECTOR;
-                tbl.SOURCE = param.SOURCE;
-                tbl.WORK_GROUP = param.WORK_GROUP;
-                tbl.STD_JOB = param.STD_JOB;
-                tbl.NRP_GL = param.NRP_GL;
-                tbl.ORIGINATOR_ID = param.ORIGINATOR_ID;
-                tbl.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
-                tbl.MANPOWER = param.MANPOWER;
-                tbl.HOUR_EST = param.HOUR_EST;
-                tbl.POSISI_BACKLOG = param.POSISI_BACKLOG;
-                tbl.STATUS = param.STATUS;
-                tbl.REMARKS = param.REMARKS;
-                tbl.CREATED_BY = param.CREATED_BY;
-                tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
-
-                db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
+                var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+                if (cek != null)
+                {
+                    cek.NO_BACKLOG = param.NO_BACKLOG;
+                    cek.DSTRCT_CODE = param.DSTRCT_CODE;
+                    cek.EQP_NUMBER = param.EQP_NUMBER;
+                    cek.COMP_CODE = param.COMP_CODE;
+                    cek.EGI = param.EGI;
+                    cek.HM = param.HM;
+                    cek.BACKLOG_DESC = param.BACKLOG_DESC;
+                    cek.INSPECTON_DATE = param.INSPECTON_DATE;
+                    cek.INSPECTOR = param.INSPECTOR;
+                    cek.SOURCE = param.SOURCE;
+                    cek.WORK_GROUP = param.WORK_GROUP;
+                    cek.STD_JOB = param.STD_JOB;
+                    cek.NRP_GL = param.NRP_GL;
+                    cek.ORIGINATOR_ID = param.ORIGINATOR_ID;
+                    cek.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
+                    cek.MANPOWER = param.MANPOWER;
+                    cek.HOUR_EST = param.HOUR_EST;
+                    cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                    cek.STATUS = param.STATUS;
+                    cek.REMARKS = param.REMARKS;
+                    cek.UPDATED_BY = param.UPDATED_BY;
+                    cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+                }
+                else
+                {
+                    TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
+                    tbl.NO_BACKLOG = param.NO_BACKLOG;
+                    tbl.DSTRCT_CODE = param.DSTRCT_CODE;
+                    tbl.EQP_NUMBER = param.EQP_NUMBER;
+                    tbl.COMP_CODE = param.COMP_CODE;
+                    tbl.EGI = param.EGI;
+                    tbl.HM = param.HM;
+                    tbl.BACKLOG_DESC = param.BACKLOG_DESC;
+                    tbl.INSPECTON_DATE = param.INSPECTON_DATE;
+                    tbl.INSPECTOR = param.INSPECTOR;
+                    tbl.SOURCE = param.SOURCE;
+                    tbl.WORK_GROUP = param.WORK_GROUP;
+                    tbl.STD_JOB = param.STD_JOB;
+                    tbl.NRP_GL = param.NRP_GL;
+                    tbl.ORIGINATOR_ID = param.ORIGINATOR_ID;
+                    tbl.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
+                    tbl.MANPOWER = param.MANPOWER;
+                    tbl.HOUR_EST = param.HOUR_EST;
+                    tbl.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                    tbl.STATUS = param.STATUS;
+                    tbl.REMARKS = param.REMARKS;
+                    tbl.CREATED_BY = param.CREATED_BY;
+                    tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
+                    db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
+                }
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+        
+        [HttpPost]
+        [Route("Approve_Backlog")]
+        public IHttpActionResult Approve_Backlog(TBL_T_BACKLOG param)
+        {
+            try
+            {
+                var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+                cek.STATUS = param.STATUS;
+                cek.REMARKS = param.REMARKS;
+                cek.UPDATED_BY = param.UPDATED_BY;
+                cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }
@@ -117,19 +214,32 @@ namespace API_PLANT_BCS.Controllers
 
                 foreach (var item in param)
                 {
-                    tbl.Add(new TBL_T_RECOMMENDED_PART
+                    var cek = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == item.PART_ID).FirstOrDefault();
+                    if (cek == null)
                     {
-                        PART_ID = item.PART_ID,
-                        PART_NO = item.PART_NO,
-                        NO_BACKLOG = item.NO_BACKLOG,
-                        FIG_NO = item.FIG_NO,
-                        INDEX_NO = item.INDEX_NO,
-                        QTY = item.QTY,
-                        STATUS = item.STATUS
-                    });
+                        tbl.Add(item);
+                    }
                 }
 
                 db.TBL_T_RECOMMENDED_PARTs.InsertAllOnSubmit(tbl);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+        
+        [HttpPost]
+        [Route("Delete_Backlog")]
+        public IHttpActionResult Delete_Backlog(string noBacklog)
+        {
+            try
+            {
+                var data = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+
+                db.TBL_T_BACKLOGs.DeleteOnSubmit(data);
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }

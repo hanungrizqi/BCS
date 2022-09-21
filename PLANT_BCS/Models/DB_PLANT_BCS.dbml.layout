@@ -38,10 +38,10 @@
         <elementListCompartment Id="aac221b2-f0cb-4161-940b-c6f64454cd15" absoluteBounds="2.64, 0.96, 1.9700000000000002, 5.1249187414844828" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3e3df5f1-e81b-4f69-a1a5-35ce30e27b57" isExpanded="false" absoluteBounds="4.75, 0.5, 2, 0.45">
+    <classShape Id="e90f0a30-24fb-47de-bc6f-6ab7db32f74d" isExpanded="false" absoluteBounds="4.75, 0.5, 2, 0.45">
       <DataClassMoniker Name="/DB_PLANT_BCSDataContext/TBL_T_BACKLOG" />
       <nestedChildShapes>
-        <elementListCompartment Id="eaecebe7-a12f-47f9-b4d5-9c7cf4bf4a50" absoluteBounds="4.765, 0.96, 1.9700000000000002, 5.5464682305852566" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f88c184a-363c-420a-9354-29afedfbab23" absoluteBounds="4.765, 0.96, 1.9700000000000002, 5.757242975135644" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

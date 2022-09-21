@@ -1210,6 +1210,8 @@ namespace PLANT_BCS.Models
 		
 		private string _UPDATED_BY;
 		
+		private string _REMARKS;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1264,6 +1266,8 @@ namespace PLANT_BCS.Models
     partial void OnUPDATED_DATEChanged();
     partial void OnUPDATED_BYChanging(string value);
     partial void OnUPDATED_BYChanged();
+    partial void OnREMARKSChanging(string value);
+    partial void OnREMARKSChanged();
     #endregion
 		
 		public TBL_T_BACKLOG()
@@ -1691,7 +1695,7 @@ namespace PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CREATED_DATE
 		{
 			get
@@ -1731,7 +1735,7 @@ namespace PLANT_BCS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_DATE", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_DATE", DbType="DateTime")]
 		public System.Nullable<System.DateTime> UPDATED_DATE
 		{
 			get
@@ -1767,6 +1771,26 @@ namespace PLANT_BCS.Models
 					this._UPDATED_BY = value;
 					this.SendPropertyChanged("UPDATED_BY");
 					this.OnUPDATED_BYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REMARKS", DbType="VarChar(MAX)")]
+		public string REMARKS
+		{
+			get
+			{
+				return this._REMARKS;
+			}
+			set
+			{
+				if ((this._REMARKS != value))
+				{
+					this.OnREMARKSChanging(value);
+					this.SendPropertyChanging();
+					this._REMARKS = value;
+					this.SendPropertyChanged("REMARKS");
+					this.OnREMARKSChanged();
 				}
 			}
 		}

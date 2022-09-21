@@ -176,9 +176,9 @@
       <Column Name="HOUR_EST" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="POSISI_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CREATED_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UPDATED_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UPDATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UPDATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="REMARKS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
@@ -191,7 +191,7 @@
       <Column Name="FIG_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="INDEX_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
