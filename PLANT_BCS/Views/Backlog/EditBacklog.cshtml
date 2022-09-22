@@ -188,12 +188,8 @@
     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <div class="block-options justify-content-center">
             <div class="row text-center">
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="clearBacklog()">
-                        <i class="fa fa-broom opacity-50 me-1"></i> Clear
-                    </button>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <a href="/Backlog/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
                     <button type="submit" class="btn btn-sm btn-info" value="SAVED" onclick="saveBacklog(this.value)">
                         <i class="fa fa-floppy-disk opacity-50 me-1"></i> Save
                     </button>
@@ -249,8 +245,60 @@
                     <button type="button" class="btn btn-alt-secondary" data-bs-dismiss="modal">
                         Cancel
                     </button>
-                    <button type="button" class="btn btn-alt-primary" onclick="addPartToTable()">
+                    <button type="button" class="btn btn-alt-primary" onclick="insertPart()">
                         Insert
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal_update" tabindex="-1" aria-labelledby="modal-normal" aria-modal="true" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="block block-rounded shadow-none mb-0">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Add Recommended Part</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content fs-sm">
+                    <div class="row mb-4">
+                        <label class="col-sm-4 col-form-label" for="txt_partNo_update">Part Number</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control " id="txt_partNo_update" name="txt_partNo_update" readonly>
+                            <input type="text" class="form-control " id="txt_partId_update" name="txt_partId_update" hidden readonly>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-4 col-form-label" for="txt_fiqNo_update">Fig No</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control " id="txt_fiqNo_update" name="txt_fiqNo_update">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-4 col-form-label" for="txt_indexNo_update">Index No</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control " id="txt_indexNo_update" name="txt_indexNo_update">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-4 col-form-label" for="txt_qty_update">Qty</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control " id="txt_qty_update" name="txt_qty_update">
+                        </div>
+                    </div>
+                </div>
+                <div class="block-content block-content-full block-content-sm text-end border-top">
+                    <button type="button" class="btn btn-alt-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-alt-primary" onclick="updatePart()">
+                        Update
                     </button>
                 </div>
             </div>

@@ -26,7 +26,9 @@
             targets: 'no-sort', orderable: false,
             render: function (data, type, row) {
                 action = `<div class="btn-group">`
-                action += `<a href="/Backlog/EditBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Edit</a>`
+                if (row.STATUS == "SAVED") {
+                    action += `<a href="/Backlog/EditBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Edit</a>`
+                }
                 action += `<button type="button" onclick="deleteBacklog(${data})" class="btn btn-sm btn-danger" title="Delete">Delete
                                 </button>`
                 action += `</div>`

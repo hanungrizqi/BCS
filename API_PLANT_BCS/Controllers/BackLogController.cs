@@ -132,7 +132,6 @@ namespace API_PLANT_BCS.Controllers
                     cek.HM = param.HM;
                     cek.BACKLOG_DESC = param.BACKLOG_DESC;
                     cek.INSPECTON_DATE = param.INSPECTON_DATE;
-                    cek.INSPECTOR = param.INSPECTOR;
                     cek.SOURCE = param.SOURCE;
                     cek.WORK_GROUP = param.WORK_GROUP;
                     cek.STD_JOB = param.STD_JOB;
@@ -219,6 +218,12 @@ namespace API_PLANT_BCS.Controllers
                     {
                         tbl.Add(item);
                     }
+                    else
+                    {
+                        cek.QTY = item.QTY;
+                        cek.FIG_NO = item.FIG_NO;
+                        cek.INDEX_NO = item.INDEX_NO;
+                    }
                 }
 
                 db.TBL_T_RECOMMENDED_PARTs.InsertAllOnSubmit(tbl);
@@ -240,6 +245,24 @@ namespace API_PLANT_BCS.Controllers
                 var data = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
 
                 db.TBL_T_BACKLOGs.DeleteOnSubmit(data);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+        
+        [HttpPost]
+        [Route("Delete_BacklogPart/{partID}")]
+        public IHttpActionResult Delete_BacklogPart(string partID)
+        {
+            try
+            {
+                var data = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == partID).FirstOrDefault();
+
+                db.TBL_T_RECOMMENDED_PARTs.DeleteOnSubmit(data);
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }

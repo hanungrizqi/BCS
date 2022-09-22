@@ -135,7 +135,7 @@ function addPartToTable() {
                 'Part Number sudah terdaftar',
                 'warning'
             );
-            return;
+            return false;
         }
         else {
             let getin = index + 1;
@@ -294,8 +294,7 @@ function savePart() {
             PART_NO: $(this).find('td:eq(1)').html(),
             FIG_NO: $(this).find('td:eq(4)').html(),
             INDEX_NO: $(this).find('td:eq(5)').html(),
-            QTY: $(this).find('td:eq(6)').html(),
-            STATUS: $(this).find('td:eq(9)').html()
+            QTY: $(this).find('td:eq(6)').html()
         });
     });
 
