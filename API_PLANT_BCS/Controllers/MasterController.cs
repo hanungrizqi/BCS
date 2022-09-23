@@ -62,6 +62,22 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
+        [Route("Get_PartNo/{stckCode}")]
+        public IHttpActionResult Get_PartNo(string stckCode)
+        {
+            try
+            {
+                var data = db.VW_STOCK_CODEs.Where(a => a.STOCK_CODE == stckCode ).FirstOrDefault();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
         [Route("Get_Group")]
         public IHttpActionResult Get_Group()
         {

@@ -37,7 +37,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.TBL_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
 
                 return Ok(new { Data = data });
             }
@@ -53,7 +53,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.TBL_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "SUBMITTED").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "SUBMITTED").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -83,11 +83,11 @@ namespace API_PLANT_BCS.Controllers
         //Get Detail Part
         [HttpGet]
         [Route("Get_PartDetail")]
-        public IHttpActionResult Get_PartDetail(string partNO, string stckCode, string site)
+        public IHttpActionResult Get_PartDetail(string partNO, string site)
         {
             try
             {
-                var data = db.VW_PART_MSF100s.Where(a => (a.PART_NO == partNO || a.STOCK_CODE == stckCode) && a.DSTRCT_CODE == site).FirstOrDefault();
+                var data = db.VW_PART_MSF100s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
 
                 return Ok(new { Data = data });
             }
@@ -104,7 +104,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                var data = db.VW_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
 
                 return Ok(new { Data = data });
             }

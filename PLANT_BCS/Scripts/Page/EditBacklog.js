@@ -39,7 +39,7 @@ var table = $("#table_part").DataTable({
             targets: 'no-sort', orderable: false,
             render: function (data, type, row) {
                 action = `<div class="btn-group">`
-                action += `<button type="button" value="${data}" data-value="${row.PART_NO}" onclick="editPart(this.value,this.getAttribute('data-value'),${row.FIG_NO},${row.INDEX_NO},${row.QTY})" class="btn btn-sm btn-info" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_update">Edit
+                action += `<button type="button" value="${data}" data-value="${row.PART_NO}" data-stck="${row.STOCK_CODE}" onclick="editPart(this.value,this.getAttribute('data-value'),this.getAttribute('data-stck'),${row.FIG_NO},${row.INDEX_NO},${row.QTY})" class="btn btn-sm btn-info" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_update">Edit
                            </button>`
                 action += `<button type="button" value="${data}" onclick="deletePart(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
                                 </button>`
@@ -97,6 +97,26 @@ $("#txt_standJob").on("change", function () {
     let wg = $(this).find(':selected').attr('data-wg');
     $("#txt_wg").val(wg);
 })
+
+function searchPartNo() {
+    let stckCode = $("#txt_stckCode").val()
+    $.ajax({
+        url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            if (result.Data != null) {
+                $("#txt_partNo").val(result.Data.PART_NO);
+            } else {
+                Swal.fire(
+                    'Warning!',
+                    'Stock Code Tidak Terdaftar',
+                    'warning'
+                );
+            }
+        }
+    });
+}
 
 function getEqNumber() {
     $.ajax({
@@ -395,6 +415,15 @@ function insertPart() {
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val()
 
+    if (PART_NO == "") {
+        Swal.fire(
+            'Warning!',
+            'Mohon sertakan Part Number ',
+            'warning'
+        );
+        return;
+    }
+
     let tRow = $("#table_part >tbody >tr").length;
 
     $.each($("#table_part tbody tr"), function (index) {
@@ -497,9 +526,10 @@ function updatePart() {
     })
 }
 
-function editPart(PART_ID, PART_NO, FIG_NO, INDEX_NO, QTY) {
+function editPart(PART_ID, PART_NO, STOCK_CODE, FIG_NO, INDEX_NO, QTY) {
     $("#txt_partId_update").val(PART_ID);
     $("#txt_partNo_update").val(PART_NO);
+    $("#txt_stckCode_update").val(STOCK_CODE);
     $("#txt_fiqNo_update").val(FIG_NO);
     $("#txt_indexNo_update").val(INDEX_NO);
     $("#txt_qty_update").val(QTY);

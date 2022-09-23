@@ -50,12 +50,6 @@
         <elementListCompartment Id="f4709985-a391-4a83-b9c0-bb8fdbe9ed3b" absoluteBounds="4.765, 1.21, 1.9700000000000002, 5.1249187414844828" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f4fe6750-6413-4fe9-be05-00f80259e0f8" isExpanded="false" absoluteBounds="6.875, 0.75, 2, 0.45">
-      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_PART_BACKLOG" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a042bacc-eb51-4896-976d-6bb9de6cd331" absoluteBounds="6.89, 1.21, 1.9700000000000002, 2.8063965514302254" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="47b73095-9aea-4991-a4d9-8bd82541563f" isExpanded="false" absoluteBounds="4.75, 3.75, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_PART_MSF100" />
       <nestedChildShapes>
@@ -92,12 +86,6 @@
         <elementListCompartment Id="ea36f1d3-3982-4c2d-b271-9b94e837a699" absoluteBounds="2.64, 1.21, 1.9700000000000002, 5.757242975135644" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b9c85924-763e-4e86-aa46-bf151f9f0ac4" isExpanded="false" absoluteBounds="2.625, 1.25, 2, 0.45">
-      <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_RECOMMENDED_PART" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7722af20-01ae-497b-9734-0435d2160d4b" absoluteBounds="2.64, 1.71, 1.9700000000000002, 1.75252282867829" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="54f2a3f9-ff09-4c2f-b024-3d56c265d473" isExpanded="false" absoluteBounds="4.75, 3.25, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_COMP_CODE" />
       <nestedChildShapes>
@@ -120,6 +108,30 @@
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_RECOMMENDED_REPAIR" />
       <nestedChildShapes>
         <elementListCompartment Id="9166937f-8d6b-4cf2-a0a7-ee7c0006ab62" absoluteBounds="2.64, 2.21, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50cd5540-e78f-4617-8803-5c4eda04c1cf" isExpanded="false" absoluteBounds="4.75, 5.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_STOCK_CODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f0bf689-d278-4496-b155-fd3942edc8b0" absoluteBounds="4.765, 6.21, 1.9700000000000002, 0.69864910592635465" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0aba129-2090-40a2-ad3a-d8a41d6b19d6" isExpanded="false" absoluteBounds="2.625, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_RECOMMENDED_PART" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a76e9985-741d-4642-aa29-1a061ea70c00" absoluteBounds="2.64, 1.71, 1.9700000000000002, 1.75252282867829" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4bec247b-df28-47b4-ae1e-7460abbba0d8" isExpanded="false" absoluteBounds="6.875, 0.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_PART_BACKLOG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98d540ae-71b3-45a9-bffa-afa80cac422e" absoluteBounds="6.89, 1.21, 1.9700000000000002, 2.8063965514302254" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f96a39fd-1561-4a3a-8869-e30a53bf450a" isExpanded="false" absoluteBounds="6.875, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_BACKLOG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcc8c2c9-5066-4497-955b-23c7a256ebe2" absoluteBounds="6.89, 1.71, 1.9700000000000002, 6.6003419533371925" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

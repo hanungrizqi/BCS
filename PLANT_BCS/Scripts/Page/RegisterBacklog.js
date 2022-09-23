@@ -27,6 +27,26 @@ $("#txt_standJob").on("change", function () {
     $("#txt_wg").val(wg);
 })
 
+function searchPartNo() {
+    let stckCode = $("#txt_stckCode").val()
+    $.ajax({
+        url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            if (result.Data != null) {
+                $("#txt_partNo").val(result.Data.PART_NO);
+            } else {
+                Swal.fire(
+                    'Warning!',
+                    'Stock Code Tidak Terdaftar',
+                    'warning'
+                );
+            }
+        }
+    });
+}
+
 function getEqNumber() {
     $.ajax({
         url: $("#web_link").val() + "/api/Master/Get_EqNumber/" + $("#hd_site").val(), //URI,
@@ -124,11 +144,21 @@ function getSTDJob() {
 }
 
 function addPartToTable() {
+
     let PART_NO = $("#txt_partNo").val(),
         FIG_NO = $("#txt_fiqNo").val(),
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val(),
         STCK_CODE = $("#txt_stckCode").val()
+
+    if (PART_NO == "") {
+        Swal.fire(
+            'Warning!',
+            'Mohon sertakan Part Number ',
+            'warning'
+        );
+        return;
+    }
 
     let tRow = $("#table_part >tbody >tr").length;
 
@@ -150,7 +180,7 @@ function addPartToTable() {
 
 
                 $.ajax({
-                    url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&stckCode=" + STCK_CODE + "&site=" + $("#hd_site").val(), //URI,
+                    url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&site=" + $("#hd_site").val(), //URI,
                     type: "GET",
                     cache: false,
                     success: function (result) {
