@@ -46,18 +46,6 @@
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_KARYAWAN_PLANT" Member="VW_KARYAWAN_PLANTs">
-    <Type Name="VW_KARYAWAN_PLANT">
-      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VW_KARYAWAN_PLANT_N_MCH" Member="VW_KARYAWAN_PLANT_N_MCHes">
-    <Type Name="VW_KARYAWAN_PLANT_N_MCH">
-      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.VW_JOBSITE" Member="VW_JOBSITEs">
     <Type Name="VW_JOBSITE">
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
@@ -132,11 +120,6 @@
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_COMP_CODE" Member="VW_COMP_CODEs">
-    <Type Name="VW_COMP_CODE">
-      <Column Name="COMP_CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.TBL_M_SOURCE" Member="TBL_M_SOURCEs">
     <Type Name="TBL_M_SOURCE">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -192,6 +175,74 @@
       <Column Name="INDEX_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_COMP_CODE" Member="VW_COMP_CODEs">
+    <Type Name="VW_COMP_CODE">
+      <Column Name="COMP_CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="COMP_DESC" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_KARYAWAN_PLANT" Member="VW_KARYAWAN_PLANTs">
+    <Type Name="VW_KARYAWAN_PLANT">
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POSITION_ID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POS_TITLE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WORK_LOC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMP_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GENDER_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STAFF_CATEG" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STAFF_CATEG_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BIRTH_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HIRE_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SERVICE_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TERMINATION_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STATUS_HIRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STATUS_HIRE_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SUPERIOR_ID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POSITION_START_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GOLONGAN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DEPT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DEPT_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ACTIVE_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_KARYAWAN_PLANT_N_MCH" Member="VW_KARYAWAN_PLANT_N_MCHes">
+    <Type Name="VW_KARYAWAN_PLANT_N_MCH">
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POSITION_ID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POS_TITLE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WORK_LOC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMP_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GENDER_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STAFF_CATEG" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STAFF_CATEG_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BIRTH_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HIRE_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SERVICE_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TERMINATION_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STATUS_HIRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STATUS_HIRE_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SUPERIOR_ID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="POSITION_START_DATE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GOLONGAN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DEPT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DEPT_DESC" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ACTIVE_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_T_RECOMMENDED_REPAIR" Member="TBL_T_RECOMMENDED_REPAIRs">
+    <Type Name="TBL_T_RECOMMENDED_REPAIR">
+      <Column Name="REPAIR_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PROBLEM_DESC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ACTIVITY_REPAIR" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

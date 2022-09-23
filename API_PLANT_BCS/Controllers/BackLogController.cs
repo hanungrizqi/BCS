@@ -83,11 +83,11 @@ namespace API_PLANT_BCS.Controllers
         //Get Detail Part
         [HttpGet]
         [Route("Get_PartDetail")]
-        public IHttpActionResult Get_PartDetail(string partNO, string site)
+        public IHttpActionResult Get_PartDetail(string partNO, string stckCode, string site)
         {
             try
             {
-                var data = db.VW_PART_MSF100s.Where(a => a.PART_NO == partNO && a.DSTRCT_CODE == site).FirstOrDefault();
+                var data = db.VW_PART_MSF100s.Where(a => (a.PART_NO == partNO || a.STOCK_CODE == stckCode) && a.DSTRCT_CODE == site).FirstOrDefault();
 
                 return Ok(new { Data = data });
             }
@@ -263,6 +263,89 @@ namespace API_PLANT_BCS.Controllers
                 var data = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == partID).FirstOrDefault();
 
                 db.TBL_T_RECOMMENDED_PARTs.DeleteOnSubmit(data);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
+        [HttpGet]
+        [Route("Get_BacklogRepair/{noBacklog}")]
+        public IHttpActionResult Get_BacklogRepair(string noBacklog)
+        {
+            try
+            {
+                var data = db.TBL_T_RECOMMENDED_REPAIRs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
+
+                return Ok(new { Data = data, Total = data.Count() });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        //Post Registrasi Backlog
+        [HttpPost]
+        [Route("Create_BacklogRepair")]
+        public IHttpActionResult Create_BacklogRepair(IList<TBL_T_RECOMMENDED_REPAIR> listRepair)
+        {
+            try
+            {
+                List<TBL_T_RECOMMENDED_REPAIR> tblRepair = new List<TBL_T_RECOMMENDED_REPAIR>();
+
+                foreach (var repair in listRepair)
+                {
+                    tblRepair.Add(new TBL_T_RECOMMENDED_REPAIR
+                    {
+                        NO_BACKLOG = repair.NO_BACKLOG,
+                        PROBLEM_DESC = repair.PROBLEM_DESC,
+                        ACTIVITY_REPAIR = repair.ACTIVITY_REPAIR
+                    });
+                }
+
+                db.TBL_T_RECOMMENDED_REPAIRs.InsertAllOnSubmit(tblRepair);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+        
+        
+        [HttpPost]
+        [Route("Update_BacklogRepair")]
+        public IHttpActionResult Update_BacklogRepair(TBL_T_RECOMMENDED_REPAIR listRepair)
+        {
+            try
+            {
+                var cek = db.TBL_T_RECOMMENDED_REPAIRs.Where(a => a.REPAIR_ID == listRepair.REPAIR_ID).FirstOrDefault();
+                cek.ACTIVITY_REPAIR = listRepair.ACTIVITY_REPAIR;
+                cek.PROBLEM_DESC = listRepair.PROBLEM_DESC;
+
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
+        [HttpPost]
+        [Route("Delete_BacklogReparir/{repairID}")]
+        public IHttpActionResult Delete_BacklogReparir(int repairID)
+        {
+            try
+            {
+                var data = db.TBL_T_RECOMMENDED_REPAIRs.Where(a => a.REPAIR_ID == repairID).FirstOrDefault();
+
+                db.TBL_T_RECOMMENDED_REPAIRs.DeleteOnSubmit(data);
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }

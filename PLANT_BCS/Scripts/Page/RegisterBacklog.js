@@ -2,8 +2,12 @@
 
 $("document").ready(function () {
     DetailTableBody = $("#table_part tBody");
-    let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty">No data available in table</td></tr>`;
+    let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty"><input type="text" id="txt_cekRow" hidden value="1"/>No data available in table</td></tr>`;
     DetailTableBody.append(listData);
+
+    DetailTableRepair = $("#table_repair tBody");
+    let listDataRepair = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty"><input type="text" id="txt_cekRowRepair" hidden value="1"/>No data available in table</td></tr>`;
+    DetailTableRepair.append(listDataRepair);
 
     getEqNumber();
     getCompCode();
@@ -48,7 +52,7 @@ function getCompCode() {
             $('#txt_compCode').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + ' - ' + val.COMP_DESC + '</option>';
             });
             $("#txt_compCode").append(text);
         }
@@ -73,7 +77,7 @@ function getSource() {
 
 function getNRPGL() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_NRPGL", //URI,
+        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#hd_site").val(),
         type: "GET",
         cache: false,
         success: function (result) {
@@ -89,7 +93,7 @@ function getNRPGL() {
 
 function getOriID() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID" , //URI,
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#hd_site").val(),
         type: "GET",
         cache: false,
         success: function (result) {
@@ -123,7 +127,8 @@ function addPartToTable() {
     let PART_NO = $("#txt_partNo").val(),
         FIG_NO = $("#txt_fiqNo").val(),
         INDEX_NO = $("#txt_indexNo").val(),
-        QTY = $("#txt_qty").val()
+        QTY = $("#txt_qty").val(),
+        STCK_CODE = $("#txt_stckCode").val()
 
     let tRow = $("#table_part >tbody >tr").length;
 
@@ -145,7 +150,7 @@ function addPartToTable() {
 
 
                 $.ajax({
-                    url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&site=" + $("#hd_site").val(), //URI,
+                    url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&stckCode=" + STCK_CODE + "&site=" + $("#hd_site").val(), //URI,
                     type: "GET",
                     cache: false,
                     success: function (result) {
@@ -155,7 +160,7 @@ function addPartToTable() {
                         if (result.Data != null) {
                             var listData = '<tr>' +
                                 '<td>' + noRow + '</td>' +
-                                '<td>' + PART_NO + '</td>' +
+                                '<td>' + result.Data.PART_NO + '</td>' +
                                 '<td>' + result.Data.STOCK_CODE + '</td>' +
                                 '<td>' + result.Data.STK_DESC + '</td>' +
                                 '<td>' + FIG_NO + '</td>' +
@@ -163,21 +168,21 @@ function addPartToTable() {
                                 '<td>' + QTY + '</td>' +
                                 '<td>' + result.Data.UOM + '</td>' +
                                 '<td>' + result.Data.PART_CLASS + '</td>' +
-                                '<td>ACTIVE</td>' +
+                                '<td class="text-success">ACTIVE</td>' +
                                 '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
                                 '</tr>';
                         } else {
                             var listData = '<tr>' +
                                 '<td>' + noRow + '</td>' +
                                 '<td>' + PART_NO + '</td>' +
-                                '<td></td>' +
+                                '<td>' + STCK_CODE  + '</td>' +
                                 '<td></td>' +
                                 '<td>' + FIG_NO + '</td>' +
                                 '<td>' + INDEX_NO + '</td>' +
                                 '<td>' + QTY + '</td>' +
                                 '<td></td>' +
                                 '<td></td>' +
-                                '<td>NONE</td>' +
+                                '<td class="text-danger">NONE</td>' +
                                 '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
                                 '</tr>';
                         }
@@ -199,18 +204,91 @@ function removeList(element) {
     if (tRow == 0) {
 
         DetailTableBody = $("#table_part tBody");
-        let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty">No data available in table</td></tr>`;
+        let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty"><input type="text" id="txt_cekRow" hidden value="1"/>No data available in table</td></tr>`;
         DetailTableBody.append(listData);
     }
 }
 
-function clearBacklog() {
-    
+function addRepairToTable() {
+    let PROBLEM_DESC = $("#text_problemDesc").val(),
+        ACTIVITY_REPAIR = $("#txt_activityRepair").val()
+
+
+    DetailTableBody = $("#table_repair tBody");
+    $('#table_repair tr.odd').remove();
+
+    let tRow = $("#table_repair >tbody >tr").length;
+    let noRow = tRow + 1;
+
+    var listData = '<tr>' +
+        '<td>' + noRow + '</td>' +
+        '<td>' + PROBLEM_DESC + '</td>' +
+        '<td>' + ACTIVITY_REPAIR + '</td>' +
+        '<td><button onclick="removeListRepair(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
+        '</tr>';
+
+    DetailTableBody.append(listData);
+    $('#modal_repair').modal('hide');
+}
+
+function removeListRepair(element) {
+    var item = element.parentNode.parentNode.rowIndex;
+    document.getElementById("table_repair").deleteRow(item);
+
+    let tRow = $("#table_repair >tbody >tr").length;
+    if (tRow == 0) {
+
+        DetailTableBody = $("#table_repair tBody");
+        let listData = `<tr class="odd text-center"><td valign="top" colspan="11" class="dataTables_empty"><input type="text" id="txt_cekRowRepair" hidden value="1"/>No data available in table</td></tr>`;
+        DetailTableBody.append(listData);
+    }
 }
 
 function saveBacklog(postStatus) {
     if (postStatus == "SUBMITTED") {
+        NO_BACKLOG = $("#txt_noBl").val();
+        DSTRCT_CODE = $("#txt_dstrct").val();
+        EQP_NUMBER = $("#txt_eqNumber").val();
+        COMP_CODE = $("#txt_compCode").val();
+        EGI = $("#txt_egi").val();
+        HM = $("#txt_hm").val();
+        BACKLOG_DESC = $("#txt_blDesc").val();
+        INSPECTON_DATE = $("#txt_dInspecton").val();
+        INSPECTOR = $("#txt_inspector").val();
+        SOURCE = $("#txt_source").val();
+        WORK_GROUP = $("#txt_wg").val();
+        STD_JOB = $("#txt_standJob").val();
+        NRP_GL = $("#txt_nrpGl").val();
+        ORIGINATOR_ID = $("#txt_oriID").val();
+        PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+        MANPOWER = $("#txt_mp").val();
+        HOUR_EST = $("#txt_hEst").val();
+        POSISI_BACKLOG = $("#txt_posBL").val();
+        CREATED_BY = $("#txt_inspector").val();
+        REMARKS = $("#txt_note").val();
+        STATUS = postStatus;
+
+        if (BACKLOG_DESC == "" || COMP_CODE == "" || EGI == "" || EQP_NUMBER == "" || HM == "" || HOUR_EST == "" || INSPECTON_DATE == "" ||
+            MANPOWER == "" || NRP_GL == "" || ORIGINATOR_ID == "" || PLAN_REPAIR_DATE_1 == "" || REMARKS == "" || SOURCE == "" || STD_JOB == "" ||
+            WORK_GROUP == "") {
+            Swal.fire(
+                'Submit warning!',
+                'Pastikan semua data sudah diisi',
+                'warning'
+            );
+            return false;
+        }
+
         let tRow = $("#table_part >tbody >tr").length;
+        if ($("#txt_cekRow").val() == "1" && $("#txt_cekRowRepair").val() == "1") {
+            Swal.fire(
+                'Submit error!',
+                'Mohon untuk menginput list Recommended Part atau Recommended Repair',
+                'warning'
+            );
+            return false;
+        }
+
         $.each($("#table_part tbody tr"), function (index) {
             partStatus = $(this).find('td:eq(9)').html();
             if (partStatus == "NONE") {
@@ -219,7 +297,7 @@ function saveBacklog(postStatus) {
                     'Ada Part number yang belum aktif',
                     'warning'
                 );
-                return;
+                return false;
             } else {
                 let getin = index + 1;
                 if (getin == tRow) {
@@ -301,6 +379,42 @@ function savePart() {
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Create_BacklogPart", //URI
         data: JSON.stringify(ListPart),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                saveRepair();
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+}
+
+function saveRepair() {
+    var ListRepair = [];
+    ListRepair.length = 0;
+
+    $.each($("#table_repair tbody tr"), function () {
+        ListRepair.push({
+            NO_BACKLOG: $("#txt_noBl").val(),
+            PROBLEM_DESC: $(this).find('td:eq(1)').html(),
+            ACTIVITY_REPAIR: $(this).find('td:eq(2)').html()
+        });
+    });
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Create_BacklogRepair", //URI
+        data: JSON.stringify(ListRepair),
         dataType: "json",
         type: "POST",
         contentType: "application/json; charset=utf-8",

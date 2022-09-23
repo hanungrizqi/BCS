@@ -84,6 +84,16 @@ namespace PLANT_BCS.Controllers
             return View();
         }
 
+        public ActionResult DetailBacklog(string noBacklog)
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            ViewBag.noBacklog = noBacklog;
+            return View();
+        }
+
         public async Task<ActionResult> EditBacklog(string noBacklog)
         {
             if (Session["nrp"] == null)

@@ -51,6 +51,43 @@ var table = $("#table_part").DataTable({
 
 });
 
+var tableRepair = $("#table_repair").DataTable({
+    ajax: {
+        url: $("#web_link").val() + "/api/Backlog/Get_BacklogRepair/" + $("#txt_noBl").val(),
+        dataSrc: "Data",
+    },
+    "columnDefs": [
+        { "className": "dt-center", "targets": [0, 3] }
+    ],
+    scrollX: true,
+    columns: [
+        {
+            "data": null,
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }
+        },
+        { data: 'PROBLEM_DESC' },
+        { data: 'ACTIVITY_REPAIR' },
+        {
+            data: 'REPAIR_ID',
+            targets: 'no-sort', orderable: false,
+            render: function (data, type, row) {
+                action = `<div class="btn-group">`
+                action += `<button type="button" value="${data}" data-prob="${row.PROBLEM_DESC}" data-act="${row.ACTIVITY_REPAIR}"
+                                onclick="editRepair(this.value,this.getAttribute('data-prob'),this.getAttribute('data-act'))" 
+                                class="btn btn-sm btn-info" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_repairUpdate">Edit
+                           </button>`
+                action += `<button type="button" value="${data}" onclick="deleteRepair(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
+                                </button>`
+                action += `</div>`
+                return action;
+            }
+        }
+    ],
+
+});
+
 $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
     $("#txt_egi").val(egi);
@@ -123,7 +160,7 @@ function getSource() {
 
 function getNRPGL() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_NRPGL", //URI,
+        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#txt_dstrct").val(),
         type: "GET",
         cache: false,
         success: function (result) {
@@ -143,7 +180,7 @@ function getNRPGL() {
 
 function getOriID() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID" , //URI,
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
         type: "GET",
         cache: false,
         success: function (result) {
@@ -183,6 +220,52 @@ function getSTDJob() {
 
 function saveBacklog(postStatus) {
     if (postStatus == "SUBMITTED") {
+
+        NO_BACKLOG = $("#txt_noBl").val();
+        DSTRCT_CODE = $("#txt_dstrct").val();
+        EQP_NUMBER = $("#txt_eqNumber").val();
+        COMP_CODE = $("#txt_compCode").val();
+        EGI = $("#txt_egi").val();
+        HM = $("#txt_hm").val();
+        BACKLOG_DESC = $("#txt_blDesc").val();
+        INSPECTON_DATE = $("#txt_dInspecton").val();
+        INSPECTOR = $("#txt_inspector").val();
+        SOURCE = $("#txt_source").val();
+        WORK_GROUP = $("#txt_wg").val();
+        STD_JOB = $("#txt_standJob").val();
+        NRP_GL = $("#txt_nrpGl").val();
+        ORIGINATOR_ID = $("#txt_oriID").val();
+        PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+        MANPOWER = $("#txt_mp").val();
+        HOUR_EST = $("#txt_hEst").val();
+        POSISI_BACKLOG = $("#txt_posBL").val();
+        CREATED_BY = $("#txt_inspector").val();
+        REMARKS = $("#txt_note").val();
+        STATUS = postStatus;
+
+        if (BACKLOG_DESC == "" || COMP_CODE == "" || EGI == "" || EQP_NUMBER == "" || HM == "" || HOUR_EST == "" || INSPECTON_DATE == "" ||
+            MANPOWER == "" || NRP_GL == "" || ORIGINATOR_ID == "" || PLAN_REPAIR_DATE_1 == "" || REMARKS == "" || SOURCE == "" || STD_JOB == "" ||
+            WORK_GROUP == "") {
+            Swal.fire(
+                'Submit warning!',
+                'Pastikan semua data sudah diisi',
+                'warning'
+            );
+            return false;
+        }
+
+        var dataPart = table.data().count();
+        var dataRepair = tableRepair.data().count();
+
+        if (dataPart == "0" && dataRepair == "0") {
+            Swal.fire(
+                'Submit error!',
+                'Mohon untuk menginput list Recommended Part atau Recommended Repair',
+                'warning'
+            );
+            return false;
+        }
+
         let tRow = $("#table_part >tbody >tr").length;
         $.each($("#table_part tbody tr"), function (index) {
             partStatus = $(this).find('td:eq(9)').html();
@@ -420,4 +503,116 @@ function editPart(PART_ID, PART_NO, FIG_NO, INDEX_NO, QTY) {
     $("#txt_fiqNo_update").val(FIG_NO);
     $("#txt_indexNo_update").val(INDEX_NO);
     $("#txt_qty_update").val(QTY);
+}
+
+function editRepair(repairId, probDesc, actRepair) {
+    $("#text_repairID").val(repairId);
+    $("#text_problemDescUpdate").val(probDesc);
+    $("#txt_activityRepairUpdate").val(actRepair);
+}
+
+function deleteRepair(repairId) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this data!",
+        icon: "warning",
+        showCancelButton: !0,
+        customClass: { confirmButton: "btn btn-alt-danger m-1", cancelButton: "btn btn-alt-secondary m-1" },
+        confirmButtonText: "Yes, delete it!",
+        html: !1,
+        preConfirm: function (e) {
+            return new Promise(function (e) {
+                setTimeout(function () {
+                    e();
+                }, 50);
+            });
+        },
+    }).then(function (n) {
+        if (n.value == true) {
+            $.ajax({
+                url: $("#web_link").val() + "/api/Backlog/Delete_BacklogReparir/" + repairId, //URI
+                type: "POST",
+                success: function (data) {
+                    if (data.Remarks == true) {
+                        Swal.fire("Deleted!", "Your Data has been deleted.", "success");
+                        tableRepair.ajax.reload();
+                    } if (data.Remarks == false) {
+                        Swal.fire("Cancelled", "Message : " + data.Message, "error");
+                    }
+
+                },
+                error: function (xhr) {
+                    alert(xhr.responseText);
+                }
+            })
+        } else {
+            Swal.fire("Cancelled", "Your Data is safe", "error");
+        }
+    });
+}
+
+function addRepair() {
+    var ListRepair = [];
+    ListRepair.length = 0;
+
+    ListRepair.push({
+        NO_BACKLOG: $("#txt_noBl").val(),
+        PROBLEM_DESC: $("#text_problemDesc").val(),
+        ACTIVITY_REPAIR: $("#txt_activityRepair").val()
+    });
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Create_BacklogRepair", //URI
+        data: JSON.stringify(ListRepair),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                $('#modal_repair').modal('hide');
+                tableRepair.ajax.reload();
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+}
+
+function updateRepair() {
+    var obj = new Object();
+    obj.REPAIR_ID = $("#text_repairID").val();
+    obj.PROBLEM_DESC = $("#text_problemDescUpdate").val();
+    obj.ACTIVITY_REPAIR = $("#txt_activityRepairUpdate").val();
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/update_BacklogRepair", //URI
+        data: JSON.stringify(obj),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                $('#modal_repairUpdate').modal('hide');
+                tableRepair.ajax.reload();
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
 }

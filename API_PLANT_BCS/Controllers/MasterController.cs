@@ -126,12 +126,12 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
-        [Route("Get_NRPGL")]
-        public IHttpActionResult Get_NRPGL()
+        [Route("Get_NRPGL/{site}")]
+        public IHttpActionResult Get_NRPGL(string site)
         {
             try
             {
-                var data = db.VW_KARYAWAN_PLANTs.ToList();
+                var data = db.VW_KARYAWAN_PLANTs.Where(a => a.DSTRCT_CODE == site).ToList();
 
                 return Ok(new { Data = data });
             }
@@ -142,12 +142,12 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
-        [Route("Get_OriginatorID")]
-        public IHttpActionResult Get_OriginatorID()
+        [Route("Get_OriginatorID/{site}")]
+        public IHttpActionResult Get_OriginatorID(string site)
         {
             try
             {
-                var data = db.VW_KARYAWAN_PLANT_N_MCHes.ToList();
+                var data = db.VW_KARYAWAN_PLANT_N_MCHes.Where(a => a.DSTRCT_CODE == site).ToList();
 
                 return Ok(new { Data = data });
             }

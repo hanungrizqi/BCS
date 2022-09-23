@@ -4328,6 +4328,7 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\DetailBacklog.js" />
     <Content Include="Scripts\Page\ListApproval.js" />
     <Content Include="Scripts\Page\login.js" />
     <Content Include="Scripts\Page\DetailApproval.js" />
@@ -4376,6 +4377,7 @@
     <Content Include="Views\Backlog\EditBacklog.cshtml" />
     <Content Include="Views\BacklogApproval\ListApproval.cshtml" />
     <Content Include="Views\BacklogApproval\DetailBacklog.cshtml" />
+    <Content Include="Views\Backlog\DetailBacklog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

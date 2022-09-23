@@ -26,10 +26,11 @@
             targets: 'no-sort', orderable: false,
             render: function (data, type, row) {
                 action = `<div class="btn-group">`
-                if (row.STATUS == "SAVED") {
-                    action += `<a href="/Backlog/EditBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Edit</a>`
+                if (row.STATUS == "SAVED" || row.STATUS == "SUBMITTED") {
+                    action += `<a href="/Backlog/EditBacklog?noBacklog=${data}" class="btn btn-sm btn-warning">Edit</a>`
                 }
-                action += `<button type="button" onclick="deleteBacklog(${data})" class="btn btn-sm btn-danger" title="Delete">Delete
+                action += `<a href="/Backlog/DetailBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Detail</a>`
+                action += `<button type="button" value="${data}" onclick="deleteBacklog(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
                                 </button>`
                 action += `</div>`
                 return action;

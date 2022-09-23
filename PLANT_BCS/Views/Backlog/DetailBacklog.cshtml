@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "DetailBacklog";
-    ViewBag.JS = "/Scripts/Page/DetailApproval.js";
+    ViewBag.JS = "/Scripts/Page/DetailBacklog.js";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -183,20 +183,14 @@
     </div>
     <div class="block-content">
         <div class="mb-4">
-            <textarea class="form-control" id="txt_note" name="txt_note"></textarea>
+            <textarea class="form-control" id="txt_note" name="txt_note" readonly></textarea>
         </div>
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <div class="block-options justify-content-center">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <a href="/BacklogApproval/ListApproval" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
-                    <button type="submit" class="btn btn-sm btn-danger" value="PLANNER CANCEL" onclick="submitApproval(this.value)">
-                        <i class="fa fa-times opacity-50 me-1"></i> Cancel
-                    </button>
-                    <button type="submit" class="btn btn-sm btn-success" value="PLANNER APPROVED" onclick="submitApproval(this.value)">
-                        <i class="fa fa-check-circle opacity-50 me-1"></i> Approve
-                    </button>
+                    <a href="/Backlog/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
                 </div>
             </div>
         </div>

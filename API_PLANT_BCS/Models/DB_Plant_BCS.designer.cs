@@ -54,6 +54,9 @@ namespace API_PLANT_BCS.Models
     partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void InsertTBL_T_RECOMMENDED_REPAIR(TBL_T_RECOMMENDED_REPAIR instance);
+    partial void UpdateTBL_T_RECOMMENDED_REPAIR(TBL_T_RECOMMENDED_REPAIR instance);
+    partial void DeleteTBL_T_RECOMMENDED_REPAIR(TBL_T_RECOMMENDED_REPAIR instance);
     #endregion
 		
 		public DB_Plant_BCSDataContext() : 
@@ -134,22 +137,6 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<VW_KARYAWAN_PLANT> VW_KARYAWAN_PLANTs
-		{
-			get
-			{
-				return this.GetTable<VW_KARYAWAN_PLANT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<VW_KARYAWAN_PLANT_N_MCH> VW_KARYAWAN_PLANT_N_MCHes
-		{
-			get
-			{
-				return this.GetTable<VW_KARYAWAN_PLANT_N_MCH>();
-			}
-		}
-		
 		public System.Data.Linq.Table<VW_JOBSITE> VW_JOBSITEs
 		{
 			get
@@ -198,14 +185,6 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<VW_COMP_CODE> VW_COMP_CODEs
-		{
-			get
-			{
-				return this.GetTable<VW_COMP_CODE>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TBL_M_SOURCE> TBL_M_SOURCEs
 		{
 			get
@@ -235,6 +214,38 @@ namespace API_PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<TBL_T_RECOMMENDED_PART>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_COMP_CODE> VW_COMP_CODEs
+		{
+			get
+			{
+				return this.GetTable<VW_COMP_CODE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_KARYAWAN_PLANT> VW_KARYAWAN_PLANTs
+		{
+			get
+			{
+				return this.GetTable<VW_KARYAWAN_PLANT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_KARYAWAN_PLANT_N_MCH> VW_KARYAWAN_PLANT_N_MCHes
+		{
+			get
+			{
+				return this.GetTable<VW_KARYAWAN_PLANT_N_MCH>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_T_RECOMMENDED_REPAIR> TBL_T_RECOMMENDED_REPAIRs
+		{
+			get
+			{
+				return this.GetTable<TBL_T_RECOMMENDED_REPAIR>();
 			}
 		}
 	}
@@ -937,96 +948,6 @@ namespace API_PLANT_BCS.Models
 				if ((this._RoleName != value))
 				{
 					this._RoleName = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT")]
-	public partial class VW_KARYAWAN_PLANT
-	{
-		
-		private string _EMPLOYEE_ID;
-		
-		private string _NAME;
-		
-		public VW_KARYAWAN_PLANT()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
-		public string EMPLOYEE_ID
-		{
-			get
-			{
-				return this._EMPLOYEE_ID;
-			}
-			set
-			{
-				if ((this._EMPLOYEE_ID != value))
-				{
-					this._EMPLOYEE_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
-		public string NAME
-		{
-			get
-			{
-				return this._NAME;
-			}
-			set
-			{
-				if ((this._NAME != value))
-				{
-					this._NAME = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT_N_MCH")]
-	public partial class VW_KARYAWAN_PLANT_N_MCH
-	{
-		
-		private string _EMPLOYEE_ID;
-		
-		private string _NAME;
-		
-		public VW_KARYAWAN_PLANT_N_MCH()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(10)")]
-		public string EMPLOYEE_ID
-		{
-			get
-			{
-				return this._EMPLOYEE_ID;
-			}
-			set
-			{
-				if ((this._EMPLOYEE_ID != value))
-				{
-					this._EMPLOYEE_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(61)")]
-		public string NAME
-		{
-			get
-			{
-				return this._NAME;
-			}
-			set
-			{
-				if ((this._NAME != value))
-				{
-					this._NAME = value;
 				}
 			}
 		}
@@ -1981,33 +1902,6 @@ namespace API_PLANT_BCS.Models
 				if ((this._DSTRCT_CODE != value))
 				{
 					this._DSTRCT_CODE = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_COMP_CODE")]
-	public partial class VW_COMP_CODE
-	{
-		
-		private string _COMP_CODE;
-		
-		public VW_COMP_CODE()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COMP_CODE", DbType="Char(18) NOT NULL", CanBeNull=false)]
-		public string COMP_CODE
-		{
-			get
-			{
-				return this._COMP_CODE;
-			}
-			set
-			{
-				if ((this._COMP_CODE != value))
-				{
-					this._COMP_CODE = value;
 				}
 			}
 		}
@@ -3059,6 +2953,1031 @@ namespace API_PLANT_BCS.Models
 					this._DSTRCT_CODE = value;
 					this.SendPropertyChanged("DSTRCT_CODE");
 					this.OnDSTRCT_CODEChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_COMP_CODE")]
+	public partial class VW_COMP_CODE
+	{
+		
+		private string _COMP_CODE;
+		
+		private string _COMP_DESC;
+		
+		public VW_COMP_CODE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COMP_CODE", DbType="Char(18) NOT NULL", CanBeNull=false)]
+		public string COMP_CODE
+		{
+			get
+			{
+				return this._COMP_CODE;
+			}
+			set
+			{
+				if ((this._COMP_CODE != value))
+				{
+					this._COMP_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COMP_DESC", DbType="Char(50) NOT NULL", CanBeNull=false)]
+		public string COMP_DESC
+		{
+			get
+			{
+				return this._COMP_DESC;
+			}
+			set
+			{
+				if ((this._COMP_DESC != value))
+				{
+					this._COMP_DESC = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT")]
+	public partial class VW_KARYAWAN_PLANT
+	{
+		
+		private string _EMPLOYEE_ID;
+		
+		private string _NAME;
+		
+		private string _POSITION_ID;
+		
+		private string _POS_TITLE;
+		
+		private string _DSTRCT_CODE;
+		
+		private string _WORK_LOC;
+		
+		private string _EMP_STATUS;
+		
+		private string _GENDER_CODE;
+		
+		private string _STAFF_CATEG;
+		
+		private string _STAFF_CATEG_DESC;
+		
+		private string _BIRTH_DATE;
+		
+		private string _HIRE_DATE;
+		
+		private string _SERVICE_DATE;
+		
+		private string _TERMINATION_DATE;
+		
+		private string _STATUS_HIRE;
+		
+		private string _STATUS_HIRE_DESC;
+		
+		private string _SUPERIOR_ID;
+		
+		private string _POSITION_START_DATE;
+		
+		private string _GOLONGAN;
+		
+		private string _DEPT_CODE;
+		
+		private string _DEPT_DESC;
+		
+		private string _EMAIL;
+		
+		private string _ACTIVE_STATUS;
+		
+		public VW_KARYAWAN_PLANT()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string EMPLOYEE_ID
+		{
+			get
+			{
+				return this._EMPLOYEE_ID;
+			}
+			set
+			{
+				if ((this._EMPLOYEE_ID != value))
+				{
+					this._EMPLOYEE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(100)")]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_ID", DbType="VarChar(100)")]
+		public string POSITION_ID
+		{
+			get
+			{
+				return this._POSITION_ID;
+			}
+			set
+			{
+				if ((this._POSITION_ID != value))
+				{
+					this._POSITION_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS_TITLE", DbType="VarChar(100)")]
+		public string POS_TITLE
+		{
+			get
+			{
+				return this._POS_TITLE;
+			}
+			set
+			{
+				if ((this._POS_TITLE != value))
+				{
+					this._POS_TITLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(100)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WORK_LOC", DbType="VarChar(100)")]
+		public string WORK_LOC
+		{
+			get
+			{
+				return this._WORK_LOC;
+			}
+			set
+			{
+				if ((this._WORK_LOC != value))
+				{
+					this._WORK_LOC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMP_STATUS", DbType="VarChar(100)")]
+		public string EMP_STATUS
+		{
+			get
+			{
+				return this._EMP_STATUS;
+			}
+			set
+			{
+				if ((this._EMP_STATUS != value))
+				{
+					this._EMP_STATUS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GENDER_CODE", DbType="VarChar(100)")]
+		public string GENDER_CODE
+		{
+			get
+			{
+				return this._GENDER_CODE;
+			}
+			set
+			{
+				if ((this._GENDER_CODE != value))
+				{
+					this._GENDER_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_CATEG", DbType="VarChar(100)")]
+		public string STAFF_CATEG
+		{
+			get
+			{
+				return this._STAFF_CATEG;
+			}
+			set
+			{
+				if ((this._STAFF_CATEG != value))
+				{
+					this._STAFF_CATEG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_CATEG_DESC", DbType="VarChar(100)")]
+		public string STAFF_CATEG_DESC
+		{
+			get
+			{
+				return this._STAFF_CATEG_DESC;
+			}
+			set
+			{
+				if ((this._STAFF_CATEG_DESC != value))
+				{
+					this._STAFF_CATEG_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIRTH_DATE", DbType="VarChar(100)")]
+		public string BIRTH_DATE
+		{
+			get
+			{
+				return this._BIRTH_DATE;
+			}
+			set
+			{
+				if ((this._BIRTH_DATE != value))
+				{
+					this._BIRTH_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HIRE_DATE", DbType="VarChar(100)")]
+		public string HIRE_DATE
+		{
+			get
+			{
+				return this._HIRE_DATE;
+			}
+			set
+			{
+				if ((this._HIRE_DATE != value))
+				{
+					this._HIRE_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SERVICE_DATE", DbType="VarChar(100)")]
+		public string SERVICE_DATE
+		{
+			get
+			{
+				return this._SERVICE_DATE;
+			}
+			set
+			{
+				if ((this._SERVICE_DATE != value))
+				{
+					this._SERVICE_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TERMINATION_DATE", DbType="VarChar(100)")]
+		public string TERMINATION_DATE
+		{
+			get
+			{
+				return this._TERMINATION_DATE;
+			}
+			set
+			{
+				if ((this._TERMINATION_DATE != value))
+				{
+					this._TERMINATION_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS_HIRE", DbType="VarChar(100)")]
+		public string STATUS_HIRE
+		{
+			get
+			{
+				return this._STATUS_HIRE;
+			}
+			set
+			{
+				if ((this._STATUS_HIRE != value))
+				{
+					this._STATUS_HIRE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS_HIRE_DESC", DbType="VarChar(100)")]
+		public string STATUS_HIRE_DESC
+		{
+			get
+			{
+				return this._STATUS_HIRE_DESC;
+			}
+			set
+			{
+				if ((this._STATUS_HIRE_DESC != value))
+				{
+					this._STATUS_HIRE_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUPERIOR_ID", DbType="VarChar(100)")]
+		public string SUPERIOR_ID
+		{
+			get
+			{
+				return this._SUPERIOR_ID;
+			}
+			set
+			{
+				if ((this._SUPERIOR_ID != value))
+				{
+					this._SUPERIOR_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_START_DATE", DbType="VarChar(100)")]
+		public string POSITION_START_DATE
+		{
+			get
+			{
+				return this._POSITION_START_DATE;
+			}
+			set
+			{
+				if ((this._POSITION_START_DATE != value))
+				{
+					this._POSITION_START_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GOLONGAN", DbType="VarChar(100)")]
+		public string GOLONGAN
+		{
+			get
+			{
+				return this._GOLONGAN;
+			}
+			set
+			{
+				if ((this._GOLONGAN != value))
+				{
+					this._GOLONGAN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEPT_CODE", DbType="VarChar(100)")]
+		public string DEPT_CODE
+		{
+			get
+			{
+				return this._DEPT_CODE;
+			}
+			set
+			{
+				if ((this._DEPT_CODE != value))
+				{
+					this._DEPT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEPT_DESC", DbType="VarChar(100)")]
+		public string DEPT_DESC
+		{
+			get
+			{
+				return this._DEPT_DESC;
+			}
+			set
+			{
+				if ((this._DEPT_DESC != value))
+				{
+					this._DEPT_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMAIL", DbType="VarChar(100)")]
+		public string EMAIL
+		{
+			get
+			{
+				return this._EMAIL;
+			}
+			set
+			{
+				if ((this._EMAIL != value))
+				{
+					this._EMAIL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVE_STATUS", DbType="VarChar(100)")]
+		public string ACTIVE_STATUS
+		{
+			get
+			{
+				return this._ACTIVE_STATUS;
+			}
+			set
+			{
+				if ((this._ACTIVE_STATUS != value))
+				{
+					this._ACTIVE_STATUS = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_KARYAWAN_PLANT_N_MCH")]
+	public partial class VW_KARYAWAN_PLANT_N_MCH
+	{
+		
+		private string _EMPLOYEE_ID;
+		
+		private string _NAME;
+		
+		private string _POSITION_ID;
+		
+		private string _POS_TITLE;
+		
+		private string _DSTRCT_CODE;
+		
+		private string _WORK_LOC;
+		
+		private string _EMP_STATUS;
+		
+		private string _GENDER_CODE;
+		
+		private string _STAFF_CATEG;
+		
+		private string _STAFF_CATEG_DESC;
+		
+		private string _BIRTH_DATE;
+		
+		private string _HIRE_DATE;
+		
+		private string _SERVICE_DATE;
+		
+		private string _TERMINATION_DATE;
+		
+		private string _STATUS_HIRE;
+		
+		private string _STATUS_HIRE_DESC;
+		
+		private string _SUPERIOR_ID;
+		
+		private string _POSITION_START_DATE;
+		
+		private string _GOLONGAN;
+		
+		private string _DEPT_CODE;
+		
+		private string _DEPT_DESC;
+		
+		private string _EMAIL;
+		
+		private string _ACTIVE_STATUS;
+		
+		public VW_KARYAWAN_PLANT_N_MCH()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string EMPLOYEE_ID
+		{
+			get
+			{
+				return this._EMPLOYEE_ID;
+			}
+			set
+			{
+				if ((this._EMPLOYEE_ID != value))
+				{
+					this._EMPLOYEE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(100)")]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_ID", DbType="VarChar(100)")]
+		public string POSITION_ID
+		{
+			get
+			{
+				return this._POSITION_ID;
+			}
+			set
+			{
+				if ((this._POSITION_ID != value))
+				{
+					this._POSITION_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS_TITLE", DbType="VarChar(100)")]
+		public string POS_TITLE
+		{
+			get
+			{
+				return this._POS_TITLE;
+			}
+			set
+			{
+				if ((this._POS_TITLE != value))
+				{
+					this._POS_TITLE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(100)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WORK_LOC", DbType="VarChar(100)")]
+		public string WORK_LOC
+		{
+			get
+			{
+				return this._WORK_LOC;
+			}
+			set
+			{
+				if ((this._WORK_LOC != value))
+				{
+					this._WORK_LOC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMP_STATUS", DbType="VarChar(100)")]
+		public string EMP_STATUS
+		{
+			get
+			{
+				return this._EMP_STATUS;
+			}
+			set
+			{
+				if ((this._EMP_STATUS != value))
+				{
+					this._EMP_STATUS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GENDER_CODE", DbType="VarChar(100)")]
+		public string GENDER_CODE
+		{
+			get
+			{
+				return this._GENDER_CODE;
+			}
+			set
+			{
+				if ((this._GENDER_CODE != value))
+				{
+					this._GENDER_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_CATEG", DbType="VarChar(100)")]
+		public string STAFF_CATEG
+		{
+			get
+			{
+				return this._STAFF_CATEG;
+			}
+			set
+			{
+				if ((this._STAFF_CATEG != value))
+				{
+					this._STAFF_CATEG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_CATEG_DESC", DbType="VarChar(100)")]
+		public string STAFF_CATEG_DESC
+		{
+			get
+			{
+				return this._STAFF_CATEG_DESC;
+			}
+			set
+			{
+				if ((this._STAFF_CATEG_DESC != value))
+				{
+					this._STAFF_CATEG_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIRTH_DATE", DbType="VarChar(100)")]
+		public string BIRTH_DATE
+		{
+			get
+			{
+				return this._BIRTH_DATE;
+			}
+			set
+			{
+				if ((this._BIRTH_DATE != value))
+				{
+					this._BIRTH_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HIRE_DATE", DbType="VarChar(100)")]
+		public string HIRE_DATE
+		{
+			get
+			{
+				return this._HIRE_DATE;
+			}
+			set
+			{
+				if ((this._HIRE_DATE != value))
+				{
+					this._HIRE_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SERVICE_DATE", DbType="VarChar(100)")]
+		public string SERVICE_DATE
+		{
+			get
+			{
+				return this._SERVICE_DATE;
+			}
+			set
+			{
+				if ((this._SERVICE_DATE != value))
+				{
+					this._SERVICE_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TERMINATION_DATE", DbType="VarChar(100)")]
+		public string TERMINATION_DATE
+		{
+			get
+			{
+				return this._TERMINATION_DATE;
+			}
+			set
+			{
+				if ((this._TERMINATION_DATE != value))
+				{
+					this._TERMINATION_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS_HIRE", DbType="VarChar(100)")]
+		public string STATUS_HIRE
+		{
+			get
+			{
+				return this._STATUS_HIRE;
+			}
+			set
+			{
+				if ((this._STATUS_HIRE != value))
+				{
+					this._STATUS_HIRE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS_HIRE_DESC", DbType="VarChar(100)")]
+		public string STATUS_HIRE_DESC
+		{
+			get
+			{
+				return this._STATUS_HIRE_DESC;
+			}
+			set
+			{
+				if ((this._STATUS_HIRE_DESC != value))
+				{
+					this._STATUS_HIRE_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUPERIOR_ID", DbType="VarChar(100)")]
+		public string SUPERIOR_ID
+		{
+			get
+			{
+				return this._SUPERIOR_ID;
+			}
+			set
+			{
+				if ((this._SUPERIOR_ID != value))
+				{
+					this._SUPERIOR_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION_START_DATE", DbType="VarChar(100)")]
+		public string POSITION_START_DATE
+		{
+			get
+			{
+				return this._POSITION_START_DATE;
+			}
+			set
+			{
+				if ((this._POSITION_START_DATE != value))
+				{
+					this._POSITION_START_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GOLONGAN", DbType="VarChar(100)")]
+		public string GOLONGAN
+		{
+			get
+			{
+				return this._GOLONGAN;
+			}
+			set
+			{
+				if ((this._GOLONGAN != value))
+				{
+					this._GOLONGAN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEPT_CODE", DbType="VarChar(100)")]
+		public string DEPT_CODE
+		{
+			get
+			{
+				return this._DEPT_CODE;
+			}
+			set
+			{
+				if ((this._DEPT_CODE != value))
+				{
+					this._DEPT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEPT_DESC", DbType="VarChar(100)")]
+		public string DEPT_DESC
+		{
+			get
+			{
+				return this._DEPT_DESC;
+			}
+			set
+			{
+				if ((this._DEPT_DESC != value))
+				{
+					this._DEPT_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMAIL", DbType="VarChar(100)")]
+		public string EMAIL
+		{
+			get
+			{
+				return this._EMAIL;
+			}
+			set
+			{
+				if ((this._EMAIL != value))
+				{
+					this._EMAIL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVE_STATUS", DbType="VarChar(100)")]
+		public string ACTIVE_STATUS
+		{
+			get
+			{
+				return this._ACTIVE_STATUS;
+			}
+			set
+			{
+				if ((this._ACTIVE_STATUS != value))
+				{
+					this._ACTIVE_STATUS = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_T_RECOMMENDED_REPAIR")]
+	public partial class TBL_T_RECOMMENDED_REPAIR : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _REPAIR_ID;
+		
+		private string _NO_BACKLOG;
+		
+		private string _PROBLEM_DESC;
+		
+		private string _ACTIVITY_REPAIR;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnREPAIR_IDChanging(int value);
+    partial void OnREPAIR_IDChanged();
+    partial void OnNO_BACKLOGChanging(string value);
+    partial void OnNO_BACKLOGChanged();
+    partial void OnPROBLEM_DESCChanging(string value);
+    partial void OnPROBLEM_DESCChanged();
+    partial void OnACTIVITY_REPAIRChanging(string value);
+    partial void OnACTIVITY_REPAIRChanged();
+    #endregion
+		
+		public TBL_T_RECOMMENDED_REPAIR()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REPAIR_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int REPAIR_ID
+		{
+			get
+			{
+				return this._REPAIR_ID;
+			}
+			set
+			{
+				if ((this._REPAIR_ID != value))
+				{
+					this.OnREPAIR_IDChanging(value);
+					this.SendPropertyChanging();
+					this._REPAIR_ID = value;
+					this.SendPropertyChanged("REPAIR_ID");
+					this.OnREPAIR_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50)")]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this.OnNO_BACKLOGChanging(value);
+					this.SendPropertyChanging();
+					this._NO_BACKLOG = value;
+					this.SendPropertyChanged("NO_BACKLOG");
+					this.OnNO_BACKLOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROBLEM_DESC", DbType="VarChar(MAX)")]
+		public string PROBLEM_DESC
+		{
+			get
+			{
+				return this._PROBLEM_DESC;
+			}
+			set
+			{
+				if ((this._PROBLEM_DESC != value))
+				{
+					this.OnPROBLEM_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._PROBLEM_DESC = value;
+					this.SendPropertyChanged("PROBLEM_DESC");
+					this.OnPROBLEM_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVITY_REPAIR", DbType="VarChar(MAX)")]
+		public string ACTIVITY_REPAIR
+		{
+			get
+			{
+				return this._ACTIVITY_REPAIR;
+			}
+			set
+			{
+				if ((this._ACTIVITY_REPAIR != value))
+				{
+					this.OnACTIVITY_REPAIRChanging(value);
+					this.SendPropertyChanging();
+					this._ACTIVITY_REPAIR = value;
+					this.SendPropertyChanged("ACTIVITY_REPAIR");
+					this.OnACTIVITY_REPAIRChanged();
 				}
 			}
 		}
