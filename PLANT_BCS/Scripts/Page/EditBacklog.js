@@ -148,9 +148,9 @@ function getCompCode() {
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
                 if (val.COMP_CODE == $("#txt_compCodeTemp").val()) {
-                    text += '<option selected value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                    text += '<option selected value="' + val.COMP_CODE + '">' + val.COMP_CODE + ' - ' + val.COMP_DESC + '</option>';
                 } else {
-                    text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + '</option>';
+                    text += '<option value="' + val.COMP_CODE + '">' + val.COMP_CODE + ' - ' + val.COMP_DESC + '</option>';
                 }
             });
             $("#txt_compCode").append(text);

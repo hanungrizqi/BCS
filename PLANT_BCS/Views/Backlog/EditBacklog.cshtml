@@ -141,7 +141,7 @@
                 <div class="row mb-4">
                     <label class="col-sm-4 col-form-label" for="txt_hEst">Hour Estimation</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" step="any" id="txt_hEst" name="txt_hEst" value="@ViewBag.BackLog.HOUR_EST">
+                        <input type="number" class="form-control" step="any" id="txt_hEst" name="txt_hEst" value="@ViewBag.BackLog.HOUR_EST.ToString().Replace(",",".")">
                     </div>
                 </div>
                 <div class="row mb-4">
