@@ -12,10 +12,18 @@ $("document").ready(function () {
     getEqNumber();
     getCompCode();
     getSource();
-    getNRPGL();
+    //getNRPGL();
     getOriID();
     getSTDJob();
+    document.getElementById("txt_dInspecton").setAttribute("min", new Date().toISOString().split("T")[0]);
 })
+
+$("#txt_dInspecton").change(function () {
+    if ($("#txt_planRD1").val() < this.value) {
+        $("#txt_planRD1").val("");
+    }
+    document.getElementById("txt_planRD1").setAttribute("min", this.value);
+});
 
 $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
@@ -26,6 +34,19 @@ $("#txt_standJob").on("change", function () {
     let wg = $(this).find(':selected').attr('data-wg');
     $("#txt_wg").val(wg);
 })
+
+$('#modal_repair').on('hidden.bs.modal', function () {
+    $("#text_problemDesc").val("");
+    $("#txt_activityRepair").val("");
+});
+
+$('#modal').on('hidden.bs.modal', function () {
+    $("#txt_partNo").val("");
+    $("#txt_stckCode").val("");
+    $("#txt_fiqNo").val("");
+    $("#txt_indexNo").val("");
+    $("#txt_qty").val("");
+});
 
 function searchPartNo() {
     let stckCode = $("#txt_stckCode").val()
@@ -95,34 +116,40 @@ function getSource() {
     });
 }
 
-function getNRPGL() {
+//function getNRPGL() {
+//    $.ajax({
+//        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#hd_site").val(),
+//        type: "GET",
+//        cache: false,
+//        success: function (result) {
+//            $('#txt_nrpGl').empty();
+//            text = '<option></option>';
+//            $.each(result.Data, function (key, val) {
+//                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME +'</option>';
+//            });
+//            $("#txt_nrpGl").append(text);
+//        }
+//    });
+//}
+
+function getOriID() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#hd_site").val(),
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
         type: "GET",
         cache: false,
         success: function (result) {
             $('#txt_nrpGl').empty();
-            text = '<option></option>';
-            $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME +'</option>';
-            });
-            $("#txt_nrpGl").append(text);
-        }
-    });
-}
-
-function getOriID() {
-    $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#hd_site").val(),
-        type: "GET",
-        cache: false,
-        success: function (result) {
             $('#txt_oriID').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                if (val.EMPLOYEE_ID == $("#txt_oriIDTemp").val()) {
+                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                } else {
+                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                }
             });
             $("#txt_oriID").append(text);
+            $("#txt_nrpGl").append(text);
         }
     });
 }
@@ -167,7 +194,7 @@ function addPartToTable() {
         if (partInTable == PART_NO) {
             Swal.fire(
                 'Error!',
-                'Part Number sudah terdaftar',
+                'Part Number sudah ditambahkan',
                 'warning'
             );
             return false;
@@ -175,9 +202,6 @@ function addPartToTable() {
         else {
             let getin = index + 1;
             if (getin == tRow) {
-                DetailTableBody = $("#table_part tBody");
-                $('#table_part tr.odd').remove();
-
 
                 $.ajax({
                     url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&site=" + $("#hd_site").val(), //URI,
@@ -186,36 +210,48 @@ function addPartToTable() {
                     success: function (result) {
                         let tRow = $("#table_part >tbody >tr").length;
                         let noRow = tRow + 1;
+                        DetailTableBody = $("#table_part tBody");
 
-                        if (result.Data != null) {
-                            var listData = '<tr>' +
-                                '<td>' + noRow + '</td>' +
-                                '<td>' + result.Data.PART_NO + '</td>' +
-                                '<td>' + result.Data.STOCK_CODE + '</td>' +
-                                '<td>' + result.Data.STK_DESC + '</td>' +
-                                '<td>' + FIG_NO + '</td>' +
-                                '<td>' + INDEX_NO + '</td>' +
-                                '<td>' + QTY + '</td>' +
-                                '<td>' + result.Data.UOM + '</td>' +
-                                '<td>' + result.Data.PART_CLASS + '</td>' +
-                                '<td class="text-success">ACTIVE</td>' +
-                                '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
-                                '</tr>';
+                        if (result.Remarks == true) {
+                            $('#table_part tr.odd').remove();
+                            if (result.Data != null) {
+                                var listData = '<tr>' +
+                                    '<td>' + noRow + '</td>' +
+                                    '<td>' + result.Data.PART_NO + '</td>' +
+                                    '<td>' + result.Data.STOCK_CODE + '</td>' +
+                                    '<td>' + result.Data.STK_DESC + '</td>' +
+                                    '<td>' + FIG_NO + '</td>' +
+                                    '<td>' + INDEX_NO + '</td>' +
+                                    '<td>' + QTY + '</td>' +
+                                    '<td>' + result.Data.UOM + '</td>' +
+                                    '<td>' + result.Data.PART_CLASS + '</td>' +
+                                    '<td class="text-success">ACTIVE</td>' +
+                                    '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
+                                    '</tr>';
+                            } else {
+                                var listData = '<tr>' +
+                                    '<td>' + noRow + '</td>' +
+                                    '<td>' + PART_NO + '</td>' +
+                                    '<td>' + STCK_CODE + '</td>' +
+                                    '<td></td>' +
+                                    '<td>' + FIG_NO + '</td>' +
+                                    '<td>' + INDEX_NO + '</td>' +
+                                    '<td>' + QTY + '</td>' +
+                                    '<td></td>' +
+                                    '<td></td>' +
+                                    '<td class="text-danger">NONE</td>' +
+                                    '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
+                                    '</tr>';
+                            }
                         } else {
-                            var listData = '<tr>' +
-                                '<td>' + noRow + '</td>' +
-                                '<td>' + PART_NO + '</td>' +
-                                '<td>' + STCK_CODE  + '</td>' +
-                                '<td></td>' +
-                                '<td>' + FIG_NO + '</td>' +
-                                '<td>' + INDEX_NO + '</td>' +
-                                '<td>' + QTY + '</td>' +
-                                '<td></td>' +
-                                '<td></td>' +
-                                '<td class="text-danger">NONE</td>' +
-                                '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
-                                '</tr>';
+                            Swal.fire(
+                                'Warning!',
+                                'Part Number belum terdaftar',
+                                'warning'
+                            );
+                            return false;
                         }
+
                         DetailTableBody.append(listData);
                         $('#modal').modal('hide');
                     }

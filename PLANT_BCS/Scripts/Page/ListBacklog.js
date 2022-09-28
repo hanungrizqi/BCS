@@ -28,16 +28,40 @@
                 action = `<div class="btn-group">`
                 if (row.STATUS == "SAVED" || row.STATUS == "SUBMITTED") {
                     action += `<a href="/Backlog/EditBacklog?noBacklog=${data}" class="btn btn-sm btn-warning">Edit</a>`
-                }
-                action += `<a href="/Backlog/DetailBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Detail</a>`
-                action += `<button type="button" value="${data}" onclick="deleteBacklog(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
+                    action += `<a href="/Backlog/DetailBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Detail</a>`
+                    action += `<button type="button" value="${data}" onclick="deleteBacklog(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
                                 </button>`
-                action += `</div>`
+                    action += `</div>`
+                } else {
+                    action += `<a href="/Backlog/DetailBacklog?noBacklog=${data}" class="btn btn-sm btn-info">Detail</a>`
+                }
+                
                 return action;
             }
         }
     ],
+    initComplete: function () {
+        this.api()
+            .columns(6)
+            .every(function () {
+                var column = this;
+                var select = $('<select class="form-control form-control-sm" style="width:200px; display:inline-block; margin-left: 10px;"><option value="">-- STATUS --</option></select>')
+                    .appendTo($("#tbl_backlog_filter.dataTables_filter"))
+                    .on('change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
+                        column.search(val ? '^' + val + '$' : '', true, false).draw();
+                    });
+
+                column
+                    .data()
+                    .unique()
+                    .sort()
+                    .each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>');
+                    });
+            });
+    },
 });
 
 function deleteBacklog(noBacklog) {

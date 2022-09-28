@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.UI.WebControls.WebParts;
 using API_PLANT_BCS.Models;
 using API_PLANT_BCS.ViewModel;
 
@@ -87,9 +88,12 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                var check = db.VW_STOCK_CODEs.Where(a => a.PART_NO == partNO).FirstOrDefault();
+                if (check == null) {
+                    return Ok(new { Remarks = false });
+                }
                 var data = db.VW_PART_MSF100s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
-
-                return Ok(new { Data = data });
+                return Ok(new { Data = data, Remarks = true });
             }
             catch (Exception)
             {
@@ -216,6 +220,11 @@ namespace API_PLANT_BCS.Controllers
                     var cek = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == item.PART_ID).FirstOrDefault();
                     if (cek == null)
                     {
+                        var check = db.VW_STOCK_CODEs.Where(a => a.PART_NO == item.PART_NO).FirstOrDefault();
+                        if (check == null)
+                        {
+                            return Ok(new { Remarks = false, Message = "Part Number belum Terdaftar" });
+                        }
                         tbl.Add(item);
                     }
                     else

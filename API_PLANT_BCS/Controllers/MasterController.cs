@@ -67,6 +67,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                stckCode = stckCode.PadLeft(9, '0');
                 var data = db.VW_STOCK_CODEs.Where(a => a.STOCK_CODE == stckCode ).FirstOrDefault();
 
                 return Ok(new { Data = data });

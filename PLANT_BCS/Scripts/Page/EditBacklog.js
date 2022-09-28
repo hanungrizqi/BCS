@@ -4,10 +4,25 @@ $("document").ready(function () {
     getEqNumber();
     getCompCode();
     getSource();
-    getNRPGL();
+    /*getNRPGL();*/
     getOriID();
     getSTDJob();
+
+    document.getElementById("txt_planRD1").setAttribute("min", $("#txt_dInspecton").val());
 })
+
+$('#modal_repair').on('hidden.bs.modal', function () {
+    $("#text_problemDesc").val("");
+    $("#txt_activityRepair").val("");
+});
+
+$('#modal').on('hidden.bs.modal', function () {
+    $("#txt_partNo").val("");
+    $("#txt_stckCode").val("");
+    $("#txt_fiqNo").val("");
+    $("#txt_indexNo").val("");
+    $("#txt_qty").val("");
+});
 
 var table = $("#table_part").DataTable({
     ajax: {
@@ -15,7 +30,7 @@ var table = $("#table_part").DataTable({
         dataSrc: "Data",
     },
     "columnDefs": [
-        { "className": "dt-center", "targets": [0, 4, 5, 6, 7, 8, 9 ,10] }
+        { "className": "dt-center", "targets": [0, 4, 5, 6, 7, 8, 9, 10] }
     ],
     scrollX: true,
     columns: [
@@ -39,7 +54,8 @@ var table = $("#table_part").DataTable({
             targets: 'no-sort', orderable: false,
             render: function (data, type, row) {
                 action = `<div class="btn-group">`
-                action += `<button type="button" value="${data}" data-value="${row.PART_NO}" data-stck="${row.STOCK_CODE}" onclick="editPart(this.value,this.getAttribute('data-value'),this.getAttribute('data-stck'),${row.FIG_NO},${row.INDEX_NO},${row.QTY})" class="btn btn-sm btn-info" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_update">Edit
+                action += `<button type="button" value="${data}" data-value="${row.PART_NO}" data-stck="${row.STOCK_CODE}" data-fig="${row.FIG_NO}" data-index="${row.INDEX_NO}" data-qty="${row.QTY}"
+                                onclick="editPart(this)" class="btn btn-sm btn-info" title="Edit" data-bs-toggle="modal" data-bs-target="#modal_update">Edit
                            </button>`
                 action += `<button type="button" value="${data}" onclick="deletePart(this.value)" class="btn btn-sm btn-danger" title="Delete">Delete
                                 </button>`
@@ -92,6 +108,13 @@ $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
     $("#txt_egi").val(egi);
 })
+
+$("#txt_dInspecton").change(function () {
+    if ($("#txt_planRD1").val() < this.value) {
+        $("#txt_planRD1").val("");
+    }
+    document.getElementById("txt_planRD1").setAttribute("min", this.value);
+});
 
 $("#txt_standJob").on("change", function () {
     let wg = $(this).find(':selected').attr('data-wg');
@@ -178,25 +201,25 @@ function getSource() {
     });
 }
 
-function getNRPGL() {
-    $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#txt_dstrct").val(),
-        type: "GET",
-        cache: false,
-        success: function (result) {
-            $('#txt_nrpGl').empty();
-            text = '<option></option>';
-            $.each(result.Data, function (key, val) {
-                if (val.EMPLOYEE_ID == $("#txt_nrpGlTemp").val()) {
-                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
-                } else {
-                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
-                }
-            });
-            $("#txt_nrpGl").append(text);
-        }
-    });
-}
+//function getNRPGL() {
+//    $.ajax({
+//        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#txt_dstrct").val(),
+//        type: "GET",
+//        cache: false,
+//        success: function (result) {
+//            $('#txt_nrpGl').empty();
+//            text = '<option></option>';
+//            $.each(result.Data, function (key, val) {
+//                if (val.EMPLOYEE_ID == $("#txt_nrpGlTemp").val()) {
+//                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+//                } else {
+//                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+//                }
+//            });
+//            $("#txt_nrpGl").append(text);
+//        }
+//    });
+//}
 
 function getOriID() {
     $.ajax({
@@ -204,6 +227,7 @@ function getOriID() {
         type: "GET",
         cache: false,
         success: function (result) {
+            $('#txt_nrpGl').empty();
             $('#txt_oriID').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
@@ -214,6 +238,7 @@ function getOriID() {
                 }
             });
             $("#txt_oriID").append(text);
+            $("#txt_nrpGl").append(text);
         }
     });
 }
@@ -421,7 +446,7 @@ function insertPart() {
             'Mohon sertakan Part Number ',
             'warning'
         );
-        return;
+        return false;
     }
 
     let tRow = $("#table_part >tbody >tr").length;
@@ -431,10 +456,10 @@ function insertPart() {
         if (partInTable == PART_NO) {
             Swal.fire(
                 'Error!',
-                'Part Number sudah terdaftar',
+                'Part Number sudah ditambahkan',
                 'warning'
             );
-            return;
+            return false;
         }
         else {
             let getin = index + 1;
@@ -526,7 +551,14 @@ function updatePart() {
     })
 }
 
-function editPart(PART_ID, PART_NO, STOCK_CODE, FIG_NO, INDEX_NO, QTY) {
+function editPart(PART) {
+    let PART_ID = PART.value,
+        PART_NO = PART.getAttribute('data-value'),
+        STOCK_CODE = PART.getAttribute('data-stck'),
+        FIG_NO = PART.getAttribute('data-fig'),
+        INDEX_NO = PART.getAttribute('data-index'),
+        QTY = PART.getAttribute('data-qty')
+
     $("#txt_partId_update").val(PART_ID);
     $("#txt_partNo_update").val(PART_NO);
     $("#txt_stckCode_update").val(STOCK_CODE);
