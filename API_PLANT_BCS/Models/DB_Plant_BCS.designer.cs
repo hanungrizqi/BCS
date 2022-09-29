@@ -30,9 +30,6 @@ namespace API_PLANT_BCS.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTBL_M_AKSE(TBL_M_AKSE instance);
-    partial void UpdateTBL_M_AKSE(TBL_M_AKSE instance);
-    partial void DeleteTBL_M_AKSE(TBL_M_AKSE instance);
     partial void InsertTBL_M_ROLE(TBL_M_ROLE instance);
     partial void UpdateTBL_M_ROLE(TBL_M_ROLE instance);
     partial void DeleteTBL_M_ROLE(TBL_M_ROLE instance);
@@ -57,6 +54,9 @@ namespace API_PLANT_BCS.Models
     partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void InsertTBL_M_AKSE(TBL_M_AKSE instance);
+    partial void UpdateTBL_M_AKSE(TBL_M_AKSE instance);
+    partial void DeleteTBL_M_AKSE(TBL_M_AKSE instance);
     #endregion
 		
 		public DB_Plant_BCSDataContext() : 
@@ -87,14 +87,6 @@ namespace API_PLANT_BCS.Models
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<TBL_M_AKSE> TBL_M_AKSEs
-		{
-			get
-			{
-				return this.GetTable<TBL_M_AKSE>();
-			}
 		}
 		
 		public System.Data.Linq.Table<TBL_M_ROLE> TBL_M_ROLEs
@@ -264,90 +256,20 @@ namespace API_PLANT_BCS.Models
 				return this.GetTable<VW_BACKLOG>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_M_AKSES")]
-	public partial class TBL_M_AKSE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_Menu;
-		
-		private int _ID_Role;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_MenuChanging(int value);
-    partial void OnID_MenuChanged();
-    partial void OnID_RoleChanging(int value);
-    partial void OnID_RoleChanged();
-    #endregion
-		
-		public TBL_M_AKSE()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Menu", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_Menu
+		public System.Data.Linq.Table<VW_MENU> VW_MENUs
 		{
 			get
 			{
-				return this._ID_Menu;
-			}
-			set
-			{
-				if ((this._ID_Menu != value))
-				{
-					this.OnID_MenuChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Menu = value;
-					this.SendPropertyChanged("ID_Menu");
-					this.OnID_MenuChanged();
-				}
+				return this.GetTable<VW_MENU>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_Role
+		public System.Data.Linq.Table<TBL_M_AKSE> TBL_M_AKSEs
 		{
 			get
 			{
-				return this._ID_Role;
-			}
-			set
-			{
-				if ((this._ID_Role != value))
-				{
-					this.OnID_RoleChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Role = value;
-					this.SendPropertyChanged("ID_Role");
-					this.OnID_RoleChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<TBL_M_AKSE>();
 			}
 		}
 	}
@@ -4609,6 +4531,215 @@ namespace API_PLANT_BCS.Models
 				{
 					this._REMARKS = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_MENU")]
+	public partial class VW_MENU
+	{
+		
+		private int _ID_Menu;
+		
+		private string _Name_Menu;
+		
+		private int _ID_Role;
+		
+		private string _RoleName;
+		
+		private System.Nullable<bool> _IS_ALLOW;
+		
+		public VW_MENU()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Menu", DbType="Int NOT NULL")]
+		public int ID_Menu
+		{
+			get
+			{
+				return this._ID_Menu;
+			}
+			set
+			{
+				if ((this._ID_Menu != value))
+				{
+					this._ID_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name_Menu", DbType="NVarChar(50)")]
+		public string Name_Menu
+		{
+			get
+			{
+				return this._Name_Menu;
+			}
+			set
+			{
+				if ((this._Name_Menu != value))
+				{
+					this._Name_Menu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="Int NOT NULL")]
+		public int ID_Role
+		{
+			get
+			{
+				return this._ID_Role;
+			}
+			set
+			{
+				if ((this._ID_Role != value))
+				{
+					this._ID_Role = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(150)")]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this._RoleName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IS_ALLOW", DbType="Bit")]
+		public System.Nullable<bool> IS_ALLOW
+		{
+			get
+			{
+				return this._IS_ALLOW;
+			}
+			set
+			{
+				if ((this._IS_ALLOW != value))
+				{
+					this._IS_ALLOW = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_M_AKSES")]
+	public partial class TBL_M_AKSE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Menu;
+		
+		private int _ID_Role;
+		
+		private System.Nullable<bool> _IS_ALLOW;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_MenuChanging(int value);
+    partial void OnID_MenuChanged();
+    partial void OnID_RoleChanging(int value);
+    partial void OnID_RoleChanged();
+    partial void OnIS_ALLOWChanging(System.Nullable<bool> value);
+    partial void OnIS_ALLOWChanged();
+    #endregion
+		
+		public TBL_M_AKSE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Menu", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_Menu
+		{
+			get
+			{
+				return this._ID_Menu;
+			}
+			set
+			{
+				if ((this._ID_Menu != value))
+				{
+					this.OnID_MenuChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Menu = value;
+					this.SendPropertyChanged("ID_Menu");
+					this.OnID_MenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Role", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_Role
+		{
+			get
+			{
+				return this._ID_Role;
+			}
+			set
+			{
+				if ((this._ID_Role != value))
+				{
+					this.OnID_RoleChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Role = value;
+					this.SendPropertyChanged("ID_Role");
+					this.OnID_RoleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IS_ALLOW", DbType="Bit")]
+		public System.Nullable<bool> IS_ALLOW
+		{
+			get
+			{
+				return this._IS_ALLOW;
+			}
+			set
+			{
+				if ((this._IS_ALLOW != value))
+				{
+					this.OnIS_ALLOWChanging(value);
+					this.SendPropertyChanging();
+					this._IS_ALLOW = value;
+					this.SendPropertyChanged("IS_ALLOW");
+					this.OnIS_ALLOWChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

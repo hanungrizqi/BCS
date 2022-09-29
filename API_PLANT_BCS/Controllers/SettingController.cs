@@ -148,5 +148,40 @@ namespace API_PLANT_BCS.Controllers
 
         }
         //END Setting User
+        //Setting Menu
+        [HttpGet]
+        [Route("Get_Menu/{group}")]
+        public IHttpActionResult Get_Menu(int group)
+        {
+            try
+            {
+                var data = db.VW_MENUs.Where(a => a.ID_Role == group).ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        [Route("Update_Menu")]
+        public IHttpActionResult Update_Menu(TBL_M_AKSE param)
+        {
+            try
+            {
+                var data = db.TBL_M_AKSEs.Where(a => a.ID_Role == param.ID_Role && a.ID_Menu == param.ID_Menu).FirstOrDefault();
+                data.IS_ALLOW = param.IS_ALLOW;
+
+                db.SubmitChanges();
+                return Json(new { Remarks = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Remarks = false, Message = ex });
+            }
+
+        }
     }
 }

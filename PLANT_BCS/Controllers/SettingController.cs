@@ -37,6 +37,7 @@ namespace PLANT_BCS.Controllers
             {
                 return RedirectToAction("index", "login");
             }
+            ViewBag.Group = db.TBL_M_ROLEs.ToList();
             return View();
         }        
     }

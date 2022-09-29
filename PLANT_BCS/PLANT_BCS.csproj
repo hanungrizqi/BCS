@@ -4336,6 +4336,7 @@
     <Content Include="Scripts\Page\RegisterBacklog.js" />
     <Content Include="Scripts\Page\ListBacklog.js" />
     <Content Include="Scripts\Page\SettingSource.js" />
+    <Content Include="Scripts\Page\SettingMenu.js" />
     <Content Include="Scripts\Page\SettingUser.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
