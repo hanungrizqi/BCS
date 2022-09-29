@@ -8,7 +8,8 @@ $("document").ready(function () {
     getOriID();
     getSTDJob();
 
-    document.getElementById("txt_planRD1").setAttribute("min", $("#txt_dInspecton").val());
+    document.getElementById("txt_dInspecton").setAttribute("max", new Date().toISOString().split("T")[0]);
+    document.getElementById("txt_planRD1").setAttribute("min", new Date().toISOString().split("T")[0]);
 })
 
 $('#modal_repair').on('hidden.bs.modal', function () {
@@ -108,13 +109,6 @@ $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
     $("#txt_egi").val(egi);
 })
-
-$("#txt_dInspecton").change(function () {
-    if ($("#txt_planRD1").val() < this.value) {
-        $("#txt_planRD1").val("");
-    }
-    document.getElementById("txt_planRD1").setAttribute("min", this.value);
-});
 
 $("#txt_standJob").on("change", function () {
     let wg = $(this).find(':selected').attr('data-wg');
