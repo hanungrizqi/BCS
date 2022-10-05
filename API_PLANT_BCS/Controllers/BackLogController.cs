@@ -49,6 +49,38 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
+        [Route("Get_ListBacklogPlanner/{dstrct}")]
+        public IHttpActionResult Get_ListBacklogPlanner(string dstrct)
+        {
+            try
+            {
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "LOGISTIC APPROVED").ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
+        [Route("Get_ListLogistic/{dstrct}")]
+        public IHttpActionResult Get_ListLogistic(string dstrct)
+        {
+            try
+            {
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "PLANNER APPROVED").ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
         [Route("Get_ListApprovalBacklog/{dstrct}")]
         public IHttpActionResult Get_ListApprovalBacklog(string dstrct)
         {
@@ -206,6 +238,27 @@ namespace API_PLANT_BCS.Controllers
             }
         }
         
+        [HttpPost]
+        [Route("Rescheduled_Backlog")]
+        public IHttpActionResult Rescheduled_Backlog(TBL_T_BACKLOG param)
+        {
+            try
+            {
+                var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+                cek.STATUS = param.STATUS;
+                cek.REMARKS = param.REMARKS;
+                cek.PLAN_REPAIR_DATE_2 = param.PLAN_REPAIR_DATE_2;
+                cek.UPDATED_BY = param.UPDATED_BY;
+                cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+        
         //Post Registrasi Backlog
         [HttpPost]
         [Route("Create_BacklogPart")]
@@ -252,8 +305,12 @@ namespace API_PLANT_BCS.Controllers
             try
             {
                 var data = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                var dataPart = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
+                var dataRepair = db.TBL_T_RECOMMENDED_REPAIRs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
 
                 db.TBL_T_BACKLOGs.DeleteOnSubmit(data);
+                db.TBL_T_RECOMMENDED_PARTs.DeleteAllOnSubmit(dataPart);
+                db.TBL_T_RECOMMENDED_REPAIRs.DeleteAllOnSubmit(dataRepair);
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }

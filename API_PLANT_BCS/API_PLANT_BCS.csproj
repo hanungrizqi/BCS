@@ -170,6 +170,7 @@
     <Compile Include="Controllers\BackLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogisticController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">

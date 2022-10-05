@@ -28,6 +28,22 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
+        
+        [HttpGet]
+        [Route("Get_LocationOnStock/{dstrct}")]
+        public IHttpActionResult Get_LocationOnStock(string dstrct)
+        {
+            try
+            {
+                var data = db.VW_LOCATION_ON_STOCKs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+                return Ok(new { Data = data, Total = data.Count() });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         [HttpGet]
         [Route("Get_Employee")]

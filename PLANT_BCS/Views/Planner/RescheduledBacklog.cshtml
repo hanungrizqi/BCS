@@ -1,9 +1,9 @@
-﻿
-@{
-    ViewBag.Title = "DetailBacklog";
-    ViewBag.JS = "/Scripts/Page/DetailBacklog.js";
+﻿@{
+    ViewBag.Title = "RescheduledBacklog";
+    ViewBag.JS = "/Scripts/Page/RescheduledBacklog.js";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2 class="content-heading">Detail Backlog</h2>
 
@@ -105,6 +105,12 @@
                     </div>
                 </div>
                 <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_planRD2">Plan Repair Date 2</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2">
+                    </div>
+                </div>
+                <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_mp">Manpower</label>
                     <div class="col-sm-8">
                         <input type="number" class="form-control form-control-sm " id="txt_mp" name="txt_mp" readonly>
@@ -143,10 +149,29 @@
                             <th>Fig No</th>
                             <th>Index No</th>
                             <th>Qty</th>
+                            <th>Available stock</th>
+                            <th>Location on Stock</th>
+                            <th>ETA Supply</th>
                             <th>Part Class</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        @foreach (var part in ViewBag.dataPart)
+                        {
+                            <tr>
+                                <td>@part.PART_NO</td>
+                                <td>@part.STOCK_CODE</td>
+                                <td>@part.STK_DESC</td>
+                                <td>@part.FIG_NO</td>
+                                <td>@part.INDEX_NO</td>
+                                <td>@part.QTY</td>
+                                <td>@part.AVAILABLE_STOCK</td>
+                                <td>@part.LOCATION_ON_STOCK</td>
+                                <td>@part.ETA_SUPPLY.ToString("dd-MM-yyyy")</td>
+                                <td>@part.PART_CLASS</td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
 
             </div>
@@ -183,14 +208,17 @@
     </div>
     <div class="block-content">
         <div class="mb-3">
-            <textarea class="form-control form-control-sm" id="txt_note" name="txt_note" readonly></textarea>
+            <textarea class="form-control form-control-sm" id="txt_note" name="txt_note"></textarea>
         </div>
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <div class="block-options justify-content-center">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <a href="/Backlog/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
+                    <a href="/Planner/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
+                    <button type="submit" class="btn btn-sm btn-success" value="OPEN" onclick="submitBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Submit
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "DetailBacklog";
-    ViewBag.JS = "/Scripts/Page/DetailBacklog.js";
+    ViewBag.Title = "ETASupply";
+    ViewBag.JS = "/Scripts/Page/ETASupply.js";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2 class="content-heading">Detail Backlog</h2>
 
@@ -143,10 +144,56 @@
                             <th>Fig No</th>
                             <th>Index No</th>
                             <th>Qty</th>
+                            <th>Available stock</th>
+                            <th>Location on Stock</th>
+                            <th>ETA Supply</th>
                             <th>Part Class</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        @foreach (var part in ViewBag.dataPart)
+                        {
+                            <tr>
+                                <td>@part.PART_NO</td>
+                                <td>@part.STOCK_CODE</td>
+                                <td>@part.STK_DESC</td>
+                                <td>@part.FIG_NO</td>
+                                <td>@part.INDEX_NO</td>
+                                <td>@part.QTY</td>
+                                <td>
+                                    <input type="text" name="txt_partid" value="@part.PART_ID" hidden/>
+                                    <input type="number" min="0" value="@part.AVAILABLE_STOCK" name="txt_availableStock" class="form-control form-control-sm" />
+                                </td>
+                                <td>
+                                    <select class="js-select2 form-control form-control-sm" style="width:100%" name="txt_los">
+                                        <option></option>
+                                        @foreach (var los in ViewBag.dataWH)
+                                        {
+                                            if (los.WH == part.LOCATION_ON_STOCK)
+                                            {
+                                                <option selected="selected" value="@los.WH">@los.WH</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@los.WH">@los.WH</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    @if (part.ETA_SUPPLY == null)
+                                    {
+                                        <input type="date" class="form-control form-control-sm " name="txt_ETASupply">
+                                    }
+                                    else
+                                    {
+                                        <input type="date" class="form-control form-control-sm " name="txt_ETASupply" value="@part.ETA_SUPPLY.ToString("yyyy-MM-dd")">
+                                    }
+                                </td>
+                                <td>@part.PART_CLASS</td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
 
             </div>
@@ -183,14 +230,23 @@
     </div>
     <div class="block-content">
         <div class="mb-3">
-            <textarea class="form-control form-control-sm" id="txt_note" name="txt_note" readonly></textarea>
+            <textarea class="form-control form-control-sm" id="txt_note" name="txt_note"></textarea>
         </div>
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <div class="block-options justify-content-center">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <a href="/Backlog/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
+                    <a href="/Logistic/index" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
+                    <button type="submit" class="btn btn-sm btn-info" onclick="saveBacklog()">
+                        <i class="fa fa-floppy-disk opacity-50 me-1"></i> Save
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-danger" value="LOGISTIC CANCEL" onclick="submitBacklog(this.value)">
+                        <i class="fa fa-times opacity-50 me-1"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-success" value="LOGISTIC APPROVED" onclick="submitBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Submit
+                    </button>
                 </div>
             </div>
         </div>

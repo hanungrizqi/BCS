@@ -42,6 +42,9 @@ namespace PLANT_BCS.Models
     partial void InsertTBL_T_BACKLOG(TBL_T_BACKLOG instance);
     partial void UpdateTBL_T_BACKLOG(TBL_T_BACKLOG instance);
     partial void DeleteTBL_T_BACKLOG(TBL_T_BACKLOG instance);
+    partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     #endregion
 		
 		public DB_PLANT_BCSDataContext() : 
@@ -127,6 +130,30 @@ namespace PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<TBL_T_BACKLOG>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_T_RECOMMENDED_PART> TBL_T_RECOMMENDED_PARTs
+		{
+			get
+			{
+				return this.GetTable<TBL_T_RECOMMENDED_PART>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_PART_BACKLOG> VW_PART_BACKLOGs
+		{
+			get
+			{
+				return this.GetTable<VW_PART_BACKLOG>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_LOCATION_ON_STOCK> VW_LOCATION_ON_STOCKs
+		{
+			get
+			{
+				return this.GetTable<VW_LOCATION_ON_STOCK>();
 			}
 		}
 	}
@@ -1812,6 +1839,644 @@ namespace PLANT_BCS.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_T_RECOMMENDED_PART")]
+	public partial class TBL_T_RECOMMENDED_PART : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _PART_ID;
+		
+		private string _NO_BACKLOG;
+		
+		private string _PART_NO;
+		
+		private string _FIG_NO;
+		
+		private string _INDEX_NO;
+		
+		private System.Nullable<int> _QTY;
+		
+		private string _DSTRCT_CODE;
+		
+		private System.Nullable<System.DateTime> _ETA_SUPPLY;
+		
+		private string _LOCATION_ON_STOCK;
+		
+		private System.Nullable<int> _AVAILABLE_STOCK;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPART_IDChanging(string value);
+    partial void OnPART_IDChanged();
+    partial void OnNO_BACKLOGChanging(string value);
+    partial void OnNO_BACKLOGChanged();
+    partial void OnPART_NOChanging(string value);
+    partial void OnPART_NOChanged();
+    partial void OnFIG_NOChanging(string value);
+    partial void OnFIG_NOChanged();
+    partial void OnINDEX_NOChanging(string value);
+    partial void OnINDEX_NOChanged();
+    partial void OnQTYChanging(System.Nullable<int> value);
+    partial void OnQTYChanged();
+    partial void OnDSTRCT_CODEChanging(string value);
+    partial void OnDSTRCT_CODEChanged();
+    partial void OnETA_SUPPLYChanging(System.Nullable<System.DateTime> value);
+    partial void OnETA_SUPPLYChanged();
+    partial void OnLOCATION_ON_STOCKChanging(string value);
+    partial void OnLOCATION_ON_STOCKChanged();
+    partial void OnAVAILABLE_STOCKChanging(System.Nullable<int> value);
+    partial void OnAVAILABLE_STOCKChanged();
+    #endregion
+		
+		public TBL_T_RECOMMENDED_PART()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string PART_ID
+		{
+			get
+			{
+				return this._PART_ID;
+			}
+			set
+			{
+				if ((this._PART_ID != value))
+				{
+					this.OnPART_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PART_ID = value;
+					this.SendPropertyChanged("PART_ID");
+					this.OnPART_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50)")]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this.OnNO_BACKLOGChanging(value);
+					this.SendPropertyChanging();
+					this._NO_BACKLOG = value;
+					this.SendPropertyChanged("NO_BACKLOG");
+					this.OnNO_BACKLOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_NO", DbType="VarChar(50)")]
+		public string PART_NO
+		{
+			get
+			{
+				return this._PART_NO;
+			}
+			set
+			{
+				if ((this._PART_NO != value))
+				{
+					this.OnPART_NOChanging(value);
+					this.SendPropertyChanging();
+					this._PART_NO = value;
+					this.SendPropertyChanged("PART_NO");
+					this.OnPART_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FIG_NO", DbType="VarChar(50)")]
+		public string FIG_NO
+		{
+			get
+			{
+				return this._FIG_NO;
+			}
+			set
+			{
+				if ((this._FIG_NO != value))
+				{
+					this.OnFIG_NOChanging(value);
+					this.SendPropertyChanging();
+					this._FIG_NO = value;
+					this.SendPropertyChanged("FIG_NO");
+					this.OnFIG_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDEX_NO", DbType="VarChar(50)")]
+		public string INDEX_NO
+		{
+			get
+			{
+				return this._INDEX_NO;
+			}
+			set
+			{
+				if ((this._INDEX_NO != value))
+				{
+					this.OnINDEX_NOChanging(value);
+					this.SendPropertyChanging();
+					this._INDEX_NO = value;
+					this.SendPropertyChanged("INDEX_NO");
+					this.OnINDEX_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QTY", DbType="Int")]
+		public System.Nullable<int> QTY
+		{
+			get
+			{
+				return this._QTY;
+			}
+			set
+			{
+				if ((this._QTY != value))
+				{
+					this.OnQTYChanging(value);
+					this.SendPropertyChanging();
+					this._QTY = value;
+					this.SendPropertyChanged("QTY");
+					this.OnQTYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(50)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this.OnDSTRCT_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._DSTRCT_CODE = value;
+					this.SendPropertyChanged("DSTRCT_CODE");
+					this.OnDSTRCT_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ETA_SUPPLY", DbType="Date")]
+		public System.Nullable<System.DateTime> ETA_SUPPLY
+		{
+			get
+			{
+				return this._ETA_SUPPLY;
+			}
+			set
+			{
+				if ((this._ETA_SUPPLY != value))
+				{
+					this.OnETA_SUPPLYChanging(value);
+					this.SendPropertyChanging();
+					this._ETA_SUPPLY = value;
+					this.SendPropertyChanged("ETA_SUPPLY");
+					this.OnETA_SUPPLYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_ON_STOCK", DbType="VarChar(50)")]
+		public string LOCATION_ON_STOCK
+		{
+			get
+			{
+				return this._LOCATION_ON_STOCK;
+			}
+			set
+			{
+				if ((this._LOCATION_ON_STOCK != value))
+				{
+					this.OnLOCATION_ON_STOCKChanging(value);
+					this.SendPropertyChanging();
+					this._LOCATION_ON_STOCK = value;
+					this.SendPropertyChanged("LOCATION_ON_STOCK");
+					this.OnLOCATION_ON_STOCKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AVAILABLE_STOCK", DbType="Int")]
+		public System.Nullable<int> AVAILABLE_STOCK
+		{
+			get
+			{
+				return this._AVAILABLE_STOCK;
+			}
+			set
+			{
+				if ((this._AVAILABLE_STOCK != value))
+				{
+					this.OnAVAILABLE_STOCKChanging(value);
+					this.SendPropertyChanging();
+					this._AVAILABLE_STOCK = value;
+					this.SendPropertyChanged("AVAILABLE_STOCK");
+					this.OnAVAILABLE_STOCKChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_PART_BACKLOG")]
+	public partial class VW_PART_BACKLOG
+	{
+		
+		private string _DSTRCT_CODE;
+		
+		private string _PART_NO;
+		
+		private string _STOCK_CODE;
+		
+		private string _UOM;
+		
+		private string _STK_DESC;
+		
+		private System.Nullable<char> _PART_CLASS;
+		
+		private string _PART_ID;
+		
+		private string _NO_BACKLOG;
+		
+		private string _FIG_NO;
+		
+		private string _INDEX_NO;
+		
+		private System.Nullable<int> _QTY;
+		
+		private System.Nullable<System.DateTime> _ETA_SUPPLY;
+		
+		private string _LOCATION_ON_STOCK;
+		
+		private System.Nullable<int> _AVAILABLE_STOCK;
+		
+		private string _STATUS;
+		
+		public VW_PART_BACKLOG()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(4)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_NO", DbType="VarChar(50)")]
+		public string PART_NO
+		{
+			get
+			{
+				return this._PART_NO;
+			}
+			set
+			{
+				if ((this._PART_NO != value))
+				{
+					this._PART_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CODE", DbType="Char(9)")]
+		public string STOCK_CODE
+		{
+			get
+			{
+				return this._STOCK_CODE;
+			}
+			set
+			{
+				if ((this._STOCK_CODE != value))
+				{
+					this._STOCK_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOM", DbType="Char(4)")]
+		public string UOM
+		{
+			get
+			{
+				return this._UOM;
+			}
+			set
+			{
+				if ((this._UOM != value))
+				{
+					this._UOM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STK_DESC", DbType="VarChar(250)")]
+		public string STK_DESC
+		{
+			get
+			{
+				return this._STK_DESC;
+			}
+			set
+			{
+				if ((this._STK_DESC != value))
+				{
+					this._STK_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_CLASS", DbType="Char(1)")]
+		public System.Nullable<char> PART_CLASS
+		{
+			get
+			{
+				return this._PART_CLASS;
+			}
+			set
+			{
+				if ((this._PART_CLASS != value))
+				{
+					this._PART_CLASS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PART_ID
+		{
+			get
+			{
+				return this._PART_ID;
+			}
+			set
+			{
+				if ((this._PART_ID != value))
+				{
+					this._PART_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50)")]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this._NO_BACKLOG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FIG_NO", DbType="VarChar(50)")]
+		public string FIG_NO
+		{
+			get
+			{
+				return this._FIG_NO;
+			}
+			set
+			{
+				if ((this._FIG_NO != value))
+				{
+					this._FIG_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDEX_NO", DbType="VarChar(50)")]
+		public string INDEX_NO
+		{
+			get
+			{
+				return this._INDEX_NO;
+			}
+			set
+			{
+				if ((this._INDEX_NO != value))
+				{
+					this._INDEX_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QTY", DbType="Int")]
+		public System.Nullable<int> QTY
+		{
+			get
+			{
+				return this._QTY;
+			}
+			set
+			{
+				if ((this._QTY != value))
+				{
+					this._QTY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ETA_SUPPLY", DbType="Date")]
+		public System.Nullable<System.DateTime> ETA_SUPPLY
+		{
+			get
+			{
+				return this._ETA_SUPPLY;
+			}
+			set
+			{
+				if ((this._ETA_SUPPLY != value))
+				{
+					this._ETA_SUPPLY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION_ON_STOCK", DbType="VarChar(50)")]
+		public string LOCATION_ON_STOCK
+		{
+			get
+			{
+				return this._LOCATION_ON_STOCK;
+			}
+			set
+			{
+				if ((this._LOCATION_ON_STOCK != value))
+				{
+					this._LOCATION_ON_STOCK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AVAILABLE_STOCK", DbType="Int")]
+		public System.Nullable<int> AVAILABLE_STOCK
+		{
+			get
+			{
+				return this._AVAILABLE_STOCK;
+			}
+			set
+			{
+				if ((this._AVAILABLE_STOCK != value))
+				{
+					this._AVAILABLE_STOCK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this._STATUS = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_LOCATION_ON_STOCK")]
+	public partial class VW_LOCATION_ON_STOCK
+	{
+		
+		private string _TABLE_CODE;
+		
+		private string _DSTRCT_CODE;
+		
+		private string _WH;
+		
+		private string _TABLE_DESC;
+		
+		public VW_LOCATION_ON_STOCK()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TABLE_CODE", DbType="Char(18) NOT NULL", CanBeNull=false)]
+		public string TABLE_CODE
+		{
+			get
+			{
+				return this._TABLE_CODE;
+			}
+			set
+			{
+				if ((this._TABLE_CODE != value))
+				{
+					this._TABLE_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(4)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WH", DbType="VarChar(4)")]
+		public string WH
+		{
+			get
+			{
+				return this._WH;
+			}
+			set
+			{
+				if ((this._WH != value))
+				{
+					this._WH = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TABLE_DESC", DbType="Char(50) NOT NULL", CanBeNull=false)]
+		public string TABLE_DESC
+		{
+			get
+			{
+				return this._TABLE_DESC;
+			}
+			set
+			{
+				if ((this._TABLE_DESC != value))
+				{
+					this._TABLE_DESC = value;
+				}
 			}
 		}
 	}

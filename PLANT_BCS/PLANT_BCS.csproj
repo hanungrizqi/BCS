@@ -126,7 +126,9 @@
     <Compile Include="Controllers\BacklogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogisticController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PlannerController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -137,6 +139,8 @@
       <DependentUpon>DB_PLANT_BCS.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Cls_LocationOnStock.cs" />
+    <Compile Include="ViewModel\Cls_PartBacklog.cs" />
     <Compile Include="ViewModel\Cls_Backlog.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4328,8 +4332,12 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\RescheduledBacklog.js" />
+    <Content Include="Scripts\Page\ETASupply.js" />
     <Content Include="Scripts\Page\DetailBacklog.js" />
     <Content Include="Scripts\Page\ListApproval.js" />
+    <Content Include="Scripts\Page\ListBacklogPlanner.js" />
+    <Content Include="Scripts\Page\ListLogistic.js" />
     <Content Include="Scripts\Page\login.js" />
     <Content Include="Scripts\Page\DetailApproval.js" />
     <Content Include="Scripts\Page\EditBacklog.js" />
@@ -4379,6 +4387,10 @@
     <Content Include="Views\BacklogApproval\ListApproval.cshtml" />
     <Content Include="Views\BacklogApproval\DetailBacklog.cshtml" />
     <Content Include="Views\Backlog\DetailBacklog.cshtml" />
+    <Content Include="Views\Logistic\Index.cshtml" />
+    <Content Include="Views\Logistic\ETASupply.cshtml" />
+    <Content Include="Views\Planner\ListBacklog.cshtml" />
+    <Content Include="Views\Planner\RescheduledBacklog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

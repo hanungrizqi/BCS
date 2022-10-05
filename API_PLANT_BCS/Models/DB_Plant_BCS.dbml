@@ -114,36 +114,6 @@
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_T_BACKLOG" Member="TBL_T_BACKLOGs">
-    <Type Name="TBL_T_BACKLOG">
-      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="EGI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="HM" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="INSPECTON_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="INSPECTOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SOURCE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="WORK_GROUP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="STD_JOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NRP_GL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ORIGINATOR_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PLAN_REPAIR_DATE_1" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="PLAN_REPAIR_DATE_2" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="PLAN_FINISH_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="MANPOWER" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HOUR_EST" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="POSISI_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CREATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UPDATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UPDATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="REMARKS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.VW_COMP_CODE" Member="VW_COMP_CODEs">
     <Type Name="VW_COMP_CODE">
       <Column Name="COMP_CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
@@ -218,31 +188,20 @@
       <Column Name="PART_NO" Type="System.String" DbType="Char(30) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_T_RECOMMENDED_PART" Member="TBL_T_RECOMMENDED_PARTs">
-    <Type Name="TBL_T_RECOMMENDED_PART">
-      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.VW_MENU" Member="VW_MENUs">
+    <Type Name="VW_MENU">
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_Menu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="IS_ALLOW" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_PART_BACKLOG" Member="VW_PART_BACKLOGs">
-    <Type Name="VW_PART_BACKLOG">
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4)" CanBeNull="true" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9)" CanBeNull="true" />
-      <Column Name="UOM" Type="System.String" DbType="Char(4)" CanBeNull="true" />
-      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="STATUS" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.TBL_M_AKSES" Member="TBL_M_AKSEs">
+    <Type Name="TBL_M_AKSE">
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IS_ALLOW" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.VW_BACKLOG" Member="VW_BACKLOGs">
@@ -251,7 +210,7 @@
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="COMP_DESC" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="COMP_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="EGI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HM" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -267,7 +226,6 @@
       <Column Name="ORIGINATOR_ID_NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="PLAN_REPAIR_DATE_1" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="PLAN_REPAIR_DATE_2" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="PLAN_FINISH_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="MANPOWER" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HOUR_EST" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="POSISI_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -279,20 +237,74 @@
       <Column Name="REMARKS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_MENU" Member="VW_MENUs">
-    <Type Name="VW_MENU">
-      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name_Menu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="IS_ALLOW" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+  <Table Name="dbo.TBL_T_BACKLOG" Member="TBL_T_BACKLOGs">
+    <Type Name="TBL_T_BACKLOG">
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EGI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INSPECTON_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="INSPECTOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SOURCE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WORK_GROUP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STD_JOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NRP_GL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ORIGINATOR_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PLAN_REPAIR_DATE_1" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PLAN_REPAIR_DATE_2" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MANPOWER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HOUR_EST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="POSISI_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UPDATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UPDATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="REMARKS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_M_AKSES" Member="TBL_M_AKSEs">
-    <Type Name="TBL_M_AKSE">
-      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="IS_ALLOW" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+  <Table Name="dbo.TBL_T_RECOMMENDED_PART" Member="TBL_T_RECOMMENDED_PARTs">
+    <Type Name="TBL_T_RECOMMENDED_PART">
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ETA_SUPPLY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LOCATION_ON_STOCK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AVAILABLE_STOCK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_LOCATION_ON_STOCK" Member="VW_LOCATION_ON_STOCKs">
+    <Type Name="VW_LOCATION_ON_STOCK">
+      <Column Name="TABLE_CODE" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="WH" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="TABLE_DESC" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_PART_BACKLOG" Member="VW_PART_BACKLOGs">
+    <Type Name="VW_PART_BACKLOG">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9)" CanBeNull="true" />
+      <Column Name="UOM" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ETA_SUPPLY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LOCATION_ON_STOCK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AVAILABLE_STOCK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

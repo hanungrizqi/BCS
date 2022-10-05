@@ -29,3 +29,16 @@
         transform: rotate(360deg);
     }
 }
+
+/* force select2 to match bootstrap form-control-sm */ 
+.select2, .select2-selection__rendered {
+    line-height: calc(1.5em + .5rem + 2px) !important;
+}
+
+.select2-container .select2-selection--single {
+    height: calc(1.5em + .5rem + 2px) !important;
+}
+
+.select2-selection__arrow {
+    height: calc(1.5em + .5rem + 2px) !important;
+}
