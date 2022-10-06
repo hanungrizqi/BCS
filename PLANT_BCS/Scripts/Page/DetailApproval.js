@@ -87,7 +87,9 @@ function searchPartNo() {
     $.ajax({
         url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
         type: "GET",
-        cache: false,
+        cache: false, beforeSend: function () {
+            $("#overlay").show();
+        },
         success: function (result) {
             if (result.Data != null) {
                 $("#txt_partNo").val(result.Data.PART_NO);
@@ -98,6 +100,7 @@ function searchPartNo() {
                     'warning'
                 );
             }
+            $("#overlay").hide();
         }
     });
 }
@@ -156,6 +159,9 @@ function submitApproval(postStatus) {
         dataType: "json",
         type: "POST",
         contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+            $("#overlay").show();
+        },
         success: function (data) {
             if (data.Remarks == true) {
                 Swal.fire({
@@ -177,11 +183,13 @@ function submitApproval(postStatus) {
                     'Message : ' + data.Message,
                     'error'
                 );
+                $("#overlay").hide();
             }
 
         },
         error: function (xhr) {
             alert(xhr.responseText);
+            $("#overlay").hide();
         }
     });
 }

@@ -48,6 +48,9 @@ function searchPartNo() {
         url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
         type: "GET",
         cache: false,
+        beforeSend: function () {
+            $("#overlay").show();
+        },
         success: function (result) {
             if (result.Data != null) {
                 $("#txt_partNo").val(result.Data.PART_NO);
@@ -58,6 +61,7 @@ function searchPartNo() {
                     'warning'
                 );
             }
+            $("#overlay").hide();
         }
     });
 }
@@ -201,6 +205,9 @@ function addPartToTable() {
                     url: $("#web_link").val() + "/api/Backlog/Get_PartDetail?partNO=" + PART_NO + "&site=" + $("#hd_site").val(), //URI,
                     type: "GET",
                     cache: false,
+                    beforeSend: function () {
+                        $("#overlay").show();
+                    },
                     success: function (result) {
                         let tRow = $("#table_part >tbody >tr").length;
                         let noRow = tRow + 1;
@@ -247,6 +254,7 @@ function addPartToTable() {
                         }
 
                         DetailTableBody.append(listData);
+                        $("#overlay").hide();
                         $('#modal').modal('hide');
                     }
                 });
