@@ -33,7 +33,7 @@
             targets: 'no-sort', orderable: false,
             render: function (data, type, row) {
                 action = `<div class="btn-group">`
-                action += `<a href="/Planner/RescheduledBacklog?noBacklog=${data}" class="btn btn-sm btn-primary">Rescheduled</a>`;     
+                action += `<a href="/Planner/RescheduledBacklog?noBacklog=${data}" class="btn btn-sm btn-primary">Detail</a>`;     
                 action += `</div>`;
                 return action;
             }

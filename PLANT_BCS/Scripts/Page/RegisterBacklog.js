@@ -211,6 +211,9 @@ function addPartToTable() {
                     success: function (result) {
                         let tRow = $("#table_part >tbody >tr").length;
                         let noRow = tRow + 1;
+                        if ($("#txt_cekRow").val() == "1") {
+                            noRow = 1;
+                        }
                         DetailTableBody = $("#table_part tBody");
 
                         if (result.Remarks == true) {
@@ -398,10 +401,15 @@ function submitBacklog(postStatus) {
     dataBacklog.PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
     dataBacklog.MANPOWER = $("#txt_mp").val();
     dataBacklog.HOUR_EST = $("#txt_hEst").val();
-    dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
     dataBacklog.CREATED_BY = $("#txt_inspector").val();
     dataBacklog.REMARKS = $("#txt_note").val();
     dataBacklog.STATUS = postStatus;
+
+    if (postStatus == "SUBMITTED") {
+        dataBacklog.POSISI_BACKLOG = "Planner";
+    } else {
+        dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
+    }
 
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI

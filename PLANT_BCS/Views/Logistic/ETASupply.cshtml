@@ -202,29 +202,6 @@
 </div>
 
 <div class="block block-rounded block-link-shadow">
-    <div class="block-header block-header-default">
-        <h3 class="block-title">Recommended Repair</h3>
-    </div>
-    <div class="block-content">
-        <div class="row justify-content-center pb-4">
-            <div class="col-sm-12 col-md-12 table-responsive">
-                <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination w-100" id="table_repair">
-                    <thead class="text-center">
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th>Problem Description</th>
-                            <th>Activity Repair</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="block block-rounded block-link-shadow">
     <div class="block-header">
         <h3 class="block-title">Note</h3>
     </div>
@@ -238,11 +215,8 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <a href="/Logistic/index" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
-                    <button type="submit" class="btn btn-sm btn-info" onclick="saveBacklog()">
+                    <button type="submit" class="btn btn-sm btn-info" value="SAVED" onclick="saveBacklog()">
                         <i class="fa fa-floppy-disk opacity-50 me-1"></i> Save
-                    </button>
-                    <button type="submit" class="btn btn-sm btn-danger" value="LOGISTIC CANCEL" onclick="submitBacklog(this.value)">
-                        <i class="fa fa-times opacity-50 me-1"></i> Cancel
                     </button>
                     <button type="submit" class="btn btn-sm btn-success" value="LOGISTIC APPROVED" onclick="submitBacklog(this.value)">
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Submit

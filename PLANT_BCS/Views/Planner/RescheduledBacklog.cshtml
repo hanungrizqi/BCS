@@ -143,6 +143,7 @@
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination w-100" id="table_part">
                     <thead class="text-center">
                         <tr>
+                            <th class="text-center">No</th>
                             <th>Part No</th>
                             <th>Stock Code</th>
                             <th>Part Description</th>
@@ -156,21 +157,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var part in ViewBag.dataPart)
-                        {
-                            <tr>
-                                <td>@part.PART_NO</td>
-                                <td>@part.STOCK_CODE</td>
-                                <td>@part.STK_DESC</td>
-                                <td>@part.FIG_NO</td>
-                                <td>@part.INDEX_NO</td>
-                                <td>@part.QTY</td>
-                                <td>@part.AVAILABLE_STOCK</td>
-                                <td>@part.LOCATION_ON_STOCK</td>
-                                <td>@part.ETA_SUPPLY.ToString("dd-MM-yyyy")</td>
-                                <td>@part.PART_CLASS</td>
-                            </tr>
-                        }
                     </tbody>
                 </table>
 
@@ -216,7 +202,13 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <a href="/Planner/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
-                    <button type="submit" class="btn btn-sm btn-success" value="OPEN" onclick="submitBacklog(this.value)">
+                    <button type="button" class="btn btn-sm btn-info" value="PLANNER APPROVED" onclick="submitBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Send Back To Logistic
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger" value="PLANNER CANCEL" onclick="submitBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Cancel Backlog
+                    </button>
+                    <button type="button" class="btn btn-sm btn-success" value="OPEN" onclick="submitBacklog(this.value)">
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Submit
                     </button>
                 </div>

@@ -5,7 +5,42 @@ $("document").ready(function () {
     document.getElementById("txt_planRD2").setAttribute("min", new Date().toISOString().split("T")[0]);
 })
 
-var tablePart = $("#table_part").DataTable();
+var table = $("#table_part").DataTable({
+    ajax: {
+        url: $("#web_link").val() + "/api/Backlog/Get_BacklogPart/" + $("#txt_noBacklog").val(),
+        dataSrc: "Data",
+    },
+    "columnDefs": [
+        { "className": "dt-center", "targets": [3, 4, 5, 6] }
+    ],
+    scrollX: true,
+    columns: [
+        {
+            "data": null,
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }
+        },
+        { data: 'PART_NO' },
+        { data: 'STOCK_CODE' },
+        { data: 'STK_DESC' },
+        { data: 'FIG_NO' },
+        { data: 'INDEX_NO' },
+        { data: 'QTY' },
+        { data: 'AVAILABLE_STOCK' },
+        { data: 'LOCATION_ON_STOCK' },
+        {
+            data: 'ETA_SUPPLY',
+            render: function (data, type, row) {
+                let text = moment(data).format("DD/MM/YYYY");
+                return text;
+            }
+        },
+        { data: 'PART_CLASS' }
+    ],
+
+});
+
 var tableRepair = $("#table_repair").DataTable({
     ajax: {
         url: $("#web_link").val() + "/api/Backlog/Get_BacklogRepair/" + $("#txt_noBacklog").val(),
@@ -50,11 +85,12 @@ function getDetail() {
             $("#txt_nrpGl").val(dataBacklog.NRP_GL + " - " + dataBacklog.NRP_GL_NAME);
             $("#txt_oriID").val(dataBacklog.ORIGINATOR_ID + " - " + dataBacklog.ORIGINATOR_ID_NAME);
             $("#txt_planRD1").val(moment(dataBacklog.PLAN_REPAIR_DATE_1).format("YYYY-MM-DD"));
+            $("#txt_planRD2").val(moment(dataBacklog.PLAN_REPAIR_DATE_2).format("YYYY-MM-DD"));
             $("#txt_mp").val(dataBacklog.MANPOWER);
             $("#txt_hEst").val(dataBacklog.HOUR_EST);
             $("#txt_posBL").val(dataBacklog.POSISI_BACKLOG);
             $("#txt_inspector").val(dataBacklog.CREATED_BY);
-            //$("#txt_note").val(dataBacklog.REMARKS);
+            $("#txt_note").val(dataBacklog.REMARKS);
         }
     });
 }
@@ -83,6 +119,11 @@ function submitBacklog(status) {
     dataBacklog.UPDATED_BY = $("#hd_nrp").val();
     dataBacklog.REMARKS = $("#txt_note").val();
     dataBacklog.PLAN_REPAIR_DATE_2 = $("#txt_planRD2").val();
+    if (status == "PLANNER APPROVED") {
+        dataBacklog.POSISI_BACKLOG = "Logistic";
+    } else {
+        dataBacklog.POSISI_BACKLOG = "ADM1";
+    }
     dataBacklog.STATUS = status;
 
     $.ajax({

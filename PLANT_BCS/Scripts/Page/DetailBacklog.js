@@ -12,16 +12,35 @@ var table = $("#table_part").DataTable({
     ],
     scrollX: true,
     columns: [
+        {
+            "data": null,
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }
+        },
         { data: 'PART_NO' },
         { data: 'STOCK_CODE' },
         { data: 'STK_DESC' },
         { data: 'FIG_NO' },
         { data: 'INDEX_NO' },
         { data: 'QTY' },
+        { data: 'AVAILABLE_STOCK' },
+        { data: 'LOCATION_ON_STOCK' },
+        {
+            data: 'ETA_SUPPLY',
+            render: function (data, type, row) {
+                let text = "";
+                if (data != null) {
+                    text = moment(data).format("DD/MM/YYYY");
+                }
+                return text;
+            }
+        },
         { data: 'PART_CLASS' }
     ],
 
 });
+
 
 var tableRepair = $("#table_repair").DataTable({
     ajax: {
@@ -67,6 +86,7 @@ function getDetail() {
             $("#txt_nrpGl").val(dataBacklog.NRP_GL + " - " + dataBacklog.NRP_GL_NAME);
             $("#txt_oriID").val(dataBacklog.ORIGINATOR_ID + " - " + dataBacklog.ORIGINATOR_ID_NAME);
             $("#txt_planRD1").val(moment(dataBacklog.PLAN_REPAIR_DATE_1).format("YYYY-MM-DD"));
+            $("#txt_planRD2").val(moment(dataBacklog.PLAN_REPAIR_DATE_2).format("YYYY-MM-DD"));
             $("#txt_mp").val(dataBacklog.MANPOWER);
             $("#txt_hEst").val(dataBacklog.HOUR_EST);
             $("#txt_posBL").val(dataBacklog.POSISI_BACKLOG);

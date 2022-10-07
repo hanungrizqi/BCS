@@ -5,27 +5,6 @@ $("document").ready(function () {
 })
 
 var tablePart = $("#table_part").DataTable();
-var tableRepair = $("#table_repair").DataTable({
-    ajax: {
-        url: $("#web_link").val() + "/api/Backlog/Get_BacklogRepair/" + $("#txt_noBacklog").val(),
-        dataSrc: "Data",
-    },
-    "columnDefs": [
-        { "className": "dt-center", "targets": [0] }
-    ],
-    scrollX: true,
-    columns: [
-        {
-            "data": null,
-            render: function (data, type, row, meta) {
-                return meta.row + meta.settings._iDisplayStart + 1;
-            }
-        },
-        { data: 'PROBLEM_DESC' },
-        { data: 'ACTIVITY_REPAIR' }
-    ],
-
-});
 
 function getDetail() {
     $.ajax({
@@ -53,12 +32,12 @@ function getDetail() {
             $("#txt_hEst").val(dataBacklog.HOUR_EST);
             $("#txt_posBL").val(dataBacklog.POSISI_BACKLOG);
             $("#txt_inspector").val(dataBacklog.CREATED_BY);
-            //$("#txt_note").val(dataBacklog.REMARKS);
+            $("#txt_note").val(dataBacklog.REMARKS);
         }
     });
 }
 
-function saveBacklog() {
+function saveBacklog(dataStatus) {
     var ListPart = [];
     ListPart.length = 0;
 
@@ -79,11 +58,13 @@ function saveBacklog() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             if (data.Remarks == true) {
-                Swal.fire(
-                    'Saved!',
-                    'Data has been saved',
-                    'success'
-                );
+                if (dataStatus == "SAVED") {
+                    Swal.fire(
+                        'Saved!',
+                        'Data has been saved',
+                        'success'
+                    );
+                }
             } if (data.Remarks == false) {
                 Swal.fire(
                     'Error!',
@@ -137,6 +118,7 @@ function submitChanges(status) {
     dataBacklog.UPDATED_BY = $("#hd_nrp").val();
     dataBacklog.REMARKS = $("#txt_note").val();
     dataBacklog.STATUS = status;
+    dataBacklog.POSISI_BACKLOG = "Planner1";
 
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Approve_Backlog", //URI
@@ -144,6 +126,9 @@ function submitChanges(status) {
         dataType: "json",
         type: "POST",
         contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+            saveBacklog(status);
+        },
         success: function (data) {
             if (data.Remarks == true) {
                 Swal.fire({

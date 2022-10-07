@@ -151,6 +151,7 @@ function submitApproval(postStatus) {
     dataBacklog.NO_BACKLOG = $("#txt_noBacklog").val();
     dataBacklog.UPDATED_BY = $("#hd_nrp").val();
     dataBacklog.REMARKS = $("#txt_note").val();
+    dataBacklog.POSISI_BACKLOG = "Logistic";
     dataBacklog.STATUS = postStatus;
 
     $.ajax({

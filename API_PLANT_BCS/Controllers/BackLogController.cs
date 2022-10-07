@@ -228,6 +228,7 @@ namespace API_PLANT_BCS.Controllers
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
                 cek.UPDATED_BY = param.UPDATED_BY;
+                cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
                 cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
@@ -247,6 +248,7 @@ namespace API_PLANT_BCS.Controllers
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
+                cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
                 cek.PLAN_REPAIR_DATE_2 = param.PLAN_REPAIR_DATE_2;
                 cek.UPDATED_BY = param.UPDATED_BY;
                 cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
@@ -266,6 +268,10 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                if (param[0].PART_NO == null)
+                {
+                    return Ok(new { Remarks = true });
+                }
                 List<TBL_T_RECOMMENDED_PART> tbl = new List<TBL_T_RECOMMENDED_PART>();
 
                 foreach (var item in param)
@@ -361,6 +367,10 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                if (listRepair[0].PROBLEM_DESC == null) {
+                    return Ok(new { Remarks = true });
+                }
+
                 List<TBL_T_RECOMMENDED_REPAIR> tblRepair = new List<TBL_T_RECOMMENDED_REPAIR>();
 
                 foreach (var repair in listRepair)
