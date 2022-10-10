@@ -4372,6 +4372,7 @@
       <LastGenOutput>DB_PLANT_BCS.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\Document\Template_logistic_ETA_Supply.xlsx" />
     <None Include="Models\DB_PLANT_BCS.dbml.layout">
       <DependentUpon>DB_PLANT_BCS.dbml</DependentUpon>
     </None>

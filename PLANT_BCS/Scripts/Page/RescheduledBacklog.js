@@ -96,7 +96,7 @@ function getDetail() {
 }
 
 function submitBacklog(status) {
-    if ($("#txt_planRD2").val() == "" || $("#txt_planRD2").val() == null) {
+    if (status == "OPEN" && ($("#txt_planRD2").val() == "" || $("#txt_planRD2").val() == null)) {
         Swal.fire(
             'Warning',
             'Mohon input plant repair date 2!',
