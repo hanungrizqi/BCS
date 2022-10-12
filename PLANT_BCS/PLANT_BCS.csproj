@@ -4332,6 +4332,7 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\ListPartRequest.js" />
     <Content Include="Scripts\Page\RescheduledBacklog.js" />
     <Content Include="Scripts\Page\ETASupply.js" />
     <Content Include="Scripts\Page\DetailBacklog.js" />
@@ -4392,6 +4393,7 @@
     <Content Include="Views\Logistic\ETASupply.cshtml" />
     <Content Include="Views\Planner\ListBacklog.cshtml" />
     <Content Include="Views\Planner\RescheduledBacklog.cshtml" />
+    <Content Include="Views\Logistic\ListPartRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

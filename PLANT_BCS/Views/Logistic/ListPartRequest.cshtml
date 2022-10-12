@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ListPartRequest";
+    ViewBag.JS = "/Scripts/Page/ListPartRequest.js";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="content-heading">List Backlog</h2>
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">
+            Table Backlog <small>All list Backlog</small>
+        </h3>
+    </div>
+    <div class="block-content block-content-full">
+        <table class="table table-bordered table-striped js-dataTable-buttons table-vcenter js-dataTable-responsive w-100" id="tbl_backlog">
+            <thead class="text-center">
+                <tr>
+                    <th>NO BACKLOG</th>
+                    <th>DISTRICT</th>
+                    <th>EQP NUMBER</th>
+                    <th>COMPONENT CODE</th>
+                    <th>HM</th>
+                    <th>INSPECTON DATE</th>
+                    <th>PLAN REPAIR DATE 1</th>
+                    <th>PART NO</th>
+                    <th>STOCK CODE </th>
+                    <th>PART DESC</th>
+                    <th>QTY</th>
+                    <th>FIG NO</th>
+                    <th>INDEX NO</th>
+                    <th>AVAILABEL STOCK</th>
+                    <th>LOCATION ON STOCK</th>
+                    <th>ETA SUPPLY</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="block block-rounded block-link-shadow">
+    <form method="post" id="form_upload_excel" onsubmit="return false;">
+        <div class="block-header">
+            <h3 class="block-title">Upload Excel</h3>
+        </div>
+        <div class="block-content">
+            <div class="mb-3">
+                <input type="file" accept=".xls,.xlsx" class="custom-file-input form-control" id="file" name="file" data-toggle="custom-file-input">
+            </div>
+        </div>
+        <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+            <div class="block-options justify-content-center">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-success" onclick="uploadExcel()">
+                            <i class="fa fa-upload opacity-50 me-1"></i> Upload
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

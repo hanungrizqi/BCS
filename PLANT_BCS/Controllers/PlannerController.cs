@@ -31,6 +31,7 @@ namespace PLANT_BCS.Controllers
                 return RedirectToAction("index", "login");
             }
 
+            TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
             using (var client = new HttpClient())
             {
                 //Passing service base url  
@@ -40,30 +41,21 @@ namespace PLANT_BCS.Controllers
                 //Define request data format  
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
-                HttpResponseMessage Res = await client.GetAsync("api/Backlog/Get_BacklogPart/" + noBacklog);
-                HttpResponseMessage dataWH = await client.GetAsync("api/Master/Get_LocationOnStock/" + Session["Site"].ToString());
+                HttpResponseMessage Res = await client.GetAsync("api/BackLog/Get_BacklogDetail/" + noBacklog);
 
                 //Checking the response is successful or not which is sent using HttpClient  
                 if (Res.IsSuccessStatusCode)
                 {
                     //Storing the response details recieved from web api   
                     var ApiResponse = Res.Content.ReadAsStringAsync().Result;
-                    Cls_PartBacklog data = JsonConvert.DeserializeObject<Cls_PartBacklog>(ApiResponse);
-                    List<VW_PART_BACKLOG> tbl = (List<VW_PART_BACKLOG>)data.tbl;
-                    ViewBag.dataPart = tbl;
-                    ViewBag.noBacklog = noBacklog;
+                    Cls_Backlog data = new Cls_Backlog();
+                    data = JsonConvert.DeserializeObject<Cls_Backlog>(ApiResponse);
+
+                    tbl = data.tbl;
 
                 }
-
-                if (dataWH.IsSuccessStatusCode)
-                {
-                    //Storing the response details recieved from web api   
-                    var ApiResponse = dataWH.Content.ReadAsStringAsync().Result;
-                    Cls_LocationOnStock data = JsonConvert.DeserializeObject<Cls_LocationOnStock>(ApiResponse);
-                    List<VW_LOCATION_ON_STOCK> listWH = (List<VW_LOCATION_ON_STOCK>)data.tbl;
-                    ViewBag.dataWH = listWH;
-                }
+                ViewBag.BackLog = tbl;
+                ViewBag.noBacklog = noBacklog;
             }
 
             return View();

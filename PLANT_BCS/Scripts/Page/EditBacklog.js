@@ -116,7 +116,15 @@ $("#txt_standJob").on("change", function () {
 })
 
 function searchPartNo() {
-    let stckCode = $("#txt_stckCode").val()
+    let stckCode = $("#txt_stckCode").val();
+    if (stckCode == "" || stckCode == null) {
+        Swal.fire(
+            'Warning!',
+            'Mohon input stock code',
+            'warning'
+        );
+        return false;
+    }
     $.ajax({
         url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
         type: "GET",
@@ -287,7 +295,7 @@ function saveBacklog(postStatus) {
         STATUS = postStatus;
 
         if (BACKLOG_DESC == "" || COMP_CODE == "" || EGI == "" || EQP_NUMBER == "" || HM == "" || HOUR_EST == "" || INSPECTON_DATE == "" ||
-            MANPOWER == "" || NRP_GL == "" || ORIGINATOR_ID == "" || PLAN_REPAIR_DATE_1 == "" || REMARKS == "" || SOURCE == "" || STD_JOB == "" ||
+            MANPOWER == "" || NRP_GL == "" || ORIGINATOR_ID == "" || PLAN_REPAIR_DATE_1 == "" || SOURCE == "" || STD_JOB == "" ||
             WORK_GROUP == "") {
             Swal.fire(
                 'Submit warning!',

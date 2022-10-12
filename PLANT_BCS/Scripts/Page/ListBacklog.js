@@ -4,7 +4,7 @@
         dataSrc: "Data",
     },
     "columnDefs": [
-        { "className": "dt-center", "targets": [0, 1, 6, 7] }
+        { "className": "dt-center", "targets": [0, 1, 6, 7, 8] }
     ],
     scrollX: true,
     columns: [
@@ -20,6 +20,7 @@
                 return tanggal;
             }
         },
+        { data: 'POSISI_BACKLOG' },
         {
             data: 'STATUS',
             render: function (data, type, row) {

@@ -4,6 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (@ViewBag.BackLog.PLAN_REPAIR_DATE_1 == null)
+{
+    <input type="date" id="txt_planRD1Temp" value="" hidden />
+}
+else
+{
+    <input type="date" id="txt_planRD1Temp" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_1.ToString("yyyy-MM-dd")" hidden />
+}
 
 <h2 class="content-heading">Detail Backlog</h2>
 

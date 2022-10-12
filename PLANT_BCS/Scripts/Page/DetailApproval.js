@@ -83,7 +83,15 @@ var tableRepair = $("#table_repair").DataTable({
 });
 
 function searchPartNo() {
-    let stckCode = $("#txt_stckCode").val()
+    let stckCode = $("#txt_stckCode").val();
+    if (stckCode == "" || stckCode == null) {
+        Swal.fire(
+            'Warning!',
+            'Mohon input stock code',
+            'warning'
+        );
+        return false;
+    }
     $.ajax({
         url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
         type: "GET",

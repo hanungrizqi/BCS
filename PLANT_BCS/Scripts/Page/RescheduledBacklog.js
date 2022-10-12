@@ -32,7 +32,17 @@ var table = $("#table_part").DataTable({
         {
             data: 'ETA_SUPPLY',
             render: function (data, type, row) {
-                let text = moment(data).format("DD/MM/YYYY");
+                let tempRepairDate1 = $("#txt_planRD1Temp").val();
+                let eta = moment(data).format("DD/MM/YYYY");
+
+                let text = "";
+
+                if (eta > tempRepairDate1) {
+                    text = `<span class="text-danger">${eta}</span>`
+                } else {
+                    text = `<span class="text-success">${eta}</span>`
+                }
+
                 return text;
             }
         },

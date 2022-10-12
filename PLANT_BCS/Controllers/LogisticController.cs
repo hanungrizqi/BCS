@@ -28,6 +28,15 @@ namespace PLANT_BCS.Controllers
             }
             return View();
         }
+        
+        public ActionResult ListPartRequest()
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            return View();
+        }
 
         public async Task<ActionResult> ETASupply(string noBacklog)
         {
@@ -146,7 +155,7 @@ namespace PLANT_BCS.Controllers
                         }
                     }
 
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    for (int i = 1; i < ds.Tables[0].Rows.Count; i++)
                     {
                         if (ds.Tables[0].Rows[i][0].ToString() == null || ds.Tables[0].Rows[i][0].ToString() == "")
                         {
@@ -157,11 +166,11 @@ namespace PLANT_BCS.Controllers
                             cls.Add(new TBL_T_RECOMMENDED_PART
                             {
                                 NO_BACKLOG = ds.Tables[0].Rows[i][0].ToString(),
-                                PART_NO = ds.Tables[0].Rows[i][1].ToString(),
-                                DSTRCT_CODE = ds.Tables[0].Rows[i][2].ToString(),
-                                ETA_SUPPLY = DateTime.Parse(ds.Tables[0].Rows[i][3].ToString()),
-                                LOCATION_ON_STOCK = ds.Tables[0].Rows[i][4].ToString(),
-                                AVAILABLE_STOCK = Convert.ToInt32(ds.Tables[0].Rows[i][5])
+                                PART_NO = ds.Tables[0].Rows[i][7].ToString(),
+                                DSTRCT_CODE = ds.Tables[0].Rows[i][1].ToString(),
+                                ETA_SUPPLY = DateTime.Parse(ds.Tables[0].Rows[i][15].ToString()),
+                                LOCATION_ON_STOCK = ds.Tables[0].Rows[i][14].ToString(),
+                                AVAILABLE_STOCK = Convert.ToInt32(ds.Tables[0].Rows[i][13])
                             });
                         }
 
