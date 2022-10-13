@@ -42,7 +42,10 @@
         {
             data: 'ETA_SUPPLY',
             render: function (data, type, row) {
-                const tanggal = moment(data).format("DD/MM/YYYY");
+                let tanggal = moment(data).format("DD/MM/YYYY");
+                if (data == null) {
+                    tanggal = "dd/mm/yyyy"
+                }
                 return tanggal;
             }
         }

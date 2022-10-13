@@ -32,7 +32,7 @@ var table = $("#table_part").DataTable({
         {
             data: 'ETA_SUPPLY',
             render: function (data, type, row) {
-                let tempRepairDate1 = $("#txt_planRD1Temp").val();
+                let tempRepairDate1 = moment($("#txt_planRD1Temp").val()).format("DD/MM/YYYY");
                 let eta = moment(data).format("DD/MM/YYYY");
 
                 let text = "";
@@ -106,15 +106,6 @@ function getDetail() {
 }
 
 function submitBacklog(status) {
-    if (status == "OPEN" && ($("#txt_planRD2").val() == "" || $("#txt_planRD2").val() == null)) {
-        Swal.fire(
-            'Warning',
-            'Mohon input plant repair date 2!',
-            'warning'
-        );
-        return false;
-    }
-
     if ($("#txt_note").val() == "" || $("#txt_note").val() == null) {
         Swal.fire(
             'Warning',

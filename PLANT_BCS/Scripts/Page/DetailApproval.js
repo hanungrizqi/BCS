@@ -249,13 +249,13 @@ function insertPart() {
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val()
 
-    if (PART_NO == "") {
+    if (PART_NO == "" || FIG_NO == "" || INDEX_NO == "" || QTY == "") {
         Swal.fire(
             'Warning!',
-            'Mohon sertakan Part Number ',
+            'Mohon input Part Number, Fiq No, Index NO & QTY',
             'warning'
         );
-        return false;
+        return;
     }
 
     let tRow = $("#table_part >tbody >tr").length;
@@ -293,6 +293,9 @@ function insertPart() {
                     dataType: "json",
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+                        $("#overlay").show();
+                    },
                     success: function (data) {
                         if (data.Remarks == true) {
                             $('#modal').modal('hide');
@@ -303,6 +306,7 @@ function insertPart() {
                                 'Message : ' + data.Message,
                                 'error'
                             );
+                            $("#overlay").hide();
                         }
 
                     },

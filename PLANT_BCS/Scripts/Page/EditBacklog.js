@@ -294,14 +294,41 @@ function saveBacklog(postStatus) {
         REMARKS = $("#txt_note").val();
         STATUS = postStatus;
 
-        if (BACKLOG_DESC == "" || COMP_CODE == "" || EGI == "" || EQP_NUMBER == "" || HM == "" || HOUR_EST == "" || INSPECTON_DATE == "" ||
-            MANPOWER == "" || NRP_GL == "" || ORIGINATOR_ID == "" || PLAN_REPAIR_DATE_1 == "" || SOURCE == "" || STD_JOB == "" ||
-            WORK_GROUP == "") {
-            Swal.fire(
-                'Submit warning!',
-                'Pastikan semua data sudah diisi',
-                'warning'
-            );
+        if (COMP_CODE == "") {
+            window.location.hash = "txt_compCode";
+            return false;
+        } else if (BACKLOG_DESC == "") {
+            window.location.hash = "txt_blDesc";
+            return false;
+        } else if (EQP_NUMBER == "") {
+            window.location.hash = "txt_eqNumber";
+            return false;
+        } else if (HM == "") {
+            window.location.hash = "txt_hm";
+            return false;
+        } else if (HOUR_EST == "") {
+            window.location.hash = "txt_hEst";
+            return false;
+        } else if (INSPECTON_DATE == "") {
+            window.location.hash = "txt_dInspecton";
+            return false;
+        } else if (MANPOWER == "") {
+            window.location.hash = "txt_mp";
+            return false;
+        } else if (NRP_GL == "") {
+            window.location.hash = "txt_nrpGl";
+            return false;
+        } else if (ORIGINATOR_ID == "") {
+            window.location.hash = "txt_oriID";
+            return false;
+        } else if (PLAN_REPAIR_DATE_1 == "") {
+            window.location.hash = "txt_planRD1";
+            return false;
+        } else if (SOURCE == "") {
+            window.location.hash = "txt_source";
+            return false;
+        } else if (STD_JOB == "") {
+            window.location.hash = "txt_standJob";
             return false;
         }
 
@@ -455,13 +482,13 @@ function insertPart() {
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val()
 
-    if (PART_NO == "") {
+    if (PART_NO == "" || FIG_NO == "" || INDEX_NO == "" || QTY == "") {
         Swal.fire(
             'Warning!',
-            'Mohon sertakan Part Number ',
+            'Mohon input Part Number, Fiq No, Index NO & QTY',
             'warning'
         );
-        return false;
+        return;
     }
 
     let tRow = $("#table_part >tbody >tr").length;
@@ -499,6 +526,9 @@ function insertPart() {
                     dataType: "json",
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+                        $("#overlay").show();
+                    },
                     success: function (data) {
                         if (data.Remarks == true) {
                             $('#modal').modal('hide');
@@ -509,6 +539,7 @@ function insertPart() {
                                 'Message : ' + data.Message,
                                 'error'
                             );
+                            $("#overlay").hide();
                         }
 
                     },

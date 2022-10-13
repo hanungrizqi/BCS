@@ -58,13 +58,11 @@ function saveBacklog(dataStatus) {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             if (data.Remarks == true) {
-                if (dataStatus == "SAVED") {
-                    Swal.fire(
-                        'Saved!',
-                        'Data has been saved',
-                        'success'
-                    );
-                }
+                Swal.fire(
+                    'Saved!',
+                    'Data has been saved',
+                    'success'
+                );
             } if (data.Remarks == false) {
                 Swal.fire(
                     'Error!',
