@@ -539,9 +539,8 @@ function insertPart() {
                                 'Message : ' + data.Message,
                                 'error'
                             );
-                            $("#overlay").hide();
                         }
-
+                        $("#overlay").hide();
                     },
                     error: function (xhr) {
                         alert(xhr.responseText);
