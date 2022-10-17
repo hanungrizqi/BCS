@@ -65,6 +65,22 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
+        [Route("Get_ListBacklogReview/{dstrct}")]
+        public IHttpActionResult Get_ListBacklogReview(string dstrct)
+        {
+            try
+            {
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "OPEN").ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
         [Route("Get_ListLogistic/{dstrct}")]
         public IHttpActionResult Get_ListLogistic(string dstrct)
         {

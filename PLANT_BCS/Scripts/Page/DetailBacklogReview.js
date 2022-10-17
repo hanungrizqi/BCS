@@ -24,7 +24,6 @@ var table = $("#table_part").DataTable({
         { data: 'FIG_NO' },
         { data: 'INDEX_NO' },
         { data: 'QTY' },
-        //{ data: 'AVAILABLE_STOCK' },
         { data: 'LOCATION_ON_STOCK' },
         {
             data: 'ETA_SUPPLY',
@@ -36,7 +35,9 @@ var table = $("#table_part").DataTable({
                 return text;
             }
         },
-        { data: 'PART_CLASS' }
+        { data: 'PART_CLASS' },
+        { data: 'ACT_ONSITE_DATE' },
+        { data: 'ACT_ONSITE_DATE' }
     ],
 
 });

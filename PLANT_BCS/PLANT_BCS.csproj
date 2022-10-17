@@ -129,6 +129,7 @@
     <Compile Include="Controllers\LogisticController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PlannerController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4332,6 +4333,8 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\DetailBacklogReview.js" />
+    <Content Include="Scripts\Page\ListBacklogReview.js" />
     <Content Include="Scripts\Page\ListPartRequest.js" />
     <Content Include="Scripts\Page\RescheduledBacklog.js" />
     <Content Include="Scripts\Page\ETASupply.js" />
@@ -4394,6 +4397,8 @@
     <Content Include="Views\Planner\ListBacklog.cshtml" />
     <Content Include="Views\Planner\RescheduledBacklog.cshtml" />
     <Content Include="Views\Logistic\ListPartRequest.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Review\DetailBacklog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

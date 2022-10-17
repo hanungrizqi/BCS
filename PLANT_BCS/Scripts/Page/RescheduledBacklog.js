@@ -27,7 +27,7 @@ var table = $("#table_part").DataTable({
         { data: 'FIG_NO' },
         { data: 'INDEX_NO' },
         { data: 'QTY' },
-        { data: 'AVAILABLE_STOCK' },
+        //{ data: 'AVAILABLE_STOCK' },
         { data: 'LOCATION_ON_STOCK' },
         {
             data: 'ETA_SUPPLY',
@@ -35,6 +35,8 @@ var table = $("#table_part").DataTable({
                 let tempRepairDate1 = moment($("#txt_planRD1Temp").val()).format("DD/MM/YYYY");
                 let eta = moment(data).format("DD/MM/YYYY");
 
+                console.log("PlantRepair1 :" + tempRepairDate1);
+                console.log("ETA :" + eta);
                 let text = "";
 
                 if (eta > tempRepairDate1) {

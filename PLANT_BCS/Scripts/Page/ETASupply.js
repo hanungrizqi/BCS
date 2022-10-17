@@ -44,7 +44,7 @@ function saveBacklog(dataStatus) {
     $.each($("#table_part tbody tr"), function () {
         ListPart.push({
             PART_ID: $(this).find('input[name="txt_partid').val(),
-            AVAILABLE_STOCK: $(this).find('input[name="txt_availableStock').val(),
+            //AVAILABLE_STOCK: $(this).find('input[name="txt_availableStock').val(),
             LOCATION_ON_STOCK: $(this).find('[name="txt_los').val(),
             ETA_SUPPLY: $(this).find('input[name="txt_ETASupply').val(),
         });
@@ -81,11 +81,11 @@ function saveBacklog(dataStatus) {
 function submitBacklog(status) {
     let tRow = $("#table_part >tbody >tr").length;
     $.each($("#table_part tbody tr"), function (index) {
-        let AVAILABLE_STOCK = $(this).find('input[name="txt_availableStock').val(),
-            LOCATION_ON_STOCK = $(this).find('[name="txt_los').val(),
+        let LOCATION_ON_STOCK = $(this).find('[name="txt_los').val(),
+            //AVAILABLE_STOCK = $(this).find('input[name="txt_availableStock').val(),
             ETA_SUPPLY = $(this).find('input[name="txt_ETASupply').val();
 
-        if (AVAILABLE_STOCK == "" || LOCATION_ON_STOCK == "" || ETA_SUPPLY == "") {
+        if (/*AVAILABLE_STOCK == "" ||*/ LOCATION_ON_STOCK == "" || ETA_SUPPLY == "") {
             Swal.fire(
                 'Warning!',
                 'Pastikan data Recommended Part sudah terisi semua',

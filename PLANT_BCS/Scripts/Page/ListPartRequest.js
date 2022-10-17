@@ -37,7 +37,7 @@
         { data: 'QTY' },
         { data: 'FIG_NO' },
         { data: 'INDEX_NO' },
-        { data: 'AVAILABLE_STOCK' },
+        //{ data: 'AVAILABLE_STOCK' },
         { data: 'LOCATION_ON_STOCK' },
         {
             data: 'ETA_SUPPLY',
