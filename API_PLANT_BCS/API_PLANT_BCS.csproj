@@ -45,15 +45,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EllipseWebServicesClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\EllipseWebServicesClient.dll</HintPath>
+    </Reference>
     <Reference Include="LdapAuthentication">
       <HintPath>D:\KPP\Projects\PushNotif_WA\PushNotif_WA\bin\LdapAuthentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>D:\KPP\APPP\Epay\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework">
+      <HintPath>D:\KPP\APPP\Epay\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.9\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -65,6 +76,7 @@
     <Reference Include="System.Web.Http.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.9\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -168,6 +180,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BackLogController.cs" />
+    <Compile Include="Controllers\EllWOWRController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogisticController.cs" />
@@ -182,7 +195,30 @@
       <DependentUpon>DB_Plant_BCS.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ClsLogin.cs" />
+    <Compile Include="ViewModel\Cls_CreateWO.cs" />
+    <Compile Include="ViewModel\Cls_CreateWOWRResult.cs" />
+    <Compile Include="ViewModel\Cls_StockCode.cs" />
+    <Compile Include="Web References\RequisitionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WorkOrderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WorkService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -222,6 +258,10 @@
     <None Include="Models\DB_Plant_BCS.dbml.layout">
       <DependentUpon>DB_Plant_BCS.dbml</DependentUpon>
     </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -242,9 +282,340 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Web References\WorkService\ChartDataServiceResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\WorkOrderService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\RequisitionService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\RequisitionService\RequisitionService.wsdl" />
+    <Content Include="Web References\RequisitionService\RequisitionServiceCancelReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCancelReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateHeaderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateHeaderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateItemReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateItemReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceCreateReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDeleteHeaderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDeleteHeaderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDeleteItemReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDeleteItemReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDetailObjectNewReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceDetailObjectNewReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceFinaliseReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceFinaliseReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceItemCostShowReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceItemCostShowReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceModifyHeaderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceModifyHeaderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceModifyItemReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceModifyItemReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceReadReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceReadReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceRetrDistrictControlReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceRetrDistrictControlReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceRetrieveDefaultsReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceRetrieveItemReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceRetrieveReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceShowReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceShowReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateAPLReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateAPLReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateItemReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateItemReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateReqNoReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\RequisitionService\RequisitionServiceValidateReqNoReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WorkOrderService\WorkOrderService.wsdl" />
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAssignToIndividualReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAssignToIndividualReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAuthoriseReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAuthoriseReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAutoRequisitionReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceAutoRequisitionReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceBulkCloseWorkOrderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceBulkCloseWorkOrderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceBulkReScheduleWorkOrderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceBulkReScheduleWorkOrderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCancelReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCancelReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceChangeAccountReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceChangeAccountReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCompleteReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCompleteReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCreateReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCreateReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCreateWorkOrderDurationReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceCreateWorkOrderDurationReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeferReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeferReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeleteReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeleteReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeleteWorkOrderDurationReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDeleteWorkOrderDurationReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDetailObjectNewReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceDetailObjectNewReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceFetchDefaultRisksReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceFetchDefaultRisksReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceFinaliseReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceFinaliseReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceGenerateBPUReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceGenerateBPUReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceMatchReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceMatchReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceMergeStdJobReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceMergeStdJobReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceModifyReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceModifyReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceModifyWorkOrderDurationReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceModifyWorkOrderDurationReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServicePrintJobCardReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServicePrintJobCardReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceReadReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceReadReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRecordWorkProgressReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRecordWorkProgressReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceReopenReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceReopenReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveContrCostsReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveTaskResourcesReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveViaRefCodesReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveWorkOrderDurationReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceRetrieveWOUStatusHistoryReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceScheduleReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceScheduleReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceShowReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceShowReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUnscheduleWorkOrderReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUnscheduleWorkOrderReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUpdateEstimatesReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUpdateEstimatesReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUpdateUserStatusReplyCollectionDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WorkOrderService\WorkOrderServiceUpdateUserStatusReplyDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WorkService\WorkService.wsdl" />
+    <Content Include="Web References\WorkService\WorkServiceResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DataOracleBacklog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -277,6 +648,47 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://ews-kpd.kppmining.net/ews/services/RequisitionService%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RequisitionService\</RelPath>
+      <UpdateFromURL>https://ews-kpd.kppmining.net/ews/services/RequisitionService%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>API_PLANT_BCS_RequisitionService_RequisitionService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://ews-kpd.kppmining.net/ews/services/WorkOrderService%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WorkOrderService\</RelPath>
+      <UpdateFromURL>https://ews-kpd.kppmining.net/ews/services/WorkOrderService%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>API_PLANT_BCS_WorkOrderService_WorkOrderService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://ews-kpp.kppmining.net/ews/services/WorkService%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WorkService\</RelPath>
+      <UpdateFromURL>https://ews-kpp.kppmining.net/ews/services/WorkService%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>API_PLANT_BCS_WorkService_WorkService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

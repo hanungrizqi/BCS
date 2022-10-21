@@ -4333,7 +4333,9 @@
     <Content Include="Content\assets\_scss\vendor\_simplemde.scss" />
     <Content Include="Content\assets\_scss\vendor\_slick.scss" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Page\DetailBacklogWOWR.js" />
     <Content Include="Scripts\Page\DetailBacklogReview.js" />
+    <Content Include="Scripts\Page\ListBacklogWOWR.js" />
     <Content Include="Scripts\Page\ListBacklogReview.js" />
     <Content Include="Scripts\Page\ListPartRequest.js" />
     <Content Include="Scripts\Page\RescheduledBacklog.js" />
@@ -4399,6 +4401,8 @@
     <Content Include="Views\Logistic\ListPartRequest.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Review\DetailBacklog.cshtml" />
+    <Content Include="Views\Backlog\CreateWOWR.cshtml" />
+    <Content Include="Views\Backlog\DetailWOWR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />

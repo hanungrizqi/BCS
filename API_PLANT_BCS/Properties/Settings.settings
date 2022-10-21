@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="API_PLANT_BCS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="API_PLANT_BCS_WorkOrderService_WorkOrderService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/WorkOrderService</Value>
+    </Setting>
+    <Setting Name="API_PLANT_BCS_WorkService_WorkService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/WorkService</Value>
+    </Setting>
+    <Setting Name="API_PLANT_BCS_RequisitionService_RequisitionService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/RequisitionService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

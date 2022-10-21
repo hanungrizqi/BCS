@@ -340,4 +340,11 @@
       <Column Name="STATUS" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.TBL_H_BACKLOG_WO_WR" Member="TBL_H_BACKLOG_WO_WRs">
+    <Type Name="TBL_H_BACKLOG_WO_WR">
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WO_NO" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IREQ_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

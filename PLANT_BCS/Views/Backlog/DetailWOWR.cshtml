@@ -1,0 +1,285 @@
+﻿
+@{
+    ViewBag.Title = "DetailWOWR";
+    ViewBag.JS = "/Scripts/Page/DetailBacklogWOWR.js";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<input type="text" id="txt_eqNumberTemp" value="@ViewBag.BackLog.EQP_NUMBER" hidden />
+<input type="text" id="txt_compCodeTemp" value="@ViewBag.BackLog.COMP_CODE" hidden />
+<input type="text" id="txt_sourceTemp" value="@ViewBag.BackLog.SOURCE" hidden />
+<input type="text" id="txt_standJobTemp" value="@ViewBag.BackLog.STD_JOB" hidden />
+<input type="text" id="txt_nrpGlTemp" value="@ViewBag.BackLog.NRP_GL" hidden />
+<input type="text" id="txt_oriIDTemp" value="@ViewBag.BackLog.ORIGINATOR_ID" hidden />
+
+
+<h2 class="content-heading">Detail Backlog</h2>
+
+<div class="block block-rounded block-link-shadow">
+    <div class="block-content">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-md-6">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_noBl">No Backlog</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_noBl" name="txt_noBl" value="@ViewBag.BackLog.NO_BACKLOG" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_dstrct">District</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_dstrct" name="txt_dstrct" value="@ViewBag.BackLog.DSTRCT_CODE" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_eqNumber">Eqp Number</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_eqNumber" name="txt_eqNumber" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_compCode">Component Code</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_compCode" name="txt_compCode" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_egi">EGI</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_egi" name="txt_egi" value="@ViewBag.BackLog.EGI" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_hm">HM</label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control form-control-sm " id="txt_hm" name="txt_hm" value="@ViewBag.BackLog.HM">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_blDesc">Backlog Description</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_blDesc" name="txt_blDesc" value="@ViewBag.BackLog.BACKLOG_DESC">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_dInspecton">Inspecton Date</label>
+                    <div class="col-sm-8">
+                        @if (@ViewBag.BackLog.INSPECTON_DATE == null)
+                        {
+                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton">
+                        }
+                        else
+                        {
+                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton" value="@ViewBag.BackLog.INSPECTON_DATE.ToString("yyyy-MM-dd")">
+                        }
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_inspector">Inspector</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_inspector" name="txt_inspector" value="@ViewBag.BackLog.INSPECTOR" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_source">Sources</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_source" name="txt_source" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_wg">Work Group</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_wg" name="txt_wg" value="@ViewBag.BackLog.WORK_GROUP" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_standJob">Standard Job</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_standJob" name="txt_standJob" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_nrpGl">NRP GL</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_nrpGl" name="txt_nrpGl" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_oriID">Originator ID</label>
+                    <div class="col-sm-8">
+                        <select class="js-select2 form-select" id="txt_oriID" name="txt_oriID" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_planRD1">Plan Repair Date 1</label>
+                    <div class="col-sm-8">
+                        @if (@ViewBag.BackLog.PLAN_REPAIR_DATE_1 == null)
+                        {
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1">
+                        }
+                        else
+                        {
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_1.ToString("yyyy-MM-dd")">
+                        }
+
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_planRD2">Plan Repair Date 2</label>
+                    <div class="col-sm-8">
+                        @if (@ViewBag.BackLog.PLAN_REPAIR_DATE_2 == null)
+                        {
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2">
+                        }
+                        else
+                        {
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_2.ToString("yyyy-MM-dd")">
+                        }
+
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_mp">Manpower</label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control form-control-sm " id="txt_mp" name="txt_mp" value="@ViewBag.BackLog.MANPOWER">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_hEst">Hour Estimation</label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control form-control-sm" step="any" id="txt_hEst" name="txt_hEst" value="@ViewBag.BackLog.HOUR_EST.ToString().Replace(",",".")">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="txt_posBL">Posisi Backlog</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm " id="txt_posBL" name="txt_posBL" value="@ViewBag.BackLog.POSISI_BACKLOG" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+        <div class="block-options justify-content-center">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-sm btn-success" value="save" onclick="saveBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-rounded block-link-shadow">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Recommended Part</h3>
+    </div>
+    <div class="block-content">
+        <div class="row justify-content-center pb-4">
+            <div class="col-sm-12 col-md-12 table-responsive">
+                <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination w-100" id="table_part">
+                    <thead class="text-center">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Part No</th>
+                            <th>Stock Code</th>
+                            <th>Part Description</th>
+                            <th>Fig No</th>
+                            <th>Index No</th>
+                            <th>Qty</th>
+                            <th>WH ID</th>
+                            <th>ETA Supply</th>
+                            <th>Part Class</th>
+                            <th>Ready Part Date</th>
+                            <th>Actual Supply Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-rounded block-link-shadow">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Recommended Repair</h3>
+    </div>
+    <div class="block-content">
+        <div class="row justify-content-center pb-4">
+            <div class="col-sm-12 col-md-12 table-responsive">
+                <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination w-100 nowrap" id="table_repair">
+                    <thead class="text-center">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Problem Description</th>
+                            <th>Activity Repair</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-rounded block-link-shadow" id="PartError">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Table Part Error</h3>
+    </div>
+    <div class="block-content">
+        <div class="row justify-content-center pb-4">
+            <div class="col-sm-12 col-md-12 table-responsive">
+                <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination w-100 nowrap" id="table_error">
+                    <thead class="text-center">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Stock Code</th>
+                            <th>Substitusi</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block-rounded block-link-shadow">
+    <div class="block-header">
+        <h3 class="block-title">Delivery Instruction</h3>
+    </div>
+    <div class="block-content">
+        <div class="mb-3">
+            <textarea class="form-control form-control-sm" id="txt_note" name="txt_note"></textarea>
+        </div>
+    </div>
+    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+        <div class="block-options justify-content-center">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <a href="/Backlog/ListBacklog" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
+                    <button type="submit" class="btn btn-sm btn-success" value="create" onclick="saveBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Create WO &amp; WR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -93,6 +93,52 @@ namespace PLANT_BCS.Controllers
             ViewBag.noBacklog = noBacklog;
             return View();
         }
+        
+        public ActionResult CreateWOWR(string noBacklog)
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            ViewBag.noBacklog = noBacklog;
+            return View();
+        }
+
+        public async Task<ActionResult> DetailWOWR(string noBacklog)
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
+
+            using (var client = new HttpClient())
+            {
+                //Passing service base url  
+                client.BaseAddress = new Uri((string)Session["Web_Link"]);
+
+                client.DefaultRequestHeaders.Clear();
+                //Define request data format  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                HttpResponseMessage Res = await client.GetAsync("api/BackLog/Get_BacklogDetail/" + noBacklog);
+
+                //Checking the response is successful or not which is sent using HttpClient  
+                if (Res.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    var ApiResponse = Res.Content.ReadAsStringAsync().Result;
+                    Cls_Backlog data = new Cls_Backlog();
+                    data = JsonConvert.DeserializeObject<Cls_Backlog>(ApiResponse);
+
+                    tbl = data.tbl;
+
+                }
+                ViewBag.BackLog = tbl;
+            }
+            return View();
+        }
 
         public async Task<ActionResult> EditBacklog(string noBacklog)
         {

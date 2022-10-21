@@ -57,6 +57,9 @@ namespace API_PLANT_BCS.Models
     partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void InsertTBL_H_BACKLOG_WO_WR(TBL_H_BACKLOG_WO_WR instance);
+    partial void UpdateTBL_H_BACKLOG_WO_WR(TBL_H_BACKLOG_WO_WR instance);
+    partial void DeleteTBL_H_BACKLOG_WO_WR(TBL_H_BACKLOG_WO_WR instance);
     #endregion
 		
 		public DB_Plant_BCSDataContext() : 
@@ -286,6 +289,14 @@ namespace API_PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<VW_PART_BACKLOG>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_H_BACKLOG_WO_WR> TBL_H_BACKLOG_WO_WRs
+		{
+			get
+			{
+				return this.GetTable<TBL_H_BACKLOG_WO_WR>();
 			}
 		}
 	}
@@ -5452,6 +5463,116 @@ namespace API_PLANT_BCS.Models
 				{
 					this._STATUS = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_H_BACKLOG_WO_WR")]
+	public partial class TBL_H_BACKLOG_WO_WR : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _NO_BACKLOG;
+		
+		private string _WO_NO;
+		
+		private string _IREQ_NO;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNO_BACKLOGChanging(string value);
+    partial void OnNO_BACKLOGChanged();
+    partial void OnWO_NOChanging(string value);
+    partial void OnWO_NOChanged();
+    partial void OnIREQ_NOChanging(string value);
+    partial void OnIREQ_NOChanged();
+    #endregion
+		
+		public TBL_H_BACKLOG_WO_WR()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this.OnNO_BACKLOGChanging(value);
+					this.SendPropertyChanging();
+					this._NO_BACKLOG = value;
+					this.SendPropertyChanged("NO_BACKLOG");
+					this.OnNO_BACKLOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WO_NO", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string WO_NO
+		{
+			get
+			{
+				return this._WO_NO;
+			}
+			set
+			{
+				if ((this._WO_NO != value))
+				{
+					this.OnWO_NOChanging(value);
+					this.SendPropertyChanging();
+					this._WO_NO = value;
+					this.SendPropertyChanged("WO_NO");
+					this.OnWO_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IREQ_NO", DbType="VarChar(50)")]
+		public string IREQ_NO
+		{
+			get
+			{
+				return this._IREQ_NO;
+			}
+			set
+			{
+				if ((this._IREQ_NO != value))
+				{
+					this.OnIREQ_NOChanging(value);
+					this.SendPropertyChanging();
+					this._IREQ_NO = value;
+					this.SendPropertyChanged("IREQ_NO");
+					this.OnIREQ_NOChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -54,7 +54,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "LOGISTIC APPROVED").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner1").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -81,12 +81,28 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
+        [Route("Get_ListBacklogWOWR/{dstrct}")]
+        public IHttpActionResult Get_ListBacklogWOWR(string dstrct)
+        {
+            try
+            {
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS=="OPEN").ToList();
+
+                return Ok(new { Data = data });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        
+        [HttpGet]
         [Route("Get_ListLogistic/{dstrct}")]
         public IHttpActionResult Get_ListLogistic(string dstrct)
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "PLANNER APPROVED").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -102,7 +118,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "SUBMITTED").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "Planner").ToList();
 
                 return Ok(new { Data = data });
             }

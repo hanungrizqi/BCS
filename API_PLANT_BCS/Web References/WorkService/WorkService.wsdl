@@ -1,0 +1,3570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns4="http://instances.base.types.ellipse.mincom.com" xmlns:ns5="http://attribute.ellipse.mincom.com" xmlns:ns6="http://errors.ellipse.mincom.com" xmlns:ns7="http://instances.m1000.types.ellipse.mincom.com" xmlns:ns1="http://connectivity.service.ews.mincom.com" xmlns:ns2="http://instances.m3620.types.ellipse.mincom.com" xmlns:ns3="http://service.ellipse.mincom.com" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:tns="http://work.m3620.service.ellipse.mincom.com" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://work.m3620.service.ellipse.mincom.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://connectivity.service.ews.mincom.com">
+      <xsd:complexType name="OperationContext">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="applicationClientId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="district" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eventDisable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="maxInstances" type="xsd:int" />
+          <xsd:element minOccurs="0" name="position" type="xsd:string" />
+          <xsd:element minOccurs="0" name="returnWarnings" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="runAs" type="ns1:RunAs" />
+          <xsd:element minOccurs="0" name="tenantId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="trace" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="transaction" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RunAs">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="district" type="xsd:string" />
+          <xsd:element minOccurs="0" name="position" type="xsd:string" />
+          <xsd:element minOccurs="0" name="user" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://instances.m3620.types.ellipse.mincom.com">
+      <xsd:import namespace="http://service.ellipse.mincom.com" />
+      <xsd:complexType name="ArrayOfWorkDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="WorkDTO" nillable="true" type="ns2:WorkDTO" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="jobCode9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode8">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode7">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualEquipmentCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode6">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="revenueCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="compCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="conAstSegTo">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.999999" />
+          <xsd:minInclusive value="-9999999.999999" />
+          <xsd:fractionDigits value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="delivInstrB">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="60" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lastModTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="delivInstrA">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="60" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="projectNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentClassDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentNoDescription2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="recallTime">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentNoDescription1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownEquipmentNoDescription2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="integUpdateSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownEquipmentNoDescription1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="billableInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownNoDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planStatType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="grantFunding">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationCrEe">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="matRequisitionAllowed">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="requisitionStartTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="copyTasksFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="catwNotPerdDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualDurationsHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="originatorId">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedDurationsFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualTotalCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo1">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedDurationsHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderJobCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="400" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dateInServiceModTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="AFUDCSuspendEnabled">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="protectLevel">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="-999.0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="noticeLocn">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="linkedInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode6Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="varLabHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualOtherCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="locationFr">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="billingLevelInd">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="payrFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="varOthCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="WPUpdateInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedLabFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="emailAddress">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="320" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unitsInvCharge">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="sjDistrictCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobIndEnabled">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="PTWExistsInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="textToCopyInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode8Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="stdJobNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo6">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo7">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planStrDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="varLabCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo4">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo5">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="relatedWorkOrderDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="MSSSEnabledInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="origDocType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="compModCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo8">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo9">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode1Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="linkedToWorkOrder">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="printerIdDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationWo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="outServTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="lastTranReallocation">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="13" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentClass">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentStatusDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="noticeLocationDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="associatedBPU">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="creationTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="mustStartInd">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="origSchedDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="requestDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="contractorCostsExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="directRevenue">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationVarAccountDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="graphHours">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="requisitionStartDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="actualCostInv">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="serviceOnDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="custNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="copyDocsLinkedFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="origPriority">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="completionTextExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentLocation">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="graphOth">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="offsetHours">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="1000000000000000000" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="authsdTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="currStatDt2">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="msssStatusInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationCrEeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualLabHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="currStatDt1">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedMatFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobIndicator">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderRefType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AFUDCDateInService">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="purchOrderItem">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="capitalProcess">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode9Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="copyDistrictCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planStatVal">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="docLinkInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderStatusU">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderStatusM">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW0Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="suppFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownEquipmentRef">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dateInServiceModDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="varEqpCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="l1FailurePart">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedLabCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="purchOrderNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="warehouseId">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationDefCrEe">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationCostAccountDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="extendedTextExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="assocEquipmentItemNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="extendedText">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="origDocNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="copyEqpFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="crew">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCode10">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="requestId">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="crewDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="authsdBy">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="assocEquipmentItemDescription2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="assocEquipmentItemDescription1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="dateInServiceModUser">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentLocationDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="indirectInvAmt">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="l1Mnemonic">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="valueEarned">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="billCrtedFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="linkType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="priorityCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="maintenanceSchedTask">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="costUpperLimit">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedLabHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="graphEquipment">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo10">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lastModEmp">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planPriorityDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="origDocTypeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="arFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="maintenanceType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedLabHrs">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="-999999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="creationDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="catwDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="compCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode2Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="conAstSegFr">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.999999" />
+          <xsd:minInclusive value="-9999999.999999" />
+          <xsd:fractionDigits value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="parentWorkOrderDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="datePendingSwitch">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="serviceOnTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="districtCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderStatusUDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="authsdDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="routeExistFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW5CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationDefDrEe">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="delivLocation">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unitOfWorkDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationMethodDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode8">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedMatCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode6">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode7">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="assocEquipmentItem">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="completedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="finalCosts">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationVarAccount">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="24" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="origMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualCostReallocation">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationFreqInd">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW0">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="custNoDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="associatedBPULiteral">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="varTotCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planFinTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="unschedFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="accountCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="24" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="entityType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedTotalCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW7">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW6">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedEquipmentCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW8">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="completedByDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="earnCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobQuestW4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="printerId">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="authsdPosition">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="compModCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planPriority">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="serviceOffTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="workGroup">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="7" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="respondedTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode7Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedOtherCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="copyRequestId">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedLabCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderJobCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderStatusMDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="custMnemonic">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedMatCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unitsRequired">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="districtCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="revenueCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="capitalWorkOrderSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode5Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="displayRiskInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="dirAmtCap">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW6CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownEquipmentNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="failureEquipmentRef">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="closedDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationCostAccount">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="24" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="requiredByTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="psFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="outputMeasureType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="view">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualRevenue">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedTotalFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo6">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo7">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="offsetDays">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="1000000000000000000" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo8">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="failureEquipmentDescription1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="failureEquipmentDescription2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="80" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planOffsetSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCardMed">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jnlFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrder">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="raisedDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="versionNo9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="mstStatType2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workGroupDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="catwNotPerd">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="mstStatType1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="defStrTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderPrefix">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedEquipmentFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="scheduledInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="copyResFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="estimatedOtherCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="closedStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualStartTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="planStatTypeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="uowRate">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="assignPersonDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="locnSpecialNeedsDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="failureEquipmentNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW3CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="instWOFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="AFUDCSuspendFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="autoRequisitionInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedOtherFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="BPIExistFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="icons">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW7CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="ignoreConflict">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="actualFinishTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualTotalRev">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="pcComplete">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="equipmentRef">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="planFinDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="noTasksCompl">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999.0" />
+          <xsd:minInclusive value="-9999.0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="location">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationProjectDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lnrScaleUnitsReqd">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="autoRequisitionErrorFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="noOfTasks">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode3Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="requiredByDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="shutdownTypeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="closedTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="completedCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unitOfWork">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="calculatedEquipmentCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW4Answer5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8Answer4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8Answer3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8Answer2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="APTWExistsInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8Answer1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="origPriorityDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="accountCodeEnabled">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="catwCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW2CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="lastModUser">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="taskAPTWExistsInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="closeCommitDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW1CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="parentWo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="glFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="graphMat">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="lastModDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="copyMatFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="locationDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationProject">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="installBPUCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="offsetType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="immdtInspFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode4Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="maintenanceTypeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="serviceOffDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="actualLabCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="projectNoDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="graphLab">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualMatCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderDesc">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="accountCodeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="respondedDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW8CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="completedCodeDefault">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode10Description">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="paperHist">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="varMatCost">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="completionText">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="locationFrDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="printJobCardInd">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="currStat2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="currStat1">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999999999.99" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="itemNo10">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.0" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="apFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="defStpTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="raisedTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="planStrTime">
+        <xsd:restriction base="xsd:time" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationMarginPc">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="999.99" />
+          <xsd:minInclusive value="-999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="linkSchedule">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription8">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="l1PartNo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription7">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription6">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription5">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="includeTasks">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription1">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="offsetMinutes">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="1000000000000000000" />
+          <xsd:minInclusive value="0" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="noticePeriodFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="authsdByDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="crteInsitu">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="permitReqdSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualFinishDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="riskCode10">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="workOrderTypeDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quoteValue">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="noticeExistFlg">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="assignPerson">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="copyWorkOrder">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AFUDCDteEnabled">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="labcFinalSw">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobCodeDescription10">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="actualStartDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="unitsComplete">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="9999999.99" />
+          <xsd:minInclusive value="-9999999.99" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="entityCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="removeBPUCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="failurePart">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="outServDate">
+        <xsd:restriction base="xsd:date" />
+      </xsd:simpleType>
+      <xsd:simpleType name="relatedWo">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="8" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="highestTask">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="recalcRequisitionFlag">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="jobW9CommentExists">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="originatorIdDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="faxNumber">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="reallocationLimitVal">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:maxInclusive value="10000000000000000000" />
+          <xsd:minInclusive value="-10000000000000000000" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="protRequiredByDate">
+        <xsd:restriction base="xsd:boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType name="completedBy">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="WorkDTO">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:ServiceDTO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="AFUDCDateInService" type="ns2:AFUDCDateInService" />
+              <xsd:element minOccurs="0" name="AFUDCDteEnabled" type="ns2:AFUDCDteEnabled" />
+              <xsd:element minOccurs="0" name="AFUDCSuspendEnabled" type="ns2:AFUDCSuspendEnabled" />
+              <xsd:element minOccurs="0" name="AFUDCSuspendFlag" type="ns2:AFUDCSuspendFlag" />
+              <xsd:element minOccurs="0" name="APTWExistsInd" type="ns2:APTWExistsInd" />
+              <xsd:element minOccurs="0" name="BPIExistFlag" type="ns2:BPIExistFlag" />
+              <xsd:element minOccurs="0" name="MSSSEnabledInd" type="ns2:MSSSEnabledInd" />
+              <xsd:element minOccurs="0" name="PTWExistsInd" type="ns2:PTWExistsInd" />
+              <xsd:element minOccurs="0" name="WPUpdateInd" type="ns2:WPUpdateInd" />
+              <xsd:element minOccurs="0" name="accountCode" type="ns2:accountCode" />
+              <xsd:element minOccurs="0" name="accountCodeDescription" type="ns2:accountCodeDescription" />
+              <xsd:element minOccurs="0" name="accountCodeEnabled" type="ns2:accountCodeEnabled" />
+              <xsd:element minOccurs="0" name="actualCostInv" type="ns2:actualCostInv" />
+              <xsd:element minOccurs="0" name="actualCostReallocation" type="ns2:actualCostReallocation" />
+              <xsd:element minOccurs="0" name="actualDurationsHrs" type="ns2:actualDurationsHrs" />
+              <xsd:element minOccurs="0" name="actualEquipmentCost" type="ns2:actualEquipmentCost" />
+              <xsd:element minOccurs="0" name="actualFinishDate" type="ns2:actualFinishDate" />
+              <xsd:element minOccurs="0" name="actualFinishTime" type="ns2:actualFinishTime" />
+              <xsd:element minOccurs="0" name="actualLabCost" type="ns2:actualLabCost" />
+              <xsd:element minOccurs="0" name="actualLabHrs" type="ns2:actualLabHrs" />
+              <xsd:element minOccurs="0" name="actualMatCost" type="ns2:actualMatCost" />
+              <xsd:element minOccurs="0" name="actualOtherCost" type="ns2:actualOtherCost" />
+              <xsd:element minOccurs="0" name="actualRevenue" type="ns2:actualRevenue" />
+              <xsd:element minOccurs="0" name="actualStartDate" type="ns2:actualStartDate" />
+              <xsd:element minOccurs="0" name="actualStartTime" type="ns2:actualStartTime" />
+              <xsd:element minOccurs="0" name="actualTotalCost" type="ns2:actualTotalCost" />
+              <xsd:element minOccurs="0" name="actualTotalRev" type="ns2:actualTotalRev" />
+              <xsd:element minOccurs="0" name="apFinalSw" type="ns2:apFinalSw" />
+              <xsd:element minOccurs="0" name="arFinalSw" type="ns2:arFinalSw" />
+              <xsd:element minOccurs="0" name="assignPerson" type="ns2:assignPerson" />
+              <xsd:element minOccurs="0" name="assignPersonDescription" type="ns2:assignPersonDescription" />
+              <xsd:element minOccurs="0" name="assocEquipmentItem" type="ns2:assocEquipmentItem" />
+              <xsd:element minOccurs="0" name="assocEquipmentItemDescription1" type="ns2:assocEquipmentItemDescription1" />
+              <xsd:element minOccurs="0" name="assocEquipmentItemDescription2" type="ns2:assocEquipmentItemDescription2" />
+              <xsd:element minOccurs="0" name="assocEquipmentItemNo" type="ns2:assocEquipmentItemNo" />
+              <xsd:element minOccurs="0" name="associatedBPU" type="ns2:associatedBPU" />
+              <xsd:element minOccurs="0" name="associatedBPULiteral" type="ns2:associatedBPULiteral" />
+              <xsd:element minOccurs="0" name="authsdBy" type="ns2:authsdBy" />
+              <xsd:element minOccurs="0" name="authsdByDescription" type="ns2:authsdByDescription" />
+              <xsd:element minOccurs="0" name="authsdDate" type="ns2:authsdDate" />
+              <xsd:element minOccurs="0" name="authsdPosition" type="ns2:authsdPosition" />
+              <xsd:element minOccurs="0" name="authsdTime" type="ns2:authsdTime" />
+              <xsd:element minOccurs="0" name="autoRequisitionErrorFlag" type="ns2:autoRequisitionErrorFlag" />
+              <xsd:element minOccurs="0" name="autoRequisitionInd" type="ns2:autoRequisitionInd" />
+              <xsd:element minOccurs="0" name="billCrtedFlag" type="ns2:billCrtedFlag" />
+              <xsd:element minOccurs="0" name="billableInd" type="ns2:billableInd" />
+              <xsd:element minOccurs="0" name="billingLevelInd" type="ns2:billingLevelInd" />
+              <xsd:element minOccurs="0" name="calculatedDurationsFlag" type="ns2:calculatedDurationsFlag" />
+              <xsd:element minOccurs="0" name="calculatedEquipmentCost" type="ns2:calculatedEquipmentCost" />
+              <xsd:element minOccurs="0" name="calculatedEquipmentFlag" type="ns2:calculatedEquipmentFlag" />
+              <xsd:element minOccurs="0" name="calculatedLabCost" type="ns2:calculatedLabCost" />
+              <xsd:element minOccurs="0" name="calculatedLabFlag" type="ns2:calculatedLabFlag" />
+              <xsd:element minOccurs="0" name="calculatedLabHrs" type="ns2:calculatedLabHrs" />
+              <xsd:element minOccurs="0" name="calculatedMatCost" type="ns2:calculatedMatCost" />
+              <xsd:element minOccurs="0" name="calculatedMatFlag" type="ns2:calculatedMatFlag" />
+              <xsd:element minOccurs="0" name="calculatedOtherCost" type="ns2:calculatedOtherCost" />
+              <xsd:element minOccurs="0" name="calculatedOtherFlag" type="ns2:calculatedOtherFlag" />
+              <xsd:element minOccurs="0" name="calculatedTotalFlag" type="ns2:calculatedTotalFlag" />
+              <xsd:element minOccurs="0" name="capitalProcess" type="ns2:capitalProcess" />
+              <xsd:element minOccurs="0" name="capitalWorkOrderSw" type="ns2:capitalWorkOrderSw" />
+              <xsd:element minOccurs="0" name="catwCode" type="ns2:catwCode" />
+              <xsd:element minOccurs="0" name="catwDescription" type="ns2:catwDescription" />
+              <xsd:element minOccurs="0" name="catwNotPerd" type="ns2:catwNotPerd" />
+              <xsd:element minOccurs="0" name="catwNotPerdDescription" type="ns2:catwNotPerdDescription" />
+              <xsd:element minOccurs="0" name="closeCommitDate" type="ns2:closeCommitDate" />
+              <xsd:element minOccurs="0" name="closedDate" type="ns2:closedDate" />
+              <xsd:element minOccurs="0" name="closedStatus" type="ns2:closedStatus" />
+              <xsd:element minOccurs="0" name="closedTime" type="ns2:closedTime" />
+              <xsd:element minOccurs="0" name="compCode" type="ns2:compCode" />
+              <xsd:element minOccurs="0" name="compCodeDescription" type="ns2:compCodeDescription" />
+              <xsd:element minOccurs="0" name="compModCode" type="ns2:compModCode" />
+              <xsd:element minOccurs="0" name="compModCodeDescription" type="ns2:compModCodeDescription" />
+              <xsd:element minOccurs="0" name="completedBy" type="ns2:completedBy" />
+              <xsd:element minOccurs="0" name="completedByDescription" type="ns2:completedByDescription" />
+              <xsd:element minOccurs="0" name="completedCode" type="ns2:completedCode" />
+              <xsd:element minOccurs="0" name="completedCodeDefault" type="ns2:completedCodeDefault" />
+              <xsd:element minOccurs="0" name="completedCodeDescription" type="ns2:completedCodeDescription" />
+              <xsd:element minOccurs="0" name="completionText" type="ns2:completionText" />
+              <xsd:element minOccurs="0" name="completionTextExists" type="ns2:completionTextExists" />
+              <xsd:element minOccurs="0" name="conAstSegFr" type="ns2:conAstSegFr" />
+              <xsd:element minOccurs="0" name="conAstSegTo" type="ns2:conAstSegTo" />
+              <xsd:element minOccurs="0" name="contractorCostsExists" type="ns2:contractorCostsExists" />
+              <xsd:element minOccurs="0" name="copyDistrictCode" type="ns2:copyDistrictCode" />
+              <xsd:element minOccurs="0" name="copyDocsLinkedFlg" type="ns2:copyDocsLinkedFlg" />
+              <xsd:element minOccurs="0" name="copyEqpFlag" type="ns2:copyEqpFlag" />
+              <xsd:element minOccurs="0" name="copyMatFlag" type="ns2:copyMatFlag" />
+              <xsd:element minOccurs="0" name="copyRequestId" type="ns2:copyRequestId" />
+              <xsd:element minOccurs="0" name="copyResFlag" type="ns2:copyResFlag" />
+              <xsd:element minOccurs="0" name="copyTasksFlg" type="ns2:copyTasksFlg" />
+              <xsd:element minOccurs="0" name="copyWorkOrder" type="ns2:copyWorkOrder" />
+              <xsd:element minOccurs="0" name="costUpperLimit" type="ns2:costUpperLimit" />
+              <xsd:element minOccurs="0" name="creationDate" type="ns2:creationDate" />
+              <xsd:element minOccurs="0" name="creationTime" type="ns2:creationTime" />
+              <xsd:element minOccurs="0" name="crew" type="ns2:crew" />
+              <xsd:element minOccurs="0" name="crewDescription" type="ns2:crewDescription" />
+              <xsd:element minOccurs="0" name="crteInsitu" type="ns2:crteInsitu" />
+              <xsd:element minOccurs="0" name="currStat1" type="ns2:currStat1" />
+              <xsd:element minOccurs="0" name="currStat2" type="ns2:currStat2" />
+              <xsd:element minOccurs="0" name="currStatDt1" type="ns2:currStatDt1" />
+              <xsd:element minOccurs="0" name="currStatDt2" type="ns2:currStatDt2" />
+              <xsd:element minOccurs="0" name="custMnemonic" type="ns2:custMnemonic" />
+              <xsd:element minOccurs="0" name="custNo" type="ns2:custNo" />
+              <xsd:element minOccurs="0" name="custNoDescription" type="ns2:custNoDescription" />
+              <xsd:element minOccurs="0" name="dateInServiceModDate" type="ns2:dateInServiceModDate" />
+              <xsd:element minOccurs="0" name="dateInServiceModTime" type="ns2:dateInServiceModTime" />
+              <xsd:element minOccurs="0" name="dateInServiceModUser" type="ns2:dateInServiceModUser" />
+              <xsd:element minOccurs="0" name="datePendingSwitch" type="ns2:datePendingSwitch" />
+              <xsd:element minOccurs="0" name="defStpTime" type="ns2:defStpTime" />
+              <xsd:element minOccurs="0" name="defStrTime" type="ns2:defStrTime" />
+              <xsd:element minOccurs="0" name="delivInstrA" type="ns2:delivInstrA" />
+              <xsd:element minOccurs="0" name="delivInstrB" type="ns2:delivInstrB" />
+              <xsd:element minOccurs="0" name="delivLocation" type="ns2:delivLocation" />
+              <xsd:element minOccurs="0" name="dirAmtCap" type="ns2:dirAmtCap" />
+              <xsd:element minOccurs="0" name="directRevenue" type="ns2:directRevenue" />
+              <xsd:element minOccurs="0" name="displayRiskInd" type="ns2:displayRiskInd" />
+              <xsd:element minOccurs="0" name="districtCode" type="ns2:districtCode" />
+              <xsd:element minOccurs="0" name="districtCodeDescription" type="ns2:districtCodeDescription" />
+              <xsd:element minOccurs="0" name="docLinkInd" type="ns2:docLinkInd" />
+              <xsd:element minOccurs="0" name="earnCode" type="ns2:earnCode" />
+              <xsd:element minOccurs="0" name="emailAddress" type="ns2:emailAddress" />
+              <xsd:element minOccurs="0" name="entityCode" type="ns2:entityCode" />
+              <xsd:element minOccurs="0" name="entityType" type="ns2:entityType" />
+              <xsd:element minOccurs="0" name="equipmentClass" type="ns2:equipmentClass" />
+              <xsd:element minOccurs="0" name="equipmentClassDescription" type="ns2:equipmentClassDescription" />
+              <xsd:element minOccurs="0" name="equipmentLocation" type="ns2:equipmentLocation" />
+              <xsd:element minOccurs="0" name="equipmentLocationDescription" type="ns2:equipmentLocationDescription" />
+              <xsd:element minOccurs="0" name="equipmentNo" type="ns2:equipmentNo" />
+              <xsd:element minOccurs="0" name="equipmentNoDescription1" type="ns2:equipmentNoDescription1" />
+              <xsd:element minOccurs="0" name="equipmentNoDescription2" type="ns2:equipmentNoDescription2" />
+              <xsd:element minOccurs="0" name="equipmentRef" type="ns2:equipmentRef" />
+              <xsd:element minOccurs="0" name="equipmentStatus" type="ns2:equipmentStatus" />
+              <xsd:element minOccurs="0" name="equipmentStatusDescription" type="ns2:equipmentStatusDescription" />
+              <xsd:element minOccurs="0" name="estimatedDurationsHrs" type="ns2:estimatedDurationsHrs" />
+              <xsd:element minOccurs="0" name="estimatedEquipmentCost" type="ns2:estimatedEquipmentCost" />
+              <xsd:element minOccurs="0" name="estimatedLabCost" type="ns2:estimatedLabCost" />
+              <xsd:element minOccurs="0" name="estimatedLabHrs" type="ns2:estimatedLabHrs" />
+              <xsd:element minOccurs="0" name="estimatedMatCost" type="ns2:estimatedMatCost" />
+              <xsd:element minOccurs="0" name="estimatedOtherCost" type="ns2:estimatedOtherCost" />
+              <xsd:element minOccurs="0" name="estimatedTotalCost" type="ns2:estimatedTotalCost" />
+              <xsd:element minOccurs="0" name="extendedText" type="ns2:extendedText" />
+              <xsd:element minOccurs="0" name="extendedTextExists" type="ns2:extendedTextExists" />
+              <xsd:element minOccurs="0" name="failureEquipmentDescription1" type="ns2:failureEquipmentDescription1" />
+              <xsd:element minOccurs="0" name="failureEquipmentDescription2" type="ns2:failureEquipmentDescription2" />
+              <xsd:element minOccurs="0" name="failureEquipmentNo" type="ns2:failureEquipmentNo" />
+              <xsd:element minOccurs="0" name="failureEquipmentRef" type="ns2:failureEquipmentRef" />
+              <xsd:element minOccurs="0" name="failurePart" type="ns2:failurePart" />
+              <xsd:element minOccurs="0" name="faxNumber" type="ns2:faxNumber" />
+              <xsd:element minOccurs="0" name="finalCosts" type="ns2:finalCosts" />
+              <xsd:element minOccurs="0" name="glFinalSw" type="ns2:glFinalSw" />
+              <xsd:element minOccurs="0" name="grantFunding" type="ns2:grantFunding" />
+              <xsd:element minOccurs="0" name="graphEquipment" type="ns2:graphEquipment" />
+              <xsd:element minOccurs="0" name="graphHours" type="ns2:graphHours" />
+              <xsd:element minOccurs="0" name="graphLab" type="ns2:graphLab" />
+              <xsd:element minOccurs="0" name="graphMat" type="ns2:graphMat" />
+              <xsd:element minOccurs="0" name="graphOth" type="ns2:graphOth" />
+              <xsd:element minOccurs="0" name="highestTask" type="ns2:highestTask" />
+              <xsd:element minOccurs="0" name="icons" type="ns2:icons" />
+              <xsd:element minOccurs="0" name="ignoreConflict" type="ns2:ignoreConflict" />
+              <xsd:element minOccurs="0" name="immdtInspFlg" type="ns2:immdtInspFlg" />
+              <xsd:element minOccurs="0" name="includeTasks" type="ns2:includeTasks" />
+              <xsd:element minOccurs="0" name="indirectInvAmt" type="ns2:indirectInvAmt" />
+              <xsd:element minOccurs="0" name="instWOFlag" type="ns2:instWOFlag" />
+              <xsd:element minOccurs="0" name="installBPUCode" type="ns2:installBPUCode" />
+              <xsd:element minOccurs="0" name="integUpdateSw" type="ns2:integUpdateSw" />
+              <xsd:element minOccurs="0" name="itemNo1" type="ns2:itemNo1" />
+              <xsd:element minOccurs="0" name="itemNo10" type="ns2:itemNo10" />
+              <xsd:element minOccurs="0" name="itemNo2" type="ns2:itemNo2" />
+              <xsd:element minOccurs="0" name="itemNo3" type="ns2:itemNo3" />
+              <xsd:element minOccurs="0" name="itemNo4" type="ns2:itemNo4" />
+              <xsd:element minOccurs="0" name="itemNo5" type="ns2:itemNo5" />
+              <xsd:element minOccurs="0" name="itemNo6" type="ns2:itemNo6" />
+              <xsd:element minOccurs="0" name="itemNo7" type="ns2:itemNo7" />
+              <xsd:element minOccurs="0" name="itemNo8" type="ns2:itemNo8" />
+              <xsd:element minOccurs="0" name="itemNo9" type="ns2:itemNo9" />
+              <xsd:element minOccurs="0" name="jnlFinalSw" type="ns2:jnlFinalSw" />
+              <xsd:element minOccurs="0" name="jobCardMed" type="ns2:jobCardMed" />
+              <xsd:element minOccurs="0" name="jobCode1" type="ns2:jobCode1" />
+              <xsd:element minOccurs="0" name="jobCode10" type="ns2:jobCode10" />
+              <xsd:element minOccurs="0" name="jobCode2" type="ns2:jobCode2" />
+              <xsd:element minOccurs="0" name="jobCode3" type="ns2:jobCode3" />
+              <xsd:element minOccurs="0" name="jobCode4" type="ns2:jobCode4" />
+              <xsd:element minOccurs="0" name="jobCode5" type="ns2:jobCode5" />
+              <xsd:element minOccurs="0" name="jobCode6" type="ns2:jobCode6" />
+              <xsd:element minOccurs="0" name="jobCode7" type="ns2:jobCode7" />
+              <xsd:element minOccurs="0" name="jobCode8" type="ns2:jobCode8" />
+              <xsd:element minOccurs="0" name="jobCode9" type="ns2:jobCode9" />
+              <xsd:element minOccurs="0" name="jobCodeDescription1" type="ns2:jobCodeDescription1" />
+              <xsd:element minOccurs="0" name="jobCodeDescription10" type="ns2:jobCodeDescription10" />
+              <xsd:element minOccurs="0" name="jobCodeDescription2" type="ns2:jobCodeDescription2" />
+              <xsd:element minOccurs="0" name="jobCodeDescription3" type="ns2:jobCodeDescription3" />
+              <xsd:element minOccurs="0" name="jobCodeDescription4" type="ns2:jobCodeDescription4" />
+              <xsd:element minOccurs="0" name="jobCodeDescription5" type="ns2:jobCodeDescription5" />
+              <xsd:element minOccurs="0" name="jobCodeDescription6" type="ns2:jobCodeDescription6" />
+              <xsd:element minOccurs="0" name="jobCodeDescription7" type="ns2:jobCodeDescription7" />
+              <xsd:element minOccurs="0" name="jobCodeDescription8" type="ns2:jobCodeDescription8" />
+              <xsd:element minOccurs="0" name="jobCodeDescription9" type="ns2:jobCodeDescription9" />
+              <xsd:element minOccurs="0" name="jobIndEnabled" type="ns2:jobIndEnabled" />
+              <xsd:element minOccurs="0" name="jobIndicator" type="ns2:jobIndicator" />
+              <xsd:element minOccurs="0" name="jobQuestW0" type="ns2:jobQuestW0" />
+              <xsd:element minOccurs="0" name="jobQuestW1" type="ns2:jobQuestW1" />
+              <xsd:element minOccurs="0" name="jobQuestW2" type="ns2:jobQuestW2" />
+              <xsd:element minOccurs="0" name="jobQuestW3" type="ns2:jobQuestW3" />
+              <xsd:element minOccurs="0" name="jobQuestW4" type="ns2:jobQuestW4" />
+              <xsd:element minOccurs="0" name="jobQuestW5" type="ns2:jobQuestW5" />
+              <xsd:element minOccurs="0" name="jobQuestW6" type="ns2:jobQuestW6" />
+              <xsd:element minOccurs="0" name="jobQuestW7" type="ns2:jobQuestW7" />
+              <xsd:element minOccurs="0" name="jobQuestW8" type="ns2:jobQuestW8" />
+              <xsd:element minOccurs="0" name="jobQuestW9" type="ns2:jobQuestW9" />
+              <xsd:element minOccurs="0" name="jobW0Answer1" type="ns2:jobW0Answer1" />
+              <xsd:element minOccurs="0" name="jobW0Answer2" type="ns2:jobW0Answer2" />
+              <xsd:element minOccurs="0" name="jobW0Answer3" type="ns2:jobW0Answer3" />
+              <xsd:element minOccurs="0" name="jobW0Answer4" type="ns2:jobW0Answer4" />
+              <xsd:element minOccurs="0" name="jobW0Answer5" type="ns2:jobW0Answer5" />
+              <xsd:element minOccurs="0" name="jobW0CommentExists" type="ns2:jobW0CommentExists" />
+              <xsd:element minOccurs="0" name="jobW1Answer1" type="ns2:jobW1Answer1" />
+              <xsd:element minOccurs="0" name="jobW1Answer2" type="ns2:jobW1Answer2" />
+              <xsd:element minOccurs="0" name="jobW1Answer3" type="ns2:jobW1Answer3" />
+              <xsd:element minOccurs="0" name="jobW1Answer4" type="ns2:jobW1Answer4" />
+              <xsd:element minOccurs="0" name="jobW1Answer5" type="ns2:jobW1Answer5" />
+              <xsd:element minOccurs="0" name="jobW1CommentExists" type="ns2:jobW1CommentExists" />
+              <xsd:element minOccurs="0" name="jobW2Answer1" type="ns2:jobW2Answer1" />
+              <xsd:element minOccurs="0" name="jobW2Answer2" type="ns2:jobW2Answer2" />
+              <xsd:element minOccurs="0" name="jobW2Answer3" type="ns2:jobW2Answer3" />
+              <xsd:element minOccurs="0" name="jobW2Answer4" type="ns2:jobW2Answer4" />
+              <xsd:element minOccurs="0" name="jobW2Answer5" type="ns2:jobW2Answer5" />
+              <xsd:element minOccurs="0" name="jobW2CommentExists" type="ns2:jobW2CommentExists" />
+              <xsd:element minOccurs="0" name="jobW3Answer1" type="ns2:jobW3Answer1" />
+              <xsd:element minOccurs="0" name="jobW3Answer2" type="ns2:jobW3Answer2" />
+              <xsd:element minOccurs="0" name="jobW3Answer3" type="ns2:jobW3Answer3" />
+              <xsd:element minOccurs="0" name="jobW3Answer4" type="ns2:jobW3Answer4" />
+              <xsd:element minOccurs="0" name="jobW3Answer5" type="ns2:jobW3Answer5" />
+              <xsd:element minOccurs="0" name="jobW3CommentExists" type="ns2:jobW3CommentExists" />
+              <xsd:element minOccurs="0" name="jobW4Answer1" type="ns2:jobW4Answer1" />
+              <xsd:element minOccurs="0" name="jobW4Answer2" type="ns2:jobW4Answer2" />
+              <xsd:element minOccurs="0" name="jobW4Answer3" type="ns2:jobW4Answer3" />
+              <xsd:element minOccurs="0" name="jobW4Answer4" type="ns2:jobW4Answer4" />
+              <xsd:element minOccurs="0" name="jobW4Answer5" type="ns2:jobW4Answer5" />
+              <xsd:element minOccurs="0" name="jobW4CommentExists" type="ns2:jobW4CommentExists" />
+              <xsd:element minOccurs="0" name="jobW5Answer1" type="ns2:jobW5Answer1" />
+              <xsd:element minOccurs="0" name="jobW5Answer2" type="ns2:jobW5Answer2" />
+              <xsd:element minOccurs="0" name="jobW5Answer3" type="ns2:jobW5Answer3" />
+              <xsd:element minOccurs="0" name="jobW5Answer4" type="ns2:jobW5Answer4" />
+              <xsd:element minOccurs="0" name="jobW5Answer5" type="ns2:jobW5Answer5" />
+              <xsd:element minOccurs="0" name="jobW5CommentExists" type="ns2:jobW5CommentExists" />
+              <xsd:element minOccurs="0" name="jobW6Answer1" type="ns2:jobW6Answer1" />
+              <xsd:element minOccurs="0" name="jobW6Answer2" type="ns2:jobW6Answer2" />
+              <xsd:element minOccurs="0" name="jobW6Answer3" type="ns2:jobW6Answer3" />
+              <xsd:element minOccurs="0" name="jobW6Answer4" type="ns2:jobW6Answer4" />
+              <xsd:element minOccurs="0" name="jobW6Answer5" type="ns2:jobW6Answer5" />
+              <xsd:element minOccurs="0" name="jobW6CommentExists" type="ns2:jobW6CommentExists" />
+              <xsd:element minOccurs="0" name="jobW7Answer1" type="ns2:jobW7Answer1" />
+              <xsd:element minOccurs="0" name="jobW7Answer2" type="ns2:jobW7Answer2" />
+              <xsd:element minOccurs="0" name="jobW7Answer3" type="ns2:jobW7Answer3" />
+              <xsd:element minOccurs="0" name="jobW7Answer4" type="ns2:jobW7Answer4" />
+              <xsd:element minOccurs="0" name="jobW7Answer5" type="ns2:jobW7Answer5" />
+              <xsd:element minOccurs="0" name="jobW7CommentExists" type="ns2:jobW7CommentExists" />
+              <xsd:element minOccurs="0" name="jobW8Answer1" type="ns2:jobW8Answer1" />
+              <xsd:element minOccurs="0" name="jobW8Answer2" type="ns2:jobW8Answer2" />
+              <xsd:element minOccurs="0" name="jobW8Answer3" type="ns2:jobW8Answer3" />
+              <xsd:element minOccurs="0" name="jobW8Answer4" type="ns2:jobW8Answer4" />
+              <xsd:element minOccurs="0" name="jobW8Answer5" type="ns2:jobW8Answer5" />
+              <xsd:element minOccurs="0" name="jobW8CommentExists" type="ns2:jobW8CommentExists" />
+              <xsd:element minOccurs="0" name="jobW9Answer1" type="ns2:jobW9Answer1" />
+              <xsd:element minOccurs="0" name="jobW9Answer2" type="ns2:jobW9Answer2" />
+              <xsd:element minOccurs="0" name="jobW9Answer3" type="ns2:jobW9Answer3" />
+              <xsd:element minOccurs="0" name="jobW9Answer4" type="ns2:jobW9Answer4" />
+              <xsd:element minOccurs="0" name="jobW9Answer5" type="ns2:jobW9Answer5" />
+              <xsd:element minOccurs="0" name="jobW9CommentExists" type="ns2:jobW9CommentExists" />
+              <xsd:element minOccurs="0" name="l1FailurePart" type="ns2:l1FailurePart" />
+              <xsd:element minOccurs="0" name="l1Mnemonic" type="ns2:l1Mnemonic" />
+              <xsd:element minOccurs="0" name="l1PartNo" type="ns2:l1PartNo" />
+              <xsd:element minOccurs="0" name="labcFinalSw" type="ns2:labcFinalSw" />
+              <xsd:element minOccurs="0" name="lastModDate" type="ns2:lastModDate" />
+              <xsd:element minOccurs="0" name="lastModEmp" type="ns2:lastModEmp" />
+              <xsd:element minOccurs="0" name="lastModTime" type="ns2:lastModTime" />
+              <xsd:element minOccurs="0" name="lastModUser" type="ns2:lastModUser" />
+              <xsd:element minOccurs="0" name="lastTranReallocation" type="ns2:lastTranReallocation" />
+              <xsd:element minOccurs="0" name="linkSchedule" type="ns2:linkSchedule" />
+              <xsd:element minOccurs="0" name="linkType" type="ns2:linkType" />
+              <xsd:element minOccurs="0" name="linkedInd" type="ns2:linkedInd" />
+              <xsd:element minOccurs="0" name="linkedToWorkOrder" type="ns2:linkedToWorkOrder" />
+              <xsd:element minOccurs="0" name="lnrScaleUnitsReqd" type="ns2:lnrScaleUnitsReqd" />
+              <xsd:element minOccurs="0" name="location" type="ns2:location" />
+              <xsd:element minOccurs="0" name="locationDescription" type="ns2:locationDescription" />
+              <xsd:element minOccurs="0" name="locationFr" type="ns2:locationFr" />
+              <xsd:element minOccurs="0" name="locationFrDescription" type="ns2:locationFrDescription" />
+              <xsd:element minOccurs="0" name="locnSpecialNeedsDescription" type="ns2:locnSpecialNeedsDescription" />
+              <xsd:element minOccurs="0" name="maintenanceSchedTask" type="ns2:maintenanceSchedTask" />
+              <xsd:element minOccurs="0" name="maintenanceType" type="ns2:maintenanceType" />
+              <xsd:element minOccurs="0" name="maintenanceTypeDescription" type="ns2:maintenanceTypeDescription" />
+              <xsd:element minOccurs="0" name="matRequisitionAllowed" type="ns2:matRequisitionAllowed" />
+              <xsd:element minOccurs="0" name="msssStatusInd" type="ns2:msssStatusInd" />
+              <xsd:element minOccurs="0" name="mstStatType1" type="ns2:mstStatType1" />
+              <xsd:element minOccurs="0" name="mstStatType2" type="ns2:mstStatType2" />
+              <xsd:element minOccurs="0" name="mustStartInd" type="ns2:mustStartInd" />
+              <xsd:element minOccurs="0" name="noOfTasks" type="ns2:noOfTasks" />
+              <xsd:element minOccurs="0" name="noTasksCompl" type="ns2:noTasksCompl" />
+              <xsd:element minOccurs="0" name="noticeExistFlg" type="ns2:noticeExistFlg" />
+              <xsd:element minOccurs="0" name="noticeLocationDescription" type="ns2:noticeLocationDescription" />
+              <xsd:element minOccurs="0" name="noticeLocn" type="ns2:noticeLocn" />
+              <xsd:element minOccurs="0" name="noticePeriodFlg" type="ns2:noticePeriodFlg" />
+              <xsd:element minOccurs="0" name="offsetDays" type="ns2:offsetDays" />
+              <xsd:element minOccurs="0" name="offsetHours" type="ns2:offsetHours" />
+              <xsd:element minOccurs="0" name="offsetMinutes" type="ns2:offsetMinutes" />
+              <xsd:element minOccurs="0" name="offsetType" type="ns2:offsetType" />
+              <xsd:element minOccurs="0" name="origDocNo" type="ns2:origDocNo" />
+              <xsd:element minOccurs="0" name="origDocType" type="ns2:origDocType" />
+              <xsd:element minOccurs="0" name="origDocTypeDescription" type="ns2:origDocTypeDescription" />
+              <xsd:element minOccurs="0" name="origMethod" type="ns2:origMethod" />
+              <xsd:element minOccurs="0" name="origPriority" type="ns2:origPriority" />
+              <xsd:element minOccurs="0" name="origPriorityDescription" type="ns2:origPriorityDescription" />
+              <xsd:element minOccurs="0" name="origSchedDate" type="ns2:origSchedDate" />
+              <xsd:element minOccurs="0" name="originatorId" type="ns2:originatorId" />
+              <xsd:element minOccurs="0" name="originatorIdDescription" type="ns2:originatorIdDescription" />
+              <xsd:element minOccurs="0" name="outServDate" type="ns2:outServDate" />
+              <xsd:element minOccurs="0" name="outServTime" type="ns2:outServTime" />
+              <xsd:element minOccurs="0" name="outputMeasureType" type="ns2:outputMeasureType" />
+              <xsd:element minOccurs="0" name="paperHist" type="ns2:paperHist" />
+              <xsd:element minOccurs="0" name="parentWo" type="ns2:parentWo" />
+              <xsd:element minOccurs="0" name="parentWorkOrderDescription" type="ns2:parentWorkOrderDescription" />
+              <xsd:element minOccurs="0" name="payrFinalSw" type="ns2:payrFinalSw" />
+              <xsd:element minOccurs="0" name="pcComplete" type="ns2:pcComplete" />
+              <xsd:element minOccurs="0" name="permitReqdSw" type="ns2:permitReqdSw" />
+              <xsd:element minOccurs="0" name="planFinDate" type="ns2:planFinDate" />
+              <xsd:element minOccurs="0" name="planFinTime" type="ns2:planFinTime" />
+              <xsd:element minOccurs="0" name="planOffsetSw" type="ns2:planOffsetSw" />
+              <xsd:element minOccurs="0" name="planPriority" type="ns2:planPriority" />
+              <xsd:element minOccurs="0" name="planPriorityDescription" type="ns2:planPriorityDescription" />
+              <xsd:element minOccurs="0" name="planStatType" type="ns2:planStatType" />
+              <xsd:element minOccurs="0" name="planStatTypeDescription" type="ns2:planStatTypeDescription" />
+              <xsd:element minOccurs="0" name="planStatVal" type="ns2:planStatVal" />
+              <xsd:element minOccurs="0" name="planStrDate" type="ns2:planStrDate" />
+              <xsd:element minOccurs="0" name="planStrTime" type="ns2:planStrTime" />
+              <xsd:element minOccurs="0" name="printJobCardInd" type="ns2:printJobCardInd" />
+              <xsd:element minOccurs="0" name="printerId" type="ns2:printerId" />
+              <xsd:element minOccurs="0" name="printerIdDescription" type="ns2:printerIdDescription" />
+              <xsd:element minOccurs="0" name="priorityCode" type="ns2:priorityCode" />
+              <xsd:element minOccurs="0" name="projectNo" type="ns2:projectNo" />
+              <xsd:element minOccurs="0" name="projectNoDescription" type="ns2:projectNoDescription" />
+              <xsd:element minOccurs="0" name="protRequiredByDate" type="ns2:protRequiredByDate" />
+              <xsd:element minOccurs="0" name="protectLevel" type="ns2:protectLevel" />
+              <xsd:element minOccurs="0" name="psFinalSw" type="ns2:psFinalSw" />
+              <xsd:element minOccurs="0" name="purchOrderItem" type="ns2:purchOrderItem" />
+              <xsd:element minOccurs="0" name="purchOrderNo" type="ns2:purchOrderNo" />
+              <xsd:element minOccurs="0" name="quoteValue" type="ns2:quoteValue" />
+              <xsd:element minOccurs="0" name="raisedDate" type="ns2:raisedDate" />
+              <xsd:element minOccurs="0" name="raisedTime" type="ns2:raisedTime" />
+              <xsd:element minOccurs="0" name="reallocationCostAccount" type="ns2:reallocationCostAccount" />
+              <xsd:element minOccurs="0" name="reallocationCostAccountDescription" type="ns2:reallocationCostAccountDescription" />
+              <xsd:element minOccurs="0" name="reallocationCrEe" type="ns2:reallocationCrEe" />
+              <xsd:element minOccurs="0" name="reallocationCrEeDescription" type="ns2:reallocationCrEeDescription" />
+              <xsd:element minOccurs="0" name="reallocationDefCrEe" type="ns2:reallocationDefCrEe" />
+              <xsd:element minOccurs="0" name="reallocationDefDrEe" type="ns2:reallocationDefDrEe" />
+              <xsd:element minOccurs="0" name="reallocationFreqInd" type="ns2:reallocationFreqInd" />
+              <xsd:element minOccurs="0" name="reallocationLimitVal" type="ns2:reallocationLimitVal" />
+              <xsd:element minOccurs="0" name="reallocationMarginPc" type="ns2:reallocationMarginPc" />
+              <xsd:element minOccurs="0" name="reallocationMethod" type="ns2:reallocationMethod" />
+              <xsd:element minOccurs="0" name="reallocationMethodDescription" type="ns2:reallocationMethodDescription" />
+              <xsd:element minOccurs="0" name="reallocationProject" type="ns2:reallocationProject" />
+              <xsd:element minOccurs="0" name="reallocationProjectDescription" type="ns2:reallocationProjectDescription" />
+              <xsd:element minOccurs="0" name="reallocationVarAccount" type="ns2:reallocationVarAccount" />
+              <xsd:element minOccurs="0" name="reallocationVarAccountDescription" type="ns2:reallocationVarAccountDescription" />
+              <xsd:element minOccurs="0" name="reallocationWo" type="ns2:reallocationWo" />
+              <xsd:element minOccurs="0" name="recalcRequisitionFlag" type="ns2:recalcRequisitionFlag" />
+              <xsd:element minOccurs="0" name="recallTime" type="ns2:recallTime" />
+              <xsd:element minOccurs="0" name="relatedWo" type="ns2:relatedWo" />
+              <xsd:element minOccurs="0" name="relatedWorkOrderDescription" type="ns2:relatedWorkOrderDescription" />
+              <xsd:element minOccurs="0" name="removeBPUCode" type="ns2:removeBPUCode" />
+              <xsd:element minOccurs="0" name="requestDescription" type="ns2:requestDescription" />
+              <xsd:element minOccurs="0" name="requestId" type="ns2:requestId" />
+              <xsd:element minOccurs="0" name="requiredByDate" type="ns2:requiredByDate" />
+              <xsd:element minOccurs="0" name="requiredByTime" type="ns2:requiredByTime" />
+              <xsd:element minOccurs="0" name="requisitionStartDate" type="ns2:requisitionStartDate" />
+              <xsd:element minOccurs="0" name="requisitionStartTime" type="ns2:requisitionStartTime" />
+              <xsd:element minOccurs="0" name="respondedDate" type="ns2:respondedDate" />
+              <xsd:element minOccurs="0" name="respondedTime" type="ns2:respondedTime" />
+              <xsd:element minOccurs="0" name="revenueCode" type="ns2:revenueCode" />
+              <xsd:element minOccurs="0" name="revenueCodeDescription" type="ns2:revenueCodeDescription" />
+              <xsd:element minOccurs="0" name="riskCode1" type="ns2:riskCode1" />
+              <xsd:element minOccurs="0" name="riskCode10" type="ns2:riskCode10" />
+              <xsd:element minOccurs="0" name="riskCode10Description" type="ns2:riskCode10Description" />
+              <xsd:element minOccurs="0" name="riskCode1Description" type="ns2:riskCode1Description" />
+              <xsd:element minOccurs="0" name="riskCode2" type="ns2:riskCode2" />
+              <xsd:element minOccurs="0" name="riskCode2Description" type="ns2:riskCode2Description" />
+              <xsd:element minOccurs="0" name="riskCode3" type="ns2:riskCode3" />
+              <xsd:element minOccurs="0" name="riskCode3Description" type="ns2:riskCode3Description" />
+              <xsd:element minOccurs="0" name="riskCode4" type="ns2:riskCode4" />
+              <xsd:element minOccurs="0" name="riskCode4Description" type="ns2:riskCode4Description" />
+              <xsd:element minOccurs="0" name="riskCode5" type="ns2:riskCode5" />
+              <xsd:element minOccurs="0" name="riskCode5Description" type="ns2:riskCode5Description" />
+              <xsd:element minOccurs="0" name="riskCode6" type="ns2:riskCode6" />
+              <xsd:element minOccurs="0" name="riskCode6Description" type="ns2:riskCode6Description" />
+              <xsd:element minOccurs="0" name="riskCode7" type="ns2:riskCode7" />
+              <xsd:element minOccurs="0" name="riskCode7Description" type="ns2:riskCode7Description" />
+              <xsd:element minOccurs="0" name="riskCode8" type="ns2:riskCode8" />
+              <xsd:element minOccurs="0" name="riskCode8Description" type="ns2:riskCode8Description" />
+              <xsd:element minOccurs="0" name="riskCode9" type="ns2:riskCode9" />
+              <xsd:element minOccurs="0" name="riskCode9Description" type="ns2:riskCode9Description" />
+              <xsd:element minOccurs="0" name="routeExistFlg" type="ns2:routeExistFlg" />
+              <xsd:element minOccurs="0" name="scheduledInd" type="ns2:scheduledInd" />
+              <xsd:element minOccurs="0" name="serviceOffDate" type="ns2:serviceOffDate" />
+              <xsd:element minOccurs="0" name="serviceOffTime" type="ns2:serviceOffTime" />
+              <xsd:element minOccurs="0" name="serviceOnDate" type="ns2:serviceOnDate" />
+              <xsd:element minOccurs="0" name="serviceOnTime" type="ns2:serviceOnTime" />
+              <xsd:element minOccurs="0" name="shutdownEquipmentNo" type="ns2:shutdownEquipmentNo" />
+              <xsd:element minOccurs="0" name="shutdownEquipmentNoDescription1" type="ns2:shutdownEquipmentNoDescription1" />
+              <xsd:element minOccurs="0" name="shutdownEquipmentNoDescription2" type="ns2:shutdownEquipmentNoDescription2" />
+              <xsd:element minOccurs="0" name="shutdownEquipmentRef" type="ns2:shutdownEquipmentRef" />
+              <xsd:element minOccurs="0" name="shutdownNo" type="ns2:shutdownNo" />
+              <xsd:element minOccurs="0" name="shutdownNoDescription" type="ns2:shutdownNoDescription" />
+              <xsd:element minOccurs="0" name="shutdownType" type="ns2:shutdownType" />
+              <xsd:element minOccurs="0" name="shutdownTypeDescription" type="ns2:shutdownTypeDescription" />
+              <xsd:element minOccurs="0" name="sjDistrictCode" type="ns2:sjDistrictCode" />
+              <xsd:element minOccurs="0" name="stdJobNo" type="ns2:stdJobNo" />
+              <xsd:element minOccurs="0" name="suppFinalSw" type="ns2:suppFinalSw" />
+              <xsd:element minOccurs="0" name="taskAPTWExistsInd" type="ns2:taskAPTWExistsInd" />
+              <xsd:element minOccurs="0" name="textToCopyInd" type="ns2:textToCopyInd" />
+              <xsd:element minOccurs="0" name="unitOfWork" type="ns2:unitOfWork" />
+              <xsd:element minOccurs="0" name="unitOfWorkDescription" type="ns2:unitOfWorkDescription" />
+              <xsd:element minOccurs="0" name="unitsComplete" type="ns2:unitsComplete" />
+              <xsd:element minOccurs="0" name="unitsInvCharge" type="ns2:unitsInvCharge" />
+              <xsd:element minOccurs="0" name="unitsRequired" type="ns2:unitsRequired" />
+              <xsd:element minOccurs="0" name="unschedFlag" type="ns2:unschedFlag" />
+              <xsd:element minOccurs="0" name="uowRate" type="ns2:uowRate" />
+              <xsd:element minOccurs="0" name="valueEarned" type="ns2:valueEarned" />
+              <xsd:element minOccurs="0" name="varEqpCost" type="ns2:varEqpCost" />
+              <xsd:element minOccurs="0" name="varLabCost" type="ns2:varLabCost" />
+              <xsd:element minOccurs="0" name="varLabHrs" type="ns2:varLabHrs" />
+              <xsd:element minOccurs="0" name="varMatCost" type="ns2:varMatCost" />
+              <xsd:element minOccurs="0" name="varOthCost" type="ns2:varOthCost" />
+              <xsd:element minOccurs="0" name="varTotCost" type="ns2:varTotCost" />
+              <xsd:element minOccurs="0" name="versionNo1" type="ns2:versionNo1" />
+              <xsd:element minOccurs="0" name="versionNo10" type="ns2:versionNo10" />
+              <xsd:element minOccurs="0" name="versionNo2" type="ns2:versionNo2" />
+              <xsd:element minOccurs="0" name="versionNo3" type="ns2:versionNo3" />
+              <xsd:element minOccurs="0" name="versionNo4" type="ns2:versionNo4" />
+              <xsd:element minOccurs="0" name="versionNo5" type="ns2:versionNo5" />
+              <xsd:element minOccurs="0" name="versionNo6" type="ns2:versionNo6" />
+              <xsd:element minOccurs="0" name="versionNo7" type="ns2:versionNo7" />
+              <xsd:element minOccurs="0" name="versionNo8" type="ns2:versionNo8" />
+              <xsd:element minOccurs="0" name="versionNo9" type="ns2:versionNo9" />
+              <xsd:element minOccurs="0" name="view" type="ns2:view" />
+              <xsd:element minOccurs="0" name="warehouseId" type="ns2:warehouseId" />
+              <xsd:element minOccurs="0" name="workGroup" type="ns2:workGroup" />
+              <xsd:element minOccurs="0" name="workGroupDescription" type="ns2:workGroupDescription" />
+              <xsd:element minOccurs="0" name="workOrder" type="ns2:workOrder" />
+              <xsd:element minOccurs="0" name="workOrderDesc" type="ns2:workOrderDesc" />
+              <xsd:element minOccurs="0" name="workOrderJobCode" type="ns2:workOrderJobCode" />
+              <xsd:element minOccurs="0" name="workOrderJobCodeDescription" type="ns2:workOrderJobCodeDescription" />
+              <xsd:element minOccurs="0" name="workOrderPrefix" type="ns2:workOrderPrefix" />
+              <xsd:element minOccurs="0" name="workOrderRefType" type="ns2:workOrderRefType" />
+              <xsd:element minOccurs="0" name="workOrderStatusM" type="ns2:workOrderStatusM" />
+              <xsd:element minOccurs="0" name="workOrderStatusMDescription" type="ns2:workOrderStatusMDescription" />
+              <xsd:element minOccurs="0" name="workOrderStatusU" type="ns2:workOrderStatusU" />
+              <xsd:element minOccurs="0" name="workOrderStatusUDescription" type="ns2:workOrderStatusUDescription" />
+              <xsd:element minOccurs="0" name="workOrderType" type="ns2:workOrderType" />
+              <xsd:element minOccurs="0" name="workOrderTypeDescription" type="ns2:workOrderTypeDescription" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfWorkServiceResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="WorkServiceResult" nillable="true" type="ns2:WorkServiceResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="WorkServiceResult">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:ServiceResult">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="workDTO" type="ns2:WorkDTO" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="WorkSearchParam">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:AbstractSearchParam" />
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="WorkRetrieveTodayParam">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:AbstractSearchParam">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="planStrDate" type="ns2:planStrDate" />
+              <xsd:element minOccurs="0" name="workGroup" type="ns2:workGroup" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.ellipse.mincom.com">
+      <xsd:import namespace="http://errors.ellipse.mincom.com" />
+      <xsd:import namespace="http://instances.base.types.ellipse.mincom.com" />
+      <xsd:import namespace="http://attribute.ellipse.mincom.com" />
+      <xsd:complexType name="ServiceDTO" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns4:Base">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="customAttributes" type="ns5:ArrayOfAttribute" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ServiceResult">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:BaseServiceResult" />
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="BaseServiceResult" abstract="true">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errors" type="ns6:ArrayOfError" />
+          <xsd:element minOccurs="0" name="informationalMessages" type="ns6:ArrayOfMessage" />
+          <xsd:element minOccurs="0" name="warnings" type="ns6:ArrayOfWarning" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AbstractSearchParam" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:ServiceDTO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="serviceRequiredAttributes" type="ns3:ServiceRequiredAttributes" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ServiceRequiredAttributes" />
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://instances.base.types.ellipse.mincom.com">
+      <xsd:complexType name="Base" abstract="true" />
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://attribute.ellipse.mincom.com">
+      <xsd:import namespace="http://work.m3620.service.ellipse.mincom.com" />
+      <xsd:complexType name="ArrayOfAttribute">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Attribute" nillable="true" type="ns5:Attribute" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Attribute">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="dataType" type="xsd:string" />
+          <xsd:element minOccurs="0" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" name="namespace" type="xsd:string" />
+          <xsd:element minOccurs="0" name="properties" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="0" name="value" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://work.m3620.service.ellipse.mincom.com">
+      <xsd:import namespace="http://connectivity.service.ews.mincom.com" />
+      <xsd:import namespace="http://instances.m1000.types.ellipse.mincom.com" />
+      <xsd:import namespace="http://instances.m3620.types.ellipse.mincom.com" />
+      <xsd:complexType name="anyType2anyTypeMap">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="key" type="xsd:anyType" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="value" type="xsd:anyType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="multipleCreateRequisition">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="inputDtos" nillable="true" type="ns2:ArrayOfWorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleCreateRequisitionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="search">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="searchParams" nillable="true" type="ns2:WorkSearchParam" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="restart" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="serviceDTO" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="readResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:WorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleUpdate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="inputDtos" nillable="true" type="ns2:ArrayOfWorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleUpdateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createRequisition">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="serviceDTO" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createRequisitionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:WorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleDelete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="inputDtos" nillable="true" type="ns2:ArrayOfWorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleDeleteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="serviceDTO" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:WorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="serviceDTO" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:WorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleRead">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="inputDtos" nillable="true" type="ns2:ArrayOfWorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleReadResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveToday">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="searchParams" nillable="true" type="ns2:WorkRetrieveTodayParam" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="restart" nillable="true" type="ns7:ChartDataDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveTodayResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns7:ArrayOfChartDataServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="serviceDTO" nillable="true" type="ns2:WorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:WorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleCreate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="context" nillable="true" type="ns1:OperationContext" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="inputDtos" nillable="true" type="ns2:ArrayOfWorkDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="multipleCreateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:ArrayOfWorkServiceResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://errors.ellipse.mincom.com">
+      <xsd:complexType name="ArrayOfError">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="ns6:Error" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns6:Message" />
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="fieldId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fieldIndex" type="xsd:int" />
+          <xsd:element minOccurs="0" name="localisable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="messageId" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messageInstance" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messageText" type="xsd:string" />
+          <xsd:element minOccurs="0" name="parentInstance" type="xsd:string" />
+          <xsd:element minOccurs="0" name="user" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMessage">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="ns6:Message" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfWarning">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Warning" nillable="true" type="ns6:Warning" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Warning">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns6:Message" />
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://instances.m1000.types.ellipse.mincom.com">
+      <xsd:import namespace="http://service.ellipse.mincom.com" />
+      <xsd:simpleType name="chartData">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0" />
+          <xsd:maxLength value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ChartDataDTO">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:ServiceDTO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="chartData" type="ns7:chartData" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfChartDataServiceResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ChartDataServiceResult" nillable="true" type="ns7:ChartDataServiceResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ChartDataServiceResult">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:ServiceResult">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="chartDataDTO" type="ns7:ChartDataDTO" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="multipleDeleteRequest">
+    <wsdl:part name="parameters" element="tns:multipleDelete" />
+  </wsdl:message>
+  <wsdl:message name="multipleDeleteResponse">
+    <wsdl:part name="parameters" element="tns:multipleDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrieveTodayRequest">
+    <wsdl:part name="parameters" element="tns:retrieveToday" />
+  </wsdl:message>
+  <wsdl:message name="createResponse">
+    <wsdl:part name="parameters" element="tns:createResponse" />
+  </wsdl:message>
+  <wsdl:message name="multipleUpdateResponse">
+    <wsdl:part name="parameters" element="tns:multipleUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="createRequisitionRequest">
+    <wsdl:part name="parameters" element="tns:createRequisition" />
+  </wsdl:message>
+  <wsdl:message name="multipleReadRequest">
+    <wsdl:part name="parameters" element="tns:multipleRead" />
+  </wsdl:message>
+  <wsdl:message name="readRequest">
+    <wsdl:part name="parameters" element="tns:read" />
+  </wsdl:message>
+  <wsdl:message name="createRequest">
+    <wsdl:part name="parameters" element="tns:create" />
+  </wsdl:message>
+  <wsdl:message name="multipleReadResponse">
+    <wsdl:part name="parameters" element="tns:multipleReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="createRequisitionResponse">
+    <wsdl:part name="parameters" element="tns:createRequisitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="multipleCreateRequisitionRequest">
+    <wsdl:part name="parameters" element="tns:multipleCreateRequisition" />
+  </wsdl:message>
+  <wsdl:message name="searchRequest">
+    <wsdl:part name="parameters" element="tns:search" />
+  </wsdl:message>
+  <wsdl:message name="readResponse">
+    <wsdl:part name="parameters" element="tns:readResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRequest">
+    <wsdl:part name="parameters" element="tns:update" />
+  </wsdl:message>
+  <wsdl:message name="multipleCreateResponse">
+    <wsdl:part name="parameters" element="tns:multipleCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part name="parameters" element="tns:updateResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRequest">
+    <wsdl:part name="parameters" element="tns:delete" />
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part name="parameters" element="tns:deleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="multipleCreateRequest">
+    <wsdl:part name="parameters" element="tns:multipleCreate" />
+  </wsdl:message>
+  <wsdl:message name="searchResponse">
+    <wsdl:part name="parameters" element="tns:searchResponse" />
+  </wsdl:message>
+  <wsdl:message name="multipleCreateRequisitionResponse">
+    <wsdl:part name="parameters" element="tns:multipleCreateRequisitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrieveTodayResponse">
+    <wsdl:part name="parameters" element="tns:retrieveTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="multipleUpdateRequest">
+    <wsdl:part name="parameters" element="tns:multipleUpdate" />
+  </wsdl:message>
+  <wsdl:portType name="Work">
+    <wsdl:operation name="multipleCreateRequisition">
+      <wsdl:input name="multipleCreateRequisitionRequest" message="tns:multipleCreateRequisitionRequest" />
+      <wsdl:output name="multipleCreateRequisitionResponse" message="tns:multipleCreateRequisitionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="search">
+      <wsdl:input name="searchRequest" message="tns:searchRequest" />
+      <wsdl:output name="searchResponse" message="tns:searchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <wsdl:input name="readRequest" message="tns:readRequest" />
+      <wsdl:output name="readResponse" message="tns:readResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="multipleUpdate">
+      <wsdl:input name="multipleUpdateRequest" message="tns:multipleUpdateRequest" />
+      <wsdl:output name="multipleUpdateResponse" message="tns:multipleUpdateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createRequisition">
+      <wsdl:input name="createRequisitionRequest" message="tns:createRequisitionRequest" />
+      <wsdl:output name="createRequisitionResponse" message="tns:createRequisitionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="multipleDelete">
+      <wsdl:input name="multipleDeleteRequest" message="tns:multipleDeleteRequest" />
+      <wsdl:output name="multipleDeleteResponse" message="tns:multipleDeleteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdl:input name="createRequest" message="tns:createRequest" />
+      <wsdl:output name="createResponse" message="tns:createResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="updateRequest" message="tns:updateRequest" />
+      <wsdl:output name="updateResponse" message="tns:updateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="multipleRead">
+      <wsdl:input name="multipleReadRequest" message="tns:multipleReadRequest" />
+      <wsdl:output name="multipleReadResponse" message="tns:multipleReadResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="retrieveToday">
+      <wsdl:input name="retrieveTodayRequest" message="tns:retrieveTodayRequest" />
+      <wsdl:output name="retrieveTodayResponse" message="tns:retrieveTodayResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input name="deleteRequest" message="tns:deleteRequest" />
+      <wsdl:output name="deleteResponse" message="tns:deleteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="multipleCreate">
+      <wsdl:input name="multipleCreateRequest" message="tns:multipleCreateRequest" />
+      <wsdl:output name="multipleCreateResponse" message="tns:multipleCreateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WorkServiceHttpBinding" type="tns:Work">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="multipleCreateRequisition">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="multipleCreateRequisitionRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="multipleCreateRequisitionResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="search">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="read">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="readRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multipleUpdate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="multipleUpdateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="multipleUpdateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createRequisition">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createRequisitionRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createRequisitionResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multipleDelete">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="multipleDeleteRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="multipleDeleteResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multipleRead">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="multipleReadRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="multipleReadResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveToday">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="retrieveTodayRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="retrieveTodayResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multipleCreate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="multipleCreateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="multipleCreateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WorkService">
+    <wsdl:port name="WorkServiceHttpPort" binding="tns:WorkServiceHttpBinding">
+      <wsdlsoap:address location="https://ews-kpp.kppmining.net/ews/services/WorkService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
