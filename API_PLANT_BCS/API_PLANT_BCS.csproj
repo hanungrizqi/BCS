@@ -47,7 +47,7 @@
   <ItemGroup>
     <Reference Include="EllipseWebServicesClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\EllipseWebServicesClient.dll</HintPath>
+      <HintPath>..\..\..\EllipseWebServicesClient.dll</HintPath>
     </Reference>
     <Reference Include="LdapAuthentication">
       <HintPath>D:\KPP\Projects\PushNotif_WA\PushNotif_WA\bin\LdapAuthentication.dll</HintPath>
@@ -258,6 +258,7 @@
     <None Include="Models\DB_Plant_BCS.dbml.layout">
       <DependentUpon>DB_Plant_BCS.dbml</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\PublishBCS.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

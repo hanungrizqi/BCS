@@ -62,8 +62,8 @@ C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\System.Web.WebPages.D
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\System.Web.WebPages.Razor.xml
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\Antlr3.Runtime.pdb
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.dll
+C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.pdb
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.csproj.AssemblyReference.cache
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.csproj.CoreCompileInputs.cache
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.csproj.CopyComplete
-C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.dll
-C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\obj\Debug\API_PLANT_BCS.pdb
