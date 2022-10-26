@@ -9,6 +9,7 @@
     scrollX: true,
     columns: [
         { data: 'NO_BACKLOG' },
+        { data: 'WO_NO' },
         { data: 'DSTRCT_CODE' },
         { data: 'EQP_NUMBER' },
         { data: 'COMP_CODE' },

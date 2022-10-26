@@ -38,7 +38,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS != "PROGRESS").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -70,7 +70,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "OPEN").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1").ToList();
 
                 return Ok(new { Data = data });
             }

@@ -149,9 +149,11 @@ namespace API_PLANT_BCS.ViewModel
                 cls.Message = "Create WR Berhasil";
                 cls.WoNo = WO;
 
-                TBL_H_BACKLOG_WO_WR tbl = new TBL_H_BACKLOG_WO_WR();
-                tbl.NO_BACKLOG = dataBacklog.NO_BACKLOG;
-                tbl.WO_NO = WO;
+                TBL_H_BACKLOG_WO_WR tbl = new TBL_H_BACKLOG_WO_WR
+                {
+                    NO_BACKLOG = dataBacklog.NO_BACKLOG,
+                    WO_NO = WO
+                };
 
                 db.TBL_H_BACKLOG_WO_WRs.InsertOnSubmit(tbl);
                 db.SubmitChanges();

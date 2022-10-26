@@ -56,7 +56,7 @@ var table = $("#table_part").DataTable({
         },
         { data: 'PART_CLASS' },
         { data: 'ACT_ONSITE_DATE' },
-        { data: 'ACT_ONSITE_DATE' }
+        { data: 'ACCTUAL_SUPPLY_DATE' }
     ],
 
 });
@@ -279,11 +279,7 @@ function saveBacklog(mode) {
     dataBacklog.CREATED_BY = $("#txt_inspector").val();
     dataBacklog.REMARKS = $("#txt_note").val();
     dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
-    if (mode == "create") {
-        dataBacklog.STATUS = "PROGRESS";
-    } else {
-        dataBacklog.STATUS = "OPEN";
-    }
+    dataBacklog.STATUS = "OPEN";
 
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI

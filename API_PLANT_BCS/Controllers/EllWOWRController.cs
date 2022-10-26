@@ -54,12 +54,16 @@ namespace API_PLANT_BCS.Controllers
                 }
                 else
                 {
-                    Cls_CreateWOWRResult results = cls.CraeteWO(dataBacklog);
-                    if (results.Remarks == true)
+                    var dataWO = db.TBL_H_BACKLOG_WO_WRs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                    if (dataWO != null)
                     {
-                        Cls_CreateWOWRResult result1 = cls.CreateWR(results.WoNo, dataStock, dataBacklog);
+                        Cls_CreateWOWRResult result1 = cls.CreateWR(dataWO.WO_NO, dataStock, dataBacklog);
                         if (result1.Remarks == true)
                         {
+                            var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                            saveBacklog.STATUS = "PROGRESS";
+                            db.SubmitChanges();
+
                             return Ok(new { Data = result1, Remarks = true, Message = "Create WO & WR Berhasil !" });
                         }
                         else
@@ -69,7 +73,27 @@ namespace API_PLANT_BCS.Controllers
                     }
                     else
                     {
-                        return Ok(new { Data = results, Pos = "WO", Remarks = false, Message = results.Message });
+                        Cls_CreateWOWRResult results = cls.CraeteWO(dataBacklog);
+                        if (results.Remarks == true)
+                        {
+                            Cls_CreateWOWRResult result1 = cls.CreateWR(results.WoNo, dataStock, dataBacklog);
+                            if (result1.Remarks == true)
+                            {
+                                var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                                saveBacklog.STATUS = "PROGRESS";
+                                db.SubmitChanges();
+
+                                return Ok(new { Data = result1, Remarks = true, Message = "Create WO & WR Berhasil !" });
+                            }
+                            else
+                            {
+                                return Ok(new { Data = result1, Pos = "WR", Remarks = false, Message = result1.Message });
+                            }
+                        }
+                        else
+                        {
+                            return Ok(new { Data = results, Pos = "WO", Remarks = false, Message = results.Message });
+                        }
                     }
                 }
             }

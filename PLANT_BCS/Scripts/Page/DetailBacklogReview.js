@@ -37,7 +37,7 @@ var table = $("#table_part").DataTable({
         },
         { data: 'PART_CLASS' },
         { data: 'ACT_ONSITE_DATE' },
-        { data: 'ACT_ONSITE_DATE' }
+        { data: 'ACCTUAL_SUPPLY_DATE' }
     ],
 
 });
@@ -93,6 +93,7 @@ function getDetail() {
             $("#txt_posBL").val(dataBacklog.POSISI_BACKLOG);
             $("#txt_inspector").val(dataBacklog.CREATED_BY);
             $("#txt_note").val(dataBacklog.REMARKS);
+            $("#txt_wo").val(dataBacklog.WO_NO);
         }
     });
 }

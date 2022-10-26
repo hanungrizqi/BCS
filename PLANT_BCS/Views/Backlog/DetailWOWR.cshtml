@@ -35,14 +35,14 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_eqNumber">Eqp Number</label>
                     <div class="col-sm-8">
-                        <select class="js-select2 form-select" id="txt_eqNumber" name="txt_eqNumber" style="width: 100%;">
+                        <select class="js-select2 form-select" id="txt_eqNumber" name="txt_eqNumber" style="width: 100%;" disabled>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_compCode">Component Code</label>
                     <div class="col-sm-8">
-                        <select class="js-select2 form-select" id="txt_compCode" name="txt_compCode" style="width: 100%;">
+                        <select class="js-select2 form-select" id="txt_compCode" name="txt_compCode" style="width: 100%;" disabled>
                         </select>
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_hm">HM</label>
                     <div class="col-sm-8">
-                        <input type="number" min="0" class="form-control form-control-sm " id="txt_hm" name="txt_hm" value="@ViewBag.BackLog.HM">
+                        <input type="number" min="0" class="form-control form-control-sm " id="txt_hm" name="txt_hm" value="@ViewBag.BackLog.HM" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_blDesc">Backlog Description</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-sm " id="txt_blDesc" name="txt_blDesc" value="@ViewBag.BackLog.BACKLOG_DESC">
+                        <input type="text" class="form-control form-control-sm " id="txt_blDesc" name="txt_blDesc" value="@ViewBag.BackLog.BACKLOG_DESC" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -69,11 +69,11 @@
                     <div class="col-sm-8">
                         @if (@ViewBag.BackLog.INSPECTON_DATE == null)
                         {
-                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton">
+                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton" readonly>
                         }
                         else
                         {
-                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton" value="@ViewBag.BackLog.INSPECTON_DATE.ToString("yyyy-MM-dd")">
+                            <input type="date" class="form-control form-control-sm " id="txt_dInspecton" name="txt_dInspecton" value="@ViewBag.BackLog.INSPECTON_DATE.ToString("yyyy-MM-dd")" readonly>
                         }
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_source">Sources</label>
                     <div class="col-sm-8">
-                        <select class="js-select2 form-select" id="txt_source" name="txt_source" style="width: 100%;">
+                        <select class="js-select2 form-select" id="txt_source" name="txt_source" style="width: 100%;" disabled>
                         </select>
                     </div>
                 </div>
@@ -125,11 +125,11 @@
                     <div class="col-sm-8">
                         @if (@ViewBag.BackLog.PLAN_REPAIR_DATE_1 == null)
                         {
-                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1">
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1" readonly>
                         }
                         else
                         {
-                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_1.ToString("yyyy-MM-dd")">
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD1" name="txt_planRD1" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_1.ToString("yyyy-MM-dd")" readonly>
                         }
 
                     </div>
@@ -139,11 +139,11 @@
                     <div class="col-sm-8">
                         @if (@ViewBag.BackLog.PLAN_REPAIR_DATE_2 == null)
                         {
-                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2">
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2" readonly>
                         }
                         else
                         {
-                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_2.ToString("yyyy-MM-dd")">
+                            <input type="date" class="form-control form-control-sm" id="txt_planRD2" name="txt_planRD2" value="@ViewBag.BackLog.PLAN_REPAIR_DATE_2.ToString("yyyy-MM-dd")" readonly>
                         }
 
                     </div>
