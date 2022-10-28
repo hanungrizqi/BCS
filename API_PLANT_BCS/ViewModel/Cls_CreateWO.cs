@@ -208,7 +208,7 @@ namespace API_PLANT_BCS.ViewModel
                 wahid = dataStock[0].LOCATION_ON_STOCK;
                 delinstrb = dataBacklog.REMARKS;
                 nobacklog1 = dataBacklog.NO_BACKLOG;
-                descbacklog = dataBacklog.BACKLOG_DESC;
+                descbacklog = dataBacklog.BACKLOG_DESC.Replace(" ", "_").ToUpper();
                 DelivInstrA_Combine = nobacklog1 + descbacklog;
 
                 i_obj_context.district = dataBacklog.DSTRCT_CODE;

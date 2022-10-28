@@ -94,6 +94,7 @@ function getDetail() {
             $("#txt_inspector").val(dataBacklog.CREATED_BY);
             $("#txt_note").val(dataBacklog.REMARKS);
             $("#txt_wo").val(dataBacklog.WO_NO);
+            $("#txt_installDate").val(moment(dataBacklog.INSTALL_DATE).format("YYYY-MM-DD"));
         }
     });
 }
