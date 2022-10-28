@@ -4,6 +4,24 @@
     ViewBag.JS = "/Scripts/Page/ListBacklogReview.js";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div id="toast-example-2" class="toast fade hide" style="position: absolute; top: 20px; right: 20px;" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        @if (ViewBag.UpdateStatus.Remarks == true)
+        {
+            <i class="fa fa-check-circle text-success me-2"></i>
+        }
+        else
+        {
+            <i class="fa fa-exclamation-triangle text-danger me-2"></i>
+        }
+        <strong class="me-auto">System</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        @ViewBag.UpdateStatus.Message
+    </div>
+</div>
 
 <h2 class="content-heading">List Backlog</h2>
 <div class="block block-rounded">
@@ -13,6 +31,7 @@
         </h3>
     </div>
     <div class="block-content block-content-full">
+
         <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive w-100" id="tbl_backlog">
             <thead class="text-center">
                 <tr>

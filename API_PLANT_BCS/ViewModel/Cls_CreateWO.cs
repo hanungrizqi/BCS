@@ -100,7 +100,7 @@ namespace API_PLANT_BCS.ViewModel
             {
                 string eqpnumber = dataBacklog.EQP_NUMBER;
                 string stndrdJob = dataBacklog.STD_JOB;
-                string backlogdesc = dataBacklog.BACKLOG_DESC;
+                string backlogdesc = dataBacklog.BACKLOG_DESC.Replace(" ", "_"); 
                 string elluser = dataBacklog.ORIGINATOR_ID;
                 string compCode = dataBacklog.COMP_CODE;
 
@@ -123,7 +123,7 @@ namespace API_PLANT_BCS.ViewModel
 
                 i_obj_requisition_dto1.equipmentRef = eqpnumber;
                 i_obj_requisition_dto1.stdJobNo = stndrdJob;
-                i_obj_requisition_dto1.workOrderDesc = backlogdesc;
+                i_obj_requisition_dto1.workOrderDesc = backlogdesc.ToUpper();
                 i_obj_requisition_dto1.originatorId = elluser;
                 i_obj_requisition_dto1.workOrderType = "MO";
                 i_obj_requisition_dto1.maintenanceType = "BL";

@@ -1,4 +1,6 @@
-﻿var table = $("#tbl_backlog").DataTable({
+﻿new bootstrap.Toast(document.getElementById('toast-example-2')).show();
+
+var table = $("#tbl_backlog").DataTable({
     ajax: {
         url: $("#web_link").val() + "/api/Backlog/Get_ListBacklogReview/" + $("#hd_site").val(),
         dataSrc: "Data",

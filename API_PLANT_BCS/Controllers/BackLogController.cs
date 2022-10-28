@@ -102,7 +102,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic" && a.STATUS != "PLANNER CANCEL").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -118,7 +118,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS == "Planner").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -256,6 +256,10 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                if (param.STATUS == "PLANNER CANCEL")
+                {
+                    db.cusp_NotifBacklogCancel(param.NO_BACKLOG);
+                }
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
@@ -277,6 +281,11 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                if (param.STATUS == "PLANNER CANCEL")
+                {
+                    db.cusp_NotifBacklogCancel(param.NO_BACKLOG);
+                }
+
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
@@ -462,5 +471,33 @@ namespace API_PLANT_BCS.Controllers
                 return Ok(new { Remarks = false, Message = e });
             }
         }
+
+        [HttpGet]
+        [Route("Update_Closing_Backlog")]
+        public IHttpActionResult Update_Closing_Backlog()
+        {
+            try
+            {
+                var dataCek = db.VW_BACKLOGs.Where(a => a.STATUS == "PROGRESS").ToList();
+                foreach (var item in dataCek)
+                {
+                    var cekCompleteItem = db.VW_COMPLETE_CODEs.Where(a => a.DSTRCT_CODE == item.DSTRCT_CODE && a.WORK_ORDER == item.WO_NO).FirstOrDefault();
+                    if (cekCompleteItem != null)
+                    {
+                        var updateTbl = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == item.NO_BACKLOG).FirstOrDefault();
+                        updateTbl.STATUS = "CLOSE";
+                        updateTbl.INSTALL_DATE = cekCompleteItem.JOB_DUR_DATE;
+                    }
+                }
+                db.SubmitChanges();
+                return Ok(new { Remarks = true, Message = "Update Backlog Status Berhasil" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { Remarks = false, Message = ex.Message });
+            }
+        }
+
+
     }
 }
