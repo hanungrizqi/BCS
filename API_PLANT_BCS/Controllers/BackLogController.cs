@@ -70,7 +70,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1").ToList();
+                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
 
                 return Ok(new { Data = data });
             }

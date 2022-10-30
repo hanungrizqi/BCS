@@ -1,4 +1,6 @@
 ﻿$("document").ready(function () {
+    Codebase.helpersOnLoad(['jq-select2']);
+
     $("#PartError").hide();
     getEqNumber();
     getCompCode();
