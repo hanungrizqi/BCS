@@ -44,12 +44,6 @@
         <elementListCompartment Id="f4709985-a391-4a83-b9c0-bb8fdbe9ed3b" absoluteBounds="4.765, 1.21, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="47b73095-9aea-4991-a4d9-8bd82541563f" isExpanded="false" absoluteBounds="6.875, 1.75, 2, 0.45">
-      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_PART_MSF100" />
-      <nestedChildShapes>
-        <elementListCompartment Id="db7d14e6-a19d-45ed-81e9-e0a259e57e41" absoluteBounds="6.8900000000000006, 2.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="478484ca-0b8b-4d98-a63c-5c90a486bb02" isExpanded="false" absoluteBounds="6.875, 2.25, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_STD_JOB" />
       <nestedChildShapes>
@@ -162,6 +156,12 @@
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_BACKLOG" />
       <nestedChildShapes>
         <elementListCompartment Id="096f9db1-800b-4ce1-bee7-3db81d7d5463" absoluteBounds="9.015, 1.71, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0751ff19-0944-48fd-a410-32ce5ff65edc" isExpanded="false" absoluteBounds="6.875, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_PART_MSF170" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46d51f87-fa21-436b-93c9-264df3ee42fa" absoluteBounds="6.8900000000000006, 2.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

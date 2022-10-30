@@ -73,16 +73,6 @@
       <Column Name="ACTIVE_STATUS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_PART_MSF100" Member="VW_PART_MSF100s">
-    <Type Name="VW_PART_MSF100">
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
-      <Column Name="UOM" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
-      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.VW_STD_JOB" Member="VW_STD_JOBs">
     <Type Name="VW_STD_JOB">
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
@@ -361,6 +351,16 @@
       <Column Name="WO_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="IREQ_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="INSTALL_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_PART_MSF170" Member="VW_PART_MSF170s">
+    <Type Name="VW_PART_MSF170">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="UOM" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">

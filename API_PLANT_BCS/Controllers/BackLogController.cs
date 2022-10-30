@@ -156,7 +156,7 @@ namespace API_PLANT_BCS.Controllers
                 if (check == null) {
                     return Ok(new { Remarks = false });
                 }
-                var data = db.VW_PART_MSF100s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
+                var data = db.VW_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
                 return Ok(new { Data = data, Remarks = true });
             }
             catch (Exception)
