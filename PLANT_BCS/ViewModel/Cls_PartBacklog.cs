@@ -10,6 +10,6 @@ namespace PLANT_BCS.ViewModel
     public class Cls_PartBacklog
     {
         [JsonProperty("Data")]
-        public IList<VW_PART_BACKLOG> tbl { get; set; }
+        public IList<VW_T_PART_BACKLOG> tbl { get; set; }
     }
 }

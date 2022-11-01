@@ -19,7 +19,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_JOBSITEs.ToList();
+                var data = db.VW_M_JOBSITEs.ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
@@ -35,7 +35,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_LOCATION_ON_STOCKs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                var data = db.VW_R_LOCATION_ON_STOCKs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
@@ -78,13 +78,17 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
-        [Route("Get_PartNo/{stckCode}")]
-        public IHttpActionResult Get_PartNo(string stckCode)
+        [Route("Get_PartNo")]
+        public IHttpActionResult Get_PartNo(string stckCode, string dsctrct)
         {
             try
             {
-                stckCode = stckCode.PadLeft(9, '0');
-                var data = db.VW_STOCK_CODEs.Where(a => a.STOCK_CODE == stckCode ).FirstOrDefault();
+                string partNo = stckCode;
+                if (stckCode != null)
+                {
+                    stckCode = stckCode.PadLeft(9, '0');
+                }
+                var data = db.VW_R_STOCK_CODEs.Where(a =>a.DSTRCT_CODE == dsctrct && (a.STOCK_CODE == stckCode || a.PART_NO == partNo)).ToList();
 
                 return Ok(new { Data = data });
             }
@@ -116,7 +120,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
+                var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
@@ -132,7 +136,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_EQ_NUMBERs.Where(a => a.EQUIP_NO == eqNumber).FirstOrDefault();
+                var data = db.VW_R_EQ_NUMBERs.Where(a => a.EQUIP_NO == eqNumber).FirstOrDefault();
 
                 return Ok(new { Data = data });
             }
@@ -148,7 +152,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_COMP_CODEs.ToList();
+                var data = db.VW_R_COMP_CODEs.ToList();
 
                 return Ok(new { Data = data });
             }
@@ -196,7 +200,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_STD_JOBs.Where(a => a.DSTRCT_CODE == site).ToList();
+                var data = db.VW_R_STD_JOBs.Where(a => a.DSTRCT_CODE == site).ToList();
 
                 return Ok(new { Data = data });
             }

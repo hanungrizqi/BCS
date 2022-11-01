@@ -23,6 +23,9 @@ $('#modal').on('hidden.bs.modal', function () {
     $("#txt_fiqNo").val("");
     $("#txt_indexNo").val("");
     $("#txt_qty").val("");
+
+    tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=").load();
+    $("#tblAddPart").hide();
 });
 
 var table = $("#table_part").DataTable({
@@ -105,6 +108,40 @@ var tableRepair = $("#table_repair").DataTable({
 
 });
 
+//Table Add Part
+var tableAddPart = $("#tblAddPart").DataTable({
+    ajax: {
+        url: $("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=",
+        dataSrc: "Data",
+    },
+    scrollX: true,
+    dom: '<t>',
+    columnDefs: [
+        { className: "text-center", "targets": [0] },
+    ],
+    columns: [
+        {
+            data: null,
+            targets: 'no-sort', orderable: false,
+            render: function (data, type, row) {
+                return `<input type="checkbox" name="checkPart" data-mnemonic="${row.MNEMONIC}" value="${row.PART_NO}" onclick="checkPart(this)">`
+            }
+        },
+        { data: 'STOCK_CODE' },
+        { data: 'PART_NO' },
+        { data: 'MNEMONIC' },
+    ],
+});
+
+function checkPart(checkbox) {
+    var checkboxes = document.getElementsByName('checkPart')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+    $("#txt_partNo").val(checkbox.value);
+    $("#txt_Mnemonic").val(checkbox.getAttribute('data-mnemonic'));
+}
+
 $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
     $("#txt_egi").val(egi);
@@ -126,21 +163,23 @@ function searchPartNo() {
         return false;
     }
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
+        url: $("#web_link").val() + "/api/Master/Get_PartNo?stckCode=" + stckCode + "&dsctrct=" + $("#txt_dstrct").val(), //URI,
         type: "GET",
         cache: false,
         beforeSend: function () {
             $("#overlay").show();
         },
         success: function (result) {
-            if (result.Data != null) {
-                $("#txt_partNo").val(result.Data.PART_NO);
+            if (result.Data.length > 0) {
+                tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=" + stckCode + "&dsctrct=" + $("#txt_dstrct").val()).load();
+                $("#tblAddPart").show();
             } else {
                 Swal.fire(
                     'Warning!',
-                    'Stock Code Tidak Terdaftar',
+                    'Stock Code atau Part No Belum Terdaftar',
                     'warning'
                 );
+                tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=").load();
             }
             $("#overlay").hide();
         }
@@ -480,6 +519,7 @@ function insertPart() {
     let PART_NO = $("#txt_partNo").val(),
         FIG_NO = $("#txt_fiqNo").val(),
         INDEX_NO = $("#txt_indexNo").val(),
+        MNEMONIC = $("#txt_Mnemonic").val(),
         QTY = $("#txt_qty").val()
 
     if (PART_NO == "" || FIG_NO == "" || INDEX_NO == "" || QTY == "") {
@@ -518,6 +558,7 @@ function insertPart() {
                     FIG_NO: FIG_NO,
                     INDEX_NO: INDEX_NO,
                     QTY: QTY,
+                    MNEMONIC: MNEMONIC
                 });
 
                 $.ajax({

@@ -40,7 +40,44 @@ $('#modal').on('hidden.bs.modal', function () {
     $("#txt_fiqNo").val("");
     $("#txt_indexNo").val("");
     $("#txt_qty").val("");
+
+    tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=").load();
+    $("#tblAddPart").hide();
 });
+
+//Table Add Part
+var tableAddPart = $("#tblAddPart").DataTable({
+    ajax: {
+        url: $("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=",
+        dataSrc: "Data",
+    },
+    scrollX: true,
+    dom: '<t>',
+    columnDefs: [
+        { className: "text-center", "targets": [0] },
+    ],
+    columns: [
+        {
+            data: null,
+            targets: 'no-sort', orderable: false,
+            render: function (data, type, row) {
+                return `<input type="checkbox" name="checkPart" data-mnemonic="${row.MNEMONIC}" value="${row.PART_NO}" onclick="checkPart(this)">`
+            }
+        },
+        { data: 'STOCK_CODE' },
+        { data: 'PART_NO' },
+        { data: 'MNEMONIC' },
+    ],
+});
+
+function checkPart(checkbox) {
+    var checkboxes = document.getElementsByName('checkPart')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+    $("#txt_partNo").val(checkbox.value);
+    $("#txt_Mnemonic").val(checkbox.getAttribute('data-mnemonic'));
+}
 
 function searchPartNo() {
     let stckCode = $("#txt_stckCode").val();
@@ -53,21 +90,23 @@ function searchPartNo() {
         return false;
     }
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_PartNo/" + stckCode, //URI,
+        url: $("#web_link").val() + "/api/Master/Get_PartNo?stckCode=" + stckCode + "&dsctrct=" + $("#txt_dstrct").val(), //URI,
         type: "GET",
         cache: false,
         beforeSend: function () {
             $("#overlay").show();
         },
         success: function (result) {
-            if (result.Data != null) {
-                $("#txt_partNo").val(result.Data.PART_NO);
+            if (result.Data.length > 0) {
+                tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=" + stckCode + "&dsctrct=" + $("#txt_dstrct").val()).load();
+                $("#tblAddPart").show();
             } else {
                 Swal.fire(
                     'Warning!',
-                    'Stock Code Tidak Terdaftar',
+                    'Stock Code atau Part No Belum Terdaftar',
                     'warning'
                 );
+                tableAddPart.ajax.url($("#web_link").val() + "/api/Master/Get_PartNo?stckCode=&dsctrct=").load();
             }
             $("#overlay").hide();
         }
@@ -179,6 +218,7 @@ function getSTDJob() {
 function addPartToTable() {
 
     let PART_NO = $("#txt_partNo").val(),
+        MNEMONIC = $("#txt_Mnemonic").val(),
         FIG_NO = $("#txt_fiqNo").val(),
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val(),
@@ -228,7 +268,7 @@ function addPartToTable() {
                             $('#table_part tr.odd').remove();
                             if (result.Data != null) {
                                 var listData = '<tr>' +
-                                    '<td>' + noRow + '</td>' +
+                                    '<td>' + noRow + '<input type="text" name="txt_mnemonicPart" value="' + MNEMONIC + '" hidden></td>' +
                                     '<td>' + result.Data.PART_NO + '</td>' +
                                     '<td>' + result.Data.STOCK_CODE + '</td>' +
                                     '<td>' + result.Data.STK_DESC + '</td>' +
@@ -242,7 +282,7 @@ function addPartToTable() {
                                     '</tr>';
                             } else {
                                 var listData = '<tr>' +
-                                    '<td>' + noRow + '</td>' +
+                                    '<td>' + noRow + '<input type="text" name="txt_mnemonicPart" value="' + MNEMONIC + '" hidden></td>' +
                                     '<td>' + PART_NO + '</td>' +
                                     '<td>' + STCK_CODE + '</td>' +
                                     '<td></td>' +
@@ -482,6 +522,7 @@ function savePart() {
             NO_BACKLOG: $("#txt_noBl").val(),
             DSTRCT_CODE: $("#txt_dstrct").val(),
             PART_NO: $(this).find('td:eq(1)').html(),
+            MNEMONIC: $(this).find('[name="txt_mnemonicPart"]').val(),
             FIG_NO: $(this).find('td:eq(4)').html(),
             INDEX_NO: $(this).find('td:eq(5)').html(),
             QTY: $(this).find('td:eq(6)').html()

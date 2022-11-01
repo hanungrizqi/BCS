@@ -46,7 +46,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_PART_REQUESTs.Where(a => a.DSTRCT_CODE == site && a.POSISI_BACKLOG == "Logistic").ToList();
+                var data = db.VW_T_PART_REQUESTs.Where(a => a.DSTRCT_CODE == site && a.POSISI_BACKLOG == "Logistic").ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }

@@ -45,8 +45,8 @@ namespace PLANT_BCS.Controllers
                 return RedirectToAction("index", "login");
             }
 
-            List<VW_PART_BACKLOG> tbl = new List<VW_PART_BACKLOG>();
-            List<VW_LOCATION_ON_STOCK> listWH = new List<VW_LOCATION_ON_STOCK>();
+            List<VW_T_PART_BACKLOG> tbl = new List<VW_T_PART_BACKLOG>();
+            List<VW_R_LOCATION_ON_STOCK> listWH = new List<VW_R_LOCATION_ON_STOCK>();
 
             using (var client = new HttpClient())
             {
@@ -68,7 +68,7 @@ namespace PLANT_BCS.Controllers
                     var ApiResponse = Res.Content.ReadAsStringAsync().Result;
                     Cls_PartBacklog data = new Cls_PartBacklog();
                     data = JsonConvert.DeserializeObject<Cls_PartBacklog>(ApiResponse);
-                    tbl = (List<VW_PART_BACKLOG>)data.tbl;
+                    tbl = (List<VW_T_PART_BACKLOG>)data.tbl;
                     ViewBag.dataPart = tbl;
                     ViewBag.noBacklog = noBacklog;
 
@@ -80,7 +80,7 @@ namespace PLANT_BCS.Controllers
                     var ApiResponse = dataWH.Content.ReadAsStringAsync().Result;
                     Cls_LocationOnStock data = new Cls_LocationOnStock();
                     data = JsonConvert.DeserializeObject<Cls_LocationOnStock>(ApiResponse);
-                    listWH = (List<VW_LOCATION_ON_STOCK>)data.tbl;
+                    listWH = (List<VW_R_LOCATION_ON_STOCK>)data.tbl;
                     ViewBag.dataWH = listWH;
                 }
             }

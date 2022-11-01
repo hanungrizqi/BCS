@@ -58,11 +58,23 @@ function saveBacklog(dataStatus) {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             if (data.Remarks == true) {
-                Swal.fire(
-                    'Saved!',
-                    'Data has been saved',
-                    'success'
-                );
+                if (dataStatus == "LOGISTIC APPROVED") {
+                    approveBacklog(dataStatus);
+                } else {
+                    Swal.fire({
+                        title: 'Saved',
+                        text: "Your data has been saved!",
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/Logistic/index";
+                        }
+                    })
+                }
             } if (data.Remarks == false) {
                 Swal.fire(
                     'Error!',
@@ -79,6 +91,16 @@ function saveBacklog(dataStatus) {
 }
 
 function submitBacklog(status) {
+
+    if ($("#txt_note").val() == "" || $("#txt_note").val() == null) {
+        Swal.fire(
+            'Warning',
+            'Mohon sertakan Note!',
+            'warning'
+        );
+        return false;
+    } 
+
     let tRow = $("#table_part >tbody >tr").length;
     $.each($("#table_part tbody tr"), function (index) {
         let LOCATION_ON_STOCK = $(this).find('[name="txt_los').val(),
@@ -95,21 +117,13 @@ function submitBacklog(status) {
         } else {
             let getin = index + 1;
             if (getin == tRow) {
-                submitChanges(status);
+                saveBacklog(status); 
             }
         }
     });
 }
 
-function submitChanges(status) {
-    if ($("#txt_note").val() == "" || $("#txt_note").val() == null) {
-        Swal.fire(
-            'Warning',
-            'Mohon sertakan Note!',
-            'warning'
-        );
-        return false;
-    }
+function approveBacklog(status){
 
     let dataBacklog = new Object();
     dataBacklog.NO_BACKLOG = $("#txt_noBacklog").val();
@@ -124,9 +138,6 @@ function submitChanges(status) {
         dataType: "json",
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        beforeSend: function () {
-            saveBacklog(status);
-        },
         success: function (data) {
             if (data.Remarks == true) {
                 Swal.fire({

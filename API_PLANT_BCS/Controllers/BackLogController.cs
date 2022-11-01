@@ -38,7 +38,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS != "PROGRESS").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS != "PROGRESS").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -54,7 +54,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner1").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner1").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -70,7 +70,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
 
                 return Ok(new { Data = data });
             }
@@ -86,7 +86,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS=="OPEN").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS=="OPEN").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -102,7 +102,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic" && a.STATUS != "PLANNER CANCEL").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic" && a.STATUS != "PLANNER CANCEL").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -118,7 +118,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -135,7 +135,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
+                var data = db.VW_T_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
@@ -152,11 +152,11 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var check = db.VW_STOCK_CODEs.Where(a => a.PART_NO == partNO).FirstOrDefault();
+                var check = db.VW_R_STOCK_CODEs.Where(a => a.PART_NO == partNO).FirstOrDefault();
                 if (check == null) {
                     return Ok(new { Remarks = false });
                 }
-                var data = db.VW_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
+                var data = db.VW_R_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
                 return Ok(new { Data = data, Remarks = true });
             }
             catch (Exception)
@@ -172,7 +172,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
+                var data = db.VW_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
 
                 return Ok(new { Data = data });
             }
@@ -320,7 +320,7 @@ namespace API_PLANT_BCS.Controllers
                     var cek = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == item.PART_ID).FirstOrDefault();
                     if (cek == null)
                     {
-                        var check = db.VW_STOCK_CODEs.Where(a => a.PART_NO == item.PART_NO).FirstOrDefault();
+                        var check = db.VW_R_STOCK_CODEs.Where(a => a.PART_NO == item.PART_NO).FirstOrDefault();
                         if (check == null)
                         {
                             return Ok(new { Remarks = false, Message = "Part Number belum Terdaftar" });
@@ -478,10 +478,10 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var dataCek = db.VW_BACKLOGs.Where(a => a.STATUS == "PROGRESS").ToList();
+                var dataCek = db.VW_T_BACKLOGs.Where(a => a.STATUS == "PROGRESS").ToList();
                 foreach (var item in dataCek)
                 {
-                    var cekCompleteItem = db.VW_COMPLETE_CODEs.Where(a => a.DSTRCT_CODE == item.DSTRCT_CODE && a.WORK_ORDER == item.WO_NO).FirstOrDefault();
+                    var cekCompleteItem = db.VW_R_COMPLETE_CODEs.Where(a => a.DSTRCT_CODE == item.DSTRCT_CODE && a.WORK_ORDER == item.WO_NO).FirstOrDefault();
                     if (cekCompleteItem != null)
                     {
                         var updateTbl = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == item.NO_BACKLOG).FirstOrDefault();

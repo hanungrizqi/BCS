@@ -92,7 +92,7 @@ namespace API_PLANT_BCS.ViewModel
             return result;
         }
 
-        public Cls_CreateWOWRResult CraeteWO(VW_BACKLOG dataBacklog)
+        public Cls_CreateWOWRResult CraeteWO(VW_T_BACKLOG dataBacklog)
         {
             Cls_CreateWOWRResult cls = new Cls_CreateWOWRResult();
 
@@ -168,7 +168,7 @@ namespace API_PLANT_BCS.ViewModel
             }
         }
 
-        public Cls_CreateWOWRResult CreateWR(string workOrder, IList<VW_PART_BACKLOG> dataStock, VW_BACKLOG dataBacklog)
+        public Cls_CreateWOWRResult CreateWR(string workOrder, IList<VW_T_PART_BACKLOG> dataStock, VW_T_BACKLOG dataBacklog)
         {
             Cls_CreateWOWRResult cls = new Cls_CreateWOWRResult();
 
