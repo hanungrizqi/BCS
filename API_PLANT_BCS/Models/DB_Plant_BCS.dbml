@@ -257,17 +257,6 @@
       <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.VW_R_PART_MSF170" Member="VW_R_PART_MSF170s">
-    <Type Name="VW_R_PART_MSF170">
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
-      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
-      <Column Name="UOM" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
-      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.VW_R_PART_READY_DATE_MASTER" Member="VW_R_PART_READY_DATE_MASTERs">
     <Type Name="VW_R_PART_READY_DATE_MASTER">
       <Column Name="DISTRICT" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
@@ -285,14 +274,6 @@
       <Column Name="STD_JOB_NO" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
       <Column Name="STD_JOB_DESC" Type="System.String" DbType="Char(40) NOT NULL" CanBeNull="false" />
       <Column Name="WORK_GROUP" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.VW_R_STOCK_CODE" Member="VW_R_STOCK_CODEs">
-    <Type Name="VW_R_STOCK_CODE">
-      <Column Name="STOCK_CODE" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
-      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.VW_T_BACKLOG" Member="VW_T_BACKLOGs">
@@ -398,6 +379,27 @@
       <Column Name="LOCATION_ON_STOCK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AVAILABLE_STOCK" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_R_PART_MSF170" Member="VW_R_PART_MSF170s">
+    <Type Name="VW_R_PART_MSF170">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="UOM" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PART_CLASS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PREF_PART_IND" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_R_STOCK_CODE" Member="VW_R_STOCK_CODEs">
+    <Type Name="VW_R_STOCK_CODE">
+      <Column Name="STOCK_CODE" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="PREF_PART_IND" Type="System.String" DbType="Char(2)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">

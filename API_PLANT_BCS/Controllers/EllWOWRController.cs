@@ -29,10 +29,10 @@ namespace API_PLANT_BCS.Controllers
                 foreach (var item in dataStock)
                 {
                     int available = cls.GetAvailableStock(item.DSTRCT_CODE, item.STOCK_CODE, item.LOCATION_ON_STOCK);
-                    if (available <= 0)
+                    if (available < item.QTY)
                     {
                         Cls_CreateWO data = cls.GetSubstitusiStock(item.STOCK_CODE);
-                        if (data.Rel_Stock_ID != null)
+                        if (data.Rel_Stock_ID != null && Convert.ToInt32(data.Issue_rule) == 4)
                         {
                             bool status = cls.CekAvailableStockInDistrict(item.DSTRCT_CODE, data.SCSUB_ID);
 

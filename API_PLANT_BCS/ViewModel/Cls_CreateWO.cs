@@ -21,6 +21,7 @@ namespace API_PLANT_BCS.ViewModel
 
         public string SCSUB_ID { get; set; }
         public string Rel_Stock_ID { get; set; }
+        public string Issue_rule { get; set; }
 
         public int GetAvailableStock(string dstrct, string stcCode, string wh)
         {
@@ -54,7 +55,7 @@ namespace API_PLANT_BCS.ViewModel
             _connection.ConnectionString = p_string_conn;
             _connection.Open();
 
-            string sql_stat_type = "select scsub_id, rel_stock_code from msf17t WHERE stock_code = '" + stcCode +"'";
+            string sql_stat_type = "select scsub_id, rel_stock_code, issue_rule from msf17t WHERE stock_code = '" + stcCode + "' and scsub_status = 'A'";
 
             OracleCommand command = new OracleCommand(sql_stat_type, _connection);
             OracleDataReader dr = command.ExecuteReader();
@@ -65,6 +66,7 @@ namespace API_PLANT_BCS.ViewModel
                 {
                     cls.SCSUB_ID = dr["scsub_id"].ToString();
                     cls.Rel_Stock_ID = dr["rel_stock_code"].ToString();
+                    cls.Issue_rule = dr["issue_rule"].ToString();
                 }
             }
             _connection.Close();

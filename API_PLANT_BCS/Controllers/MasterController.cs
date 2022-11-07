@@ -83,12 +83,18 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                string partNo = stckCode;
-                if (stckCode != null)
+                string partNo = "";
+                if (stckCode == null)
                 {
+                    stckCode = "";
+                    dsctrct = "";
+                }
+                else
+                {
+                    partNo = stckCode;
                     stckCode = stckCode.PadLeft(9, '0');
                 }
-                var data = db.VW_R_STOCK_CODEs.Where(a =>a.DSTRCT_CODE == dsctrct && (a.STOCK_CODE == stckCode || a.PART_NO == partNo)).ToList();
+                var data = db.VW_R_STOCK_CODEs.Where(b => b.DSTRCT_CODE == dsctrct && (b.STOCK_CODE == stckCode || b.PART_NO == partNo)).ToList();
 
                 return Ok(new { Data = data });
             }

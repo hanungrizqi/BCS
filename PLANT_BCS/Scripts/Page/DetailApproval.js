@@ -115,6 +115,7 @@ var tableAddPart = $("#tblAddPart").DataTable({
         { data: 'STOCK_CODE' },
         { data: 'PART_NO' },
         { data: 'MNEMONIC' },
+        { data: 'PREF_PART_IND' },
     ],
 });
 
