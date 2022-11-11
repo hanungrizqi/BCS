@@ -152,10 +152,6 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var check = db.VW_R_STOCK_CODEs.Where(a => a.PART_NO == partNO).FirstOrDefault();
-                if (check == null) {
-                    return Ok(new { Remarks = false });
-                }
                 var data = db.VW_R_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
                 return Ok(new { Data = data, Remarks = true });
             }
@@ -320,11 +316,6 @@ namespace API_PLANT_BCS.Controllers
                     var cek = db.TBL_T_RECOMMENDED_PARTs.Where(a => a.PART_ID == item.PART_ID).FirstOrDefault();
                     if (cek == null)
                     {
-                        var check = db.VW_R_STOCK_CODEs.Where(a => a.PART_NO == item.PART_NO).FirstOrDefault();
-                        if (check == null)
-                        {
-                            return Ok(new { Remarks = false, Message = "Part Number belum Terdaftar" });
-                        }
                         tbl.Add(item);
                     }
                     else

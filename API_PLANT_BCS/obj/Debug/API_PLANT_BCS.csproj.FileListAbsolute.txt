@@ -28,7 +28,6 @@ C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\roslyn\vbc.rsp
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\roslyn\VBCSCompiler.exe
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\Antlr3.Runtime.dll
-C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\EllipseWebServicesClient.dll
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\LdapAuthentication.dll
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\acer\Documents\GitHub\plant_bcs\API_PLANT_BCS\bin\Microsoft.Web.Infrastructure.dll
