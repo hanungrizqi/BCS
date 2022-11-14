@@ -73,7 +73,7 @@ namespace API_PLANT_BCS.ViewModel
             return cls;
         }
         
-        public bool CekAvailableStockInDistrict(string dstrct, string scsub_id2)
+        public bool CekAvailableStockInDistrict(string dstrct, string stcCode)
         {
             bool result = false;
 
@@ -81,7 +81,7 @@ namespace API_PLANT_BCS.ViewModel
             _connection.ConnectionString = p_string_conn;
             _connection.Open();
 
-            string sql_stat_type = "SELECT * FROM msf17u where dstrct_code = '" + dstrct + "' and scsub_id = '" + scsub_id2 + "'";
+            string sql_stat_type = "select a.scsub_id, a.rel_stock_code, a.issue_rule from msf17t a left join msf17u b on a.scsub_id = b.scsub_id WHERE a.stock_code = '" + stcCode + "' and a.scsub_status = 'A' and dstrct_code = '" + dstrct + "'";
 
             OracleCommand command = new OracleCommand(sql_stat_type, _connection);
             OracleDataReader dr = command.ExecuteReader();
