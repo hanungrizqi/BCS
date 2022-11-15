@@ -17,12 +17,14 @@ namespace API_PLANT_BCS.Controllers
 
         [HttpPost]
         [Route("Create_WO")]
-        public IHttpActionResult Create_WO(string noBacklog)
+        public IHttpActionResult Create_WO(string noBacklog, DateTime StrTime)
         {
             try
             {
                 Cls_CreateWO cls = new Cls_CreateWO();
                 List<Cls_StockCode> stck = new List<Cls_StockCode>();
+
+                TimeSpan planStrTime = StrTime.TimeOfDay; 
 
                 var dataStock = db.VW_T_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
                 var dataBacklog = db.VW_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
@@ -73,7 +75,7 @@ namespace API_PLANT_BCS.Controllers
                     }
                     else
                     {
-                        Cls_CreateWOWRResult results = cls.CraeteWO(dataBacklog);
+                        Cls_CreateWOWRResult results = cls.CraeteWO(dataBacklog, planStrTime);
                         if (results.Remarks == true)
                         {
                             Cls_CreateWOWRResult result1 = cls.CreateWR(results.WoNo, dataStock, dataBacklog);

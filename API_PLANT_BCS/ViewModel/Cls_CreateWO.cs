@@ -94,7 +94,7 @@ namespace API_PLANT_BCS.ViewModel
             return result;
         }
 
-        public Cls_CreateWOWRResult CraeteWO(VW_T_BACKLOG dataBacklog)
+        public Cls_CreateWOWRResult CraeteWO(VW_T_BACKLOG dataBacklog, TimeSpan planStrTime)
         {
             Cls_CreateWOWRResult cls = new Cls_CreateWOWRResult();
 
@@ -105,9 +105,11 @@ namespace API_PLANT_BCS.ViewModel
                 string backlogdesc = dataBacklog.BACKLOG_DESC.Replace(" ", "_"); 
                 string elluser = dataBacklog.ORIGINATOR_ID;
                 string compCode = dataBacklog.COMP_CODE;
+                TimeSpan hourEst = TimeSpan.FromHours((double)dataBacklog.HOUR_EST);
+                TimeSpan planFinTime = planStrTime.Add(hourEst);
 
-                DateTime rep = DateTime.Now;
-                DateTime rep2 = DateTime.Now;
+                DateTime rep = (DateTime)dataBacklog.PLAN_REPAIR_DATE_1;
+                var rep2 = dataBacklog.PLAN_REPAIR_DATE_2;
 
                 WorkOrderService.WorkOrderService i_obj_service = new WorkOrderService.WorkOrderService();
                 WorkOrderService.WorkOrderServiceCreateReplyDTO i_obj_create_rslt1 = new WorkOrderService.WorkOrderServiceCreateReplyDTO();
@@ -130,14 +132,17 @@ namespace API_PLANT_BCS.ViewModel
                 i_obj_requisition_dto1.workOrderType = "MO";
                 i_obj_requisition_dto1.maintenanceType = "BL";
                 i_obj_requisition_dto1.compCode = compCode;
+                i_obj_requisition_dto1.planStrTime = planStrTime.ToString("hhmmss");
+                i_obj_requisition_dto1.planFinTime = planFinTime.ToString("hhmmss");
 
                 if (rep2 == null)
                 {
-                    i_obj_requisition_dto1.planStrDate = rep.ToString("yyyyMMdd");
+                    i_obj_requisition_dto1.planStrDate = rep.ToString("hhmmss");
                 }
                 else
                 {
-                    i_obj_requisition_dto1.planStrDate = rep2.ToString("yyyyMMdd");
+                    DateTime repDate2 = (DateTime)rep2;
+                    i_obj_requisition_dto1.planStrDate = repDate2.ToString("yyyyMMdd");
                 }
 
                 i_obj_create_rslt1 = i_obj_service.create(i_obj_context, i_obj_requisition_dto1);

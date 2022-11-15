@@ -95,6 +95,7 @@ function getDetail() {
             $("#txt_note").val(dataBacklog.REMARKS);
             $("#txt_wo").val(dataBacklog.WO_NO);
             $("#txt_installDate").val(moment(dataBacklog.INSTALL_DATE).format("YYYY-MM-DD"));
+            $("#txt_iReqNo").val(dataBacklog.IREQ_NO);
         }
     });
 }

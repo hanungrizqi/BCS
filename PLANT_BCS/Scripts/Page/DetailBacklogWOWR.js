@@ -209,6 +209,7 @@ function saveBacklog(mode) {
     POSISI_BACKLOG = $("#txt_posBL").val();
     CREATED_BY = $("#txt_inspector").val();
     REMARKS = $("#txt_note").val();
+    PLANSTR_TIME = $("#txt_planStrTime").val();
 
     if (COMP_CODE == "") {
         window.location.hash = "txt_compCode";
@@ -256,6 +257,15 @@ function saveBacklog(mode) {
                 'warning'
             );
             window.location.hash = "txt_note";
+            return false;
+        }
+        if (PLANSTR_TIME == "") {
+            Swal.fire(
+                'Warning!',
+                'Message : Plan start time belum diisi',
+                'warning'
+            );
+            window.location.hash = "txt_planStrTime";
             return false;
         }
     }
@@ -326,7 +336,7 @@ function saveBacklog(mode) {
 
 function createWOWR() {
     $.ajax({
-        url: $("#web_link").val() + "/api/EllWOWR/Create_WO?noBacklog=" + $("#txt_noBl").val(), //URI
+        url: $("#web_link").val() + "/api/EllWOWR/Create_WO?noBacklog=" + $("#txt_noBl").val() + "&StrTime=" + $("#txt_planStrTime").val(), //URI
         type: "POST",
         contentType: "application/json; charset=utf-8",
         beforeSend: function () {
@@ -382,7 +392,6 @@ function showPartError(data) {
         let ListPart = '<tr>' +
             '<td>' + NO + '</td>' +
             '<td>' + STOCK_CODE + '</td>' +
-            '<td>' + SUB_STOCK_CODE + '</td>' +
             '<td>' + STATUS + '</td>' +
             '</tr>';
 
