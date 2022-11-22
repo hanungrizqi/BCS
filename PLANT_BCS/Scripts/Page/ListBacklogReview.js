@@ -5,8 +5,10 @@ var table = $("#tbl_backlog").DataTable({
         url: $("#web_link").val() + "/api/Backlog/Get_ListBacklogReview/" + $("#hd_site").val(),
         dataSrc: "Data",
     },
+
     "columnDefs": [
-        { "className": "dt-center", "targets": [0, 1, 6, 7] }
+        { "className": "dt-center", "targets": [0, 1, 2, 3, 4, 6, 7, 8, 9] },
+        { "className": "dt-nowrap", "targets": '_all' }
     ],
     scrollX: true,
     columns: [
@@ -23,6 +25,7 @@ var table = $("#tbl_backlog").DataTable({
                 return tanggal;
             }
         },
+        { data: 'POSISI_BACKLOG' },
         {
             data: 'STATUS',
             render: function (data, type, row) {
@@ -41,5 +44,28 @@ var table = $("#tbl_backlog").DataTable({
                 return action;
             }
         }
-    ]
+    ],
+
+    initComplete: function () {
+        this.api()
+            .columns(8)
+            .every(function () {
+                var column = this;
+                var select = $('<select class="form-control form-control-sm" style="width:200px; display:inline-block; margin-left: 10px;"><option value="">-- STATUS --</option></select>')
+                    .appendTo($("#tbl_backlog_filter.dataTables_filter"))
+                    .on('change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                        column.search(val ? '^' + val + '$' : '', true, false).draw();
+                    });
+
+                column
+                    .data()
+                    .unique()
+                    .sort()
+                    .each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>');
+                    });
+            });
+    }
 });

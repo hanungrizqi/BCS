@@ -42,3 +42,7 @@
 .select2-selection__arrow {
     height: calc(1.5em + .5rem + 2px) !important;
 }
+
+.btn-primary{
+    color : white;
+}

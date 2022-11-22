@@ -4,7 +4,8 @@
         dataSrc: "Data",
     },
     "columnDefs": [
-        { "className": "dt-center", "targets": [0, 1, 6, 7] }
+        { "className": "dt-center", "targets": [0, 1, 2, 3, 5, 6, 7] },
+        { "className": "dt-nowrap", "targets": '_all' }
     ],
     scrollX: true,
     columns: [
