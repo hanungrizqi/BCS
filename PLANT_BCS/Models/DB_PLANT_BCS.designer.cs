@@ -156,6 +156,14 @@ namespace PLANT_BCS.Models
 				return this.GetTable<TBL_T_RECOMMENDED_PART>();
 			}
 		}
+		
+		public System.Data.Linq.Table<VW_WH_STOCK_CODE> VW_WH_STOCK_CODEs
+		{
+			get
+			{
+				return this.GetTable<VW_WH_STOCK_CODE>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_M_USER")]
@@ -2555,6 +2563,69 @@ namespace PLANT_BCS.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_WH_STOCK_CODE")]
+	public partial class VW_WH_STOCK_CODE
+	{
+		
+		private string _DSTRCT_CODE;
+		
+		private string _STOCK_CODE;
+		
+		private string _WHOUSE_ID;
+		
+		public VW_WH_STOCK_CODE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CODE", DbType="Char(9) NOT NULL", CanBeNull=false)]
+		public string STOCK_CODE
+		{
+			get
+			{
+				return this._STOCK_CODE;
+			}
+			set
+			{
+				if ((this._STOCK_CODE != value))
+				{
+					this._STOCK_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WHOUSE_ID", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string WHOUSE_ID
+		{
+			get
+			{
+				return this._WHOUSE_ID;
+			}
+			set
+			{
+				if ((this._WHOUSE_ID != value))
+				{
+					this._WHOUSE_ID = value;
+				}
 			}
 		}
 	}

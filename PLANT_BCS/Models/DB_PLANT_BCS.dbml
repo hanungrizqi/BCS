@@ -145,4 +145,11 @@
       <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_WH_STOCK_CODE" Member="VW_WH_STOCK_CODEs">
+    <Type Name="VW_WH_STOCK_CODE">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="WHOUSE_ID" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

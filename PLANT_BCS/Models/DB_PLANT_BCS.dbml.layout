@@ -62,5 +62,11 @@
         <elementListCompartment Id="de21c178-7a79-4ea3-aec2-9ef6c511aeb9" absoluteBounds="4.765, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="5dfb13dd-eda7-4c6d-b4fa-159218666460" isExpanded="false" absoluteBounds="2.625, 3, 2, 0.45">
+      <DataClassMoniker Name="/DB_PLANT_BCSDataContext/VW_WH_STOCK_CODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cd76e42-6a32-4b6d-b6ac-a6df5d9fab5d" absoluteBounds="2.6399999999999997, 3.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

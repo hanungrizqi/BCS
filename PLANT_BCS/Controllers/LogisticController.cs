@@ -46,7 +46,7 @@ namespace PLANT_BCS.Controllers
             }
 
             List<VW_T_PART_BACKLOG> tbl = new List<VW_T_PART_BACKLOG>();
-            List<VW_R_LOCATION_ON_STOCK> listWH = new List<VW_R_LOCATION_ON_STOCK>();
+            List<VW_WH_STOCK_CODE> listWH = new List<VW_WH_STOCK_CODE>();
 
             using (var client = new HttpClient())
             {
@@ -80,7 +80,7 @@ namespace PLANT_BCS.Controllers
                     var ApiResponse = dataWH.Content.ReadAsStringAsync().Result;
                     Cls_LocationOnStock data = new Cls_LocationOnStock();
                     data = JsonConvert.DeserializeObject<Cls_LocationOnStock>(ApiResponse);
-                    listWH = (List<VW_R_LOCATION_ON_STOCK>)data.tbl;
+                    listWH = (List<VW_WH_STOCK_CODE>)data.tbl;
                     ViewBag.dataWH = listWH;
                 }
             }

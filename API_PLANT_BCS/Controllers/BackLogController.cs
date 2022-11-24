@@ -71,7 +71,7 @@ namespace API_PLANT_BCS.Controllers
             try
             {
                 //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
-                var data = db.VW_T_BACKLOGs.ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
 
                 return Ok(new { Data = data });
             }

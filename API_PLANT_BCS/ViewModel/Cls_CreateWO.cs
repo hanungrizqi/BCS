@@ -137,7 +137,7 @@ namespace API_PLANT_BCS.ViewModel
 
                 if (rep2 == null)
                 {
-                    i_obj_requisition_dto1.planStrDate = rep.ToString("hhmmss");
+                    i_obj_requisition_dto1.planStrDate = rep.ToString("yyyyMMdd");
                 }
                 else
                 {

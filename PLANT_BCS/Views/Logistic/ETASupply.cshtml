@@ -169,14 +169,19 @@
                                         <option></option>
                                         @foreach (var los in ViewBag.dataWH)
                                         {
-                                            if (los.WH == part.LOCATION_ON_STOCK)
+                                            if (los.STOCK_CODE == @part.STOCK_CODE)
                                             {
-                                                <option selected="selected" value="@los.WH">@los.WH</option>
+                                                if (los.WHOUSE_ID == part.LOCATION_ON_STOCK)
+                                                {
+                                                    <option selected="selected" value="@los.WHOUSE_ID">@los.WHOUSE_ID</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@los.WHOUSE_ID">@los.WHOUSE_ID</option>
+                                                }
+
                                             }
-                                            else
-                                            {
-                                                <option value="@los.WH">@los.WH</option>
-                                            }
+
                                         }
                                     </select>
                                 </td>

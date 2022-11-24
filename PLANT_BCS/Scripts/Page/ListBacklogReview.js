@@ -30,7 +30,17 @@ var table = $("#tbl_backlog").DataTable({
             data: 'STATUS',
             render: function (data, type, row) {
                 text = '';
-                text = `<span class="badge bg-info">${data}</span>`;
+                if (data == "PLANNER APPROVED") {
+                    text = `<span class="badge bg-primary">${data}</span>`;
+                } else if (data == "PLANNER CANCEL") {
+                    text = `<span class="badge bg-danger">${data}</span>`;
+                } else if (data == "PROGRESS") {
+                    text = `<span class="badge bg-warning">${data}</span>`;
+                } else if (data == "CLOSE") {
+                    text = `<span class="badge bg-success">${data}</span>`;
+                } else {
+                    text = `<span class="badge bg-info">${data}</span>`;
+                }
                 return text;
             }
         },

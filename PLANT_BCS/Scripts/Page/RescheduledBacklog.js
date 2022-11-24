@@ -32,16 +32,18 @@ var table = $("#table_part").DataTable({
         {
             data: 'ETA_SUPPLY',
             render: function (data, type, row) {
-                let tempRepairDate1 = moment($("#txt_planRD1Temp").val()).format("DD/MM/YYYY");
-                let eta = moment(data).format("DD/MM/YYYY");
+                let tempRepairDate1 = new Date($("#txt_planRD1Temp").val());
+                let eta = new Date(data);
 
-                console.log("PlantRepair1 :" + tempRepairDate1);
-                console.log("ETA :" + eta);
+                //console.log("PlantRepair1 :" + tempRepairDate1);
+                //console.log("ETA :" + eta);
                 let text = "";
 
                 if (eta > tempRepairDate1) {
-                    text = `<span class="text-danger">${eta}</span>`
+                    eta = moment(data).format("DD/MM/YYYY");
+                    text = `<span class="text-danger" data-eta="${data}">${eta}</span>`
                 } else {
+                    eta = moment(data).format("DD/MM/YYYY");
                     text = `<span class="text-success">${eta}</span>`
                 }
 
@@ -117,11 +119,14 @@ function submitBacklog(status) {
         return false;
     }
 
+
     let dataBacklog = new Object();
     dataBacklog.NO_BACKLOG = $("#txt_noBacklog").val();
     dataBacklog.UPDATED_BY = $("#hd_nrp").val();
     dataBacklog.REMARKS = $("#txt_note").val();
+    dataBacklog.PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
     dataBacklog.PLAN_REPAIR_DATE_2 = $("#txt_planRD2").val();
+
     if (status == "PLANNER APPROVED") {
         dataBacklog.POSISI_BACKLOG = "Logistic";
     } else {
@@ -129,6 +134,44 @@ function submitBacklog(status) {
     }
     dataBacklog.STATUS = status;
 
+
+    let tRow = $("#table_part >tbody >tr").length;
+    $.each($("#table_part tbody tr"), function (index) {
+        //debugger;
+        var cekTD = $(this).find('td:eq(8) >span:first');
+        if (cekTD.hasClass('text-danger')) {
+            var eta = $(cekTD).attr("data-eta");
+            let etaTD = new Date(eta);
+            let planDate2 = new Date(dataBacklog.PLAN_REPAIR_DATE_1);
+            if (dataBacklog.PLAN_REPAIR_DATE_2 != "") {
+                planDate2 = new Date(dataBacklog.PLAN_REPAIR_DATE_2);
+            }
+            
+
+            if (planDate2 < etaTD) {
+                Swal.fire(
+                    'Warning',
+                    'Plan Repair date 2 belum sesusai!',
+                    'warning'
+                );
+                return false;
+            } else {
+                let getin = index + 1;
+                if (getin == tRow) {
+                    FnSubmit(dataBacklog);
+                }
+            }
+        } else {
+            let getin = index + 1;
+            if (getin == tRow) {
+                FnSubmit(dataBacklog);
+            }
+        }
+    });
+        
+}
+
+function FnSubmit(dataBacklog) {
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Rescheduled_Backlog", //URI
         data: JSON.stringify(dataBacklog),

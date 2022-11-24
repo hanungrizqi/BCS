@@ -402,6 +402,13 @@
       <Column Name="PREF_PART_IND" Type="System.String" DbType="Char(2)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_WH_STOCK_CODE" Member="VW_WH_STOCK_CODEs">
+    <Type Name="VW_WH_STOCK_CODE">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="WHOUSE_ID" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">
     <Parameter Name="NO_BACKLOG" Parameter="nO_BACKLOG" Type="System.String" DbType="VarChar(MAX)" />
     <Return Type="System.Int32" />

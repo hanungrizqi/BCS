@@ -35,7 +35,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_R_LOCATION_ON_STOCKs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                var data = db.VW_WH_STOCK_CODEs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
             }
