@@ -146,12 +146,6 @@
         <elementListCompartment Id="b5bbf1a5-82c3-4ad5-8dc3-4c7dd0f54f81" absoluteBounds="6.8900000000000006, 4.7100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="766ce8d2-a0ba-4ad9-af6f-6972f2777711" isExpanded="false" absoluteBounds="9, 1.75, 2, 0.45">
-      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_T_BACKLOG" />
-      <nestedChildShapes>
-        <elementListCompartment Id="60da990f-ac60-4980-919f-d73baaf71d9b" absoluteBounds="9.015, 2.2100000000000009, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="bea16ddb-e054-47ee-a9d5-163962415416" isExpanded="false" absoluteBounds="9, 1.25, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_T_PART_BACKLOG" />
       <nestedChildShapes>
@@ -186,6 +180,42 @@
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_WH_STOCK_CODE" />
       <nestedChildShapes>
         <elementListCompartment Id="a9b0ac55-a646-4892-b01c-935c5682e57b" absoluteBounds="6.89, 6.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b6dda0d-3ce0-47e5-b063-549e04b95a2a" isExpanded="false" absoluteBounds="9, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_T_BACKLOG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3c97686-c369-4f4a-b328-fb69a5fcfa26" absoluteBounds="9.015, 2.21, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e97f91fe-80fb-435e-871f-3006986e2312" isExpanded="false" absoluteBounds="4.75, 4.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_KARYAWAN_PLANT_HAULING" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20ca5ade-e99d-4ce2-abee-d008b01e6cbf" absoluteBounds="4.765, 4.71, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3386c85-e672-4b4e-b83f-30a404a894b4" isExpanded="false" absoluteBounds="4.75, 4.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_KARYAWAN_PLANT_TRACK" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6931a1ff-efb2-4d04-b6f3-0f5748c793b3" absoluteBounds="4.765, 5.21, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68abe64d-8d96-4a18-ac17-4191d4cf7456" isExpanded="false" absoluteBounds="4.75, 5.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_KARYAWAN_PLANT_WHEEL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c50344bd-73bf-4150-ab91-24c00e71de6e" absoluteBounds="4.765, 5.71, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1cdbe96c-cb4a-4a50-91c1-13c1798c363d" isExpanded="false" absoluteBounds="6.875, 6.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_R_EQ_NUMBER_HAULING" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a3e1d397-a570-4112-9512-ca3c3a0faeeb" absoluteBounds="6.89, 6.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="17817a4a-cbc5-4fc2-b37d-2edaf1b52015" isExpanded="false" absoluteBounds="6.875, 6.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_R_EQ_NUMBER_TRACK_WHEEL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="81f18c93-ba78-417e-8158-43e786c81d59" absoluteBounds="6.89, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

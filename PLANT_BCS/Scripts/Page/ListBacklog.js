@@ -22,11 +22,21 @@
             }
         },
         { data: 'POSISI_BACKLOG' },
+        { data: 'CREATED_DATE' },
         {
             data: 'STATUS',
             render: function (data, type, row) {
+                //text = '';
+                //if (data == "PLANNER APPROVED") {
+                //    text = `<span class="badge bg-success">${data}</span>`;
+                //} else if (data == "PLANNER CANCEL") {
+                //    text = `<span class="badge bg-danger">${data}</span>`;
+                //} else {
+                //    text = `<span class="badge bg-info">${data}</span>`;
+                //}
+                //return text;
                 text = '';
-                if (data == "PLANNER APPROVED") {
+                if (data == "CLOSE") {
                     text = `<span class="badge bg-success">${data}</span>`;
                 } else if (data == "PLANNER CANCEL") {
                     text = `<span class="badge bg-danger">${data}</span>`;

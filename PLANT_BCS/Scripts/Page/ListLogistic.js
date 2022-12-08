@@ -21,10 +21,11 @@
                 return tanggal;
             }
         },
+        { data: 'CREATED_DATE' },
         {
             data: 'STATUS',
             render: function (data, type, row) {
-                text = `<span class="badge bg-success">${data}</span>`;
+                text = `<span class="badge bg-info">${data}</span>`;
                 return text;
             } 
         },

@@ -22,6 +22,7 @@
                 return tanggal;
             }
         },
+        { data: 'CREATED_DATE' },
         {
             data: 'STATUS',
             render: function (data, type, row) {

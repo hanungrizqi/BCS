@@ -147,20 +147,23 @@ function submitBacklog(status) {
                 planDate2 = new Date(dataBacklog.PLAN_REPAIR_DATE_2);
             }
             
-
-            if (planDate2 < etaTD) {
-                Swal.fire(
-                    'Warning',
-                    'Plan Repair date 2 belum sesusai!',
-                    'warning'
-                );
-                return false;
-            } else {
                 let getin = index + 1;
                 if (getin == tRow) {
                     FnSubmit(dataBacklog);
                 }
-            }
+            //if (planDate2 < etaTD) {
+            //    Swal.fire(
+            //        'Warning',
+            //        'Plan Repair date 2 belum sesusai!',
+            //        'warning'
+            //    );
+            //    return false;
+            //} else {
+            //    let getin = index + 1;
+            //    if (getin == tRow) {
+            //        FnSubmit(dataBacklog);
+            //    }
+            //}
         } else {
             let getin = index + 1;
             if (getin == tRow) {

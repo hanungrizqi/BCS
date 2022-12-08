@@ -121,14 +121,50 @@ namespace API_PLANT_BCS.Controllers
         }
         
         [HttpGet]
-        [Route("Get_EqNumber/{site}")]
-        public IHttpActionResult Get_EqNumber(string site)
+        [Route("Get_EqNumber/{site}/{nrp}")]
+        public IHttpActionResult Get_EqNumber(string site = "", string nrp = "")
         {
             try
             {
-                var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
+                if(site == "INDE")
+                {
+                    //valisasi wheel
+                    var karyawan_wheel = db.VW_KARYAWAN_PLANT_WHEELs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_hauling = db.VW_KARYAWAN_PLANT_HAULINGs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_track = db.VW_KARYAWAN_PLANT_TRACKs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
 
-                return Ok(new { Data = data, Total = data.Count() });
+                    if(karyawan_hauling != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_HAULINGs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                        return Ok(new { Data = data, Total = data.Count() });
+                    }
+                    else if(karyawan_track != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_TRACK_WHEELs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                        return Ok(new { Data = data, Total = data.Count() });
+                    }
+                    else if(karyawan_wheel != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_TRACK_WHEELs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                        return Ok(new { Data = data, Total = data.Count() });
+                    }
+                    else
+                    {
+                        var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                        return Ok(new { Data = data, Total = data.Count() });
+                    }
+                }
+                else
+                {
+                    var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                    return Ok(new { Data = data, Total = data.Count() });
+                }
+                
             }
             catch (Exception)
             {

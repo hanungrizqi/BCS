@@ -26,18 +26,28 @@ var table = $("#tbl_backlog").DataTable({
             }
         },
         { data: 'POSISI_BACKLOG' },
+        { data: 'CREATED_DATE' },
         {
             data: 'STATUS',
             render: function (data, type, row) {
+                //text = '';
+                //if (data == "PLANNER APPROVED") {
+                //    text = `<span class="badge bg-primary">${data}</span>`;
+                //} else if (data == "PLANNER CANCEL") {
+                //    text = `<span class="badge bg-danger">${data}</span>`;
+                //} else if (data == "PROGRESS") {
+                //    text = `<span class="badge bg-warning">${data}</span>`;
+                //} else if (data == "CLOSE") {
+                //    text = `<span class="badge bg-success">${data}</span>`;
+                //} else {
+                //    text = `<span class="badge bg-info">${data}</span>`;
+                //}
+                //return text;
                 text = '';
-                if (data == "PLANNER APPROVED") {
-                    text = `<span class="badge bg-primary">${data}</span>`;
+                if (data == "CLOSE") {
+                    text = `<span class="badge bg-success">${data}</span>`;
                 } else if (data == "PLANNER CANCEL") {
                     text = `<span class="badge bg-danger">${data}</span>`;
-                } else if (data == "PROGRESS") {
-                    text = `<span class="badge bg-warning">${data}</span>`;
-                } else if (data == "CLOSE") {
-                    text = `<span class="badge bg-success">${data}</span>`;
                 } else {
                     text = `<span class="badge bg-info">${data}</span>`;
                 }
