@@ -64,7 +64,7 @@ namespace API_PLANT_BCS.ViewModel
             try
             {
                 var ldap = new LdapAuthentication("LDAP://KPPMINING:389");
-                //stat = ldap.IsAuthenticated("KPPMINING", Username, Password);
+                stat = ldap.IsAuthenticated("KPPMINING", Username, Password);
                 stat = true;
             }
             catch (Exception)

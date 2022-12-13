@@ -38,6 +38,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.STATUS != "PROGRESS").ToList();
 
                 return Ok(new { Data = data });
@@ -54,6 +55,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner1").ToList();
 
                 return Ok(new { Data = data });
@@ -70,6 +72,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
 
@@ -87,6 +90,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS=="OPEN").ToList();
 
                 return Ok(new { Data = data });
@@ -103,6 +107,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Logistic" && a.STATUS != "PLANNER CANCEL").ToList();
 
                 return Ok(new { Data = data });
@@ -119,6 +124,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "Planner").ToList();
 
                 return Ok(new { Data = data });
@@ -136,6 +142,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                
                 var data = db.VW_T_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
 
                 return Ok(new { Data = data, Total = data.Count() });
@@ -169,6 +176,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var data = db.VW_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
 
                 return Ok(new { Data = data });
@@ -470,6 +478,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                db.CommandTimeout = 120;
                 var dataCek = db.VW_T_BACKLOGs.Where(a => a.STATUS == "PROGRESS").ToList();
                 foreach (var item in dataCek)
                 {

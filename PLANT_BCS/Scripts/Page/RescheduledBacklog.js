@@ -118,7 +118,15 @@ function submitBacklog(status) {
         );
         return false;
     }
+    
+    var validasi = false;
+    var plandate2 = $("#txt_planRD2").val();
+    plandate2 = plandate2.replace("-", "");
+    plandate2 = plandate2.replace("-", "");
+    plandate2 = parseInt(plandate2);
+    /*console.log(plandate2);*/
 
+    var etasupploy = 0
 
     let dataBacklog = new Object();
     dataBacklog.NO_BACKLOG = $("#txt_noBacklog").val();
@@ -136,8 +144,9 @@ function submitBacklog(status) {
 
 
     let tRow = $("#table_part >tbody >tr").length;
+    
     $.each($("#table_part tbody tr"), function (index) {
-        //debugger;
+        
         var cekTD = $(this).find('td:eq(8) >span:first');
         if (cekTD.hasClass('text-danger')) {
             var eta = $(cekTD).attr("data-eta");
@@ -149,9 +158,20 @@ function submitBacklog(status) {
             
                 let getin = index + 1;
                 if (getin == tRow) {
-                    FnSubmit(dataBacklog);
-                }
+                    //FnSubmit(dataBacklog);
+                    validasi = true;
+            }
+
+            eta = eta.replace("-", "");
+            eta = eta.replace("-", "");
+            eta = parseInt(eta);
+            /*console.log(eta);*/
+            if (etasupploy < eta) {
+                etasupploy = eta;
+                /*console.log(etasupploy);*/
+            }
             //if (planDate2 < etaTD) {
+                
             //    Swal.fire(
             //        'Warning',
             //        'Plan Repair date 2 belum sesusai!',
@@ -167,10 +187,41 @@ function submitBacklog(status) {
         } else {
             let getin = index + 1;
             if (getin == tRow) {
-                FnSubmit(dataBacklog);
+                validasi = true;
+                //FnSubmit(dataBacklog);
             }
         }
-    });
+    });    
+    
+    if (plandate2 < etasupploy) {
+        
+        validasi = false;
+        Swal.fire(
+                'Warning',
+                'Plan Repair date 2 belum sesusai!',
+                'warning'
+        );
+        return false;
+    }
+    else {
+        validasi = true;
+    }
+
+    if ($("#txt_planRD2").val() == "") {
+
+        validasi = false;
+        Swal.fire(
+            'Warning',
+            'Plan Repair date 2 belum sesusai!',
+            'warning'
+        );
+        return false;
+    }
+
+    if (validasi) {
+
+        FnSubmit(dataBacklog);
+    }
         
 }
 
