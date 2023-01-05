@@ -189,7 +189,7 @@ function searchPartNo() {
 
 function getEqNumber() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_EqNumber/" + $("#hd_site").val(), //URI,
+        url: $("#web_link").val() + "/api/Master/Get_EqNumber/" + $("#hd_site").val() + "/" + $("#hd_nrp").val(), //URI,
         type: "GET",
         cache: false,
         success: function (result) {

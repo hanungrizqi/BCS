@@ -28,7 +28,25 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
+
+
+
+        [HttpGet]
+        [Route("Get_JobsiteByUsername")]
+        public IHttpActionResult Get_JobsiteByUsername(string username = "")
+        {
+            try
+            {
+                var data = db.VW_MSF020s.Where(x => x.ENTITY == username).ToList();
+
+                return Ok(new { Data = data, Total = data.Count() });
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet]
         [Route("Get_LocationOnStock/{dstrct}")]
         public IHttpActionResult Get_LocationOnStock(string dstrct)

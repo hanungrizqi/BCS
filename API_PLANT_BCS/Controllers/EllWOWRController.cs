@@ -64,6 +64,7 @@ namespace API_PLANT_BCS.Controllers
                         {
                             var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
                             saveBacklog.STATUS = "PROGRESS";
+                            saveBacklog.POSISI_BACKLOG = "Waiting Install Part";
                             db.SubmitChanges();
 
                             return Ok(new { Data = result1, Remarks = true, Message = "Create WO & WR Berhasil !" });
@@ -83,6 +84,7 @@ namespace API_PLANT_BCS.Controllers
                             {
                                 var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
                                 saveBacklog.STATUS = "PROGRESS";
+                                saveBacklog.POSISI_BACKLOG = "Waiting Install Part";
                                 db.SubmitChanges();
 
                                 return Ok(new { Data = result1, Remarks = true, Message = "Create WO & WR Berhasil !" });

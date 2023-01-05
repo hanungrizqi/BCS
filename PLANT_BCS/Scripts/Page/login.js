@@ -1,5 +1,5 @@
 ﻿var e = Swal.mixin({ buttonsStyling: !1, customClass: { confirmButton: "btn btn-alt-success m-5", cancelButton: "btn btn-alt-danger m-5", input: "form-control" } });
-addJobsite();
+//addJobsite();
 
 function PostLogin() {
     var obj = new Object();
@@ -74,7 +74,8 @@ function MakeSession(nrp, site) {
 
 function addJobsite() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_Jobsite", //URI,
+        /*url: $("#web_link").val() + "/api/Master/Get_Jobsite?username=" + $("#login-username").val(), //URI,*/
+        url: $("#web_link").val() + "/api/Master/Get_JobsiteByUsername?username=" + $("#login-username").val(), //URI,
         type: "GET",
         cache: false,
         success: function (result) {

@@ -504,6 +504,32 @@
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_MSF020" Member="VW_MSF020s">
+    <Type Name="VW_MSF020">
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="ENTITY" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ENTRY_TYPE" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATION_DATE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="DEFAULT_FLAG" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DEFAULT_MENU" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GLOBAL_PROFILE" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_ACC_DATE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_MOD_DATE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_MOD_TIME" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_MOD_USER" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_NO_ERR_LOGS" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="OGUI_GLOBAL_PROF" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="OWNER_ID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PASS_WORD" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PROFILE" Type="System.String" DbType="Char(250) NOT NULL" CanBeNull="false" />
+      <Column Name="PROFILE_LOGIN_LCKD" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PSW_UPD_DATE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="RECENT_PWD_GRP" Type="System.String" DbType="Char(204) NOT NULL" CanBeNull="false" />
+      <Column Name="SECURITY_ACCESS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_MOD_EMP" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">
     <Parameter Name="NO_BACKLOG" Parameter="nO_BACKLOG" Type="System.String" DbType="VarChar(MAX)" />
     <Return Type="System.Int32" />

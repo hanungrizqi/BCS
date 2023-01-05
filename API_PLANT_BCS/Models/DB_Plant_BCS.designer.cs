@@ -380,6 +380,14 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<VW_MSF020> VW_MSF020s
+		{
+			get
+			{
+				return this.GetTable<VW_MSF020>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.cusp_NotifBacklogCancel")]
 		public int cusp_NotifBacklogCancel([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NO_BACKLOG", DbType="VarChar(MAX)")] string nO_BACKLOG)
 		{
@@ -7867,6 +7875,411 @@ namespace API_PLANT_BCS.Models
 				if ((this._DSTRCT_CODE != value))
 				{
 					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_MSF020")]
+	public partial class VW_MSF020
+	{
+		
+		private string _DSTRCT_CODE;
+		
+		private string _ENTITY;
+		
+		private char _ENTRY_TYPE;
+		
+		private string _CREATION_DATE;
+		
+		private char _DEFAULT_FLAG;
+		
+		private string _DEFAULT_MENU;
+		
+		private string _EMPLOYEE_ID;
+		
+		private string _GLOBAL_PROFILE;
+		
+		private string _LAST_ACC_DATE;
+		
+		private string _LAST_MOD_DATE;
+		
+		private string _LAST_MOD_TIME;
+		
+		private string _LAST_MOD_USER;
+		
+		private string _LAST_NO_ERR_LOGS;
+		
+		private string _OGUI_GLOBAL_PROF;
+		
+		private string _OWNER_ID;
+		
+		private string _PASS_WORD;
+		
+		private string _PROFILE;
+		
+		private char _PROFILE_LOGIN_LCKD;
+		
+		private string _PSW_UPD_DATE;
+		
+		private string _RECENT_PWD_GRP;
+		
+		private char _SECURITY_ACCESS;
+		
+		private string _LAST_MOD_EMP;
+		
+		public VW_MSF020()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ENTITY", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string ENTITY
+		{
+			get
+			{
+				return this._ENTITY;
+			}
+			set
+			{
+				if ((this._ENTITY != value))
+				{
+					this._ENTITY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ENTRY_TYPE", DbType="Char(1) NOT NULL")]
+		public char ENTRY_TYPE
+		{
+			get
+			{
+				return this._ENTRY_TYPE;
+			}
+			set
+			{
+				if ((this._ENTRY_TYPE != value))
+				{
+					this._ENTRY_TYPE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATION_DATE", DbType="Char(8) NOT NULL", CanBeNull=false)]
+		public string CREATION_DATE
+		{
+			get
+			{
+				return this._CREATION_DATE;
+			}
+			set
+			{
+				if ((this._CREATION_DATE != value))
+				{
+					this._CREATION_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEFAULT_FLAG", DbType="Char(1) NOT NULL")]
+		public char DEFAULT_FLAG
+		{
+			get
+			{
+				return this._DEFAULT_FLAG;
+			}
+			set
+			{
+				if ((this._DEFAULT_FLAG != value))
+				{
+					this._DEFAULT_FLAG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEFAULT_MENU", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string DEFAULT_MENU
+		{
+			get
+			{
+				return this._DEFAULT_MENU;
+			}
+			set
+			{
+				if ((this._DEFAULT_MENU != value))
+				{
+					this._DEFAULT_MENU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPLOYEE_ID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string EMPLOYEE_ID
+		{
+			get
+			{
+				return this._EMPLOYEE_ID;
+			}
+			set
+			{
+				if ((this._EMPLOYEE_ID != value))
+				{
+					this._EMPLOYEE_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GLOBAL_PROFILE", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string GLOBAL_PROFILE
+		{
+			get
+			{
+				return this._GLOBAL_PROFILE;
+			}
+			set
+			{
+				if ((this._GLOBAL_PROFILE != value))
+				{
+					this._GLOBAL_PROFILE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_ACC_DATE", DbType="Char(8) NOT NULL", CanBeNull=false)]
+		public string LAST_ACC_DATE
+		{
+			get
+			{
+				return this._LAST_ACC_DATE;
+			}
+			set
+			{
+				if ((this._LAST_ACC_DATE != value))
+				{
+					this._LAST_ACC_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_MOD_DATE", DbType="Char(8) NOT NULL", CanBeNull=false)]
+		public string LAST_MOD_DATE
+		{
+			get
+			{
+				return this._LAST_MOD_DATE;
+			}
+			set
+			{
+				if ((this._LAST_MOD_DATE != value))
+				{
+					this._LAST_MOD_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_MOD_TIME", DbType="Char(6) NOT NULL", CanBeNull=false)]
+		public string LAST_MOD_TIME
+		{
+			get
+			{
+				return this._LAST_MOD_TIME;
+			}
+			set
+			{
+				if ((this._LAST_MOD_TIME != value))
+				{
+					this._LAST_MOD_TIME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_MOD_USER", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string LAST_MOD_USER
+		{
+			get
+			{
+				return this._LAST_MOD_USER;
+			}
+			set
+			{
+				if ((this._LAST_MOD_USER != value))
+				{
+					this._LAST_MOD_USER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_NO_ERR_LOGS", DbType="Char(2) NOT NULL", CanBeNull=false)]
+		public string LAST_NO_ERR_LOGS
+		{
+			get
+			{
+				return this._LAST_NO_ERR_LOGS;
+			}
+			set
+			{
+				if ((this._LAST_NO_ERR_LOGS != value))
+				{
+					this._LAST_NO_ERR_LOGS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OGUI_GLOBAL_PROF", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string OGUI_GLOBAL_PROF
+		{
+			get
+			{
+				return this._OGUI_GLOBAL_PROF;
+			}
+			set
+			{
+				if ((this._OGUI_GLOBAL_PROF != value))
+				{
+					this._OGUI_GLOBAL_PROF = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OWNER_ID", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string OWNER_ID
+		{
+			get
+			{
+				return this._OWNER_ID;
+			}
+			set
+			{
+				if ((this._OWNER_ID != value))
+				{
+					this._OWNER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASS_WORD", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string PASS_WORD
+		{
+			get
+			{
+				return this._PASS_WORD;
+			}
+			set
+			{
+				if ((this._PASS_WORD != value))
+				{
+					this._PASS_WORD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROFILE", DbType="Char(250) NOT NULL", CanBeNull=false)]
+		public string PROFILE
+		{
+			get
+			{
+				return this._PROFILE;
+			}
+			set
+			{
+				if ((this._PROFILE != value))
+				{
+					this._PROFILE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROFILE_LOGIN_LCKD", DbType="Char(1) NOT NULL")]
+		public char PROFILE_LOGIN_LCKD
+		{
+			get
+			{
+				return this._PROFILE_LOGIN_LCKD;
+			}
+			set
+			{
+				if ((this._PROFILE_LOGIN_LCKD != value))
+				{
+					this._PROFILE_LOGIN_LCKD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PSW_UPD_DATE", DbType="Char(8) NOT NULL", CanBeNull=false)]
+		public string PSW_UPD_DATE
+		{
+			get
+			{
+				return this._PSW_UPD_DATE;
+			}
+			set
+			{
+				if ((this._PSW_UPD_DATE != value))
+				{
+					this._PSW_UPD_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECENT_PWD_GRP", DbType="Char(204) NOT NULL", CanBeNull=false)]
+		public string RECENT_PWD_GRP
+		{
+			get
+			{
+				return this._RECENT_PWD_GRP;
+			}
+			set
+			{
+				if ((this._RECENT_PWD_GRP != value))
+				{
+					this._RECENT_PWD_GRP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SECURITY_ACCESS", DbType="Char(1) NOT NULL")]
+		public char SECURITY_ACCESS
+		{
+			get
+			{
+				return this._SECURITY_ACCESS;
+			}
+			set
+			{
+				if ((this._SECURITY_ACCESS != value))
+				{
+					this._SECURITY_ACCESS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LAST_MOD_EMP", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string LAST_MOD_EMP
+		{
+			get
+			{
+				return this._LAST_MOD_EMP;
+			}
+			set
+			{
+				if ((this._LAST_MOD_EMP != value))
+				{
+					this._LAST_MOD_EMP = value;
 				}
 			}
 		}

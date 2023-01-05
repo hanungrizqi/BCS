@@ -218,5 +218,11 @@
         <elementListCompartment Id="81f18c93-ba78-417e-8158-43e786c81d59" absoluteBounds="6.89, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="d0cbf9dd-5b05-4eb1-a0cb-981076d4fa8c" isExpanded="false" absoluteBounds="9, 2.25, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/VW_MSF020" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0fa4ec5f-7820-41fd-9136-3fbc8d4853b1" absoluteBounds="9.015, 2.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
