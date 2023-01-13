@@ -68,7 +68,7 @@ var table = $("#tbl_backlog").DataTable({
 
     initComplete: function () {
         this.api()
-            .columns(8)
+            .columns(9)
             .every(function () {
                 var column = this;
                 var select = $('<select class="form-control form-control-sm" style="width:200px; display:inline-block; margin-left: 10px;"><option value="">-- STATUS --</option></select>')
