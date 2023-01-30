@@ -162,25 +162,25 @@ function getSource() {
     });
 }
 
-//function getNRPGL() {
-//    $.ajax({
-//        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#hd_site").val(),
-//        type: "GET",
-//        cache: false,
-//        success: function (result) {
-//            $('#txt_nrpGl').empty();
-//            text = '<option></option>';
-//            $.each(result.Data, function (key, val) {
-//                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME +'</option>';
-//            });
-//            $("#txt_nrpGl").append(text);
-//        }
-//    });
-//}
+function getNRPGL() {
+    $.ajax({
+        url: $("#web_link").val() + "/api/Master/Get_NRPGL2/" + $("#hd_site").val() + "/" + $("#hd_nrp").val(),
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $('#txt_nrpGl').empty();
+            text = '<option></option>';
+            $.each(result.Data, function (key, val) {
+                text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME +'</option>';
+            });
+            $("#txt_nrpGl").append(text);
+        }
+    });
+}
 
 function getOriID() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID2/" + $("#txt_dstrct").val() + "/" + $("#hd_nrp").val(),
         type: "GET",
         cache: false,
         success: function (result) {

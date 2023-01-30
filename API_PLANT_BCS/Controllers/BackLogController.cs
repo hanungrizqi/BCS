@@ -195,6 +195,11 @@ namespace API_PLANT_BCS.Controllers
             try
             {
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+
+                string oldl_posisi = cek.POSISI_BACKLOG;
+
+                TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
+
                 if (cek != null)
                 {
                     cek.NO_BACKLOG = param.NO_BACKLOG;
@@ -218,6 +223,14 @@ namespace API_PLANT_BCS.Controllers
                     cek.REMARKS = param.REMARKS;
                     cek.UPDATED_BY = param.UPDATED_BY;
                     cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                    //history
+                    his.No_Backlog = param.NO_BACKLOG;
+                    his.Posisi_Backlog = oldl_posisi;
+                    his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                    db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+
                 }
                 else
                 {
@@ -244,8 +257,17 @@ namespace API_PLANT_BCS.Controllers
                     tbl.REMARKS = param.REMARKS;
                     tbl.CREATED_BY = param.CREATED_BY;
                     tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
+
                     db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
+
+                    //history
+                    his.No_Backlog = param.NO_BACKLOG;
+                    his.Posisi_Backlog = oldl_posisi;
+                    his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                    db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
                 }
+
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }
@@ -261,17 +283,34 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
+                string old_posisi = "";
                 if (param.STATUS == "PLANNER CANCEL")
                 {
                     db.cusp_NotifBacklogCancel(param.NO_BACKLOG);
                 }
+
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+
+                old_posisi = cek.POSISI_BACKLOG;
+
+                //update
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
                 cek.UPDATED_BY = param.UPDATED_BY;
                 cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
                 cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                //history backlog
+                TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
+
+                his.No_Backlog = param.NO_BACKLOG;
+                his.Posisi_Backlog = old_posisi;
+                his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+
                 db.SubmitChanges();
+
                 return Ok(new { Remarks = true });
             }
             catch (Exception e)
@@ -290,14 +329,28 @@ namespace API_PLANT_BCS.Controllers
                 {
                     db.cusp_NotifBacklogCancel(param.NO_BACKLOG);
                 }
+                string old_posisi = "";
 
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+
+                old_posisi = cek.POSISI_BACKLOG;
+
                 cek.STATUS = param.STATUS;
                 cek.REMARKS = param.REMARKS;
                 cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
                 cek.PLAN_REPAIR_DATE_2 = param.PLAN_REPAIR_DATE_2;
                 cek.UPDATED_BY = param.UPDATED_BY;
                 cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                //history backlog
+                TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
+
+                his.No_Backlog = param.NO_BACKLOG;
+                his.Posisi_Backlog = old_posisi;
+                his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+
                 db.SubmitChanges();
                 return Ok(new { Remarks = true });
             }

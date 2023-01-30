@@ -224,5 +224,11 @@
         <elementListCompartment Id="0fa4ec5f-7820-41fd-9136-3fbc8d4853b1" absoluteBounds="9.015, 2.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="558670b2-e691-4e6f-b96e-c933db876902" isExpanded="false" absoluteBounds="2.625, 2.75, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_H_APPROVAL_BACKLOG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af7ab321-34d6-4ae7-9c30-59b7b815ae5b" absoluteBounds="2.64, 3.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

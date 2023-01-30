@@ -237,7 +237,63 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
+
+
+
+        [HttpGet]
+        [Route("Get_OriginatorID2/{site}/{nrp}")]
+        public IHttpActionResult Get_OriginatorID2(string site, string nrp)
+        {
+            try
+            {
+                if(site.Trim() == "INDE")
+                {
+                    //valisasi 
+                    var karyawan_wheel = db.VW_KARYAWAN_PLANT_WHEELs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_hauling = db.VW_KARYAWAN_PLANT_HAULINGs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_track = db.VW_KARYAWAN_PLANT_TRACKs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+
+                    if (karyawan_hauling != null)
+                    {
+                        var data = db.VW_KARYAWAN_PLANT_HAULINGs.Where(a => a.DSTRCT_CODE == site && !a.POS_TITLE.Contains("MECHANIC")).ToList();
+
+                        return Ok(new { Data = data });
+                    }
+                    else if (karyawan_track != null)
+                    {
+                        var data = db.VW_KARYAWAN_PLANT_TRACKs.Where(a => a.DSTRCT_CODE == site && !a.POS_TITLE.Contains("MECHANIC")).ToList();
+
+                        return Ok(new { Data = data });
+                    }
+                    else if (karyawan_wheel != null)
+                    {
+                        var data = db.VW_KARYAWAN_PLANT_WHEELs.Where(a => a.DSTRCT_CODE == site && !a.POS_TITLE.Contains("MECHANIC")).ToList();
+
+                        return Ok(new { Data = data });
+                    }
+                    else
+                    {
+                        var data = db.VW_KARYAWAN_PLANT_N_MCHes.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                        return Ok(new { Data = data, Total = data.Count() });
+                    }
+                }
+                else
+                {
+                    var data = db.VW_KARYAWAN_PLANT_N_MCHes.Where(a => a.DSTRCT_CODE == site).ToList();
+
+                    return Ok(new { Data = data });
+                }
+                
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
         [HttpGet]
         [Route("Get_OriginatorID/{site}")]
         public IHttpActionResult Get_OriginatorID(string site)
@@ -253,6 +309,9 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
+
+
+
         
         [HttpGet]
         [Route("Get_STDJob/{site}")]

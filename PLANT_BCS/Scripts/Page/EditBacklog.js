@@ -4,7 +4,7 @@ $("document").ready(function () {
     getEqNumber();
     getCompCode();
     getSource();
-    /*getNRPGL();*/
+    //getNRPGL();
     getOriID();
     getSTDJob();
 
@@ -247,29 +247,29 @@ function getSource() {
     });
 }
 
-//function getNRPGL() {
-//    $.ajax({
-//        url: $("#web_link").val() + "/api/Master/Get_NRPGL/" + $("#txt_dstrct").val(),
-//        type: "GET",
-//        cache: false,
-//        success: function (result) {
-//            $('#txt_nrpGl').empty();
-//            text = '<option></option>';
-//            $.each(result.Data, function (key, val) {
-//                if (val.EMPLOYEE_ID == $("#txt_nrpGlTemp").val()) {
-//                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
-//                } else {
-//                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
-//                }
-//            });
-//            $("#txt_nrpGl").append(text);
-//        }
-//    });
-//}
+function getNRPGL() {
+    $.ajax({
+        url: $("#web_link").val() + "/api/Master/Get_NRPGL2/" + $("#txt_dstrct").val() + "/" + $("#hd_nrp").val(),
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $('#txt_nrpGl').empty();
+            text = '<option></option>';
+            $.each(result.Data, function (key, val) {
+                if (val.EMPLOYEE_ID == $("#txt_nrpGlTemp").val()) {
+                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                } else {
+                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+                }
+            });
+            $("#txt_nrpGl").append(text);
+        }
+    });
+}
 
 function getOriID() {
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID2/" + $("#txt_dstrct").val() + "/" + $("#hd_nrp").val(),
         type: "GET",
         cache: false,
         success: function (result) {

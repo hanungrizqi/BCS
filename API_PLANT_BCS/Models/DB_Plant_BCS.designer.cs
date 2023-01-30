@@ -22,7 +22,7 @@ namespace API_PLANT_BCS.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DB_PLANT_BCS_KPD")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DB_PLANT_NEW_BCS_KPP")]
 	public partial class DB_Plant_BCSDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -60,6 +60,9 @@ namespace API_PLANT_BCS.Models
     partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void InsertTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
+    partial void UpdateTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
+    partial void DeleteTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
     #endregion
 		
 		public DB_Plant_BCSDataContext() : 
@@ -385,6 +388,14 @@ namespace API_PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<VW_MSF020>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_H_APPROVAL_BACKLOG> TBL_H_APPROVAL_BACKLOGs
+		{
+			get
+			{
+				return this.GetTable<TBL_H_APPROVAL_BACKLOG>();
 			}
 		}
 		
@@ -8281,6 +8292,140 @@ namespace API_PLANT_BCS.Models
 				{
 					this._LAST_MOD_EMP = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_H_APPROVAL_BACKLOG")]
+	public partial class TBL_H_APPROVAL_BACKLOG : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _No_Backlog;
+		
+		private string _Posisi_Backlog;
+		
+		private System.Nullable<System.DateTime> _Approved_Date;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNo_BacklogChanging(string value);
+    partial void OnNo_BacklogChanged();
+    partial void OnPosisi_BacklogChanging(string value);
+    partial void OnPosisi_BacklogChanged();
+    partial void OnApproved_DateChanging(System.Nullable<System.DateTime> value);
+    partial void OnApproved_DateChanged();
+    #endregion
+		
+		public TBL_H_APPROVAL_BACKLOG()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_No_Backlog", DbType="VarChar(500)")]
+		public string No_Backlog
+		{
+			get
+			{
+				return this._No_Backlog;
+			}
+			set
+			{
+				if ((this._No_Backlog != value))
+				{
+					this.OnNo_BacklogChanging(value);
+					this.SendPropertyChanging();
+					this._No_Backlog = value;
+					this.SendPropertyChanged("No_Backlog");
+					this.OnNo_BacklogChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Posisi_Backlog", DbType="VarChar(500)")]
+		public string Posisi_Backlog
+		{
+			get
+			{
+				return this._Posisi_Backlog;
+			}
+			set
+			{
+				if ((this._Posisi_Backlog != value))
+				{
+					this.OnPosisi_BacklogChanging(value);
+					this.SendPropertyChanging();
+					this._Posisi_Backlog = value;
+					this.SendPropertyChanged("Posisi_Backlog");
+					this.OnPosisi_BacklogChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Approved_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Approved_Date
+		{
+			get
+			{
+				return this._Approved_Date;
+			}
+			set
+			{
+				if ((this._Approved_Date != value))
+				{
+					this.OnApproved_DateChanging(value);
+					this.SendPropertyChanging();
+					this._Approved_Date = value;
+					this.SendPropertyChanged("Approved_Date");
+					this.OnApproved_DateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
