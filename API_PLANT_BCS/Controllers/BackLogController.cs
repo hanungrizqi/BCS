@@ -196,7 +196,7 @@ namespace API_PLANT_BCS.Controllers
             {
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
 
-                string oldl_posisi = cek.POSISI_BACKLOG;
+                
 
                 TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
 
@@ -225,11 +225,17 @@ namespace API_PLANT_BCS.Controllers
                     cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
 
                     //history
-                    his.No_Backlog = param.NO_BACKLOG;
-                    his.Posisi_Backlog = oldl_posisi;
-                    his.Approved_Date = DateTime.UtcNow.ToLocalTime();
 
-                    db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+                    if(cek.POSISI_BACKLOG != null && cek.POSISI_BACKLOG != "")
+                    {
+                        string oldl_posisi = cek.POSISI_BACKLOG;
+                        his.No_Backlog = param.NO_BACKLOG;
+                        his.Posisi_Backlog = oldl_posisi;
+                        his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                        db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+                    }
+                    
 
                 }
                 else
@@ -260,12 +266,7 @@ namespace API_PLANT_BCS.Controllers
 
                     db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
 
-                    //history
-                    his.No_Backlog = param.NO_BACKLOG;
-                    his.Posisi_Backlog = oldl_posisi;
-                    his.Approved_Date = DateTime.UtcNow.ToLocalTime();
-
-                    db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+                    
                 }
 
                 db.SubmitChanges();
