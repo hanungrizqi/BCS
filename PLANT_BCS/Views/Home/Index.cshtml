@@ -2,4 +2,35 @@
     ViewBag.Title = "Home Page";
 }
 
-<h1>Dashboard</h1>
+<style>
+    .container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+
+@*<h1>Dashboard</h1>*@
+
+<!-- Main Container -->
+<main id="main-container">
+    <!-- Page Content -->
+    <div class="content">
+        <iframe class="responsive-iframe" src="https://bi.kppmining.com/kpp_bi/powerbi/PLANT/BACKLOG%20MONITORING%20?rs:embed=true"></iframe>
+    </div>
+    <!-- END Page Content -->
+</main>
+<!-- END Main Container -->
+@*<iframe class="responsive-iframe" src="https://bi.kppmining.com/kpp_bi/powerbi/PLANT/GEM%20REPORT%20?rs:embed=true"></iframe>*@

@@ -23,14 +23,14 @@ namespace API_PLANT_BCS.WorkService {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WorkServiceHttpBinding", Namespace="http://work.m3620.service.ellipse.mincom.com")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseServiceResult))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Base))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO[]))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Attribute[]))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO[]))]
     public partial class WorkService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback multipleCreateRequisitionOperationCompleted;
@@ -546,7 +546,7 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -727,7 +727,7 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -772,7 +772,7 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -781,69 +781,9 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceResult))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataServiceResult))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkServiceResult))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
-    public abstract partial class BaseServiceResult {
-        
-        private Error[] errorsField;
-        
-        private Message[] informationalMessagesField;
-        
-        private Warning[] warningsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
-        public Error[] errors {
-            get {
-                return this.errorsField;
-            }
-            set {
-                this.errorsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
-        public Message[] informationalMessages {
-            get {
-                return this.informationalMessagesField;
-            }
-            set {
-                this.informationalMessagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
-        public Warning[] warnings {
-            get {
-                return this.warningsField;
-            }
-            set {
-                this.warningsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://errors.ellipse.mincom.com")]
-    public partial class Error : Message {
-    }
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Warning))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Error))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -974,7 +914,7 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -983,9 +923,69 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataServiceResult))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://errors.ellipse.mincom.com")]
+    public partial class Error : Message {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceResult))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkServiceResult))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataServiceResult))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
+    public abstract partial class BaseServiceResult {
+        
+        private Error[] errorsField;
+        
+        private Message[] informationalMessagesField;
+        
+        private Warning[] warningsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
+        public Error[] errors {
+            get {
+                return this.errorsField;
+            }
+            set {
+                this.errorsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
+        public Message[] informationalMessages {
+            get {
+                return this.informationalMessagesField;
+            }
+            set {
+                this.informationalMessagesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://errors.ellipse.mincom.com")]
+        public Warning[] warnings {
+            get {
+                return this.warningsField;
+            }
+            set {
+                this.warningsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkServiceResult))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataServiceResult))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -994,273 +994,28 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m1000.types.ellipse.mincom.com")]
-    public partial class ChartDataServiceResult : ServiceResult {
-        
-        private ChartDataDTO chartDataDTOField;
-        
-        /// <remarks/>
-        public ChartDataDTO chartDataDTO {
-            get {
-                return this.chartDataDTOField;
-            }
-            set {
-                this.chartDataDTOField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m1000.types.ellipse.mincom.com")]
-    public partial class ChartDataDTO : ServiceDTO {
-        
-        private string chartDataField;
-        
-        /// <remarks/>
-        public string chartData {
-            get {
-                return this.chartDataField;
-            }
-            set {
-                this.chartDataField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractSearchParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataDTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
-    public abstract partial class ServiceDTO : Base {
-        
-        private Attribute[] customAttributesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://attribute.ellipse.mincom.com")]
-        public Attribute[] customAttributes {
-            get {
-                return this.customAttributesField;
-            }
-            set {
-                this.customAttributesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://attribute.ellipse.mincom.com")]
-    public partial class Attribute {
-        
-        private string dataTypeField;
-        
-        private string nameField;
-        
-        private string namespaceField;
-        
-        private anyType2anyTypeMapEntry[] propertiesField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        public string dataType {
-            get {
-                return this.dataTypeField;
-            }
-            set {
-                this.dataTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string @namespace {
-            get {
-                return this.namespaceField;
-            }
-            set {
-                this.namespaceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("entry", Namespace="http://work.m3620.service.ellipse.mincom.com", IsNullable=false)]
-        public anyType2anyTypeMapEntry[] properties {
-            get {
-                return this.propertiesField;
-            }
-            set {
-                this.propertiesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://work.m3620.service.ellipse.mincom.com")]
-    public partial class anyType2anyTypeMapEntry {
-        
-        private object keyField;
-        
-        private object valueField;
-        
-        /// <remarks/>
-        public object key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public object value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceDTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractSearchParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataDTO))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.base.types.ellipse.mincom.com")]
-    public abstract partial class Base {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
-    public abstract partial class AbstractSearchParam : ServiceDTO {
-        
-        private ServiceRequiredAttributes serviceRequiredAttributesField;
-        
-        /// <remarks/>
-        public ServiceRequiredAttributes serviceRequiredAttributes {
-            get {
-                return this.serviceRequiredAttributesField;
-            }
-            set {
-                this.serviceRequiredAttributesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m3620.types.ellipse.mincom.com")]
-    public partial class WorkRetrieveTodayParam : AbstractSearchParam {
+    public partial class WorkServiceResult : ServiceResult {
         
-        private System.DateTime planStrDateField;
-        
-        private bool planStrDateFieldSpecified;
-        
-        private string workGroupField;
+        private WorkDTO workDTOField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime planStrDate {
+        public WorkDTO workDTO {
             get {
-                return this.planStrDateField;
+                return this.workDTOField;
             }
             set {
-                this.planStrDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool planStrDateSpecified {
-            get {
-                return this.planStrDateFieldSpecified;
-            }
-            set {
-                this.planStrDateFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string workGroup {
-            get {
-                return this.workGroupField;
-            }
-            set {
-                this.workGroupField = value;
+                this.workDTOField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m3620.types.ellipse.mincom.com")]
-    public partial class WorkSearchParam : AbstractSearchParam {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9158,32 +8913,277 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractSearchParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataDTO))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m3620.types.ellipse.mincom.com")]
-    public partial class WorkServiceResult : ServiceResult {
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
+    public abstract partial class ServiceDTO : Base {
         
-        private WorkDTO workDTOField;
+        private Attribute[] customAttributesField;
         
         /// <remarks/>
-        public WorkDTO workDTO {
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://attribute.ellipse.mincom.com")]
+        public Attribute[] customAttributes {
             get {
-                return this.workDTOField;
+                return this.customAttributesField;
             }
             set {
-                this.workDTOField = value;
+                this.customAttributesField = value;
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://attribute.ellipse.mincom.com")]
+    public partial class Attribute {
+        
+        private string dataTypeField;
+        
+        private string nameField;
+        
+        private string namespaceField;
+        
+        private anyType2anyTypeMapEntry[] propertiesField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        public string dataType {
+            get {
+                return this.dataTypeField;
+            }
+            set {
+                this.dataTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string @namespace {
+            get {
+                return this.namespaceField;
+            }
+            set {
+                this.namespaceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("entry", Namespace="http://work.m3620.service.ellipse.mincom.com", IsNullable=false)]
+        public anyType2anyTypeMapEntry[] properties {
+            get {
+                return this.propertiesField;
+            }
+            set {
+                this.propertiesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://work.m3620.service.ellipse.mincom.com")]
+    public partial class anyType2anyTypeMapEntry {
+        
+        private object keyField;
+        
+        private object valueField;
+        
+        /// <remarks/>
+        public object key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public object value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AbstractSearchParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChartDataDTO))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.base.types.ellipse.mincom.com")]
+    public abstract partial class Base {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkRetrieveTodayParam))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkSearchParam))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.ellipse.mincom.com")]
+    public abstract partial class AbstractSearchParam : ServiceDTO {
+        
+        private ServiceRequiredAttributes serviceRequiredAttributesField;
+        
+        /// <remarks/>
+        public ServiceRequiredAttributes serviceRequiredAttributes {
+            get {
+                return this.serviceRequiredAttributesField;
+            }
+            set {
+                this.serviceRequiredAttributesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m3620.types.ellipse.mincom.com")]
+    public partial class WorkRetrieveTodayParam : AbstractSearchParam {
+        
+        private System.DateTime planStrDateField;
+        
+        private bool planStrDateFieldSpecified;
+        
+        private string workGroupField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime planStrDate {
+            get {
+                return this.planStrDateField;
+            }
+            set {
+                this.planStrDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool planStrDateSpecified {
+            get {
+                return this.planStrDateFieldSpecified;
+            }
+            set {
+                this.planStrDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string workGroup {
+            get {
+                return this.workGroupField;
+            }
+            set {
+                this.workGroupField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m3620.types.ellipse.mincom.com")]
+    public partial class WorkSearchParam : AbstractSearchParam {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m1000.types.ellipse.mincom.com")]
+    public partial class ChartDataDTO : ServiceDTO {
+        
+        private string chartDataField;
+        
+        /// <remarks/>
+        public string chartData {
+            get {
+                return this.chartDataField;
+            }
+            set {
+                this.chartDataField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://instances.m1000.types.ellipse.mincom.com")]
+    public partial class ChartDataServiceResult : ServiceResult {
+        
+        private ChartDataDTO chartDataDTOField;
+        
+        /// <remarks/>
+        public ChartDataDTO chartDataDTO {
+            get {
+                return this.chartDataDTOField;
+            }
+            set {
+                this.chartDataDTOField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void multipleCreateRequisitionCompletedEventHandler(object sender, multipleCreateRequisitionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class multipleCreateRequisitionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9205,11 +9205,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void searchCompletedEventHandler(object sender, searchCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class searchCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9231,11 +9231,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void readCompletedEventHandler(object sender, readCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class readCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9257,11 +9257,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void multipleUpdateCompletedEventHandler(object sender, multipleUpdateCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class multipleUpdateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9283,11 +9283,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void createRequisitionCompletedEventHandler(object sender, createRequisitionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class createRequisitionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9309,11 +9309,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void multipleDeleteCompletedEventHandler(object sender, multipleDeleteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class multipleDeleteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9335,11 +9335,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void createCompletedEventHandler(object sender, createCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class createCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9361,11 +9361,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void updateCompletedEventHandler(object sender, updateCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class updateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9387,11 +9387,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void multipleReadCompletedEventHandler(object sender, multipleReadCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class multipleReadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9413,11 +9413,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void retrieveTodayCompletedEventHandler(object sender, retrieveTodayCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class retrieveTodayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9439,11 +9439,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void deleteCompletedEventHandler(object sender, deleteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class deleteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9465,11 +9465,11 @@ namespace API_PLANT_BCS.WorkService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void multipleCreateCompletedEventHandler(object sender, multipleCreateCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class multipleCreateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

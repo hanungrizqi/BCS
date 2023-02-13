@@ -44,6 +44,7 @@ namespace PLANT_BCS.Controllers
                 Session["ID_Role"] = dataRole.ID_Role;
                 Session["Name"] = dataUser.NAME;
                 Session["Site"] = Jobsite;
+                //Session["Site"] = dataUser.DSTRCT_CODE;
                 return new JsonResult() { Data = new { Remarks = true }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else

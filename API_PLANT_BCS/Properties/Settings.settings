@@ -6,7 +6,7 @@
       <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/WorkOrderService</Value>
     </Setting>
     <Setting Name="API_PLANT_BCS_WorkService_WorkService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/WorkService</Value>
+      <Value Profile="(Default)">https://ews-kpp.kppmining.net/ews/services/WorkService</Value>
     </Setting>
     <Setting Name="API_PLANT_BCS_RequisitionService_RequisitionService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://ews-kpd.kppmining.net/ews/services/RequisitionService</Value>

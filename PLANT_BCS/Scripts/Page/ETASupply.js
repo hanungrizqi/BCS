@@ -49,45 +49,88 @@ function saveBacklog(dataStatus) {
             ETA_SUPPLY: $(this).find('input[name="txt_ETASupply').val(),
         });
     });
-
-    $.ajax({
-        url: $("#web_link").val() + "/api/Logistic/Update_ETASupply", //URI
-        data: JSON.stringify(ListPart),
-        dataType: "json",
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            if (data.Remarks == true) {
-                if (dataStatus == "LOGISTIC APPROVED") {
-                    approveBacklog(dataStatus);
-                } else {
-                    Swal.fire({
-                        title: 'Saved',
-                        text: "Your data has been saved!",
-                        icon: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "/Logistic/index";
-                        }
-                    })
+    console.log(ListPart);
+    if (/*AVAILABLE_STOCK == "" ||*/ ListPart[0].LOCATION_ON_STOCK == "" || ListPart[0].ETA_SUPPLY == "") {
+        Swal.fire(
+            'Warning!',
+            'Silahkan isi Location On Stock atau Eta Supply!!',
+            'warning'
+        );
+        return false;
+    }
+    else { 
+        $.ajax({
+            url: $("#web_link").val() + "/api/Logistic/Update_ETASupply", //URI
+            data: JSON.stringify(ListPart),
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Remarks == true) {
+                    if (dataStatus == "LOGISTIC APPROVED") {
+                        approveBacklog(dataStatus);
+                    } else {
+                        Swal.fire({
+                            title: 'Saved',
+                            text: "Your data has been saved!",
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/Logistic/index";
+                            }
+                        })
+                    }
+                } if (data.Remarks == false) {
+                    Swal.fire(
+                        'Error!',
+                        'Message : ' + data.Message,
+                        'error'
+                    );
                 }
-            } if (data.Remarks == false) {
-                Swal.fire(
-                    'Error!',
-                    'Message : ' + data.Message,
-                    'error'
-                );
-            }
 
-        },
-        error: function (xhr) {
-            alert(xhr.responseText);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        })
+    }
+}
+
+function submitBacklog2(status) {
+
+    if ($("#txt_note").val() == "" || $("#txt_note").val() == null) {
+        Swal.fire(
+            'Warning',
+            'Mohon sertakan Note!',
+            'warning'
+        );
+        return false;
+    }
+
+    let tRow = $("#table_part >tbody >tr").length;
+    $.each($("#table_part tbody tr"), function (index) {
+        let LOCATION_ON_STOCK = $(this).find('[name="txt_los').val(),
+            //AVAILABLE_STOCK = $(this).find('input[name="txt_availableStock').val(),
+            ETA_SUPPLY = $(this).find('input[name="txt_ETASupply').val();
+
+        if (/*AVAILABLE_STOCK == "" ||*/ LOCATION_ON_STOCK == "" || ETA_SUPPLY == "") {
+            Swal.fire(
+                'Warning!',
+                'Pastikan data Recommended Part sudah terisi semua',
+                'warning'
+            );
+            return false;
+        } else {
+            let getin = index + 1;
+            if (getin == tRow) {
+                saveBacklog(status);
+            }
         }
-    })
+    });
 }
 
 function submitBacklog(status) {
@@ -117,10 +160,30 @@ function submitBacklog(status) {
         } else {
             let getin = index + 1;
             if (getin == tRow) {
-                saveBacklog(status); 
+                saveBacklog(status);
+                /*validasi = true;*/
             }
         }
     });
+    /*var validasi = false;*/
+    let dataBacklog = new Object();
+    dataBacklog.NO_BACKLOG = $("#txt_noBacklog").val();
+    dataBacklog.UPDATED_BY = $("#hd_nrp").val();
+    dataBacklog.REMARKS = $("#txt_note").val();
+    dataBacklog.PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    /*dataBacklog.PLAN_REPAIR_DATE_2 = $("#txt_planRD2").val();*/
+
+    if (status == "SUBMITTED") {
+        dataBacklog.POSISI_BACKLOG = "Planner";
+    } else {
+        dataBacklog.POSISI_BACKLOG = "Planner1";
+    }
+    dataBacklog.STATUS = status;
+
+    if (dataBacklog) {
+
+        FnSubmit(dataBacklog);
+    }
 }
 
 function approveBacklog(status){
@@ -143,6 +206,43 @@ function approveBacklog(status){
                 Swal.fire({
                     title: 'Saved',
                     text: "Your data has been saved!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Logistic/index";
+                    }
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    });
+}
+
+function FnSubmit(dataBacklog) {
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Rescheduled_Logistic", //URI
+        data: JSON.stringify(dataBacklog),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been back to Planner ADM!",
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'OK',
