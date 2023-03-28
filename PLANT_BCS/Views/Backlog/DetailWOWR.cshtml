@@ -5,13 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<input type="hidden" id="hd_idProfile" value="@Session["ID_Role"]" />
+<input type="hidden" id="hd_idNrp" value="@Session["Nrp"]" />
+@*<input type="hidden" id="hd_site" value="@Session["Site"]" />*@
 
 <input type="text" id="txt_eqNumberTemp" value="@ViewBag.BackLog.EQP_NUMBER" hidden />
 <input type="text" id="txt_compCodeTemp" value="@ViewBag.BackLog.COMP_CODE" hidden />
 <input type="text" id="txt_sourceTemp" value="@ViewBag.BackLog.SOURCE" hidden />
 <input type="text" id="txt_standJobTemp" value="@ViewBag.BackLog.STD_JOB" hidden />
-<input type="text" id="txt_nrpGlTemp" value="@ViewBag.BackLog.NRP_GL" hidden />
-<input type="text" id="txt_oriIDTemp" value="@ViewBag.BackLog.ORIGINATOR_ID" hidden />
+@*<input type="text" id="txt_nrpGlTemp" value="@ViewBag.BackLog.NRP_GL" hidden />
+<input type="text" id="txt_oriIDTemp" value="@ViewBag.BackLog.ORIGINATOR_ID" hidden />*@
 
 
 <h2 class="content-heading">Detail Backlog</h2>
@@ -118,6 +121,8 @@
                     <div class="col-sm-8">
                         <select class="js-select2 form-select" id="txt_oriID" name="txt_oriID" style="width: 100%;">
                         </select>
+                        @*<input type="hidden" class="form-control form-control-sm " id="txt_oriID" name="txt_oriID" value="@Session["Nrp"]" readonly>
+                        <span class="form-control form-control-sm" style="width: 100%;" readonly>@Session["Nrp"] - @Session["Name"]</span>*@
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -169,6 +174,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label" for="txt_planStrTime">Plan Start Time</label>
                     <div class="col-sm-8">
+                        <input type="hidden" class="form-control form-control-sm " id="txtUpdateby" name="txtUpdateby" value="@Session["Nrp"]" readonly>
                         <input type="time" class="form-control form-control-sm " id="txt_planStrTime" name="txt_planStrTime" value="@ViewBag.BackLog.POSISI_BACKLOG">
                     </div>
                 </div>
@@ -179,7 +185,7 @@
         <div class="block-options justify-content-center">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-success" value="save" onclick="saveBacklog(this.value)">
+                    <button type="submit" class="btn btn-sm btn-success" value="save" onclick="Save(this.value)">
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Save
                     </button>
                 </div>
@@ -280,7 +286,10 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <a href="/Backlog/CreateWOWR" class="btn btn-sm btn-info"><i class="fa fa-backward opacity-50 me-1"></i>Back</a>
-                    <button type="submit" class="btn btn-sm btn-success" value="create" onclick="saveBacklog(this.value)">
+                    <button type="button" id="tomboladmin" class="btn btn-sm btn-info" value="LOGISTIC APPROVED" onclick="SendBackBacklog(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Send Back To Planner (Logistic)
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-success" value="create" onclick="CreateWoWr(this.value)">
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Create WO &amp; WR
                     </button>
                 </div>

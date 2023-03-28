@@ -116,7 +116,7 @@ function submitBacklog2(status) {
         let LOCATION_ON_STOCK = $(this).find('[name="txt_los').val(),
             //AVAILABLE_STOCK = $(this).find('input[name="txt_availableStock').val(),
             ETA_SUPPLY = $(this).find('input[name="txt_ETASupply').val();
-
+        console.log(ETA_SUPPLY);
         if (/*AVAILABLE_STOCK == "" ||*/ LOCATION_ON_STOCK == "" || ETA_SUPPLY == "") {
             Swal.fire(
                 'Warning!',
@@ -131,6 +131,7 @@ function submitBacklog2(status) {
             }
         }
     });
+    
 }
 
 function submitBacklog(status) {

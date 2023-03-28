@@ -219,7 +219,8 @@ namespace API_PLANT_BCS.ViewModel
 
                     string wono, elldistrict, elluser1, wahid, delinstrb, descbacklog, nobacklog1, DelivInstrA_Combine;
 
-                    elluser1 = dataBacklog.ORIGINATOR_ID;
+                    /*elluser1 = dataBacklog.ORIGINATOR_ID;*/
+                    elluser1 = dataBacklog.UPDATED_BY;
                     elldistrict = dataBacklog.DSTRCT_CODE;
                     wono = workOrder;
                     wahid = warehouse_.Warehouse;//dataStock[0].LOCATION_ON_STOCK;

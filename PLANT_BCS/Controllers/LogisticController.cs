@@ -166,10 +166,10 @@ namespace PLANT_BCS.Controllers
                             cls.Add(new TBL_T_RECOMMENDED_PART
                             {
                                 NO_BACKLOG = ds.Tables[0].Rows[i][0].ToString(),
-                                PART_NO = ds.Tables[0].Rows[i][7].ToString(),
+                                PART_NO = ds.Tables[0].Rows[i][8].ToString(),
                                 DSTRCT_CODE = ds.Tables[0].Rows[i][1].ToString(),
-                                ETA_SUPPLY = DateTime.Parse(ds.Tables[0].Rows[i][14].ToString()),
-                                LOCATION_ON_STOCK = ds.Tables[0].Rows[i][13].ToString(),
+                                ETA_SUPPLY = DateTime.Parse(ds.Tables[0].Rows[i][15].ToString()),
+                                LOCATION_ON_STOCK = ds.Tables[0].Rows[i][14].ToString(),
                                 //AVAILABLE_STOCK = Convert.ToInt32(ds.Tables[0].Rows[i][13])
                             });
                         }

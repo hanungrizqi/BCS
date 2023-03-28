@@ -34,17 +34,17 @@ namespace API_PLANT_BCS.Controllers
                     if (available < item.QTY)
                     {
                         Cls_CreateWO data = cls.GetSubstitusiStock(item.STOCK_CODE);
-                        if (data.Rel_Stock_ID != null && Convert.ToInt32(data.Issue_rule) == 4)
-                        {
-                            bool status = cls.CekAvailableStockInDistrict(item.DSTRCT_CODE, item.STOCK_CODE);
+                        //if (data.Rel_Stock_ID != null && Convert.ToInt32(data.Issue_rule) == 4)
+                        //{
+                        //    bool status = cls.CekAvailableStockInDistrict(item.DSTRCT_CODE, item.STOCK_CODE);
 
-                            //stck.Add(new Cls_StockCode
-                            //{
-                            //    stockCode = item.STOCK_CODE,
-                            //    Rel_stockCode = data.Rel_Stock_ID,
-                            //    Status = status,
-                            //});
-                        }
+                        //    //stck.Add(new Cls_StockCode
+                        //    //{
+                        //    //    stockCode = item.STOCK_CODE,
+                        //    //    Rel_stockCode = data.Rel_Stock_ID,
+                        //    //    Status = status,
+                        //    //});
+                        //}
                         
                     }
                 }

@@ -17,6 +17,7 @@
         { data: 'EQP_NUMBER' },
         { data: 'COMP_CODE' },
         { data: 'HM' },
+        { data: 'BACKLOG_DESC'},
         {
             data: 'INSPECTON_DATE',
             render: function (data, type, row) {

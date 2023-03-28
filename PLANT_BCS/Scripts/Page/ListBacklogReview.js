@@ -25,6 +25,20 @@ var table = $("#tbl_backlog").DataTable({
                 return tanggal;
             }
         },
+        {
+            data: 'PLAN_REPAIR_DATE_1',
+            render: function (data, type, row) {
+                const tanggal = moment(data).format("DD/MM/YYYY");
+                return tanggal;
+            }
+        },
+        {
+            data: 'PLAN_REPAIR_DATE_2',
+            render: function (data, type, row) {
+                const tanggal = moment(data).format("DD/MM/YYYY");
+                return tanggal;
+            }
+        },
         { data: 'POSISI_BACKLOG' },
         { data: 'CREATED_DATE' },
         {

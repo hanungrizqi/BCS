@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Web.Http;
 using System.Web.UI.WebControls.WebParts;
 using API_PLANT_BCS.Models;
@@ -75,7 +76,7 @@ namespace API_PLANT_BCS.Controllers
                 db.CommandTimeout = 120;
                 //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
                 var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
-
+                
                 return Ok(new { Data = data });
             }
             catch (Exception)
@@ -86,12 +87,59 @@ namespace API_PLANT_BCS.Controllers
         
         [HttpGet]
         [Route("Get_ListBacklogWOWR/{dstrct}")]
-        public IHttpActionResult Get_ListBacklogWOWR(string dstrct)
+        public IHttpActionResult Get_ListBacklogWOWR(/*string dstrct, */string dstrct = "", string nrp = "")
         {
+            //try
+            //{
+            //    if (dstrct == "INDE")
+            //    {
+            //        //valisasi wheel
+            //        var karyawan_wheel = db.VW_KARYAWAN_PLANT_WHEELs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+            //        var karyawan_hauling = db.VW_KARYAWAN_PLANT_HAULINGs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+            //        var karyawan_track = db.VW_KARYAWAN_PLANT_TRACKs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+
+            //        if (karyawan_hauling != null)
+            //        {
+            //            var data = db.VW_R_EQ_NUMBER_HAULINGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+            //            return Ok(new { Data = data, Total = data.Count() });
+            //        }
+            //        else if (karyawan_track != null)
+            //        {
+            //            var data = db.VW_R_EQ_NUMBER_TRACKs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+            //            return Ok(new { Data = data, Total = data.Count() });
+            //        }
+            //        else if (karyawan_wheel != null)
+            //        {
+            //            var data = db.VW_R_EQ_NUMBER_WHEELs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+            //            return Ok(new { Data = data, Total = data.Count() });
+            //        }
+            //        else
+            //        {
+            //            var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS == "OPEN").ToList();
+
+            //            return Ok(new { Data = data });
+            //        }
+            //    }
+            //    else
+            //    {
+            //        var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+
+            //        return Ok(new { Data = data, Total = data.Count() });
+            //    }
+
+            //}
+            //catch (Exception)
+            //{
+            //    return BadRequest();
+            //}
+            //lama
             try
             {
                 db.CommandTimeout = 120;
-                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS=="OPEN").ToList();
+                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && a.STATUS == "OPEN").ToList();
 
                 return Ok(new { Data = data });
             }
@@ -277,7 +325,48 @@ namespace API_PLANT_BCS.Controllers
                 return Ok(new { Remarks = false, Message = e });
             }
         }
-        
+
+        [HttpPost]
+        [Route("Rescheduled_WOWR")]
+        public IHttpActionResult Rescheduled_WOWR(TBL_T_BACKLOG param)
+        {
+            try
+            {
+                if (param.STATUS == "PLANNER CANCEL")
+                {
+                    db.cusp_NotifBacklogCancel(param.NO_BACKLOG);
+                }
+                string old_posisi = "";
+
+                var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+
+                old_posisi = cek.POSISI_BACKLOG;
+
+                cek.STATUS = param.STATUS;
+                cek.REMARKS = param.REMARKS;
+                cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                cek.PLAN_REPAIR_DATE_2 = param.PLAN_REPAIR_DATE_2;
+                cek.UPDATED_BY = param.UPDATED_BY;
+                cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                //history backlog
+                TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
+
+                his.No_Backlog = param.NO_BACKLOG;
+                his.Posisi_Backlog = old_posisi;
+                his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
         [HttpPost]
         [Route("Approve_Backlog")]
         public IHttpActionResult Approve_Backlog(TBL_T_BACKLOG param)
@@ -582,6 +671,7 @@ namespace API_PLANT_BCS.Controllers
                     {
                         var updateTbl = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == item.NO_BACKLOG).FirstOrDefault();
                         updateTbl.STATUS = "CLOSE";
+                        updateTbl.POSISI_BACKLOG = "CLOSED";
                         updateTbl.INSTALL_DATE = cekCompleteItem.JOB_DUR_DATE;
                     }
                 }

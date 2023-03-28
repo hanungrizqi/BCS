@@ -29,7 +29,7 @@ namespace PLANT_BCS.Controllers
             {
                 nrp = NRP;
             }
-            var dataUser = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == nrp).FirstOrDefault();
+            var dataUser = db.TBL_R_MASTER_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == nrp).FirstOrDefault();
             var dataRole = db.TBL_M_USERs.Where(a => a.Username == nrp).FirstOrDefault();
 
             if (dataRole != null)

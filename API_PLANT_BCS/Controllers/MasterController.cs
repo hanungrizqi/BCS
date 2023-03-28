@@ -159,13 +159,13 @@ namespace API_PLANT_BCS.Controllers
                     }
                     else if(karyawan_track != null)
                     {
-                        var data = db.VW_R_EQ_NUMBER_TRACK_WHEELs.Where(a => a.DSTRCT_CODE == site).ToList();
+                        var data = db.VW_R_EQ_NUMBER_TRACKs.Where(a => a.DSTRCT_CODE == site).ToList();
 
                         return Ok(new { Data = data, Total = data.Count() });
                     }
                     else if(karyawan_wheel != null)
                     {
-                        var data = db.VW_R_EQ_NUMBER_TRACK_WHEELs.Where(a => a.DSTRCT_CODE == site).ToList();
+                        var data = db.VW_R_EQ_NUMBER_WHEELs.Where(a => a.DSTRCT_CODE == site).ToList();
 
                         return Ok(new { Data = data, Total = data.Count() });
                     }

@@ -1,12 +1,20 @@
 ﻿$("document").ready(function () {
     Codebase.helpersOnLoad(['jq-select2']);
 
+    var idProfile = $("#hd_idProfile").val();
+    if (idProfile == 1) {
+        $("#tomboladmin").show();
+    } else {
+        $("#tomboladmin").hide();
+    }
+
     $("#PartError").hide();
     getEqNumber();
     getCompCode();
     getSource();
     getOriID();
     getSTDJob();
+    console.log(table);
 
     document.getElementById("txt_dInspecton").setAttribute("max", new Date().toISOString().split("T")[0]);
     document.getElementById("txt_planRD1").setAttribute("min", new Date().toISOString().split("T")[0]);
@@ -60,8 +68,10 @@ var table = $("#table_part").DataTable({
         { data: 'ACT_ONSITE_DATE' },
         { data: 'ACCTUAL_SUPPLY_DATE' }
     ],
+    
 
 });
+console.log(table.ETA_SUPPLY);
 
 var tableRepair = $("#table_repair").DataTable({
     ajax: {
@@ -101,6 +111,7 @@ function getEqNumber() {
                 }
             });
             $("#txt_eqNumber").append(text);
+            console.log(result.Data);
         }
     });
 }
@@ -145,9 +156,33 @@ function getSource() {
     });
 }
 
+//function getOriID() {
+//    $.ajax({
+//        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
+//        type: "GET",
+//        cache: false,
+//        success: function (result) {
+//            $('#txt_nrpGl').empty();
+//            $('#txt_oriID').empty();
+//            text = '<option></option>';
+//            $.each(result.Data, function (key, val) {
+//                if (val.EMPLOYEE_ID == $("#txt_oriIDTemp").val()) {
+//                    text += '<option selected value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+//                } else {
+//                    text += '<option value="' + val.EMPLOYEE_ID + '">' + val.EMPLOYEE_ID + ' - ' + val.NAME + '</option>';
+//                }
+//            });
+//            $("#txt_oriID").append(text);
+//            $("#txt_nrpGl").append(text);
+//        }
+//    });
+//}
+
 function getOriID() {
+    NRP_GL = $("#txt_nrpGl").val("");
+    ORIGINATOR_ID = $("#txt_oriID").val("");
     $.ajax({
-        url: $("#web_link").val() + "/api/Master/Get_OriginatorID/" + $("#txt_dstrct").val(),
+        url: $("#web_link").val() + "/api/Master/Get_OriginatorID2/" + $("#txt_dstrct").val() + "/" + $("#hd_nrp").val(),
         type: "GET",
         cache: false,
         success: function (result) {
@@ -187,7 +222,7 @@ function getSTDJob() {
     });
 }
 
-function saveBacklog(mode) {
+function SendBackBacklog(status) {
 
     NO_BACKLOG = $("#txt_noBl").val();
     DSTRCT_CODE = $("#txt_dstrct").val();
@@ -210,6 +245,7 @@ function saveBacklog(mode) {
     CREATED_BY = $("#txt_inspector").val();
     REMARKS = $("#txt_note").val();
     PLANSTR_TIME = $("#txt_planStrTime").val();
+    UPDATED_BY = $("#hd_idNrp").val();
 
     if (COMP_CODE == "") {
         window.location.hash = "txt_compCode";
@@ -249,6 +285,124 @@ function saveBacklog(mode) {
         return false;
     }
 
+    if (status == "LOGISTIC APPROVED") {
+        if (REMARKS == "") {
+            Swal.fire(
+                'Warning!',
+                'Message : Delivery Instruction Back belum diisi',
+                'warning'
+            );
+            window.location.hash = "txt_note";
+            return false;
+        }
+    }
+
+    let dataBacklog = new Object();
+    dataBacklog.NO_BACKLOG = $("#txt_noBl").val();
+    dataBacklog.DSTRCT_CODE = $("#txt_dstrct").val();
+    dataBacklog.EQP_NUMBER = $("#txt_eqNumber").val();
+    dataBacklog.COMP_CODE = $("#txt_compCode").val();
+    dataBacklog.EGI = $("#txt_egi").val();
+    dataBacklog.HM = $("#txt_hm").val();
+    dataBacklog.BACKLOG_DESC = $("#txt_blDesc").val();
+    dataBacklog.INSPECTON_DATE = $("#txt_dInspecton").val();
+    dataBacklog.INSPECTOR = $("#txt_inspector").val();
+    dataBacklog.SOURCE = $("#txt_source").val();
+    dataBacklog.WORK_GROUP = $("#txt_wg").val();
+    dataBacklog.STD_JOB = $("#txt_standJob").val();
+    dataBacklog.NRP_GL = $("#txt_nrpGl").val();
+    dataBacklog.ORIGINATOR_ID = $("#txt_oriID").val();
+    dataBacklog.PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    dataBacklog.MANPOWER = $("#txt_mp").val();
+    dataBacklog.HOUR_EST = $("#txt_hEst").val();
+    dataBacklog.CREATED_BY = $("#txt_inspector").val();
+    dataBacklog.REMARKS = $("#txt_note").val();
+    dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
+    dataBacklog.UPDATED_BY = $("#hd_idNrp").val();
+    /*dataBacklog.STATUS = "OPEN";*/
+
+    if (status == "LOGISTIC APPROVED") {
+        dataBacklog.POSISI_BACKLOG = "Planner1";
+    } else {
+        dataBacklog.POSISI_BACKLOG = "ADM1";
+    }
+    dataBacklog.STATUS = status;
+
+    if (dataBacklog) {
+
+        FnSubmit(dataBacklog);
+    }
+}
+
+function CreateWoWr(mode) {
+
+
+    table = $("#table_part").val(table.ETA_SUPPLY);
+    
+
+    NO_BACKLOG = $("#txt_noBl").val();
+    DSTRCT_CODE = $("#txt_dstrct").val();
+    EQP_NUMBER = $("#txt_eqNumber").val();
+    COMP_CODE = $("#txt_compCode").val();
+    EGI = $("#txt_egi").val();
+    HM = $("#txt_hm").val();
+    BACKLOG_DESC = $("#txt_blDesc").val();
+    INSPECTON_DATE = $("#txt_dInspecton").val();
+    INSPECTOR = $("#txt_inspector").val();
+    SOURCE = $("#txt_source").val();
+    WORK_GROUP = $("#txt_wg").val();
+    STD_JOB = $("#txt_standJob").val();
+    NRP_GL = $("#txt_nrpGl").val();
+    ORIGINATOR_ID = $("#txt_oriID").val();
+    PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    MANPOWER = $("#txt_mp").val();
+    HOUR_EST = $("#txt_hEst").val();
+    POSISI_BACKLOG = $("#txt_posBL").val();
+    CREATED_BY = $("#txt_inspector").val();
+    REMARKS = $("#txt_note").val();
+    PLANSTR_TIME = $("#txt_planStrTime").val();
+    UPDATED_BY = $("#hd_idNrp").val();
+
+    if (COMP_CODE == "") {
+        window.location.hash = "txt_compCode";
+        return false;
+    } else if (BACKLOG_DESC == "") {
+        window.location.hash = "txt_blDesc";
+        return false;
+    } else if (EQP_NUMBER == "") {
+        window.location.hash = "txt_eqNumber";
+        return false;
+    } else if (HM == "") {
+        window.location.hash = "txt_hm";
+        return false;
+    } else if (HOUR_EST == "") {
+        window.location.hash = "txt_hEst";
+        return false;
+    } else if (INSPECTON_DATE == "") {
+        window.location.hash = "txt_dInspecton";
+        return false;
+    } else if (MANPOWER == "") {
+        window.location.hash = "txt_mp";
+        return false;
+    } else if (NRP_GL == "") {
+        window.location.hash = "txt_nrpGl";
+        return false;
+    }
+    else if (ORIGINATOR_ID == "") {
+        window.location.hash = "txt_oriID";
+        return false;
+    }
+    else if (PLAN_REPAIR_DATE_1 == "") {
+        window.location.hash = "txt_planRD1";
+        return false;
+    } else if (SOURCE == "") {
+        window.location.hash = "txt_source";
+        return false;
+    } else if (STD_JOB == "") {
+        window.location.hash = "txt_standJob";
+        return false;
+    }
+
     if (mode == "create") {
         if (REMARKS == "") {
             Swal.fire(
@@ -259,6 +413,168 @@ function saveBacklog(mode) {
             window.location.hash = "txt_note";
             return false;
         }
+        if (table == "") {
+            Swal.fire(
+                'Warning!',
+                'Message : Table Recomended part ada yang kosong',
+                'warning'
+            );
+            window.location.hash = "table_part";
+            return false;
+        }
+        if (PLANSTR_TIME == "") {
+            Swal.fire(
+                'Warning!',
+                'Message : Plan start time belum diisi',
+                'warning'
+            );
+            window.location.hash = "txt_planStrTime";
+            return false;
+        }
+        
+    }
+
+    let dataBacklog = new Object();
+    dataBacklog.NO_BACKLOG = $("#txt_noBl").val();
+    dataBacklog.DSTRCT_CODE = $("#txt_dstrct").val();
+    dataBacklog.EQP_NUMBER = $("#txt_eqNumber").val();
+    dataBacklog.COMP_CODE = $("#txt_compCode").val();
+    dataBacklog.EGI = $("#txt_egi").val();
+    dataBacklog.HM = $("#txt_hm").val();
+    dataBacklog.BACKLOG_DESC = $("#txt_blDesc").val();
+    dataBacklog.INSPECTON_DATE = $("#txt_dInspecton").val();
+    dataBacklog.INSPECTOR = $("#txt_inspector").val();
+    dataBacklog.SOURCE = $("#txt_source").val();
+    dataBacklog.WORK_GROUP = $("#txt_wg").val();
+    dataBacklog.STD_JOB = $("#txt_standJob").val();
+    dataBacklog.NRP_GL = $("#txt_nrpGl").val();
+    dataBacklog.ORIGINATOR_ID = $("#txt_oriID").val();
+    dataBacklog.PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    dataBacklog.MANPOWER = $("#txt_mp").val();
+    dataBacklog.HOUR_EST = $("#txt_hEst").val();
+    dataBacklog.CREATED_BY = $("#txt_inspector").val();
+    dataBacklog.REMARKS = $("#txt_note").val();
+    dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
+    dataBacklog.UPDATED_BY = $("#hd_idNrp").val();
+    dataBacklog.STATUS = "OPEN";
+
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
+        data: JSON.stringify(dataBacklog),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        beforeSend: function () {
+            $("#overlay").show();
+        },
+        success: function (data) {
+            if (data.Remarks == true) {
+                if (mode == "create") {
+                    createWOWR();
+                } else if (mode == "save") {
+                    Swal.fire(
+                        'Saved!',
+                        'Header Backlog Created!',
+                        'success'
+                    );
+                    $("#overlay").hide();
+                }
+
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+
+                $("#overlay").hide();
+            }
+
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+            $("#overlay").hide();
+        }
+    });
+}
+
+function Save(mode) {
+
+    NO_BACKLOG = $("#txt_noBl").val();
+    DSTRCT_CODE = $("#txt_dstrct").val();
+    EQP_NUMBER = $("#txt_eqNumber").val();
+    COMP_CODE = $("#txt_compCode").val();
+    EGI = $("#txt_egi").val();
+    HM = $("#txt_hm").val();
+    BACKLOG_DESC = $("#txt_blDesc").val();
+    INSPECTON_DATE = $("#txt_dInspecton").val();
+    INSPECTOR = $("#txt_inspector").val();
+    SOURCE = $("#txt_source").val();
+    WORK_GROUP = $("#txt_wg").val();
+    STD_JOB = $("#txt_standJob").val();
+    NRP_GL = $("#txt_nrpGl").val();
+    ORIGINATOR_ID = $("#txt_oriID").val();
+    PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    MANPOWER = $("#txt_mp").val();
+    HOUR_EST = $("#txt_hEst").val();
+    POSISI_BACKLOG = $("#txt_posBL").val();
+    CREATED_BY = $("#txt_inspector").val();
+    REMARKS = $("#txt_note").val();
+    PLANSTR_TIME = $("#txt_planStrTime").val();
+    UPDATED_BY = $("#hd_idNrp").val();
+
+    if (COMP_CODE == "") {
+        window.location.hash = "txt_compCode";
+        return false;
+    } else if (BACKLOG_DESC == "") {
+        window.location.hash = "txt_blDesc";
+        return false;
+    } else if (EQP_NUMBER == "") {
+        window.location.hash = "txt_eqNumber";
+        return false;
+    } else if (HM == "") {
+        window.location.hash = "txt_hm";
+        return false;
+    } else if (HOUR_EST == "") {
+        window.location.hash = "txt_hEst";
+        return false;
+    } else if (INSPECTON_DATE == "") {
+        window.location.hash = "txt_dInspecton";
+        return false;
+    } else if (MANPOWER == "") {
+        window.location.hash = "txt_mp";
+        return false;
+    } else if (NRP_GL == "") {
+        window.location.hash = "txt_nrpGl";
+        return false;
+    }
+    else if (ORIGINATOR_ID == "") {
+        window.location.hash = "txt_oriID";
+        return false;
+    }
+    else if (PLAN_REPAIR_DATE_1 == "") {
+        window.location.hash = "txt_planRD1";
+        return false;
+    } else if (SOURCE == "") {
+        window.location.hash = "txt_source";
+        return false;
+    } else if (STD_JOB == "") {
+        window.location.hash = "txt_standJob";
+        return false;
+    }
+
+    if (mode == "save") {
+        //if (REMARKS == "") {
+        //    Swal.fire(
+        //        'Warning!',
+        //        'Message : Delivery Instruction belum diisi',
+        //        'warning'
+        //    );
+        //    window.location.hash = "txt_note";
+        //    return false;
+        //}
         if (PLANSTR_TIME == "") {
             Swal.fire(
                 'Warning!',
@@ -291,7 +607,9 @@ function saveBacklog(mode) {
     dataBacklog.CREATED_BY = $("#txt_inspector").val();
     dataBacklog.REMARKS = $("#txt_note").val();
     dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
+    dataBacklog.UPDATED_BY = $("#hd_idNrp").val();
     dataBacklog.STATUS = "OPEN";
+
 
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
@@ -306,7 +624,7 @@ function saveBacklog(mode) {
             if (data.Remarks == true) {
                 if (mode == "create") {
                     createWOWR();
-                } else if(mode == "save") {
+                } else if (mode == "save") {
                     Swal.fire(
                         'Saved!',
                         'Header Backlog saved!',
@@ -314,7 +632,7 @@ function saveBacklog(mode) {
                     );
                     $("#overlay").hide();
                 }
-                
+
             } if (data.Remarks == false) {
                 Swal.fire(
                     'Error!',
@@ -330,6 +648,43 @@ function saveBacklog(mode) {
         error: function (xhr) {
             alert(xhr.responseText);
             $("#overlay").hide();
+        }
+    });
+}
+
+function FnSubmit(dataBacklog) {
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Rescheduled_WOWR", //URI
+        data: JSON.stringify(dataBacklog),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been back to Planner Logistic!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Backlog/CreateWOWR";
+                    }
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
         }
     });
 }
