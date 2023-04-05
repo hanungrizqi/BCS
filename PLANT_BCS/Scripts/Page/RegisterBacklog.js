@@ -280,7 +280,9 @@ function addPartToTable() {
                                     '<td>' + result.Data.PART_CLASS + '</td>' +
                                     '<td class="text-success">ACTIVE</td>' +
                                     '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
+                                    /*'<td><button onclick="savePartTemp(this)" type="button" class="btn"><span class="badge bg-success"><i class="fa fa-check-circle opacity-50 me-1"></i> LOCK PART</span></button></td>' +*/
                                     '</tr>';
+                                savePartTemp();
                             } else {
                                 var listData = '<tr>' +
                                     '<td>' + noRow + '<input type="text" name="txt_mnemonicPart" value="' + MNEMONIC + '" hidden></td>' +
@@ -334,7 +336,7 @@ function addRepairToTable() {
     let PROBLEM_DESC = $("#text_problemDesc").val(),
         ACTIVITY_REPAIR = $("#txt_activityRepair").val()
 
-
+    /*saveRepairTemp();*/
     DetailTableBody = $("#table_repair tBody");
     $('#table_repair tr.odd').remove();
 
@@ -346,8 +348,9 @@ function addRepairToTable() {
         '<td>' + PROBLEM_DESC + '</td>' +
         '<td>' + ACTIVITY_REPAIR + '</td>' +
         '<td><button onclick="removeListRepair(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
+        /*'<td><button onclick="saveRepairTemp(this)" type="button" class="btn"><span class="badge bg-success"><i class="fa fa-check-circle opacity-50 me-1"></i> LOCK REPAIR</span></button></td>' +*/
         '</tr>';
-
+    saveRepairTemp();
     DetailTableBody.append(listData);
     $('#modal_repair').modal('hide');
 }
@@ -558,11 +561,14 @@ function saveRepair() {
     var ListRepair = [];
     ListRepair.length = 0;
 
+    //let partId = ListPart.PART_ID;
+    //console.log(partId);
+
     $.each($("#table_repair tbody tr"), function () {
         ListRepair.push({
             NO_BACKLOG: $("#txt_noBl").val(),
             PROBLEM_DESC: $(this).find('td:eq(1)').html(),
-            ACTIVITY_REPAIR: $(this).find('td:eq(2)').html()
+            ACTIVITY_REPAIR: $(this).find('td:eq(2)').html(),
         });
     });
 
@@ -576,7 +582,7 @@ function saveRepair() {
             if (data.Remarks == true) {
                 Swal.fire({
                     title: 'Saved',
-                    text: "Your data has been saved!",
+                    text: "Your data has been saved !",
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'OK',
@@ -600,4 +606,173 @@ function saveRepair() {
             alert(xhr.responseText);
         }
     })
+}
+
+function savePartTemp() {
+    var ListPart = [];
+    ListPart.length = 0;
+
+    $.each($("#tblAddPart tbody tr"), function () {
+        let PartId = $("#txt_noBl").val() + $("#txt_partNo").val() + + $("#txt_indexNo").val() + $("#txt_fiqNo").val();
+
+        ListPart.push({
+            PART_ID: PartId,
+            NO_BACKLOG: $("#txt_noBl").val(),
+            DSTRCT_CODE: $("#txt_dstrct").val(),
+            PART_NO: $("#txt_partNo").val(),
+            STOCK_CODE: $("#txt_stckCode").val(),
+            /*STK_DESC: $(this).find('td:eq(3)').html(),*/
+            /*MNEMONIC: $(this).find('[name="txt_mnemonicPart"]').val(),*/
+            FIG_NO: $("#txt_fiqNo").val(),
+            INDEX_NO: $("#txt_indexNo").val(),
+            QTY: $("#txt_qty").val(),
+            //UOM: $(this).find('td:eq(7)').html(),
+            //PART_CLASS: $(this).find('td:eq(8)').html(),
+        });
+    });
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Create_BacklogPartTemp", //URI
+        data: JSON.stringify(ListPart),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been locked!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+}
+
+function deletePartTemp(partId) {
+    PART_ID: partId,
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/deletePartTemp?partId=" + partId, //URI
+        type: "POST",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been locked!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+    
+}
+
+function saveRepairTemp() {
+    var ListRepair = [];
+    ListRepair.length = 0;
+
+    $.each($("#table_repair tbody tr"), function () {
+        let PartId = $("#txt_noBl").val() + $("#txt_activityRepair").val();
+        ListRepair.push({
+            REPAIR_ID: PartId,
+            NO_BACKLOG: $("#txt_noBl").val(),
+            PROBLEM_DESC: $("#text_problemDesc").val(),
+            ACTIVITY_REPAIR: $("#txt_activityRepair").val(),
+        });
+    });
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/Create_RepairTemp", //URI
+        data: JSON.stringify(ListRepair),
+        dataType: "json",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been locked!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+}
+
+function deleteRepairTemp(partId) {
+
+    $.ajax({
+        url: $("#web_link").val() + "/api/Backlog/deleteRepairTemp?partId=" + partId, //URI
+        type: "POST",
+        success: function (data) {
+            if (data.Remarks == true) {
+                Swal.fire({
+                    title: 'Saved',
+                    text: "Your data has been saved!!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Backlog/ListBacklog";
+                    }
+                })
+            } if (data.Remarks == false) {
+                Swal.fire(
+                    'Error!',
+                    'Message : ' + data.Message,
+                    'error'
+                );
+            }
+
+        },
+        error: function (xhr) {
+            alert(xhr.responseText);
+        }
+    })
+
 }

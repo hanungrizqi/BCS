@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Policy;
 using System.Web.Http;
+using System.Web.UI;
 using System.Web.UI.WebControls.WebParts;
 using API_PLANT_BCS.Models;
 using API_PLANT_BCS.ViewModel;
@@ -491,6 +492,68 @@ namespace API_PLANT_BCS.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("Create_BacklogPartTemp")]
+        public IHttpActionResult Create_BacklogPartTemp(IList<TBL_T_TEMPORARY_PART> param)
+        {
+            try
+            {
+                //if (param[0].PART_NO == null)
+                //{
+                //    return Ok(new { Remarks = true });
+                //}
+                List<TBL_T_TEMPORARY_PART> tbl = new List<TBL_T_TEMPORARY_PART>();
+
+                foreach (var item in param)
+                {
+                    var cek = db.TBL_T_TEMPORARY_PARTs.Where(a => a.PART_ID == item.PART_ID).FirstOrDefault();
+                    if (cek != null)
+                    {
+                        cek.PART_ID = item.PART_ID;
+                        cek.NO_BACKLOG = item.NO_BACKLOG;
+                        cek.PART_NO = item.PART_NO;
+                        cek.FIG_NO = item.FIG_NO;
+                        cek.INDEX_NO = item.INDEX_NO;
+                        cek.QTY = item.QTY;
+                        cek.DSTRCT_CODE = item.DSTRCT_CODE;
+                        cek.STOCK_CODE = item.STOCK_CODE;
+                        //cek.STK_DESC = item.STK_DESC;
+                        //cek.UOM = item.UOM;
+                        //cek.PART_CLASS = item.PART_CLASS;
+                        db.TBL_T_TEMPORARY_PARTs.InsertOnSubmit(cek);
+                        db.SubmitChanges();
+                        return Ok(new { Remarks = true });
+                    }
+                    else
+                    {
+                        TBL_T_TEMPORARY_PART tblt = new TBL_T_TEMPORARY_PART();
+                        tblt.PART_ID = item.PART_ID;
+                        tblt.NO_BACKLOG = item.NO_BACKLOG;
+                        tblt.PART_NO = item.PART_NO;
+                        tblt.FIG_NO = item.FIG_NO;
+                        tblt.INDEX_NO = item.INDEX_NO;
+                        tblt.QTY = item.QTY;
+                        tblt.DSTRCT_CODE = item.DSTRCT_CODE;
+                        tblt.STOCK_CODE = item.STOCK_CODE;
+                        //cek.STK_DESC = item.STK_DESC;
+                        //cek.UOM = item.UOM;
+                        //cek.PART_CLASS = item.PART_CLASS;
+                        db.TBL_T_TEMPORARY_PARTs.InsertOnSubmit(tblt);
+                        db.SubmitChanges();
+                        return Ok(new { Remarks = true });
+                    }
+                }
+
+                db.TBL_T_TEMPORARY_PARTs.InsertAllOnSubmit(tbl);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
         //Post Registrasi Backlog
         [HttpPost]
         [Route("Create_BacklogPart")]
@@ -528,7 +591,43 @@ namespace API_PLANT_BCS.Controllers
                 return Ok(new { Remarks = false, Message = e });
             }
         }
-        
+
+        [HttpPost]
+        [Route("deletePartTemp")]
+        public IHttpActionResult deletePartTemp(string partId)
+        {
+            try
+            {
+                var dataPart = db.TBL_T_TEMPORARY_PARTs.Where(a => a.PART_ID == partId).FirstOrDefault();
+
+                db.TBL_T_TEMPORARY_PARTs.DeleteOnSubmit(dataPart);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
+        [HttpPost]
+        [Route("deleteRepairTemp")]
+        public IHttpActionResult deleteRepairTemp(string partId)
+        {
+            try
+            {
+                var dataPart = db.TBL_T_TEMPORARY_REPAIRs.Where(a => a.NO_BACKLOG == partId).ToList();
+
+                db.TBL_T_TEMPORARY_REPAIRs.DeleteAllOnSubmit(dataPart);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
         [HttpPost]
         [Route("Delete_Backlog")]
         public IHttpActionResult Delete_Backlog(string noBacklog)
@@ -582,6 +681,74 @@ namespace API_PLANT_BCS.Controllers
             catch (Exception)
             {
                 return BadRequest();
+            }
+        }
+
+        //Post Repair Temp
+        [HttpPost]
+        [Route("Create_RepairTemp")]
+        public IHttpActionResult Create_RepairTemp(IList<TBL_T_TEMPORARY_REPAIR> listRepair)
+        {
+            try
+            {
+                //if (listRepair[0].PROBLEM_DESC == null)
+                //{
+                //    return Ok(new { Remarks = true });
+                //}
+
+                List<TBL_T_TEMPORARY_REPAIR> tblRepair = new List<TBL_T_TEMPORARY_REPAIR>();
+
+                foreach (var repair in listRepair)
+                {
+                    tblRepair.Add(new TBL_T_TEMPORARY_REPAIR
+                    {
+                        REPAIR_ID = repair.REPAIR_ID,
+                        NO_BACKLOG = repair.NO_BACKLOG,
+                        PROBLEM_DESC = repair.PROBLEM_DESC,
+                        ACTIVITY_REPAIR = repair.ACTIVITY_REPAIR
+                    });
+                }
+
+                db.TBL_T_TEMPORARY_REPAIRs.InsertAllOnSubmit(tblRepair);
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+
+                //List<TBL_T_TEMPORARY_REPAIR> tblRepair = new List<TBL_T_TEMPORARY_REPAIR>();
+
+                //foreach (var repair in listRepair)
+                //{
+                //    var cek = db.TBL_T_TEMPORARY_REPAIRs.Where(a => a.REPAIR_ID == repair.REPAIR_ID).FirstOrDefault();
+                //    if (cek != null)
+                //    {
+                //        cek.REPAIR_ID = repair.REPAIR_ID;
+                //        cek.ACTIVITY_REPAIR = repair.ACTIVITY_REPAIR;
+                //        cek.PROBLEM_DESC = repair.PROBLEM_DESC;
+                //        cek.NO_BACKLOG = repair.NO_BACKLOG;
+
+                //        db.TBL_T_TEMPORARY_REPAIRs.InsertOnSubmit(cek);
+                //    }
+                //    else
+                //    {
+                //        TBL_T_TEMPORARY_REPAIR tblt = new TBL_T_TEMPORARY_REPAIR();
+
+                //        tblt.REPAIR_ID = repair.REPAIR_ID;
+                //        tblt.ACTIVITY_REPAIR = repair.ACTIVITY_REPAIR;
+                //        tblt.PROBLEM_DESC = repair.PROBLEM_DESC;
+                //        tblt.NO_BACKLOG = repair.NO_BACKLOG;
+
+                //        db.TBL_T_TEMPORARY_REPAIRs.InsertOnSubmit(tblt);
+                //        db.SubmitChanges();
+                //        return Ok(new { Remarks = true });
+                //    }
+                //}
+
+                //db.TBL_T_TEMPORARY_REPAIRs.InsertAllOnSubmit(tblRepair);
+                //db.SubmitChanges();
+                //return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
             }
         }
 

@@ -579,6 +579,29 @@
       <Column Name="STATUS" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.TBL_T_TEMPORARY_PART" Member="TBL_T_TEMPORARY_PARTs">
+    <Type Name="TBL_T_TEMPORARY_PART">
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="STOCK_CODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STK_DESC" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="UOM" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="PART_CLASS" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_T_TEMPORARY_REPAIR" Member="TBL_T_TEMPORARY_REPAIRs">
+    <Type Name="TBL_T_TEMPORARY_REPAIR">
+      <Column Name="REPAIR_ID" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PROBLEM_DESC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ACTIVITY_REPAIR" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">
     <Parameter Name="NO_BACKLOG" Parameter="nO_BACKLOG" Type="System.String" DbType="VarChar(MAX)" />
     <Return Type="System.Int32" />

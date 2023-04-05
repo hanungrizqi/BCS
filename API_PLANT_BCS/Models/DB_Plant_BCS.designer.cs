@@ -63,6 +63,12 @@ namespace API_PLANT_BCS.Models
     partial void InsertTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
     partial void UpdateTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
     partial void DeleteTBL_H_APPROVAL_BACKLOG(TBL_H_APPROVAL_BACKLOG instance);
+    partial void InsertTBL_T_TEMPORARY_PART(TBL_T_TEMPORARY_PART instance);
+    partial void UpdateTBL_T_TEMPORARY_PART(TBL_T_TEMPORARY_PART instance);
+    partial void DeleteTBL_T_TEMPORARY_PART(TBL_T_TEMPORARY_PART instance);
+    partial void InsertTBL_T_TEMPORARY_REPAIR(TBL_T_TEMPORARY_REPAIR instance);
+    partial void UpdateTBL_T_TEMPORARY_REPAIR(TBL_T_TEMPORARY_REPAIR instance);
+    partial void DeleteTBL_T_TEMPORARY_REPAIR(TBL_T_TEMPORARY_REPAIR instance);
     #endregion
 		
 		public DB_Plant_BCSDataContext() : 
@@ -420,6 +426,22 @@ namespace API_PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<VW_T_PART_BACKLOG>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_T_TEMPORARY_PART> TBL_T_TEMPORARY_PARTs
+		{
+			get
+			{
+				return this.GetTable<TBL_T_TEMPORARY_PART>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_T_TEMPORARY_REPAIR> TBL_T_TEMPORARY_REPAIRs
+		{
+			get
+			{
+				return this.GetTable<TBL_T_TEMPORARY_REPAIR>();
 			}
 		}
 		
@@ -8999,6 +9021,442 @@ namespace API_PLANT_BCS.Models
 				{
 					this._STATUS = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_T_TEMPORARY_PART")]
+	public partial class TBL_T_TEMPORARY_PART : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _PART_ID;
+		
+		private string _NO_BACKLOG;
+		
+		private string _PART_NO;
+		
+		private string _FIG_NO;
+		
+		private string _INDEX_NO;
+		
+		private System.Nullable<int> _QTY;
+		
+		private string _DSTRCT_CODE;
+		
+		private System.Nullable<int> _STOCK_CODE;
+		
+		private string _STK_DESC;
+		
+		private string _UOM;
+		
+		private string _PART_CLASS;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPART_IDChanging(string value);
+    partial void OnPART_IDChanged();
+    partial void OnNO_BACKLOGChanging(string value);
+    partial void OnNO_BACKLOGChanged();
+    partial void OnPART_NOChanging(string value);
+    partial void OnPART_NOChanged();
+    partial void OnFIG_NOChanging(string value);
+    partial void OnFIG_NOChanged();
+    partial void OnINDEX_NOChanging(string value);
+    partial void OnINDEX_NOChanged();
+    partial void OnQTYChanging(System.Nullable<int> value);
+    partial void OnQTYChanged();
+    partial void OnDSTRCT_CODEChanging(string value);
+    partial void OnDSTRCT_CODEChanged();
+    partial void OnSTOCK_CODEChanging(System.Nullable<int> value);
+    partial void OnSTOCK_CODEChanged();
+    partial void OnSTK_DESCChanging(string value);
+    partial void OnSTK_DESCChanged();
+    partial void OnUOMChanging(string value);
+    partial void OnUOMChanged();
+    partial void OnPART_CLASSChanging(string value);
+    partial void OnPART_CLASSChanged();
+    #endregion
+		
+		public TBL_T_TEMPORARY_PART()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_ID", DbType="VarChar(150) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string PART_ID
+		{
+			get
+			{
+				return this._PART_ID;
+			}
+			set
+			{
+				if ((this._PART_ID != value))
+				{
+					this.OnPART_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PART_ID = value;
+					this.SendPropertyChanged("PART_ID");
+					this.OnPART_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(150)")]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this.OnNO_BACKLOGChanging(value);
+					this.SendPropertyChanging();
+					this._NO_BACKLOG = value;
+					this.SendPropertyChanged("NO_BACKLOG");
+					this.OnNO_BACKLOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_NO", DbType="VarChar(150)")]
+		public string PART_NO
+		{
+			get
+			{
+				return this._PART_NO;
+			}
+			set
+			{
+				if ((this._PART_NO != value))
+				{
+					this.OnPART_NOChanging(value);
+					this.SendPropertyChanging();
+					this._PART_NO = value;
+					this.SendPropertyChanged("PART_NO");
+					this.OnPART_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FIG_NO", DbType="VarChar(150)")]
+		public string FIG_NO
+		{
+			get
+			{
+				return this._FIG_NO;
+			}
+			set
+			{
+				if ((this._FIG_NO != value))
+				{
+					this.OnFIG_NOChanging(value);
+					this.SendPropertyChanging();
+					this._FIG_NO = value;
+					this.SendPropertyChanged("FIG_NO");
+					this.OnFIG_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDEX_NO", DbType="VarChar(150)")]
+		public string INDEX_NO
+		{
+			get
+			{
+				return this._INDEX_NO;
+			}
+			set
+			{
+				if ((this._INDEX_NO != value))
+				{
+					this.OnINDEX_NOChanging(value);
+					this.SendPropertyChanging();
+					this._INDEX_NO = value;
+					this.SendPropertyChanged("INDEX_NO");
+					this.OnINDEX_NOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QTY", DbType="Int")]
+		public System.Nullable<int> QTY
+		{
+			get
+			{
+				return this._QTY;
+			}
+			set
+			{
+				if ((this._QTY != value))
+				{
+					this.OnQTYChanging(value);
+					this.SendPropertyChanging();
+					this._QTY = value;
+					this.SendPropertyChanged("QTY");
+					this.OnQTYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(150)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this.OnDSTRCT_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._DSTRCT_CODE = value;
+					this.SendPropertyChanged("DSTRCT_CODE");
+					this.OnDSTRCT_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CODE", DbType="Int")]
+		public System.Nullable<int> STOCK_CODE
+		{
+			get
+			{
+				return this._STOCK_CODE;
+			}
+			set
+			{
+				if ((this._STOCK_CODE != value))
+				{
+					this.OnSTOCK_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._STOCK_CODE = value;
+					this.SendPropertyChanged("STOCK_CODE");
+					this.OnSTOCK_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STK_DESC", DbType="VarChar(150)")]
+		public string STK_DESC
+		{
+			get
+			{
+				return this._STK_DESC;
+			}
+			set
+			{
+				if ((this._STK_DESC != value))
+				{
+					this.OnSTK_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._STK_DESC = value;
+					this.SendPropertyChanged("STK_DESC");
+					this.OnSTK_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOM", DbType="VarChar(150)")]
+		public string UOM
+		{
+			get
+			{
+				return this._UOM;
+			}
+			set
+			{
+				if ((this._UOM != value))
+				{
+					this.OnUOMChanging(value);
+					this.SendPropertyChanging();
+					this._UOM = value;
+					this.SendPropertyChanged("UOM");
+					this.OnUOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_CLASS", DbType="VarChar(150)")]
+		public string PART_CLASS
+		{
+			get
+			{
+				return this._PART_CLASS;
+			}
+			set
+			{
+				if ((this._PART_CLASS != value))
+				{
+					this.OnPART_CLASSChanging(value);
+					this.SendPropertyChanging();
+					this._PART_CLASS = value;
+					this.SendPropertyChanged("PART_CLASS");
+					this.OnPART_CLASSChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_T_TEMPORARY_REPAIR")]
+	public partial class TBL_T_TEMPORARY_REPAIR : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _REPAIR_ID;
+		
+		private string _NO_BACKLOG;
+		
+		private string _PROBLEM_DESC;
+		
+		private string _ACTIVITY_REPAIR;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnREPAIR_IDChanging(string value);
+    partial void OnREPAIR_IDChanged();
+    partial void OnNO_BACKLOGChanging(string value);
+    partial void OnNO_BACKLOGChanged();
+    partial void OnPROBLEM_DESCChanging(string value);
+    partial void OnPROBLEM_DESCChanged();
+    partial void OnACTIVITY_REPAIRChanging(string value);
+    partial void OnACTIVITY_REPAIRChanged();
+    #endregion
+		
+		public TBL_T_TEMPORARY_REPAIR()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REPAIR_ID", DbType="VarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string REPAIR_ID
+		{
+			get
+			{
+				return this._REPAIR_ID;
+			}
+			set
+			{
+				if ((this._REPAIR_ID != value))
+				{
+					this.OnREPAIR_IDChanging(value);
+					this.SendPropertyChanging();
+					this._REPAIR_ID = value;
+					this.SendPropertyChanged("REPAIR_ID");
+					this.OnREPAIR_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50)")]
+		public string NO_BACKLOG
+		{
+			get
+			{
+				return this._NO_BACKLOG;
+			}
+			set
+			{
+				if ((this._NO_BACKLOG != value))
+				{
+					this.OnNO_BACKLOGChanging(value);
+					this.SendPropertyChanging();
+					this._NO_BACKLOG = value;
+					this.SendPropertyChanged("NO_BACKLOG");
+					this.OnNO_BACKLOGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROBLEM_DESC", DbType="VarChar(MAX)")]
+		public string PROBLEM_DESC
+		{
+			get
+			{
+				return this._PROBLEM_DESC;
+			}
+			set
+			{
+				if ((this._PROBLEM_DESC != value))
+				{
+					this.OnPROBLEM_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._PROBLEM_DESC = value;
+					this.SendPropertyChanged("PROBLEM_DESC");
+					this.OnPROBLEM_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVITY_REPAIR", DbType="VarChar(MAX)")]
+		public string ACTIVITY_REPAIR
+		{
+			get
+			{
+				return this._ACTIVITY_REPAIR;
+			}
+			set
+			{
+				if ((this._ACTIVITY_REPAIR != value))
+				{
+					this.OnACTIVITY_REPAIRChanging(value);
+					this.SendPropertyChanging();
+					this._ACTIVITY_REPAIR = value;
+					this.SendPropertyChanged("ACTIVITY_REPAIR");
+					this.OnACTIVITY_REPAIRChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
