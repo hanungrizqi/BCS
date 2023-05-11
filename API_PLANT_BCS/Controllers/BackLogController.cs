@@ -9,6 +9,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls.WebParts;
 using API_PLANT_BCS.Models;
 using API_PLANT_BCS.ViewModel;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Web.SessionState;
+using System.Web;
 
 namespace API_PLANT_BCS.Controllers
 {
@@ -244,8 +249,6 @@ namespace API_PLANT_BCS.Controllers
             try
             {
                 var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
-
-                
 
                 TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
 

@@ -17,6 +17,7 @@ $("document").ready(function () {
     getSTDJob();
     document.getElementById("txt_dInspecton").setAttribute("max", new Date().toISOString().split("T")[0]);
     document.getElementById("txt_planRD1").setAttribute("min", new Date().toISOString().split("T")[0]);
+    
 })
 
 $("#txt_eqNumber").on("change", function () {
@@ -282,7 +283,7 @@ function addPartToTable() {
                                     '<td><button onclick="removeList(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
                                     /*'<td><button onclick="savePartTemp(this)" type="button" class="btn"><span class="badge bg-success"><i class="fa fa-check-circle opacity-50 me-1"></i> LOCK PART</span></button></td>' +*/
                                     '</tr>';
-                                savePartTemp();
+                                /*savePartTemp();*/
                             } else {
                                 var listData = '<tr>' +
                                     '<td>' + noRow + '<input type="text" name="txt_mnemonicPart" value="' + MNEMONIC + '" hidden></td>' +
@@ -350,7 +351,7 @@ function addRepairToTable() {
         '<td><button onclick="removeListRepair(this)" type="button" class="btn"><i class="fa fa-times text-danger"></i></button></td>' +
         /*'<td><button onclick="saveRepairTemp(this)" type="button" class="btn"><span class="badge bg-success"><i class="fa fa-check-circle opacity-50 me-1"></i> LOCK REPAIR</span></button></td>' +*/
         '</tr>';
-    saveRepairTemp();
+    /*saveRepairTemp();*/
     DetailTableBody.append(listData);
     $('#modal_repair').modal('hide');
 }
@@ -398,7 +399,7 @@ function saveBacklog(postStatus) {
         } else if (BACKLOG_DESC == "") {
             window.location.hash = "txt_blDesc";
             return false;
-        }else if (EQP_NUMBER == "") {
+        } else if (EQP_NUMBER == "") {
             window.location.hash = "txt_eqNumber";
             return false;
         } else if (HM == "") {
@@ -491,6 +492,10 @@ function submitBacklog(postStatus) {
         dataBacklog.POSISI_BACKLOG = $("#txt_posBL").val();
     }
 
+    // disable submit button
+    //$('#submit_button').attr('disabled', 'disabled');
+    /*console.log('submit_button');*/
+
     $.ajax({
         url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
         data: JSON.stringify(dataBacklog),
@@ -582,7 +587,7 @@ function saveRepair() {
             if (data.Remarks == true) {
                 Swal.fire({
                     title: 'Saved',
-                    text: "Your data has been saved !",
+                    text: "Your data has been saved!",
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'OK',
@@ -604,9 +609,16 @@ function saveRepair() {
         },
         error: function (xhr) {
             alert(xhr.responseText);
-        }
-    })
+        },
+        //complete: function () {
+        //    // enable submit button after AJAX request is complete
+        //    $('#submit_button').removeAttr('disabled');
+        //}
+    });
 }
+
+// log submit button
+console.log($('#submit_button'));
 
 function savePartTemp() {
     var ListPart = [];
