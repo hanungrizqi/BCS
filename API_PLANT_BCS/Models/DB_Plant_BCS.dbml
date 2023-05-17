@@ -559,8 +559,7 @@
   </Table>
   <Table Name="dbo.TBL_T_BACKLOG" Member="TBL_T_BACKLOGs">
     <Type Name="TBL_T_BACKLOG">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -590,8 +589,7 @@
   </Table>
   <Table Name="dbo.TBL_T_RECOMMENDED_PART" Member="TBL_T_RECOMMENDED_PARTs">
     <Type Name="TBL_T_RECOMMENDED_PART">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

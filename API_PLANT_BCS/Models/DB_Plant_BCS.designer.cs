@@ -8503,8 +8503,6 @@ namespace API_PLANT_BCS.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID;
-		
 		private string _NO_BACKLOG;
 		
 		private string _DSTRCT_CODE;
@@ -8561,8 +8559,6 @@ namespace API_PLANT_BCS.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
     partial void OnNO_BACKLOGChanging(string value);
     partial void OnNO_BACKLOGChanged();
     partial void OnDSTRCT_CODEChanging(string value);
@@ -8622,27 +8618,7 @@ namespace API_PLANT_BCS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_BACKLOG", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string NO_BACKLOG
 		{
 			get
@@ -9189,8 +9165,6 @@ namespace API_PLANT_BCS.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID;
-		
 		private string _PART_ID;
 		
 		private string _NO_BACKLOG;
@@ -9217,8 +9191,6 @@ namespace API_PLANT_BCS.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
     partial void OnPART_IDChanging(string value);
     partial void OnPART_IDChanged();
     partial void OnNO_BACKLOGChanging(string value);
@@ -9248,27 +9220,7 @@ namespace API_PLANT_BCS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_ID", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string PART_ID
 		{
 			get

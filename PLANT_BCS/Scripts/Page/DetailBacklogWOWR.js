@@ -14,7 +14,7 @@
     getSource();
     getOriID();
     getSTDJob();
-    console.log(table);
+    //console.log("#txt_eqNumberTemp");
 
     document.getElementById("txt_dInspecton").setAttribute("max", new Date().toISOString().split("T")[0]);
     document.getElementById("txt_planRD1").setAttribute("min", new Date().toISOString().split("T")[0]);
@@ -104,7 +104,9 @@ function getEqNumber() {
             $('#txt_eqNumber').empty();
             text = '<option></option>';
             $.each(result.Data, function (key, val) {
-                if (val.EQUIP_NO == $("#txt_eqNumberTemp").val()) {
+                /*if (val.EQUIP_NO == $("#txt_eqNumberTemp").val()) {*/
+                //edit 13.03.2023 (trim() untuk menghilangkan whitespace)
+                if ((val.EQUIP_NO).trim() == $("#txt_eqNumberTemp").val().trim()) {
                     text += '<option selected="selected" value="' + val.EQUIP_NO + '" data-egi="' + val.EQUIP_GRP_ID + '" >' + val.EQUIP_NO + '</option>';
                 } else {
                     text += '<option value="' + val.EQUIP_NO + '" data-egi="' + val.EQUIP_GRP_ID + '">' + val.EQUIP_NO + '</option>';
@@ -460,7 +462,7 @@ function CreateWoWr(mode) {
 
 
     $.ajax({
-        url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
+        url: $("#web_link").val() + "/api/Backlog/Create_Backlog_WOWR", //URI
         data: JSON.stringify(dataBacklog),
         dataType: "json",
         type: "POST",
@@ -612,7 +614,7 @@ function Save(mode) {
 
 
     $.ajax({
-        url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
+        url: $("#web_link").val() + "/api/Backlog/Create_Backlog_WOWR", //URI
         data: JSON.stringify(dataBacklog),
         dataType: "json",
         type: "POST",

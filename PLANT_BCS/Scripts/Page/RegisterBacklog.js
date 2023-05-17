@@ -370,6 +370,120 @@ function removeListRepair(element) {
 }
 
 function saveBacklog(postStatus) {
+
+    //$.ajax({
+    //    url: "/Backlog/CreateBecklog", //URI
+    //    dataType: "json",
+    //    type: "POST",
+    //    contentType: "application/json; charset=utf-8",
+    //    success: function (data) {
+    //        if (data.Remarks == true) {
+    //            console.log(data.Remarks);
+    //            if (postStatus == "SUBMITTED") {
+    //                //NO_BACKLOG = $("#txt_noBl").val();
+    //                NO_BACKLOG = $("#txt_noBl").val(data.NoBacklog);
+    //                DSTRCT_CODE = $("#txt_dstrct").val();
+    //                EQP_NUMBER = $("#txt_eqNumber").val();
+    //                COMP_CODE = $("#txt_compCode").val();
+    //                EGI = $("#txt_egi").val();
+    //                HM = $("#txt_hm").val();
+    //                BACKLOG_DESC = $("#txt_blDesc").val();
+    //                INSPECTON_DATE = $("#txt_dInspecton").val();
+    //                INSPECTOR = $("#txt_inspector").val();
+    //                SOURCE = $("#txt_source").val();
+    //                WORK_GROUP = $("#txt_wg").val();
+    //                STD_JOB = $("#txt_standJob").val();
+    //                NRP_GL = $("#txt_nrpGl").val();
+    //                ORIGINATOR_ID = $("#txt_oriID").val();
+    //                PLAN_REPAIR_DATE_1 = $("#txt_planRD1").val();
+    //                MANPOWER = $("#txt_mp").val();
+    //                HOUR_EST = $("#txt_hEst").val();
+    //                POSISI_BACKLOG = $("#txt_posBL").val();
+    //                CREATED_BY = $("#txt_inspector").val();
+    //                REMARKS = $("#txt_note").val();
+    //                STATUS = postStatus;
+
+    //                if (COMP_CODE == "") {
+    //                    window.location.hash = "txt_compCode";
+    //                    return false;
+    //                } else if (BACKLOG_DESC == "") {
+    //                    window.location.hash = "txt_blDesc";
+    //                    return false;
+    //                } else if (EQP_NUMBER == "") {
+    //                    window.location.hash = "txt_eqNumber";
+    //                    return false;
+    //                } else if (HM == "") {
+    //                    window.location.hash = "txt_hm";
+    //                    return false;
+    //                } else if (HOUR_EST == "") {
+    //                    window.location.hash = "txt_hEst";
+    //                    return false;
+    //                } else if (INSPECTON_DATE == "") {
+    //                    window.location.hash = "txt_dInspecton";
+    //                    return false;
+    //                } else if (MANPOWER == "") {
+    //                    window.location.hash = "txt_mp";
+    //                    return false;
+    //                } else if (NRP_GL == "") {
+    //                    window.location.hash = "txt_nrpGl";
+    //                    return false;
+    //                } else if (ORIGINATOR_ID == "") {
+    //                    window.location.hash = "txt_oriID";
+    //                    return false;
+    //                } else if (PLAN_REPAIR_DATE_1 == "") {
+    //                    window.location.hash = "txt_planRD1";
+    //                    return false;
+    //                } else if (SOURCE == "") {
+    //                    window.location.hash = "txt_source";
+    //                    return false;
+    //                } else if (STD_JOB == "") {
+    //                    window.location.hash = "txt_standJob";
+    //                    return false;
+    //                }
+
+    //                let tRow = $("#table_part >tbody >tr").length;
+    //                if ($("#txt_cekRow").val() == "1" && $("#txt_cekRowRepair").val() == "1") {
+    //                    Swal.fire(
+    //                        'Submit error!',
+    //                        'Mohon untuk menginput list Recommended Part atau Recommended Repair',
+    //                        'warning'
+    //                    );
+    //                    return false;
+    //                }
+
+    //                $.each($("#table_part tbody tr"), function (index) {
+    //                    partStatus = $(this).find('td:eq(9)').html();
+    //                    if (partStatus == "NONE") {
+    //                        Swal.fire(
+    //                            'Submit error!',
+    //                            'Ada Part number yang belum aktif',
+    //                            'warning'
+    //                        );
+    //                        return false;
+    //                    } else {
+    //                        let getin = index + 1;
+    //                        if (getin == tRow) {
+    //                            submitBacklog(postStatus)
+    //                        }
+    //                    }
+    //                });
+    //            } else {
+    //                submitBacklog(postStatus)
+    //            }
+    //        } if (data.Remarks == false) {
+    //            Swal.fire(
+    //                'Error!',
+    //                'Message : ' + data.Message,
+    //                'error'
+    //            );
+    //        }
+
+    //    },
+    //    error: function (xhr) {
+    //        alert(xhr.responseText);
+    //    },
+    //});
+
     if (postStatus == "SUBMITTED") {
         NO_BACKLOG = $("#txt_noBl").val();
         DSTRCT_CODE = $("#txt_dstrct").val();
@@ -512,6 +626,22 @@ function submitBacklog(postStatus) {
                     'error'
                 );
             }
+            //edit
+            if (data.Remarkss == true) {
+                Swal.fire({
+                    title: 'Important!!',
+                    text: "No Backlog sudah ada/digunakan user lain!!",
+                    icon: 'warning',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Backlog/Register";
+                    }
+                })
+            }
 
         },
         error: function (xhr) {
@@ -618,7 +748,7 @@ function saveRepair() {
 }
 
 // log submit button
-console.log($('#submit_button'));
+//console.log($('#submit_button'));
 
 function savePartTemp() {
     var ListPart = [];

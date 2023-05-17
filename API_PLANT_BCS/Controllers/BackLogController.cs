@@ -286,8 +286,129 @@ namespace API_PLANT_BCS.Controllers
                         his.Approved_Date = DateTime.UtcNow.ToLocalTime();
 
                         db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+
+                        //edit 13.05.2023
+                        return Ok(new { Remarkss = true, Message = "NO_BACKLOG already exists. Please Refresh Page" });
                     }
                     
+                }
+                else
+                {
+                    //edit 13.05.2023
+                    var tbls = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+                    if (tbls != null)
+                    {
+                        return Ok(new { Remarkss = true, Message = "NO_BACKLOG already exists. Please Refresh Page" });
+                    }
+                    else
+                    {
+                        TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
+                        tbl.NO_BACKLOG = param.NO_BACKLOG;
+                        tbl.DSTRCT_CODE = param.DSTRCT_CODE;
+                        tbl.EQP_NUMBER = param.EQP_NUMBER;
+                        tbl.COMP_CODE = param.COMP_CODE;
+                        tbl.EGI = param.EGI;
+                        tbl.HM = param.HM;
+                        tbl.BACKLOG_DESC = param.BACKLOG_DESC;
+                        tbl.INSPECTON_DATE = param.INSPECTON_DATE;
+                        tbl.INSPECTOR = param.INSPECTOR;
+                        tbl.SOURCE = param.SOURCE;
+                        tbl.WORK_GROUP = param.WORK_GROUP;
+                        tbl.STD_JOB = param.STD_JOB;
+                        tbl.NRP_GL = param.NRP_GL;
+                        tbl.ORIGINATOR_ID = param.ORIGINATOR_ID;
+                        tbl.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
+                        tbl.MANPOWER = param.MANPOWER;
+                        tbl.HOUR_EST = param.HOUR_EST;
+                        tbl.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                        tbl.STATUS = param.STATUS;
+                        tbl.REMARKS = param.REMARKS;
+                        tbl.CREATED_BY = param.CREATED_BY;
+                        tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                        db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
+                    }
+                    //TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
+                    //tbl.NO_BACKLOG = param.NO_BACKLOG;
+                    //tbl.DSTRCT_CODE = param.DSTRCT_CODE;
+                    //tbl.EQP_NUMBER = param.EQP_NUMBER;
+                    //tbl.COMP_CODE = param.COMP_CODE;
+                    //tbl.EGI = param.EGI;
+                    //tbl.HM = param.HM;
+                    //tbl.BACKLOG_DESC = param.BACKLOG_DESC;
+                    //tbl.INSPECTON_DATE = param.INSPECTON_DATE;
+                    //tbl.INSPECTOR = param.INSPECTOR;
+                    //tbl.SOURCE = param.SOURCE;
+                    //tbl.WORK_GROUP = param.WORK_GROUP;
+                    //tbl.STD_JOB = param.STD_JOB;
+                    //tbl.NRP_GL = param.NRP_GL;
+                    //tbl.ORIGINATOR_ID = param.ORIGINATOR_ID;
+                    //tbl.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
+                    //tbl.MANPOWER = param.MANPOWER;
+                    //tbl.HOUR_EST = param.HOUR_EST;
+                    //tbl.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                    //tbl.STATUS = param.STATUS;
+                    //tbl.REMARKS = param.REMARKS;
+                    //tbl.CREATED_BY = param.CREATED_BY;
+                    //tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                    //db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
+                }
+
+                db.SubmitChanges();
+                return Ok(new { Remarks = true });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { Remarks = false, Message = e });
+            }
+        }
+
+        [HttpPost]
+        [Route("Create_Backlog_WOWR")]
+        public IHttpActionResult Create_Backlog_WOWR(TBL_T_BACKLOG param)
+        {
+            try
+            {
+                var cek = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == param.NO_BACKLOG).FirstOrDefault();
+
+                TBL_H_APPROVAL_BACKLOG his = new TBL_H_APPROVAL_BACKLOG();
+
+                if (cek != null)
+                {
+                    cek.NO_BACKLOG = param.NO_BACKLOG;
+                    cek.DSTRCT_CODE = param.DSTRCT_CODE;
+                    cek.EQP_NUMBER = param.EQP_NUMBER;
+                    cek.COMP_CODE = param.COMP_CODE;
+                    cek.EGI = param.EGI;
+                    cek.HM = param.HM;
+                    cek.BACKLOG_DESC = param.BACKLOG_DESC;
+                    cek.INSPECTON_DATE = param.INSPECTON_DATE;
+                    cek.SOURCE = param.SOURCE;
+                    cek.WORK_GROUP = param.WORK_GROUP;
+                    cek.STD_JOB = param.STD_JOB;
+                    cek.NRP_GL = param.NRP_GL;
+                    cek.ORIGINATOR_ID = param.ORIGINATOR_ID;
+                    cek.PLAN_REPAIR_DATE_1 = param.PLAN_REPAIR_DATE_1;
+                    cek.MANPOWER = param.MANPOWER;
+                    cek.HOUR_EST = param.HOUR_EST;
+                    cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                    cek.STATUS = param.STATUS;
+                    cek.REMARKS = param.REMARKS;
+                    cek.UPDATED_BY = param.UPDATED_BY;
+                    cek.UPDATED_DATE = DateTime.UtcNow.ToLocalTime();
+
+                    //history
+
+                    if (cek.POSISI_BACKLOG != null && cek.POSISI_BACKLOG != "")
+                    {
+                        string oldl_posisi = cek.POSISI_BACKLOG;
+                        his.No_Backlog = param.NO_BACKLOG;
+                        his.Posisi_Backlog = oldl_posisi;
+                        his.Approved_Date = DateTime.UtcNow.ToLocalTime();
+
+                        db.TBL_H_APPROVAL_BACKLOGs.InsertOnSubmit(his);
+                    }
 
                 }
                 else
@@ -317,8 +438,6 @@ namespace API_PLANT_BCS.Controllers
                     tbl.CREATED_DATE = DateTime.UtcNow.ToLocalTime();
 
                     db.TBL_T_BACKLOGs.InsertOnSubmit(tbl);
-
-                    
                 }
 
                 db.SubmitChanges();

@@ -436,7 +436,7 @@ function submitBacklog(postStatus) {
     }
 
     $.ajax({
-        url: $("#web_link").val() + "/api/Backlog/Create_Backlog", //URI
+        url: $("#web_link").val() + "/api/Backlog/Create_Backlog_WOWR", //URI Create_Backlog -> Create_Backlog_WOWR
         data: JSON.stringify(dataBacklog),
         dataType: "json",
         type: "POST",
