@@ -16,9 +16,20 @@ $("document").ready(function () {
     getOriID();
     getSTDJob();
     document.getElementById("txt_dInspecton").setAttribute("max", new Date().toISOString().split("T")[0]);
+    //document.getElementById("txt_dInspecton").setAttribute("max", getCurrentDate());
     document.getElementById("txt_planRD1").setAttribute("min", new Date().toISOString().split("T")[0]);
     
 })
+
+//function getCurrentDate() {
+//    var today = new Date();
+//    var dd = String(today.getDate()).padStart(2, '0');
+//    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+//    var yyyy = today.getFullYear();
+
+//    today = yyyy + '-' + mm + '-' + dd;
+//    return today;
+//}
 
 $("#txt_eqNumber").on("change", function () {
     let egi = $(this).find(':selected').attr('data-egi');
@@ -218,13 +229,14 @@ function getSTDJob() {
 }
 
 function addPartToTable() {
-
+    debugger
     let PART_NO = $("#txt_partNo").val(),
         MNEMONIC = $("#txt_Mnemonic").val(),
         FIG_NO = $("#txt_fiqNo").val(),
         INDEX_NO = $("#txt_indexNo").val(),
         QTY = $("#txt_qty").val(),
         STCK_CODE = $("#txt_stckCode").val()
+
 
     if (PART_NO == "" || FIG_NO == "" || INDEX_NO == "" || QTY == "") {
         Swal.fire(
@@ -269,6 +281,49 @@ function addPartToTable() {
                         if (result.Remarks == true) {
                             $('#table_part tr.odd').remove();
                             if (result.Data != null) {
+
+                                //add edit cek history part (22.05.2023)
+                                debugger
+                                let dataPart = new Object();
+                                debugger
+                                dataPart.NO_BACKLOG = $("#txt_noBl").val(),
+                                dataPart.DSTRCT_CODE = $("#txt_dstrct").val(),
+                                dataPart.EQP_NUMBER = $("#txt_eqNumber").val(),
+                                dataPart.PART_NO = $("#txt_partNo").val(),
+                                dataPart.MNEMONIC = $("#txt_Mnemonic").val(),
+                                dataPart.FIG_NO = $("#txt_fiqNo").val(),
+                                dataPart.INDEX_NO = $("#txt_indexNo").val(),
+                                dataPart.QTY = $("#txt_qty").val(),
+                                dataPart.STOCK_CODE = result.Data.STOCK_CODE
+                                //DSTRCT_CODE = $("#txt_dstrct").val(),
+                                //EQP_NUMBER = $("#txt_eqNumber").val()
+                                $.ajax({
+                                    url: $("#web_link").val() + "/api/Backlog/Cek_History_Part", //URI
+                                    data: JSON.stringify(dataPart),
+                                    dataType: "json",
+                                    type: "POST",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (data) {
+                                        debugger
+                                        if (data.Remarkss == true) {
+                                            debugger
+                                            Swal.fire({
+                                                title: 'Info!',
+                                                text: data.Messages,
+                                                icon: 'info',
+                                                confirmButtonColor: '#3085d6',
+                                                confirmButtonText: 'OK',
+                                                allowOutsideClick: false,
+                                                allowEscapeKey: false
+                                            })
+                                        }
+
+                                    },
+                                    error: function (xhr) {
+                                        alert(xhr.responseText);
+                                    }
+                                }); //sampai sini (22.05.2023)
+                                
                                 var listData = '<tr>' +
                                     '<td>' + noRow + '<input type="text" name="txt_mnemonicPart" value="' + MNEMONIC + '" hidden></td>' +
                                     '<td>' + result.Data.PART_NO + '</td>' +

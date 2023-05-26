@@ -14,6 +14,7 @@ var table = $("#tbl_backlog").DataTable({
     columns: [
         { data: 'NO_BACKLOG' },
         { data: 'WO_NO' },
+        { data: 'IREQ_NO' },
         { data: 'DSTRCT_CODE' },
         { data: 'EQP_NUMBER' },
         { data: 'COMP_CODE' },
@@ -82,7 +83,7 @@ var table = $("#tbl_backlog").DataTable({
 
     initComplete: function () {
         this.api()
-            .columns(9)
+            .columns(10)
             .every(function () {
                 var column = this;
                 var select = $('<select class="form-control form-control-sm" style="width:200px; display:inline-block; margin-left: 10px;"><option value="">-- STATUS --</option></select>')

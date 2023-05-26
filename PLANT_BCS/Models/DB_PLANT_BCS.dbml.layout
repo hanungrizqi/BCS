@@ -68,10 +68,10 @@
         <elementListCompartment Id="3cd76e42-6a32-4b6d-b6ac-a6df5d9fab5d" absoluteBounds="2.6399999999999997, 3.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="389c1ccd-35d2-4549-8ada-cf10997083d8" absoluteBounds="4.875, 1.75, 2, 5.2323225911458326">
+    <classShape Id="389c1ccd-35d2-4549-8ada-cf10997083d8" isExpanded="false" absoluteBounds="4.75, 1.5, 2, 0.45">
       <DataClassMoniker Name="/DB_PLANT_BCSDataContext/TBL_R_MASTER_KARYAWAN_ALL" />
       <nestedChildShapes>
-        <elementListCompartment Id="400f8319-27c4-4b2d-a845-bfa9ed0f09d5" absoluteBounds="4.89, 2.21, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="400f8319-27c4-4b2d-a845-bfa9ed0f09d5" absoluteBounds="4.765, 1.96, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

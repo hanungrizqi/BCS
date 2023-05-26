@@ -86,6 +86,7 @@ namespace PLANT_BCS.Controllers
 
             TBL_T_BACKLOG tbl = new TBL_T_BACKLOG();
             string NoBacklog = "";
+            string equip = "";
 
             using (var client = new HttpClient())
             {
@@ -129,10 +130,32 @@ namespace PLANT_BCS.Controllers
                         }
                     }
 
-                    ViewBag.NoBackLog = NoBacklog;
+                    //ViewBag.NoBackLog = NoBacklog;
 
                 }
+                
+                //new 24.05.2023
+                HttpResponseMessage Res_Equip = await client.GetAsync("api/Master/Get_EqNumber2/" + Session["Site"].ToString() + "/"  + Session["Nrp"].ToString());
 
+                //Checking the response is successful or not which is sent using HttpClient  
+                if (Res_Equip.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    var ApiResponse = Res_Equip.Content.ReadAsStringAsync().Result;
+                    Cls_Equip data = new Cls_Equip();
+                    data = JsonConvert.DeserializeObject<Cls_Equip>(ApiResponse);
+
+                    equip = data.Data;
+
+                }
+                if(Session["Site"].ToString() == "INDE")
+                {
+                    ViewBag.NoBackLog = NoBacklog + equip;
+                }
+                else
+                {
+                    ViewBag.NoBackLog = NoBacklog;
+                }
                 return View();
             }
         }

@@ -12,4 +12,8 @@ namespace PLANT_BCS.ViewModel
         [JsonProperty("Data")]
         public TBL_T_BACKLOG tbl { get; set; }
     }
+    public class Cls_Equip
+    {
+        public string Data { get; set; }
+    }
 }

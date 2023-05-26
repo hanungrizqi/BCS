@@ -75,14 +75,21 @@ namespace API_PLANT_BCS.Controllers
         
         [HttpGet]
         [Route("Get_ListBacklogReview/{dstrct}")]
-        public IHttpActionResult Get_ListBacklogReview(string dstrct)
+        public async Task<IHttpActionResult> Get_ListBacklogReview(string dstrct)
         {
             try
             {
                 db.CommandTimeout = 120;
                 //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct && a.POSISI_BACKLOG == "ADM1" && !(a.STATUS.Contains("CANCEL"))).ToList();
-                var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
-                
+                //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct)
+                //                            .Select(a => new { a.NO_BACKLOG, a.DSTRCT_CODE, a.EQP_NUMBER, a.COMP_CODE, a.COMP_DESC, a.EGI, a.HM, a.BACKLOG_DESC, a.INSPECTON_DATE, a.INSPECTOR, a.INSPECTOR_NAME, a.SOURCE, a.WORK_GROUP, a.STD_JOB, a.NRP_GL, a.NRP_GL_NAME, a.ORIGINATOR_ID, a.ORIGINATOR_ID_NAME, a.PLAN_REPAIR_DATE_1, a.PLAN_REPAIR_DATE_2, a.MANPOWER, a.HOUR_EST, a.POSISI_BACKLOG, a.CREATED_DATE, a.CREATED_BY, a.UPDATED_DATE, a.UPDATED_BY, a.REMARKS, a.WO_NO, a.IREQ_NO, a.INSTALL_DATE })
+                //                            .ToList();
+                //var data = db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                var data = await Task.Run(() =>
+                {
+                    return db.VW_T_BACKLOGs.Where(a => a.DSTRCT_CODE == dstrct).ToList();
+                });
+
                 return Ok(new { Data = data });
             }
             catch (Exception)
@@ -240,7 +247,55 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
+
+        [HttpPost]
+        [Route("Cek_History_Part")]
+        public IHttpActionResult Cek_History_Part(VW_H_PART_BACKLOG param)
+        {
+            try
+            {
+                var cek = db.VW_H_PART_BACKLOGs.Where(a => a.DSTRCT_CODE == param.DSTRCT_CODE && a.EQP_NUMBER == param.EQP_NUMBER && a.STOCK_CODE == param.STOCK_CODE).FirstOrDefault();
+                if (cek != null)
+                {
+                    //gk kepake, langsung cek if dibawah lagi
+                    //cek.NO_BACKLOG = param.NO_BACKLOG;
+                    //cek.DSTRCT_CODE = param.DSTRCT_CODE;
+                    //cek.EQP_NUMBER = param.EQP_NUMBER;
+                    //cek.STOCK_CODE = param.STOCK_CODE;
+                    //cek.PART_NO = param.PART_NO;
+                    //cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
+                    //cek.STATUS = param.STATUS;
+                    //cek.CREATED_DATE = param.CREATED_DATE;
+                    //cek.REMARKS = param.REMARKS;
+
+                    if (cek.DSTRCT_CODE == param.DSTRCT_CODE && cek.EQP_NUMBER == param.EQP_NUMBER && cek.STOCK_CODE == param.STOCK_CODE)
+                    {
+                        var nobl = cek.NO_BACKLOG;
+                        var eqpno = cek.EQP_NUMBER;
+                        var stckd = cek.STOCK_CODE;
+                        //var partn = param.PART_NO;
+                        var posb = cek.POSISI_BACKLOG;
+                        var stts = cek.STATUS;
+                        //edit 13.05.2023
+                        var message = string.Format("Stock code {0}, sudah ada di backlog {1}, dengan status {2}", stckd, nobl, stts);
+                        return Ok(new { Remarkss = true, Datas = cek, bl = nobl, eq = eqpno, sc = stckd, /*pn = partn,*/ pb = posb, st = stts, Messages = message });
+                    }
+                    return Ok(new { Remarks = true });
+                }
+                else
+                {
+                    
+                    return Ok(new { Remarks = true });
+
+                }
+                
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         //Post Registrasi Backlog
         [HttpPost]
         [Route("Create_Backlog")]

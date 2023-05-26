@@ -137,7 +137,59 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
+
+        [HttpGet]
+        [Route("Get_EqNumber2/{site}/{nrp}")]
+        public IHttpActionResult Get_EqNumber2(string site = "", string nrp = "")
+        {
+            try
+            {
+                if (site == "INDE")
+                {
+                    //valisasi wheel
+                    var karyawan_wheel = db.VW_KARYAWAN_PLANT_WHEELs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_hauling = db.VW_KARYAWAN_PLANT_HAULINGs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+                    var karyawan_track = db.VW_KARYAWAN_PLANT_TRACKs.Where(x => x.EMPLOYEE_ID == nrp).FirstOrDefault();
+
+                    if (karyawan_hauling != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_HAULINGs.Where(a => a.DSTRCT_CODE == site).FirstOrDefault();
+                        string equip = "PCH";
+                        return Ok(new { Data = equip });
+                    }
+                    else if (karyawan_track != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_TRACKs.Where(a => a.DSTRCT_CODE == site).FirstOrDefault();
+                        string equip = "PHE1";
+                        return Ok(new { Data = equip });
+                    }
+                    else if (karyawan_wheel != null)
+                    {
+                        var data = db.VW_R_EQ_NUMBER_WHEELs.Where(a => a.DSTRCT_CODE == site).FirstOrDefault();
+                        string equip = "PHE2";
+                        return Ok(new { Data = equip });
+                    }
+                    else
+                    {
+                        var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).FirstOrDefault();
+                        string equip = "";
+                        return Ok(new { Data = equip });
+                    }
+                }
+                else
+                {
+                    var data = db.VW_R_EQ_NUMBERs.Where(a => a.DSTRCT_CODE == site).FirstOrDefault();
+                    string equip = "";
+                    return Ok(new { Data = equip });
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet]
         [Route("Get_EqNumber/{site}/{nrp}")]
         public IHttpActionResult Get_EqNumber(string site = "", string nrp = "")
