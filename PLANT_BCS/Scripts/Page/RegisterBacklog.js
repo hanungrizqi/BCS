@@ -711,11 +711,14 @@ function savePart() {
 
     $.each($("#table_part tbody tr"), function () {
         let PartId = $("#txt_noBl").val() + $(this).find('td:eq(1)').html();
+        debugger
         ListPart.push({
             PART_ID: PartId,
             NO_BACKLOG: $("#txt_noBl").val(),
             DSTRCT_CODE: $("#txt_dstrct").val(),
             PART_NO: $(this).find('td:eq(1)').html(),
+            //penambahan stock code 31-05-2023
+            STOCK_CODE: $(this).find('td:eq(2)').html(),
             MNEMONIC: $(this).find('[name="txt_mnemonicPart"]').val(),
             FIG_NO: $(this).find('td:eq(4)').html(),
             INDEX_NO: $(this).find('td:eq(5)').html(),

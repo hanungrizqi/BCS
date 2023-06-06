@@ -551,21 +551,6 @@
       <Column Name="INSTALL_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TBL_T_RECOMMENDED_PART" Member="TBL_T_RECOMMENDED_PARTs">
-    <Type Name="TBL_T_RECOMMENDED_PART">
-      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ETA_SUPPLY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LOCATION_ON_STOCK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AVAILABLE_STOCK" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.VW_T_BACKLOG" Member="VW_T_BACKLOGs">
     <Type Name="VW_T_BACKLOG">
       <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -648,6 +633,22 @@
       <Column Name="STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CREATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="REMARKS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_T_RECOMMENDED_PART" Member="TBL_T_RECOMMENDED_PARTs">
+    <Type Name="TBL_T_RECOMMENDED_PART">
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PART_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FIG_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INDEX_NO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ETA_SUPPLY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LOCATION_ON_STOCK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AVAILABLE_STOCK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MNEMONIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">
