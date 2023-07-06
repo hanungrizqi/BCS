@@ -692,8 +692,12 @@ function FnSubmit(dataBacklog) {
 }
 
 function createWOWR() {
+    //edit 2023/07/05
+    debugger
+    var idPosition = document.getElementById("hd_idPosition").value;
     $.ajax({
         url: $("#web_link").val() + "/api/EllWOWR/Create_WO?noBacklog=" + $("#txt_noBl").val() + "&StrTime=" + $("#txt_planStrTime").val(), //URI
+        //url: $("#web_link").val() + "/api/EllWOWR/Create_WO?noBacklog=" + $("#txt_noBl").val() + "&StrTime=" + $("#txt_planStrTime").val() + "&idPosition=" + idPosition,
         type: "POST",
         contentType: "application/json; charset=utf-8",
         beforeSend: function () {
