@@ -172,6 +172,13 @@ namespace PLANT_BCS.Controllers
                                 LOCATION_ON_STOCK = ds.Tables[0].Rows[i][14].ToString(),
                                 //AVAILABLE_STOCK = Convert.ToInt32(ds.Tables[0].Rows[i][13])
                             });
+
+                            // Check if LOCATION_ON_STOCK is empty
+                            if (string.IsNullOrEmpty(cls[i - 1].LOCATION_ON_STOCK))
+                            {
+                                // Trigger Swal.fire notification if LOCATION_ON_STOCK is empty
+                                return Json(new { Remarks = false, Message = "Location on stock ada yang kosong di baris ke " + i }, JsonRequestBehavior.AllowGet);
+                            }
                         }
 
                     }

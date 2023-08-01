@@ -36,20 +36,20 @@ namespace API_PLANT_BCS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://ews-kpp.kppmining.net/ews/services/WorkService")]
-        public string API_PLANT_BCS_WorkService_WorkService {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ews-kpd.kppmining.net/ews/services/RequisitionService")]
+        public string API_PLANT_BCS_RequisitionService_RequisitionService {
             get {
-                return ((string)(this["API_PLANT_BCS_WorkService_WorkService"]));
+                return ((string)(this["API_PLANT_BCS_RequisitionService_RequisitionService"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://ews-kpd.kppmining.net/ews/services/RequisitionService")]
-        public string API_PLANT_BCS_RequisitionService_RequisitionService {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ews-kpd.kppmining.net/ews/services/WorkService")]
+        public string API_PLANT_BCS_WorkService_WorkService {
             get {
-                return ((string)(this["API_PLANT_BCS_RequisitionService_RequisitionService"]));
+                return ((string)(this["API_PLANT_BCS_WorkService_WorkService"]));
             }
         }
     }

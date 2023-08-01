@@ -175,7 +175,7 @@ namespace API_PLANT_BCS.ViewModel
             }
         }
 
-        public Cls_CreateWOWRResult CreateWR(string workOrder, IList<VW_T_PART_BACKLOG> dataStock, VW_T_BACKLOG dataBacklog, VW_KARYAWAN_ALL dataPosid)
+        public Cls_CreateWOWRResult CreateWR(string workOrder, IList<VW_T_PART_BACKLOG> dataStock, VW_T_BACKLOG dataBacklog/*, VW_KARYAWAN_ALL dataPosid*/)
         {
             Cls_CreateWOWRResult cls = new Cls_CreateWOWRResult();
             
@@ -217,10 +217,10 @@ namespace API_PLANT_BCS.ViewModel
                 {
                     List<RequisitionItemDTO> i_obj_listfield = new List<RequisitionItemDTO>();
 
-                    string wono, elldistrict, elluser1, wahid, delinstrb, descbacklog, nobacklog1, DelivInstrA_Combine, posid;
+                    string wono, elldistrict, elluser1, wahid, delinstrb, descbacklog, nobacklog1, DelivInstrA_Combine/*, posid*/;
 
                     //modify by hanung 2023/07/05
-                    posid = dataPosid.POSITION_ID;
+                    //posid = dataPosid.POSITION_ID;
 
                     /*elluser1 = dataBacklog.ORIGINATOR_ID;*/
                     elluser1 = dataBacklog.UPDATED_BY;
@@ -254,8 +254,8 @@ namespace API_PLANT_BCS.ViewModel
                     i_obj_requisition_dto1.costDistrictA = elldistrict;
                     
                     //edit 2023/07/05
-                    i_obj_requisition_dto1.requiredByPos = posid;
-                    i_obj_requisition_dto1.authsdPosition = null;
+                    //i_obj_requisition_dto1.requiredByPos = posid;
+                    //i_obj_requisition_dto1.authsdPosition = null;
 
 
 

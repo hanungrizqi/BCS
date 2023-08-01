@@ -29,7 +29,7 @@ namespace API_PLANT_BCS.Controllers
                 var dataStock = db.VW_T_PART_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).ToList();
                 var dataBacklog = db.VW_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
                 //modify by hanung 2023/07/05
-                var dataPosid = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == dataBacklog.UPDATED_BY).FirstOrDefault();
+                //var dataPosid = db.VW_KARYAWAN_ALLs.Where(a => a.EMPLOYEE_ID == dataBacklog.UPDATED_BY).FirstOrDefault();
 
                 foreach (var item in dataStock)
                 {
@@ -62,7 +62,7 @@ namespace API_PLANT_BCS.Controllers
                     var dataWO = db.TBL_H_BACKLOG_WO_WRs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
                     if (dataWO != null)
                     {
-                        Cls_CreateWOWRResult result1 = cls.CreateWR(dataWO.WO_NO, dataStock, dataBacklog, dataPosid);
+                        Cls_CreateWOWRResult result1 = cls.CreateWR(dataWO.WO_NO, dataStock, dataBacklog/*, dataPosid*/);
                         if (result1.Remarks == true)
                         {
                             var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
@@ -82,7 +82,7 @@ namespace API_PLANT_BCS.Controllers
                         Cls_CreateWOWRResult results = cls.CraeteWO(dataBacklog, planStrTime);
                         if (results.Remarks == true)
                         {
-                            Cls_CreateWOWRResult result1 = cls.CreateWR(results.WoNo, dataStock, dataBacklog, dataPosid);
+                            Cls_CreateWOWRResult result1 = cls.CreateWR(results.WoNo, dataStock, dataBacklog/*, dataPosid*/);
                             if (result1.Remarks == true)
                             {
                                 var saveBacklog = db.TBL_T_BACKLOGs.Where(a => a.NO_BACKLOG == noBacklog).FirstOrDefault();
