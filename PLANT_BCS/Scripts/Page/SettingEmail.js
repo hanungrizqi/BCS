@@ -20,7 +20,7 @@ $("#txt_nrp").on("change", function () {
 
 var table = $("#tbl_email").DataTable({
     ajax: {
-        url: $("#web_link").val() + "/api/Setting/Get_Email_Logistic",
+        url: $("#web_link").val() + "/api/Setting/Get_Email",
         dataSrc: "Data",
     },
     "columnDefs": [
@@ -80,7 +80,7 @@ function insertEmail() {
     obj.Username = $('#txt_nrp').val();
 
     $.ajax({
-        url: $("#web_link").val() + "/api/Setting/Create_Email_Logistic", //URI
+        url: $("#web_link").val() + "/api/Setting/Create_Email", //URI
         data: JSON.stringify(obj),
         dataType: "json",
         type: "POST",

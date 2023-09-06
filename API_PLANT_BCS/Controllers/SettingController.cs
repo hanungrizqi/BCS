@@ -49,16 +49,16 @@ namespace API_PLANT_BCS.Controllers
         }
 
         [HttpGet]
-        [Route("Get_Email_Logistic")]
-        public IHttpActionResult Get_Email_Logistic()
+        [Route("Get_Email")]
+        public IHttpActionResult Get_Email()
         {
             var data = db.VW_Emails.ToList();
             return Ok(new { Data = data });
         }
 
         [HttpPost]
-        [Route("Create_Email_Logistic")]
-        public IHttpActionResult Create_Email_Logistic(TBL_M_EMAIL param)
+        [Route("Create_Email")]
+        public IHttpActionResult Create_Email(TBL_M_EMAIL param)
         {
             try
             {
