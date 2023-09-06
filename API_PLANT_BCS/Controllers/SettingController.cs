@@ -47,7 +47,54 @@ namespace API_PLANT_BCS.Controllers
                 return BadRequest();
             }
         }
-        
+
+        [HttpGet]
+        [Route("Get_Email_Logistic")]
+        public IHttpActionResult Get_Email_Logistic()
+        {
+            var data = db.VW_Emails.ToList();
+            return Ok(new { Data = data });
+        }
+
+        [HttpPost]
+        [Route("Create_Email_Logistic")]
+        public IHttpActionResult Create_Email_Logistic(TBL_M_EMAIL param)
+        {
+            try
+            {
+                TBL_M_EMAIL tbl = new TBL_M_EMAIL();
+                tbl.RoleName = param.RoleName;
+                tbl.Username = param.Username;
+
+                db.TBL_M_EMAILs.InsertOnSubmit(tbl);
+                db.SubmitChanges();
+                return Json(new { Remarks = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Remarks = false, Message = ex });
+            }
+        }
+
+        [HttpPost]
+        [Route("Delete_Email")]
+        public IHttpActionResult Delete_Email(int id, string nrp)
+        {
+            try
+            {
+                var data = db.TBL_M_EMAILs.Where(a => a.ID == id && a.Username == nrp).FirstOrDefault();
+
+                db.TBL_M_EMAILs.DeleteOnSubmit(data);
+                db.SubmitChanges();
+                return Json(new { Remarks = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Remarks = false, Message = ex });
+            }
+
+        }
+
         [HttpPost]
         [Route("Create_Source")]
         public IHttpActionResult Create_Source(TBL_M_SOURCE param)

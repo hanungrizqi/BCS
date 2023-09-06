@@ -254,7 +254,7 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var cek = db.VW_H_PART_BACKLOGs.Where(a => a.DSTRCT_CODE == param.DSTRCT_CODE && a.EQP_NUMBER == param.EQP_NUMBER && a.STOCK_CODE == param.STOCK_CODE).FirstOrDefault();
+                var cek = db.TBL_H_PART_BACKLOGs.Where(a => a.DSTRCT_CODE == param.DSTRCT_CODE && a.EQP_NUMBER == param.EQP_NUMBER && a.STOCK_CODE == param.STOCK_CODE).FirstOrDefault();
                 if (cek != null)
                 {
                     //gk kepake, langsung cek if dibawah lagi

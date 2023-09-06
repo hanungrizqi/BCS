@@ -39,6 +39,17 @@ namespace PLANT_BCS.Controllers
             }
             ViewBag.Group = db.TBL_M_ROLEs.ToList();
             return View();
-        }        
+        }
+
+        public ActionResult Email()
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            ViewBag.Emp = db.TBL_R_MASTER_KARYAWAN_ALLs.ToList();
+            ViewBag.Group = db.TBL_M_ROLEs.ToList();
+            return View();
+        }
     }
 }
