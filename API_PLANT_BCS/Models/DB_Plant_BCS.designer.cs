@@ -488,6 +488,14 @@ namespace API_PLANT_BCS.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<TBL_R_PART_MSF170> TBL_R_PART_MSF170s
+		{
+			get
+			{
+				return this.GetTable<TBL_R_PART_MSF170>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.cusp_NotifBacklogCancel")]
 		public int cusp_NotifBacklogCancel([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NO_BACKLOG", DbType="VarChar(MAX)")] string nO_BACKLOG)
 		{
@@ -10659,6 +10667,159 @@ namespace API_PLANT_BCS.Models
 				if ((this._DSTRCT_CODE != value))
 				{
 					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_R_PART_MSF170")]
+	public partial class TBL_R_PART_MSF170
+	{
+		
+		private string _DSTRCT_CODE;
+		
+		private string _PART_NO;
+		
+		private string _MNEMONIC;
+		
+		private string _STOCK_CODE;
+		
+		private string _UOM;
+		
+		private string _STK_DESC;
+		
+		private char _PART_CLASS;
+		
+		private string _PREF_PART_IND;
+		
+		public TBL_R_PART_MSF170()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this._DSTRCT_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_NO", DbType="VarChar(30)")]
+		public string PART_NO
+		{
+			get
+			{
+				return this._PART_NO;
+			}
+			set
+			{
+				if ((this._PART_NO != value))
+				{
+					this._PART_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MNEMONIC", DbType="VarChar(8)")]
+		public string MNEMONIC
+		{
+			get
+			{
+				return this._MNEMONIC;
+			}
+			set
+			{
+				if ((this._MNEMONIC != value))
+				{
+					this._MNEMONIC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STOCK_CODE", DbType="Char(9) NOT NULL", CanBeNull=false)]
+		public string STOCK_CODE
+		{
+			get
+			{
+				return this._STOCK_CODE;
+			}
+			set
+			{
+				if ((this._STOCK_CODE != value))
+				{
+					this._STOCK_CODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOM", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string UOM
+		{
+			get
+			{
+				return this._UOM;
+			}
+			set
+			{
+				if ((this._UOM != value))
+				{
+					this._UOM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STK_DESC", DbType="VarChar(250)")]
+		public string STK_DESC
+		{
+			get
+			{
+				return this._STK_DESC;
+			}
+			set
+			{
+				if ((this._STK_DESC != value))
+				{
+					this._STK_DESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PART_CLASS", DbType="Char(1) NOT NULL")]
+		public char PART_CLASS
+		{
+			get
+			{
+				return this._PART_CLASS;
+			}
+			set
+			{
+				if ((this._PART_CLASS != value))
+				{
+					this._PART_CLASS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREF_PART_IND", DbType="Char(2)")]
+		public string PREF_PART_IND
+		{
+			get
+			{
+				return this._PREF_PART_IND;
+			}
+			set
+			{
+				if ((this._PREF_PART_IND != value))
+				{
+					this._PREF_PART_IND = value;
 				}
 			}
 		}

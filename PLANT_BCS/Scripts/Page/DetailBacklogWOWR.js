@@ -73,6 +73,13 @@ var table = $("#table_part").DataTable({
 });
 console.log(table.ETA_SUPPLY);
 
+table.on('draw.dt', function () {
+    debugger
+    // Mengaktifkan atau menonaktifkan tombol berdasarkan jumlah data yang ditampilkan
+    var isDisabled = table.page.info().recordsDisplay === 0;
+    $('#createWowrButton').prop('disabled', isDisabled);
+});
+
 var tableRepair = $("#table_repair").DataTable({
     ajax: {
         url: $("#web_link").val() + "/api/Backlog/Get_BacklogRepair/" + $("#txt_noBl").val(),

@@ -290,7 +290,10 @@
                     <button type="button" id="tomboladmin" class="btn btn-sm btn-info" value="LOGISTIC APPROVED" onclick="SendBackBacklog(this.value)">
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Send Back To Planner (Logistic)
                     </button>
-                    <button type="submit" class="btn btn-sm btn-success" value="create" onclick="CreateWoWr(this.value)">
+                    @*<button type="submit" class="btn btn-sm btn-success" value="create" onclick="CreateWoWr(this.value)">
+                        <i class="fa fa-check-circle opacity-50 me-1"></i> Create WO &amp; WR
+                    </button>*@
+                    <button id="createWowrButton" type="submit" class="btn btn-sm btn-success" value="create" onclick="CreateWoWr(this.value)" disabled>
                         <i class="fa fa-check-circle opacity-50 me-1"></i> Create WO &amp; WR
                     </button>
                 </div>

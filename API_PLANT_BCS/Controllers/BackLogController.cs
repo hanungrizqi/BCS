@@ -221,7 +221,8 @@ namespace API_PLANT_BCS.Controllers
         {
             try
             {
-                var data = db.VW_R_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
+                //var data = db.VW_R_PART_MSF170s.Where(a => a.PART_NO == partNO  && a.DSTRCT_CODE == site).FirstOrDefault();
+                var data = db.TBL_R_PART_MSF170s.Where(a => a.PART_NO == partNO && a.DSTRCT_CODE == site).FirstOrDefault();
                 return Ok(new { Data = data, Remarks = true });
             }
             catch (Exception)
@@ -257,16 +258,6 @@ namespace API_PLANT_BCS.Controllers
                 var cek = db.TBL_H_PART_BACKLOGs.Where(a => a.DSTRCT_CODE == param.DSTRCT_CODE && a.EQP_NUMBER == param.EQP_NUMBER && a.STOCK_CODE == param.STOCK_CODE).FirstOrDefault();
                 if (cek != null)
                 {
-                    //gk kepake, langsung cek if dibawah lagi
-                    //cek.NO_BACKLOG = param.NO_BACKLOG;
-                    //cek.DSTRCT_CODE = param.DSTRCT_CODE;
-                    //cek.EQP_NUMBER = param.EQP_NUMBER;
-                    //cek.STOCK_CODE = param.STOCK_CODE;
-                    //cek.PART_NO = param.PART_NO;
-                    //cek.POSISI_BACKLOG = param.POSISI_BACKLOG;
-                    //cek.STATUS = param.STATUS;
-                    //cek.CREATED_DATE = param.CREATED_DATE;
-                    //cek.REMARKS = param.REMARKS;
 
                     if (cek.DSTRCT_CODE == param.DSTRCT_CODE && cek.EQP_NUMBER == param.EQP_NUMBER && cek.STOCK_CODE == param.STOCK_CODE)
                     {

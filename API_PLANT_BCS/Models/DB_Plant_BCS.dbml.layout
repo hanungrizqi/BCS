@@ -290,5 +290,11 @@
         <elementListCompartment Id="7a99e133-b47e-417f-bc2f-c8f379bac4cf" absoluteBounds="9.015, 5.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="baba3852-4661-4a41-9b8d-0e22433e574b" isExpanded="false" absoluteBounds="2.625, 4.5, 2, 0.45">
+      <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_R_PART_MSF170" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c92b5cbd-b98d-4c5e-9607-46e66b1582c2" absoluteBounds="2.64, 4.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
