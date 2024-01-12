@@ -233,6 +233,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogisticController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\MOKController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
