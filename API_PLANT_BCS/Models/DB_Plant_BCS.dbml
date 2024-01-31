@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_PLANT_BCS_KPD" Class="DB_Plant_BCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=10.14.101.101\shpol;Initial Catalog=DB_PLANT_BCS_KPD;Persist Security Info=True;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_PLANT_BCS_KPDConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_PLANT_BCS" Class="DB_Plant_BCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.17.4.5;Initial Catalog=DB_PLANT_BCS;Persist Security Info=True;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_PLANT_BCS_KPDConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TBL_M_ROLE" Member="TBL_M_ROLEs">
     <Type Name="TBL_M_ROLE">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -679,6 +679,22 @@
       <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_T_REGISTER" Member="TBL_T_REGISTERs">
+    <Type Name="TBL_T_REGISTER">
+      <Column Name="NO_REGISTER" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SOURCE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INSPECTION_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UPDATED_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UPDATED_BY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.cusp_NotifBacklogCancel" Method="cusp_NotifBacklogCancel">

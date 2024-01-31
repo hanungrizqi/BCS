@@ -189,6 +189,15 @@ namespace PLANT_BCS.Controllers
             return View();
         }
 
+        public ActionResult RegisterPlanet()
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            return View();
+        }
+
         public async Task<ActionResult> DetailWOWR(string noBacklog)
         {
             if (Session["nrp"] == null)

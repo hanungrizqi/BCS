@@ -4406,6 +4406,7 @@
     <Content Include="Views\Backlog\CreateWOWR.cshtml" />
     <Content Include="Views\Backlog\DetailWOWR.cshtml" />
     <Content Include="Views\Setting\Email.cshtml" />
+    <Content Include="Views\Backlog\RegisterPlanet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\assets\js\plugins\flatpickr\l10n\ar.d.ts" />
