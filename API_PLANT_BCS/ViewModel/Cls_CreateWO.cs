@@ -17,7 +17,8 @@ namespace API_PLANT_BCS.ViewModel
     {
         DB_Plant_BCSDataContext db = new DB_Plant_BCSDataContext();
 
-        public string p_string_conn = "User Id = ellipse; Password=n4ngg4l4; DATA SOURCE = kphodbel601:1521/ellkpd";
+        //public string p_string_conn = "User Id = ellipse; Password=n4ngg4l4; DATA SOURCE = kphodbel601:1521/ellkpd";
+        public string p_string_conn = "User Id = ellipse; Password=n4ngg4l4; DATA SOURCE = 10.12.101.22:1521/ellkpd";
 
         public string SCSUB_ID { get; set; }
         public string Rel_Stock_ID { get; set; }
