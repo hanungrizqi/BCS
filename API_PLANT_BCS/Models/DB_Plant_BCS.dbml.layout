@@ -290,10 +290,10 @@
         <elementListCompartment Id="7a99e133-b47e-417f-bc2f-c8f379bac4cf" absoluteBounds="9.015, 5.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8acfcdc8-5e4f-420f-b763-0fc16ecc6eb1" isExpanded="false" absoluteBounds="2.625, 4.5, 2, 0.45">
+    <classShape Id="ba560b30-789b-46fb-b9ce-9872c9540873" isExpanded="false" absoluteBounds="2.625, 4.5, 2, 0.45">
       <DataClassMoniker Name="/DB_Plant_BCSDataContext/TBL_T_REGISTER" />
       <nestedChildShapes>
-        <elementListCompartment Id="e38e994c-70bf-4d17-a511-b482393808a6" absoluteBounds="2.64, 4.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6be3e89b-5885-4ac6-8a89-86fef671a717" absoluteBounds="2.64, 4.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

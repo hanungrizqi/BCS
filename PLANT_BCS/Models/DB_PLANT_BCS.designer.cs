@@ -45,6 +45,9 @@ namespace PLANT_BCS.Models
     partial void InsertTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void UpdateTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
     partial void DeleteTBL_T_RECOMMENDED_PART(TBL_T_RECOMMENDED_PART instance);
+    partial void InsertTBL_T_REGISTER(TBL_T_REGISTER instance);
+    partial void UpdateTBL_T_REGISTER(TBL_T_REGISTER instance);
+    partial void DeleteTBL_T_REGISTER(TBL_T_REGISTER instance);
     #endregion
 		
 		public DB_PLANT_BCSDataContext() : 
@@ -170,6 +173,14 @@ namespace PLANT_BCS.Models
 			get
 			{
 				return this.GetTable<TBL_R_MASTER_KARYAWAN_ALL>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TBL_T_REGISTER> TBL_T_REGISTERs
+		{
+			get
+			{
+				return this.GetTable<TBL_T_REGISTER>();
 			}
 		}
 	}
@@ -3057,6 +3068,356 @@ namespace PLANT_BCS.Models
 				{
 					this._ACTIVE_STATUS = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBL_T_REGISTER")]
+	public partial class TBL_T_REGISTER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _NO_REGISTER;
+		
+		private string _EQP_NUMBER;
+		
+		private string _COMP_CODE;
+		
+		private System.Nullable<int> _HM;
+		
+		private string _DSTRCT_CODE;
+		
+		private string _BACKLOG_DESC;
+		
+		private string _SOURCE;
+		
+		private System.Nullable<System.DateTime> _INSPECTION_DATE;
+		
+		private System.Nullable<System.DateTime> _CREATED_DATE;
+		
+		private string _CREATED_BY;
+		
+		private System.Nullable<System.DateTime> _UPDATED_DATE;
+		
+		private string _UPDATED_BY;
+		
+		private string _STATUS;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNO_REGISTERChanging(string value);
+    partial void OnNO_REGISTERChanged();
+    partial void OnEQP_NUMBERChanging(string value);
+    partial void OnEQP_NUMBERChanged();
+    partial void OnCOMP_CODEChanging(string value);
+    partial void OnCOMP_CODEChanged();
+    partial void OnHMChanging(System.Nullable<int> value);
+    partial void OnHMChanged();
+    partial void OnDSTRCT_CODEChanging(string value);
+    partial void OnDSTRCT_CODEChanged();
+    partial void OnBACKLOG_DESCChanging(string value);
+    partial void OnBACKLOG_DESCChanged();
+    partial void OnSOURCEChanging(string value);
+    partial void OnSOURCEChanged();
+    partial void OnINSPECTION_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnINSPECTION_DATEChanged();
+    partial void OnCREATED_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnCREATED_DATEChanged();
+    partial void OnCREATED_BYChanging(string value);
+    partial void OnCREATED_BYChanged();
+    partial void OnUPDATED_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnUPDATED_DATEChanged();
+    partial void OnUPDATED_BYChanging(string value);
+    partial void OnUPDATED_BYChanged();
+    partial void OnSTATUSChanging(string value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public TBL_T_REGISTER()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NO_REGISTER", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string NO_REGISTER
+		{
+			get
+			{
+				return this._NO_REGISTER;
+			}
+			set
+			{
+				if ((this._NO_REGISTER != value))
+				{
+					this.OnNO_REGISTERChanging(value);
+					this.SendPropertyChanging();
+					this._NO_REGISTER = value;
+					this.SendPropertyChanged("NO_REGISTER");
+					this.OnNO_REGISTERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EQP_NUMBER", DbType="VarChar(50)")]
+		public string EQP_NUMBER
+		{
+			get
+			{
+				return this._EQP_NUMBER;
+			}
+			set
+			{
+				if ((this._EQP_NUMBER != value))
+				{
+					this.OnEQP_NUMBERChanging(value);
+					this.SendPropertyChanging();
+					this._EQP_NUMBER = value;
+					this.SendPropertyChanged("EQP_NUMBER");
+					this.OnEQP_NUMBERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COMP_CODE", DbType="VarChar(50)")]
+		public string COMP_CODE
+		{
+			get
+			{
+				return this._COMP_CODE;
+			}
+			set
+			{
+				if ((this._COMP_CODE != value))
+				{
+					this.OnCOMP_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._COMP_CODE = value;
+					this.SendPropertyChanged("COMP_CODE");
+					this.OnCOMP_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HM", DbType="Int")]
+		public System.Nullable<int> HM
+		{
+			get
+			{
+				return this._HM;
+			}
+			set
+			{
+				if ((this._HM != value))
+				{
+					this.OnHMChanging(value);
+					this.SendPropertyChanging();
+					this._HM = value;
+					this.SendPropertyChanged("HM");
+					this.OnHMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(4)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this.OnDSTRCT_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._DSTRCT_CODE = value;
+					this.SendPropertyChanged("DSTRCT_CODE");
+					this.OnDSTRCT_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BACKLOG_DESC", DbType="VarChar(50)")]
+		public string BACKLOG_DESC
+		{
+			get
+			{
+				return this._BACKLOG_DESC;
+			}
+			set
+			{
+				if ((this._BACKLOG_DESC != value))
+				{
+					this.OnBACKLOG_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._BACKLOG_DESC = value;
+					this.SendPropertyChanged("BACKLOG_DESC");
+					this.OnBACKLOG_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOURCE", DbType="VarChar(50)")]
+		public string SOURCE
+		{
+			get
+			{
+				return this._SOURCE;
+			}
+			set
+			{
+				if ((this._SOURCE != value))
+				{
+					this.OnSOURCEChanging(value);
+					this.SendPropertyChanging();
+					this._SOURCE = value;
+					this.SendPropertyChanged("SOURCE");
+					this.OnSOURCEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INSPECTION_DATE", DbType="Date")]
+		public System.Nullable<System.DateTime> INSPECTION_DATE
+		{
+			get
+			{
+				return this._INSPECTION_DATE;
+			}
+			set
+			{
+				if ((this._INSPECTION_DATE != value))
+				{
+					this.OnINSPECTION_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._INSPECTION_DATE = value;
+					this.SendPropertyChanged("INSPECTION_DATE");
+					this.OnINSPECTION_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CREATED_DATE
+		{
+			get
+			{
+				return this._CREATED_DATE;
+			}
+			set
+			{
+				if ((this._CREATED_DATE != value))
+				{
+					this.OnCREATED_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._CREATED_DATE = value;
+					this.SendPropertyChanged("CREATED_DATE");
+					this.OnCREATED_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(50)")]
+		public string CREATED_BY
+		{
+			get
+			{
+				return this._CREATED_BY;
+			}
+			set
+			{
+				if ((this._CREATED_BY != value))
+				{
+					this.OnCREATED_BYChanging(value);
+					this.SendPropertyChanging();
+					this._CREATED_BY = value;
+					this.SendPropertyChanged("CREATED_BY");
+					this.OnCREATED_BYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UPDATED_DATE
+		{
+			get
+			{
+				return this._UPDATED_DATE;
+			}
+			set
+			{
+				if ((this._UPDATED_DATE != value))
+				{
+					this.OnUPDATED_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._UPDATED_DATE = value;
+					this.SendPropertyChanged("UPDATED_DATE");
+					this.OnUPDATED_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATED_BY", DbType="VarChar(50)")]
+		public string UPDATED_BY
+		{
+			get
+			{
+				return this._UPDATED_BY;
+			}
+			set
+			{
+				if ((this._UPDATED_BY != value))
+				{
+					this.OnUPDATED_BYChanging(value);
+					this.SendPropertyChanging();
+					this._UPDATED_BY = value;
+					this.SendPropertyChanged("UPDATED_BY");
+					this.OnUPDATED_BYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="VarChar(150)")]
+		public string STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

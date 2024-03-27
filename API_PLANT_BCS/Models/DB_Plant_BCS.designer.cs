@@ -22,7 +22,7 @@ namespace API_PLANT_BCS.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DB_PLANT_BCS")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DB_PLANT_NEW_BCS_KPP")]
 	public partial class DB_Plant_BCSDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -10689,6 +10689,8 @@ namespace API_PLANT_BCS.Models
 		
 		private System.Nullable<int> _HM;
 		
+		private string _DSTRCT_CODE;
+		
 		private string _BACKLOG_DESC;
 		
 		private string _SOURCE;
@@ -10717,6 +10719,8 @@ namespace API_PLANT_BCS.Models
     partial void OnCOMP_CODEChanged();
     partial void OnHMChanging(System.Nullable<int> value);
     partial void OnHMChanged();
+    partial void OnDSTRCT_CODEChanging(string value);
+    partial void OnDSTRCT_CODEChanged();
     partial void OnBACKLOG_DESCChanging(string value);
     partial void OnBACKLOG_DESCChanged();
     partial void OnSOURCEChanging(string value);
@@ -10816,6 +10820,26 @@ namespace API_PLANT_BCS.Models
 					this._HM = value;
 					this.SendPropertyChanged("HM");
 					this.OnHMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DSTRCT_CODE", DbType="VarChar(4)")]
+		public string DSTRCT_CODE
+		{
+			get
+			{
+				return this._DSTRCT_CODE;
+			}
+			set
+			{
+				if ((this._DSTRCT_CODE != value))
+				{
+					this.OnDSTRCT_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._DSTRCT_CODE = value;
+					this.SendPropertyChanged("DSTRCT_CODE");
+					this.OnDSTRCT_CODEChanged();
 				}
 			}
 		}

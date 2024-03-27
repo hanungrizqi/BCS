@@ -250,6 +250,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ClsLogin.cs" />
+    <Compile Include="ViewModel\ClsMOK.cs" />
     <Compile Include="ViewModel\ClsTemp.cs" />
     <Compile Include="ViewModel\Cls_Backlog.cs" />
     <Compile Include="ViewModel\Cls_CreateWO.cs" />

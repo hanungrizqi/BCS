@@ -189,15 +189,6 @@ namespace PLANT_BCS.Controllers
             return View();
         }
 
-        public ActionResult RegisterPlanet()
-        {
-            if (Session["nrp"] == null)
-            {
-                return RedirectToAction("index", "login");
-            }
-            return View();
-        }
-
         public async Task<ActionResult> DetailWOWR(string noBacklog)
         {
             if (Session["nrp"] == null)
@@ -268,6 +259,53 @@ namespace PLANT_BCS.Controllers
                 ViewBag.BackLog = tbl;
             }
             return View();
+        }
+
+        public ActionResult RegisterIndex()
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+            return View();
+        }
+
+        public async Task<ActionResult> RegisterPlanet(string noregister)
+        {
+            if (Session["nrp"] == null)
+            {
+                return RedirectToAction("index", "login");
+            }
+
+            TBL_T_REGISTER tbl = new TBL_T_REGISTER();
+            string NoRegisters = "";
+
+            using (var client = new HttpClient())
+            {
+                //Passing service base url  
+                client.BaseAddress = new Uri((string)Session["Web_Link"]);
+
+                client.DefaultRequestHeaders.Clear();
+                //Define request data format  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                HttpResponseMessage Res = await client.GetAsync("api/MOK/Get_LastRegister/" + noregister);
+
+                //Checking the response is successful or not which is sent using HttpClient  
+                if (Res.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    var ApiResponse = Res.Content.ReadAsStringAsync().Result;
+                    Cls_RegisterBacklog data = new Cls_RegisterBacklog();
+                    data = JsonConvert.DeserializeObject<Cls_RegisterBacklog>(ApiResponse);
+
+                    tbl = data.tbl;
+                    NoRegisters = tbl.NO_REGISTER;
+                }
+                ViewBag.NoRegister = NoRegisters;
+                return View();
+            }
         }
     }
 }

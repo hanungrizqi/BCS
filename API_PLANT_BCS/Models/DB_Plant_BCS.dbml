@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_PLANT_BCS" Class="DB_Plant_BCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=10.17.4.5;Initial Catalog=DB_PLANT_BCS;Persist Security Info=True;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_PLANT_BCS_KPDConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_PLANT_NEW_BCS_KPP" Class="DB_Plant_BCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.17.4.6;Initial Catalog=DB_PLANT_NEW_BCS_KPP;Persist Security Info=True;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_PLANT_BCS_KPDConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TBL_M_ROLE" Member="TBL_M_ROLEs">
     <Type Name="TBL_M_ROLE">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -687,6 +687,7 @@
       <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="COMP_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="HM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
       <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SOURCE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="INSPECTION_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />

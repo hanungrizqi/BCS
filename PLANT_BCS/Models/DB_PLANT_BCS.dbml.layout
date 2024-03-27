@@ -74,5 +74,11 @@
         <elementListCompartment Id="400f8319-27c4-4b2d-a845-bfa9ed0f09d5" absoluteBounds="4.765, 1.96, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="1817173d-6589-4992-a925-2b6c8a5da34a" isExpanded="false" absoluteBounds="4.75, 2, 2, 0.45">
+      <DataClassMoniker Name="/DB_PLANT_BCSDataContext/TBL_T_REGISTER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0a4ce29-9eb5-4441-8ca4-fda25649f0cc" absoluteBounds="4.765, 2.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

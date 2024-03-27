@@ -16,4 +16,9 @@ namespace PLANT_BCS.ViewModel
     {
         public string Data { get; set; }
     }
+    public class Cls_RegisterBacklog
+    {
+        [JsonProperty("Data")]
+        public TBL_T_REGISTER tbl { get; set; }
+    }
 }
